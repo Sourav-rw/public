@@ -1,0 +1,495 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="main.css" rel="stylesheet">
+    <script>
+        //localStorage.theme = 'light'
+    </script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                //localStorage.theme = 'light',
+                colors: {
+                transparent: 'transparent',
+                current: 'currentColor',
+                'Primary': {
+                    50:  'rgba(72, 130, 159, 0.15)',
+                    100: 'rgba(72, 130, 159, 0.20)',
+                    200: 'rgba(72, 130, 159, 0.30)',
+                    300: 'rgba(72, 130, 159, 0.40)',
+                    400: 'rgba(72, 130, 159, 0.50)',
+                    500: 'rgba(72, 130, 159, 0.60)',
+                    600: 'rgba(72, 130, 159, 0.70)',
+                    700: 'rgba(72, 130, 159, 0.80)',
+                    800: 'rgba(72, 130, 159, 0.90)',
+                    900: '#48829F',
+                },
+                'Gray': {
+                    50:  '#F9FAFB',
+                    100: '#F3F4F6',
+                    200: '#E5E7EB',
+                    300: '#D1D5DB',
+                    400: '#9CA3AF',
+                    500: '#7E7E7E',
+                    600: '#4B5563',
+                    700: '#374151',
+                    800: '#1F2A37',
+                    900: '#111928',
+                },
+                'Blue': {
+                    50:  '#EBF5FF',
+                    100: '#E1EFFE',
+                    200: '#C3DDFD',
+                    300: '#A4CAFE',
+                    400: '#76A9FA',
+                    500: '#3F83F8',
+                    600: '#1C64F2',
+                    700: '#1A56DB',
+                    800: '#1E429F',
+                    900: '#1E429F',
+                },
+                'Red': {
+                    50:  '#FDF2F2',
+                    100: '#FDE8E8',
+                    200: '#FBD5D5',
+                    300: '#F8B4B4',
+                    400: '#F98080',
+                    500: '#F05252',
+                    600: '#E02424',
+                    700: '#C81E1E',
+                    800: '#9B1C1C',
+                    900: '#771D1D',
+                },
+                'Orange': {
+                    50: '#fff8f1',
+                    100: '#feecdc',
+                    200: '#fcd9bd',
+                    300: '#fdba8c',
+                    400: '#ff8a4c',
+                    500: '#ff5a1f',
+                    600: '#d03801',
+                    700: '#b43403',
+                    800: '#8a2c0d',
+                    900: '#771d1d',
+                },
+                'Yellow': {
+                    50:  '#fdfdea',
+                    100: '#fdf6b2',
+                    200: '#fce96a',
+                    300: '#faca15',
+                    400: '#e3a008',
+                    500: '#c27803',
+                    600: '#9f580a',
+                    700: '#8e4b10',
+                    800: '#723b13',
+                    900: '#633112',
+                },
+                'Green': {
+                    50:  '#f3faf7',
+                    100: '#def7ec',
+                    200: '#bcf0da',
+                    300: '#84e1bc',
+                    400: '#31c48d',
+                    500: '#0e9f6e',
+                    600: '#057a55',
+                    700: '#046c4e',
+                    800: '#03543f',
+                    900: '#014737',
+                },
+                'Teal': {
+                    50:  '#edfafa',
+                    100: '#d5f5f6',
+                    200: '#afecef',
+                    300: '#7edce2',
+                    400: '#16bdca',
+                    500: '#0694a2',
+                    600: '#047481',
+                    700: '#036672',
+                    800: '#05505c',
+                    900: '#014451',
+                },
+                'Indigo': {
+                    50:  '#f0f5ff',
+                    100: '#e5edff',
+                    200: '#cddbfe',
+                    300: '#b4c6fc',
+                    400: '#8da2fb',
+                    500: '#6875f5',
+                    600: '#5850ec',
+                    700: '#5145cd',
+                    800: '#42389d',
+                    900: '#362f78',
+                },
+                'Purple': {
+                    50:  '#f6f5ff',
+                    100: '#edebfe',
+                    200: '#dcd7fe',
+                    300: '#cabffd',
+                    400: '#ac94fa',
+                    500: '#9061f9',
+                    600: '#7e3af2',
+                    700: '#6c2bd9',
+                    800: '#5521b5',
+                    900: '#4a1d96',
+                },
+                'Pink': {
+                    50:  '#fdf2f8',
+                    100: '#fce8f3',
+                    200: '#fad1e8',
+                    300: '#f8b4d9',
+                    400: '#f17eb8',
+                    500: '#e74694',
+                    600: '#d61f69',
+                    700: '#bf125d',
+                    800: '#99154b',
+                    900: '#751a3d',
+                },
+                // ...
+                },
+            },
+        }
+    </script>
+
+</head>
+<body class="flex flex-col items-center">
+
+    <section class="w-full md:w-3/4 lg:w-10/12 my-10">
+               
+        <div id="accordion-collapse" data-accordion="collapse">
+            <h2 id="accordion-collapse-heading-1">
+                <button type="button" class="accordian-button group relative flex flex-col items-end justify-start w-full p-2 md:p-4 lg:items-center lg:flex-row lg:justify-between lg:p-5 border border-b-0 border-gray-200 rounded-t-xl focus:ring-0 bg-gray-100 text-gray-900"  data-accordion-target="#accordion-collapse-body-1" aria-expanded="true" aria-controls="accordion-collapse-body-1">
+                    <div class="flex items-center w-full mb-2 lg:w-2/3 lg:mb-0">
+                        <div class="p-2 bg-Orange-100 rounded-full mr-5 group-hover:hidden">
+                            <svg class="relative overflow-visible" width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M24.0191 18.0182C24.5468 16.7443 24.8184 15.3789 24.8184 14C24.8184 11.2152 23.7121 8.54451 21.743 6.57538C19.7738 4.60625 17.1031 3.5 14.3184 3.5C11.5336 3.5 8.86287 4.60625 6.89374 6.57538C4.92461 8.54451 3.81836 11.2152 3.81836 14C3.81836 15.3789 4.08995 16.7443 4.61762 18.0182C5.1453 19.2921 5.91872 20.4496 6.89374 21.4246C7.86875 22.3996 9.02626 23.1731 10.3002 23.7007C11.5741 24.2284 12.9395 24.5 14.3184 24.5C15.6972 24.5 17.0626 24.2284 18.3365 23.7007C19.6105 23.1731 20.768 22.3996 21.743 21.4246C22.718 20.4496 23.4914 19.2921 24.0191 18.0182Z" fill="#FEECDC" />
+                                <path d="M14.3184 9.33333V14M14.3184 18.6667H14.33M24.8184 14C24.8184 15.3789 24.5468 16.7443 24.0191 18.0182C23.4914 19.2921 22.718 20.4496 21.743 21.4246C20.768 22.3996 19.6105 23.1731 18.3365 23.7007C17.0626 24.2284 15.6972 24.5 14.3184 24.5C12.9395 24.5 11.5741 24.2284 10.3002 23.7007C9.02626 23.1731 7.86875 22.3996 6.89374 21.4246C5.91872 20.4496 5.1453 19.2921 4.61762 18.0182C4.08995 16.7443 3.81836 15.3789 3.81836 14C3.81836 11.2152 4.92461 8.54451 6.89374 6.57538C8.86287 4.60625 11.5336 3.5 14.3184 3.5C17.1031 3.5 19.7738 4.60625 21.743 6.57538C23.7121 8.54451 24.8184 11.2152 24.8184 14Z" stroke="#FF5A1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="p-[6.5px] py-3 bg-Gray-100 rounded-full mr-2 md:mr-5 hidden group-hover:block">
+                            <img class="w-8 h-5 relative" src="./images/image-10.png" />                                   
+                        </div>
+                        <div class="flex flex-col font-medium text-left text-gray-500">
+                            Apolipoprotein B 
+                            <span class="font-normal text-gray-500 hidden group-hover:block">Hermalogy</span>
+                        </div>
+                    </div>
+
+                    <div class="w-full md:w-auto flex items-end lg:w-2/3 lg:items-center justify-end">
+                        <img src="images/accordian-heading-scale.png" class="accordian-heading-scale w-full block lg:w-8/12 group-hover:hidden group-focus:hidden">
+
+                        <div class="text-base text-gray-800 ml-6 group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden">60%</div>
+                        
+                        <img src="images/accordian-heading-badge.png" class="accordian-heading-badge w-12 ml-16 absolute right-0 top-0 mt-4 mr-2 block lg:relative lg:mt-0 lg:mr-0 group-hover:hidden group-focus:hidden">
+
+
+                        <a href="#" class="text-Primary-900 bg-transparent border border-Primary-900 hover:text-white hover:bg-Primary-800 focus:ring-0 font-normal rounded-full text-sm px-5 py-2 ml-3 lg:mr-10 lg:ml-0 focus:outline-none hidden group-hover:block group-focus:hidden">View Range</a>
+
+                        <a href="#" class="text-Gray-50 bg-Primary-900 border border-Primary-900 hover:bg-Primary-800 focus:ring-0 font-normal rounded-full text-sm px-5 py-2 ml-3 lg:mr-10 lg:ml-0 focus:outline-none hidden group-hover:block group-focus:block">View Recommendations</a>
+
+                        <svg class="shrink-0 absolute right-0 top-0 mt-4 mr-2 overflow-visible hidden lg:relative lg:mt-0 lg:mr-0 group-hover:block group-focus:hidden" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.25 6.25L20 15L11.25 23.75" stroke="#48829F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+
+                        <div class="absolute right-0 top-0 mt-5 mr-3 hidden lg:relative lg:mt-0 lg:mr-0 group-focus:block">
+                            <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="2.11719" y="17.6035" width="2.26316" height="22.6316" rx="1.13158" transform="rotate(-135 2.11719 17.6035)" fill="#7E7E7E"/>
+                                <rect y="1.76172" width="2.26316" height="22.6316" rx="1.13158" transform="rotate(-45 0 1.76172)" fill="#7E7E7E"/>
+                            </svg>
+                        </div>
+                    </div>
+                </button>
+            </h2>
+
+            <div id="accordion-collapse-body-1" class="hidden" aria-labelledby="accordion-collapse-heading-1">
+                <div class="p-5 lg:p-10 lg:px-20 border border-b-0 border-Gray-200">
+                    <div class="flex flex-col items-start justify-between lg:flex-row">
+                        <p class="w-full lg:w-2/3 mb-2 lg:pr-10 text-sm text-Gray-600">Lipoprotein(a) is formed in the liver and transports fats and other lipids such as cholesterol around the body. Lipoprotein(a) is a strong risk marker for cardiovascular disease. One in five has an increased risk of developing a cardiovascular disease and narrowed aortic valve due to a hereditary high content of lipoprotein(a) in the blood. Elevated lipoprotein(a) contributes to a markedly increased risk of cardiovascular disease. Lp(a) is difficult to lower as it is genetically determined.</p>
+                        <div class="flex flex-col items-end w-full mt-10 lg:mt-0 lg:w-1/2 lgpl-10">
+                            <img src="images/accordian-img.png" class="w-full -translate-y-2">
+                            <a href="#" class="text-center text-Primary-900 bg-white border border-Primary-900 hover:bg-Primary-900 hover:text-white focus:ring-0 font-normal rounded-full text-sm px-4 py-2 focus:outline-none w-40">View Result History</a>
+                        </div>
+                    </div>                    
+                    <img src="images/General-Scale.png" class="w-full block my-6">
+                    <div class="flex flex-col items-end justify-between lg:items-center lg:flex-row">
+                        <div class="flex items-center p-3 pl-6 pr-5 mb-4 text-sm font-normal text-Green-600 rounded-full bg-Green-50" role="alert">
+                            <svg class="check-circle mr-2" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 12L11 14L15 10M21 12C21 13.1819 20.7672 14.3522 20.3149 15.4442C19.8626 16.5361 19.1997 17.5282 18.364 18.364C17.5282 19.1997 16.5361 19.8626 15.4442 20.3149C14.3522 20.7672 13.1819 21 12 21C10.8181 21 9.64778 20.7672 8.55585 20.3149C7.46392 19.8626 6.47177 19.1997 5.63604 18.364C4.80031 17.5282 4.13738 16.5361 3.68508 15.4442C3.23279 14.3522 3 13.1819 3 12C3 9.61305 3.94821 7.32387 5.63604 5.63604C7.32387 3.94821 9.61305 3 12 3C14.3869 3 16.6761 3.94821 18.364 5.63604C20.0518 7.32387 21 9.61305 21 12Z" stroke="#057A55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                            <div>
+                                Your result is within the optimal range for your range. <a href="#"  data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="font-medium underline text-sm hover:no-underline">Compare Range</a>
+                            </div>
+                        </div>
+
+                        <a href="#" class="text-center text-Primary-900 bg-white border border-Primary-900 hover:bg-Primary-900 hover:text-white focus:ring-0 font-normal rounded-full text-sm px-2 py-2 focus:outline-none w-32">Compare Range</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <h2 id="accordion-collapse-heading-2">
+                <button type="button" class="accordian-button group relative flex flex-col items-end justify-start w-full p-2 md:p-4 lg:items-center lg:flex-row lg:justify-between lg:p-5 border border-b-0 border-gray-200 rounded-t-xl focus:ring-0  bg-gray-100text-gray-900" data-accordion-target="#accordion-collapse-body-2" aria-expanded="true" aria-controls="accordion-collapse-body-2">
+                    <div class="flex items-center w-full mb-2 lg:w-2/3 lg:mb-0">
+                        <div class="p-2 bg-Orange-100 rounded-full mr-5 group-hover:hidden">
+                            <svg class="relative overflow-visible" width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M24.0191 18.0182C24.5468 16.7443 24.8184 15.3789 24.8184 14C24.8184 11.2152 23.7121 8.54451 21.743 6.57538C19.7738 4.60625 17.1031 3.5 14.3184 3.5C11.5336 3.5 8.86287 4.60625 6.89374 6.57538C4.92461 8.54451 3.81836 11.2152 3.81836 14C3.81836 15.3789 4.08995 16.7443 4.61762 18.0182C5.1453 19.2921 5.91872 20.4496 6.89374 21.4246C7.86875 22.3996 9.02626 23.1731 10.3002 23.7007C11.5741 24.2284 12.9395 24.5 14.3184 24.5C15.6972 24.5 17.0626 24.2284 18.3365 23.7007C19.6105 23.1731 20.768 22.3996 21.743 21.4246C22.718 20.4496 23.4914 19.2921 24.0191 18.0182Z" fill="#FEECDC" />
+                                <path d="M14.3184 9.33333V14M14.3184 18.6667H14.33M24.8184 14C24.8184 15.3789 24.5468 16.7443 24.0191 18.0182C23.4914 19.2921 22.718 20.4496 21.743 21.4246C20.768 22.3996 19.6105 23.1731 18.3365 23.7007C17.0626 24.2284 15.6972 24.5 14.3184 24.5C12.9395 24.5 11.5741 24.2284 10.3002 23.7007C9.02626 23.1731 7.86875 22.3996 6.89374 21.4246C5.91872 20.4496 5.1453 19.2921 4.61762 18.0182C4.08995 16.7443 3.81836 15.3789 3.81836 14C3.81836 11.2152 4.92461 8.54451 6.89374 6.57538C8.86287 4.60625 11.5336 3.5 14.3184 3.5C17.1031 3.5 19.7738 4.60625 21.743 6.57538C23.7121 8.54451 24.8184 11.2152 24.8184 14Z" stroke="#FF5A1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="p-[6.5px] py-3 bg-Gray-100 rounded-full mr-2 md:mr-5 hidden group-hover:block">
+                            <img class="w-8 h-5 relative" src="./images/image-10.png" />                                   
+                        </div>
+                        <div class="flex flex-col font-medium text-left text-gray-500">
+                            Apolipoprotein B 
+                            <span class="font-normal text-gray-500 hidden group-hover:block">Hermalogy</span>
+                        </div>
+                    </div>
+
+                    <div class="w-full md:w-auto flex items-end lg:w-2/3 lg:items-center justify-end">
+                        <img src="images/accordian-heading-scale2.png" class="accordian-heading-scale w-full block lg:w-8/12 group-hover:hidden group-focus:hidden">
+
+                        <div class="text-base text-gray-800 ml-6 group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden">48%</div>
+                        
+                        <img src="images/accordian-heading-badge.png" class="accordian-heading-badge w-12 ml-16 absolute right-0 top-0 mt-4 mr-2 block lg:relative lg:mt-0 lg:mr-0 group-hover:hidden group-focus:hidden">
+
+
+                        <a href="#" class="text-Primary-900 bg-transparent border border-Primary-900 hover:text-white hover:bg-Primary-800 focus:ring-0 font-normal rounded-full text-sm px-5 py-2 ml-3 lg:mr-10 lg:ml-0 focus:outline-none hidden group-hover:block group-focus:hidden">View Range</a>
+
+                        <a href="#" class="text-Gray-50 bg-Primary-900 border border-Primary-900 hover:bg-Primary-800 focus:ring-0 font-normal rounded-full text-sm px-5 py-2 ml-3 lg:mr-10 lg:ml-0 focus:outline-none hidden group-hover:block group-focus:block">View Recommendations</a>
+
+                        <svg class="shrink-0 absolute right-0 top-0 mt-4 mr-2 overflow-visible hidden lg:relative lg:mt-0 lg:mr-0 group-hover:block group-focus:hidden" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.25 6.25L20 15L11.25 23.75" stroke="#48829F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+
+                        <div class="absolute right-0 top-0 mt-5 mr-3 hidden lg:relative lg:mt-0 lg:mr-0 group-focus:block">
+                            <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="2.11719" y="17.6035" width="2.26316" height="22.6316" rx="1.13158" transform="rotate(-135 2.11719 17.6035)" fill="#7E7E7E"/>
+                                <rect y="1.76172" width="2.26316" height="22.6316" rx="1.13158" transform="rotate(-45 0 1.76172)" fill="#7E7E7E"/>
+                            </svg>
+                        </div>
+                    </div>
+                </button>
+            </h2>
+
+            <div id="accordion-collapse-body-2" class="hidden" aria-labelledby="accordion-collapse-heading-2">
+                <div class="p-5 lg:p-10 lg:px-20 border border-b-0 border-Gray-200">
+                    <div class="flex flex-col items-start justify-between lg:flex-row">
+                        <p class="w-full lg:w-2/3 mb-2 lg:pr-10 text-sm text-Gray-600">Lipoprotein(a) is formed in the liver and transports fats and other lipids such as cholesterol around the body. Lipoprotein(a) is a strong risk marker for cardiovascular disease. One in five has an increased risk of developing a cardiovascular disease and narrowed aortic valve due to a hereditary high content of lipoprotein(a) in the blood. Elevated lipoprotein(a) contributes to a markedly increased risk of cardiovascular disease. Lp(a) is difficult to lower as it is genetically determined.</p>
+                        <div class="flex flex-col items-end w-full mt-10 lg:mt-0 lg:w-1/2 lgpl-10">
+                            <img src="images/accordian-img.png" class="w-full -translate-y-2">
+                            <a href="#" class="text-center text-Primary-900 bg-white border border-Primary-900 hover:bg-Primary-900 hover:text-white focus:ring-0 font-normal rounded-full text-sm px-4 py-2 focus:outline-none w-40">View Result History</a>
+                        </div>
+                    </div>                    
+                    <img src="images/General-Scale2.png" class="w-full block my-6">
+                    <div class="flex flex-col items-end justify-between lg:items-center lg:flex-row">
+                        <div class="flex items-center p-3 pl-6 pr-5 mb-4 text-sm font-normal text-Green-600 rounded-full bg-Green-50" role="alert">
+                            <svg class="check-circle mr-2" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 12L11 14L15 10M21 12C21 13.1819 20.7672 14.3522 20.3149 15.4442C19.8626 16.5361 19.1997 17.5282 18.364 18.364C17.5282 19.1997 16.5361 19.8626 15.4442 20.3149C14.3522 20.7672 13.1819 21 12 21C10.8181 21 9.64778 20.7672 8.55585 20.3149C7.46392 19.8626 6.47177 19.1997 5.63604 18.364C4.80031 17.5282 4.13738 16.5361 3.68508 15.4442C3.23279 14.3522 3 13.1819 3 12C3 9.61305 3.94821 7.32387 5.63604 5.63604C7.32387 3.94821 9.61305 3 12 3C14.3869 3 16.6761 3.94821 18.364 5.63604C20.0518 7.32387 21 9.61305 21 12Z" stroke="#057A55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                            <div>
+                                Your result is within the optimal range for your range. <a href="#"  data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="font-medium underline text-sm hover:no-underline">Compare Range</a>
+                            </div>
+                        </div>
+
+                        <a href="#" class="text-center text-Primary-900 bg-white border border-Primary-900 hover:bg-Primary-900 hover:text-white focus:ring-0 font-normal rounded-full text-sm px-2 py-2 focus:outline-none w-32">Compare Range</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <h2 id="accordion-collapse-heading-3">
+                <button type="button" class="accordian-button group relative flex flex-col items-end justify-start w-full p-2 md:p-4 lg:items-center lg:flex-row lg:justify-between lg:p-5 border border-b-0 border-gray-200 rounded-t-xl focus:ring-0  bg-gray-100text-gray-900" data-accordion-target="#accordion-collapse-body-3" aria-expanded="true" aria-controls="accordion-collapse-body-3">
+                    <div class="flex items-center w-full mb-2 lg:w-2/3 lg:mb-0">
+                        <div class="p-2 bg-Red-100 rounded-full mr-5 group-hover:hidden">
+                            <svg class="relative overflow-visible" width="22" height="19" viewBox="0 0 22 19" fill="none"  xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19.0823 18.6664H2.917C1.12033 18.6664 -0.00199896 16.7215 0.896334 15.1664L8.979 1.16637C9.87733 -0.388792 12.122 -0.388792 13.0203 1.16637L21.103 15.1664C22.0013 16.7215 20.879 18.6664 19.0823 18.6664Z" fill="#FDE8E8" />
+                                <path d="M10.9997 6.99971V9.33304M10.9997 13.9997H11.0113M2.917 18.6664H19.0823C20.879 18.6664 22.0013 16.7215 21.103 15.1664L13.0203 1.16637C12.122 -0.388792 9.87733 -0.388792 8.979 1.16637L0.896334 15.1664C-0.00199897 16.7215 1.12033 18.6664 2.917 18.6664Z" stroke="#FF5A1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="p-[6.5px] py-3 bg-Gray-100 rounded-full mr-2 md:mr-5 hidden group-hover:block">
+                            <img class="w-8 h-5 relative" src="./images/image-10.png" />                                   
+                        </div>
+                        <div class="flex flex-col font-medium text-left text-gray-500">
+                            Apolipoprotein B 
+                            <span class="font-normal text-gray-500 hidden group-hover:block">Hermalogy</span>
+                        </div>
+                    </div>
+
+                    <div class="w-full md:w-auto flex items-end lg:w-2/3 lg:items-center justify-end">
+                        <img src="images/accordian-heading-scale3.png" class="accordian-heading-scale w-full block lg:w-8/12 group-hover:hidden group-focus:hidden">
+
+                        <div class="text-base text-gray-800 ml-6 group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden">60%</div>
+                        
+                        <img src="images/accordian-heading-badge2.png" class="accordian-heading-badge w-12 ml-16 absolute right-0 top-0 mt-4 mr-2 block lg:relative lg:mt-0 lg:mr-0 group-hover:hidden group-focus:hidden">
+
+
+                        <a href="#" class="text-Primary-900 bg-transparent border border-Primary-900 hover:text-white hover:bg-Primary-800 focus:ring-0 font-normal rounded-full text-sm px-5 py-2 ml-3 lg:mr-10 lg:ml-0 focus:outline-none hidden group-hover:block group-focus:hidden">View Range</a>
+
+                        <a href="#" class="text-Gray-50 bg-Primary-900 border border-Primary-900 hover:bg-Primary-800 focus:ring-0 font-normal rounded-full text-sm px-5 py-2 ml-3 lg:mr-10 lg:ml-0 focus:outline-none hidden group-hover:block group-focus:block">View Recommendations</a>
+
+                        <svg class="shrink-0 absolute right-0 top-0 mt-4 mr-2 overflow-visible hidden lg:relative lg:mt-0 lg:mr-0 group-hover:block group-focus:hidden" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.25 6.25L20 15L11.25 23.75" stroke="#48829F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+
+                        <div class="absolute right-0 top-0 mt-5 mr-3 hidden lg:relative lg:mt-0 lg:mr-0 group-focus:block">
+                            <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="2.11719" y="17.6035" width="2.26316" height="22.6316" rx="1.13158" transform="rotate(-135 2.11719 17.6035)" fill="#7E7E7E"/>
+                                <rect y="1.76172" width="2.26316" height="22.6316" rx="1.13158" transform="rotate(-45 0 1.76172)" fill="#7E7E7E"/>
+                            </svg>
+                        </div>
+                    </div>
+                </button>
+            </h2>
+
+            <div id="accordion-collapse-body-3" class="hidden" aria-labelledby="accordion-collapse-heading-3">
+                <div class="p-5 lg:p-10 lg:px-20 border border-b-0 border-Gray-200">
+                    <div class="flex flex-col items-start justify-between lg:flex-row">
+                        <p class="w-full lg:w-2/3 mb-2 lg:pr-10 text-sm text-Gray-600">Lipoprotein(a) is formed in the liver and transports fats and other lipids such as cholesterol around the body. Lipoprotein(a) is a strong risk marker for cardiovascular disease. One in five has an increased risk of developing a cardiovascular disease and narrowed aortic valve due to a hereditary high content of lipoprotein(a) in the blood. Elevated lipoprotein(a) contributes to a markedly increased risk of cardiovascular disease. Lp(a) is difficult to lower as it is genetically determined.</p>
+                        <div class="flex flex-col items-end w-full mt-10 lg:mt-0 lg:w-1/2 lgpl-10">
+                            <img src="images/accordian-img.png" class="w-full -translate-y-2">
+                            <a href="#" class="text-center text-Primary-900 bg-white border border-Primary-900 hover:bg-Primary-900 hover:text-white focus:ring-0 font-normal rounded-full text-sm px-4 py-2 focus:outline-none w-40">View Result History</a>
+                        </div>
+                    </div>                    
+                    <img src="images/General-Scale3.png" class="w-full block my-6">
+                    <div class="flex flex-col items-end justify-between lg:items-center lg:flex-row">
+                        <div class="flex items-center p-3 pl-6 pr-5 mb-4 text-sm font-normal text-Green-600 rounded-full bg-Green-50" role="alert">
+                            <svg class="check-circle mr-2" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 12L11 14L15 10M21 12C21 13.1819 20.7672 14.3522 20.3149 15.4442C19.8626 16.5361 19.1997 17.5282 18.364 18.364C17.5282 19.1997 16.5361 19.8626 15.4442 20.3149C14.3522 20.7672 13.1819 21 12 21C10.8181 21 9.64778 20.7672 8.55585 20.3149C7.46392 19.8626 6.47177 19.1997 5.63604 18.364C4.80031 17.5282 4.13738 16.5361 3.68508 15.4442C3.23279 14.3522 3 13.1819 3 12C3 9.61305 3.94821 7.32387 5.63604 5.63604C7.32387 3.94821 9.61305 3 12 3C14.3869 3 16.6761 3.94821 18.364 5.63604C20.0518 7.32387 21 9.61305 21 12Z" stroke="#057A55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                            <div>
+                                Your result is within the optimal range for your range. <a href="#"  data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="font-medium underline text-sm hover:no-underline">Compare Range</a>
+                            </div>
+                        </div>
+
+                        <a href="#" class="text-center text-Primary-900 bg-white border border-Primary-900 hover:bg-Primary-900 hover:text-white focus:ring-0 font-normal rounded-full text-sm px-2 py-2 focus:outline-none w-32">Compare Range</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <h2 id="accordion-collapse-heading-4">
+                <button type="button" class="accordian-button group relative flex flex-col items-end justify-start w-full p-2 md:p-4 lg:items-center lg:flex-row lg:justify-between lg:p-5 border border-b-0 border-gray-200 rounded-t-xl focus:ring-0  bg-gray-100text-gray-900" data-accordion-target="#accordion-collapse-body-4" aria-expanded="true" aria-controls="accordion-collapse-body-4">
+                    <div class="flex items-center w-full mb-2 lg:w-2/3 lg:mb-0">
+                        <div class="p-2 bg-Green-100 rounded-full mr-5 group-hover:hidden">
+                            <svg class="check" width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11.6996 19.0343L10.9925 18.3272L6.39029 13.725C6.31535 13.6548 6.21618 13.616 6.11332 13.6169C6.00844 13.6178 5.90812 13.6599 5.83395 13.7341C5.75979 13.8082 5.71772 13.9086 5.71681 14.0134C5.71592 14.1163 5.75468 14.2154 5.8249 14.2904L11.4168 19.8823C11.4168 19.8823 11.4169 19.8824 11.4169 19.8824C11.4919 19.9573 11.5936 19.9994 11.6996 19.9994C11.8056 19.9994 11.9073 19.9573 11.9823 19.8824L11.9824 19.8823M11.6996 19.0343L12.6894 20.5895L11.9824 19.8823M11.6996 19.0343L12.4067 18.3272L22.6168 8.11711L21.9099 7.41005L22.6169 8.11701C22.6919 8.04209 22.7936 8 22.8996 8C23.0056 8 23.1072 8.04205 23.1822 8.1169M11.6996 19.0343L23.1823 8.68239C23.2572 8.60739 23.2993 8.50572 23.2993 8.3997C23.2993 8.29368 23.2572 8.19201 23.1823 8.11701M11.9824 19.8823L23.1822 8.6825L11.9824 19.8823ZM23.1823 8.11701C23.1823 8.11704 23.1824 8.11708 23.1824 8.11711L23.8893 7.40995L23.1822 8.1169M23.1823 8.11701C23.1823 8.11697 23.1822 8.11694 23.1822 8.1169M23.1823 8.11701C23.1823 8.11697 23.1822 8.11694 23.1822 8.1169" fill="#DEF7EC" stroke="#046C4E" stroke-width="2" />
+                            </svg>
+                        </div>
+                        <div class="p-[6.5px] py-3 bg-Gray-100 rounded-full mr-2 md:mr-5 hidden group-hover:block">
+                            <img class="w-8 h-5 relative" src="./images/image-10.png" />                                   
+                        </div>
+                        <div class="flex flex-col font-medium text-left text-gray-500">
+                            Apolipoprotein B 
+                            <span class="font-normal text-gray-500 hidden group-hover:block">Hermalogy</span>
+                        </div>
+                    </div>
+
+                    <div class="w-full md:w-auto flex items-end lg:w-2/3 lg:items-center justify-end">
+                        <img src="images/accordian-heading-scale4.png" class="accordian-heading-scale w-full block lg:w-8/12 group-hover:hidden group-focus:hidden">
+
+                        <div class="text-base text-gray-800 ml-6 group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden group-hover:hidden group-focus:hidden">30%</div>
+                        
+                        <img src="images/accordian-heading-badge2.png" class="accordian-heading-badge w-12 ml-16 absolute right-0 top-0 mt-4 mr-2 block lg:relative lg:mt-0 lg:mr-0 group-hover:hidden group-focus:hidden">
+
+
+                        <a href="#" class="text-Primary-900 bg-transparent border border-Primary-900 hover:text-white hover:bg-Primary-800 focus:ring-0 font-normal rounded-full text-sm px-5 py-2 ml-3 lg:mr-10 lg:ml-0 focus:outline-none hidden group-hover:block group-focus:hidden">View Range</a>
+
+                        <a href="#" class="text-Gray-50 bg-Primary-900 border border-Primary-900 hover:bg-Primary-800 focus:ring-0 font-normal rounded-full text-sm px-5 py-2 ml-3 lg:mr-10 lg:ml-0 focus:outline-none hidden group-hover:block group-focus:block">View Recommendations</a>
+
+                        <svg class="shrink-0 absolute right-0 top-0 mt-4 mr-2 overflow-visible hidden lg:relative lg:mt-0 lg:mr-0 group-hover:block group-focus:hidden" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.25 6.25L20 15L11.25 23.75" stroke="#48829F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+
+                        <div class="absolute right-0 top-0 mt-5 mr-3 hidden lg:relative lg:mt-0 lg:mr-0 group-focus:block">
+                            <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="2.11719" y="17.6035" width="2.26316" height="22.6316" rx="1.13158" transform="rotate(-135 2.11719 17.6035)" fill="#7E7E7E"/>
+                                <rect y="1.76172" width="2.26316" height="22.6316" rx="1.13158" transform="rotate(-45 0 1.76172)" fill="#7E7E7E"/>
+                            </svg>
+                        </div>
+                    </div>
+                </button>
+            </h2>
+
+            <div id="accordion-collapse-body-4" class="hidden" aria-labelledby="accordion-collapse-heading-4">
+                <div class="p-5 lg:p-10 lg:px-20 border border-b-0 border-Gray-200">
+                    <div class="flex flex-col items-start justify-between lg:flex-row">
+                        <p class="w-full lg:w-2/3 mb-2 lg:pr-10 text-sm text-Gray-600">Lipoprotein(a) is formed in the liver and transports fats and other lipids such as cholesterol around the body. Lipoprotein(a) is a strong risk marker for cardiovascular disease. One in five has an increased risk of developing a cardiovascular disease and narrowed aortic valve due to a hereditary high content of lipoprotein(a) in the blood. Elevated lipoprotein(a) contributes to a markedly increased risk of cardiovascular disease. Lp(a) is difficult to lower as it is genetically determined.</p>
+                        <div class="flex flex-col items-end w-full mt-10 lg:mt-0 lg:w-1/2 lgpl-10">
+                            <img src="images/accordian-img.png" class="w-full -translate-y-2">
+                            <a href="#" class="text-center text-Primary-900 bg-white border border-Primary-900 hover:bg-Primary-900 hover:text-white focus:ring-0 font-normal rounded-full text-sm px-4 py-2 focus:outline-none w-40">View Result History</a>
+                        </div>
+                    </div>                    
+                    <img src="images/General-Scale.png" class="w-full block my-6">
+                    <div class="flex flex-col items-end justify-between lg:items-center lg:flex-row">
+                        <div class="flex items-center p-3 pl-6 pr-5 mb-4 text-sm font-normal text-Green-600 rounded-full bg-Green-50" role="alert">
+                            <svg class="check-circle mr-2" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 12L11 14L15 10M21 12C21 13.1819 20.7672 14.3522 20.3149 15.4442C19.8626 16.5361 19.1997 17.5282 18.364 18.364C17.5282 19.1997 16.5361 19.8626 15.4442 20.3149C14.3522 20.7672 13.1819 21 12 21C10.8181 21 9.64778 20.7672 8.55585 20.3149C7.46392 19.8626 6.47177 19.1997 5.63604 18.364C4.80031 17.5282 4.13738 16.5361 3.68508 15.4442C3.23279 14.3522 3 13.1819 3 12C3 9.61305 3.94821 7.32387 5.63604 5.63604C7.32387 3.94821 9.61305 3 12 3C14.3869 3 16.6761 3.94821 18.364 5.63604C20.0518 7.32387 21 9.61305 21 12Z" stroke="#057A55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                            <div>
+                                Your result is within the optimal range for your range. <a href="#"  data-modal-target="popup-modal" data-modal-toggle="popup-modal"  class="font-medium underline text-sm hover:no-underline">Compare Range</a>
+                            </div>
+                        </div>
+
+                        <a href="#" class="text-center text-Primary-900 bg-white border border-Primary-900 hover:bg-Primary-900 hover:text-white focus:ring-0 font-normal rounded-full text-sm px-2 py-2 focus:outline-none w-32">Compare Range</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="popup-modal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-hidden md:inset-0 h-[calc(100%-1rem)] max-h-full">
+
+            <div class="relative justify-start lg:justify-center items-start flex flex-col bg-white rounded-lg lg:w-3/4 h-full md:h-auto overflow-x-hidden overflow-y-auto">                                        
+                <button type="button" class="absolute top-1 right-1 md:right-5 md:top-5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center" data-modal-hide="popup-modal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+
+                <div class="w-full p-4 px-5 lg:px-12 pb-0 mb-2 border-b border-Gray-200">
+                    <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
+                        <li class="mr-5 md:mr-16" role="presentation">
+                            <button class="inline-block p-4 px-1 text-Primary-400 border-b-2 border-transparent rounded-t-lg hover:text-Gray-600 hover:border-Gray-300 focus:text-Primary-900 focus:border-Primary-900" id="Recommendations-tab" data-tabs-target="#Recommendations" type="button" role="tab" aria-controls="Recommendations" aria-selected="false">Recommendations</button>
+                        </li>
+                        <li role="presentation">
+                            <button class="inline-block p-4 px-1 text-Primary-400 border-b-2 border-transparent rounded-t-lg hover:text-Gray-600 hover:border-Gray-300 focus:text-Primary-900 focus:border-Primary-900" id="Range-tab" data-tabs-target="#Range" type="button" role="tab" aria-controls="Range" aria-selected="false">Range Reference</button>
+                        </li>
+                    </ul>
+                </div>
+                <div id="myTabContent" class="w-full h-full">
+                    <div class="hidden p-6 md:px-12 bg-white rounded-b-lg" id="Recommendations" role="tabpanel" aria-labelledby="Recommendations-tab">
+                        <div class="flex flex-col lg:flex-row w-full">
+                            <div class="w-full lg:w-1/2 lg:pr-20">
+                                <p class="text-xs md:text-sm text-Gray-600 mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                <p class="text-xs md:text-sm text-Gray-600 mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                <p class="text-xs md:text-sm text-Gray-600 mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                            </div>
+                            <div class="w-full lg:w-1/2 lg:pr-20">
+                                <p class="text-xs md:text-sm text-Gray-600 mb-8 lg:mb-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+                                <p class="text-xs md:text-sm text-Gray-600 mb-8 lg:mb-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                <p class="text-xs md:text-sm text-Gray-600 mb-8 lg:mb-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden md:p-16 mdpx-12 rounded-lg bg-white" id="Range" role="tabpanel" aria-labelledby="Range-tab">
+                        <div class="flex w-full p-6 px-4">
+                            <img src="images/Variant7.jpg" class="w-full block">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+    </section>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.js"></script>
+
+
+</body>
+</html>

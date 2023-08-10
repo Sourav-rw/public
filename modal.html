@@ -1,0 +1,290 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="main.css" rel="stylesheet">
+    <script>
+        localStorage.theme = 'light'
+    </script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                colors: {
+                transparent: 'transparent',
+                current: 'currentColor',
+                'Primary': {
+                    50:  'rgba(72, 130, 159, 0.15)',
+                    100: 'rgba(72, 130, 159, 0.20)',
+                    200: 'rgba(72, 130, 159, 0.30)',
+                    300: 'rgba(72, 130, 159, 0.40)',
+                    400: 'rgba(72, 130, 159, 0.50)',
+                    500: 'rgba(72, 130, 159, 0.60)',
+                    600: 'rgba(72, 130, 159, 0.70)',
+                    700: 'rgba(72, 130, 159, 0.80)',
+                    800: 'rgba(72, 130, 159, 0.90)',
+                    900: '#48829F',
+                },
+                'Gray': {
+                    50:  '#F9FAFB',
+                    100: '#F3F4F6',
+                    200: '#E5E7EB',
+                    300: '#D1D5DB',
+                    400: '#9CA3AF',
+                    500: '#7E7E7E',
+                    600: '#4B5563',
+                    700: '#374151',
+                    800: '#1F2A37',
+                    900: '#111928',
+                },
+                'Blue': {
+                    50:  '#EBF5FF',
+                    100: '#E1EFFE',
+                    200: '#C3DDFD',
+                    300: '#A4CAFE',
+                    400: '#76A9FA',
+                    500: '#3F83F8',
+                    600: '#1C64F2',
+                    700: '#1A56DB',
+                    800: '#1E429F',
+                    900: '#1E429F',
+                },
+                'Red': {
+                    50:  '#FDF2F2',
+                    100: '#FDE8E8',
+                    200: '#FBD5D5',
+                    300: '#F8B4B4',
+                    400: '#F98080',
+                    500: '#F05252',
+                    600: '#E02424',
+                    700: '#C81E1E',
+                    800: '#9B1C1C',
+                    900: '#771D1D',
+                },
+                'Orange': {
+                    50: '#fff8f1',
+                    100: '#feecdc',
+                    200: '#fcd9bd',
+                    300: '#fdba8c',
+                    400: '#ff8a4c',
+                    500: '#ff5a1f',
+                    600: '#d03801',
+                    700: '#b43403',
+                    800: '#8a2c0d',
+                    900: '#771d1d',
+                },
+                'Yellow': {
+                    50:  '#fdfdea',
+                    100: '#fdf6b2',
+                    200: '#fce96a',
+                    300: '#faca15',
+                    400: '#e3a008',
+                    500: '#c27803',
+                    600: '#9f580a',
+                    700: '#8e4b10',
+                    800: '#723b13',
+                    900: '#633112',
+                },
+                'Green': {
+                    50:  '#f3faf7',
+                    100: '#def7ec',
+                    200: '#bcf0da',
+                    300: '#84e1bc',
+                    400: '#31c48d',
+                    500: '#0e9f6e',
+                    600: '#057a55',
+                    700: '#046c4e',
+                    800: '#03543f',
+                    900: '#014737',
+                },
+                'Teal': {
+                    50:  '#edfafa',
+                    100: '#d5f5f6',
+                    200: '#afecef',
+                    300: '#7edce2',
+                    400: '#16bdca',
+                    500: '#0694a2',
+                    600: '#047481',
+                    700: '#036672',
+                    800: '#05505c',
+                    900: '#014451',
+                },
+                'Indigo': {
+                    50:  '#f0f5ff',
+                    100: '#e5edff',
+                    200: '#cddbfe',
+                    300: '#b4c6fc',
+                    400: '#8da2fb',
+                    500: '#6875f5',
+                    600: '#5850ec',
+                    700: '#5145cd',
+                    800: '#42389d',
+                    900: '#362f78',
+                },
+                'Purple': {
+                    50:  '#f6f5ff',
+                    100: '#edebfe',
+                    200: '#dcd7fe',
+                    300: '#cabffd',
+                    400: '#ac94fa',
+                    500: '#9061f9',
+                    600: '#7e3af2',
+                    700: '#6c2bd9',
+                    800: '#5521b5',
+                    900: '#4a1d96',
+                },
+                'Pink': {
+                    50:  '#fdf2f8',
+                    100: '#fce8f3',
+                    200: '#fad1e8',
+                    300: '#f8b4d9',
+                    400: '#f17eb8',
+                    500: '#e74694',
+                    600: '#d61f69',
+                    700: '#bf125d',
+                    800: '#99154b',
+                    900: '#751a3d',
+                },
+                // ...
+                },
+            },
+        }
+    </script>
+
+</head>
+<body class="flex flex-col items-center">
+
+    <section class="modal-static my-24">
+        <!-- Modal toggle -->
+        <button data-modal-target="staticModal" data-modal-toggle="staticModal" class="block text-white bg-Primary-700 hover:bg-Primary-800 focus:ring-0 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-Primary-600 dark:hover:bg-Primary-700" type="button">
+            Toggle modal
+        </button>
+        
+        <!-- Main modal -->
+        <div id="staticModal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative w-full max-w-2xl max-h-full">
+                <!-- Modal content -->
+                <div class="relative bg-white rounded-lg shadow dark:bg-Gray-700">
+                    <!-- Modal header -->
+                    <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-Gray-600">
+                        <h3 class="text-xl font-medium text-Gray-900 dark:text-white">
+                            Static modal
+                        </h3>
+                        <button type="button" class="text-Gray-400 bg-transparent hover:bg-Gray-200 hover:text-Gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-Gray-600 dark:hover:text-white" data-modal-hide="staticModal">
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                            </svg>
+                            <span class="sr-only">Close modal</span>
+                        </button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="p-6 space-y-6">
+                        <p class="text-base leading-relaxed text-Gray-500 dark:text-Gray-400">
+                            With less than a month to go before the European Union enacts new consumer privacy laws for its citizens, companies around the world are updating their terms of service agreements to comply.
+                        </p>
+                        <p class="text-base leading-relaxed text-Gray-500 dark:text-Gray-400">
+                            The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant to ensure a common set of data rights in the European Union. It requires organizations to notify users as soon as possible of high-risk data breaches that could personally affect them.
+                        </p>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="flex items-center p-6 space-x-2 border-t border-Gray-200 rounded-b dark:border-Gray-600">
+                        <button data-modal-hide="staticModal" type="button" class="text-white bg-Primary-700 hover:bg-Primary-800 focus:ring-0 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-Primary-600 dark:hover:bg-Primary-700">I accept</button>
+                        <button data-modal-hide="staticModal" type="button" class="text-Gray-500 bg-white hover:bg-Gray-100 focus:ring-0 focus:outline-none rounded-lg border border-Gray-200 text-sm font-medium px-5 py-2.5 hover:text-Gray-900 focus:z-10 dark:bg-Gray-700 dark:text-Gray-300 dark:border-Gray-500 dark:hover:text-white dark:hover:bg-Gray-600">Decline</button>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </section>
+
+    <section class="modal-popup my-24">
+        <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="block text-white bg-Primary-700 hover:bg-Primary-800 focus:ring-0 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-Primary-600 dark:hover:bg-Primary-700" type="button">
+            Toggle modal
+        </button>
+        
+        <div id="popup-modal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative w-full max-w-md max-h-full">
+                <div class="relative bg-white rounded-lg shadow dark:bg-Gray-700">
+                    <button type="button" class="absolute top-3 right-2.5 text-Gray-400 bg-transparent hover:bg-Gray-200 hover:text-Gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-Gray-600 dark:hover:text-white" data-modal-hide="popup-modal">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                    <div class="p-6 text-center">
+                        <svg class="mx-auto mb-4 text-Gray-400 w-12 h-12 dark:text-Gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                        </svg>
+                        <h3 class="mb-5 text-lg font-normal text-Gray-500 dark:text-Gray-400">Are you sure you want to delete this product?</h3>
+                        <button data-modal-hide="popup-modal" type="button" class="text-white bg-Red-600 hover:bg-Red-800 focus:ring-0 focus:outline-none   font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                            Yes, I'm sure
+                        </button>
+                        <button data-modal-hide="popup-modal" type="button" class="text-Gray-500 bg-white hover:bg-Gray-100 focus:ring-0 focus:outline-none  rounded-lg border border-Gray-200 text-sm font-medium px-5 py-2.5 hover:text-Gray-900 focus:z-10 dark:bg-Gray-700 dark:text-Gray-300 dark:border-Gray-500 dark:hover:text-white dark:hover:bg-Gray-600">No, cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </section>
+
+    <section class="modal-authentication my-24">
+        <!-- Modal toggle -->
+        <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="block text-white bg-Primary-700 hover:bg-Primary-800 focus:ring-0 focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-Primary-600 dark:hover:bg-Primary-700" type="button">
+            Toggle modal
+        </button>
+        
+        <!-- Main modal -->
+        <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative w-full max-w-md max-h-full">
+                <!-- Modal content -->
+                <div class="relative bg-white rounded-lg shadow dark:bg-Gray-700">
+                    <button type="button" class="absolute top-3 right-2.5 text-Gray-400 bg-transparent hover:bg-Gray-200 hover:text-Gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-Gray-600 dark:hover:text-white" data-modal-hide="authentication-modal">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                    <div class="px-6 py-6 lg:px-8">
+                        <h3 class="mb-4 text-xl font-medium text-Gray-900 dark:text-white">Sign in to our platform</h3>
+                        <form class="space-y-6" action="#">
+                            <div>
+                                <label for="email" class="block mb-2 text-sm font-medium text-Gray-900 dark:text-white">Your email</label>
+                                <input type="email" name="email" id="email" class="bg-Gray-50 border border-Gray-300 text-Gray-900 text-sm rounded-lg focus:ring-0 focus:border-Primary-500 block w-full p-2.5 dark:bg-Gray-600 dark:border-Gray-500 dark:placeholder-Gray-400 dark:text-white" placeholder="name@company.com" requiRed>
+                            </div>
+                            <div>
+                                <label for="password" class="block mb-2 text-sm font-medium text-Gray-900 dark:text-white">Your password</label>
+                                <input type="password" name="password" id="password" placeholder="••••••••" class="bg-Gray-50 border border-Gray-300 text-Gray-900 text-sm rounded-lg focus:ring-0 focus:border-Primary-500 block w-full p-2.5 dark:bg-Gray-600 dark:border-Gray-500 dark:placeholder-Gray-400 dark:text-white" requiRed>
+                            </div>
+                            <div class="flex justify-between">
+                                <div class="flex items-start">
+                                    <div class="flex items-center h-5">
+                                        <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-Gray-300 rounded bg-Gray-50 focus:ring-0 dark:bg-Gray-600 dark:border-Gray-500" requiRed>
+                                    </div>
+                                    <label for="remember" class="ml-2 text-sm font-medium text-Gray-900 dark:text-Gray-300">Remember me</label>
+                                </div>
+                                <a href="#" class="text-sm text-Primary-700 hover:underline dark:text-Primary-500">Lost Password?</a>
+                            </div>
+                            <button type="submit" class="w-full text-white bg-Primary-700 hover:bg-Primary-800 focus:ring-0 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-Primary-600 dark:hover:bg-Primary-700">Login to your account</button>
+                            <div class="text-sm font-medium text-Gray-500 dark:text-Gray-300">
+                                Not registeRed? <a href="#" class="text-Primary-700 hover:underline dark:text-Primary-500">Create account</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.js"></script>
+
+    <script>
+        module.exports = {
+            darkMode: 'class',
+            // ...
+        }
+    </script>
+
+</body>
+</html>

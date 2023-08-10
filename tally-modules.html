@@ -1,0 +1,285 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="main.css" rel="stylesheet">
+    <script>
+        localStorage.theme = 'light'
+    </script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                colors: {
+                transparent: 'transparent',
+                current: 'currentColor',
+                'Primary': {
+                    50:  'rgba(72, 130, 159, 0.15)',
+                    100: 'rgba(72, 130, 159, 0.20)',
+                    200: 'rgba(72, 130, 159, 0.30)',
+                    300: 'rgba(72, 130, 159, 0.40)',
+                    400: 'rgba(72, 130, 159, 0.50)',
+                    500: 'rgba(72, 130, 159, 0.60)',
+                    600: 'rgba(72, 130, 159, 0.70)',
+                    700: 'rgba(72, 130, 159, 0.80)',
+                    800: 'rgba(72, 130, 159, 0.90)',
+                    900: '#48829F',
+                },
+                'Gray': {
+                    50:  '#F9FAFB',
+                    100: '#F3F4F6',
+                    200: '#E5E7EB',
+                    300: '#D1D5DB',
+                    400: '#9CA3AF',
+                    500: '#7E7E7E',
+                    600: '#4B5563',
+                    700: '#374151',
+                    800: '#1F2A37',
+                    900: '#111928',
+                },
+                'Blue': {
+                    50:  '#EBF5FF',
+                    100: '#E1EFFE',
+                    200: '#C3DDFD',
+                    300: '#A4CAFE',
+                    400: '#76A9FA',
+                    500: '#3F83F8',
+                    600: '#1C64F2',
+                    700: '#1A56DB',
+                    800: '#1E429F',
+                    900: '#1E429F',
+                },
+                'Red': {
+                    50:  '#FDF2F2',
+                    100: '#FDE8E8',
+                    200: '#FBD5D5',
+                    300: '#F8B4B4',
+                    400: '#F98080',
+                    500: '#F05252',
+                    600: '#E02424',
+                    700: '#C81E1E',
+                    800: '#9B1C1C',
+                    900: '#771D1D',
+                },
+                'Orange': {
+                    50: '#fff8f1',
+                    100: '#feecdc',
+                    200: '#fcd9bd',
+                    300: '#fdba8c',
+                    400: '#ff8a4c',
+                    500: '#ff5a1f',
+                    600: '#d03801',
+                    700: '#b43403',
+                    800: '#8a2c0d',
+                    900: '#771d1d',
+                },
+                'Yellow': {
+                    50:  '#fdfdea',
+                    100: '#fdf6b2',
+                    200: '#fce96a',
+                    300: '#faca15',
+                    400: '#e3a008',
+                    500: '#c27803',
+                    600: '#9f580a',
+                    700: '#8e4b10',
+                    800: '#723b13',
+                    900: '#633112',
+                },
+                'Green': {
+                    50:  '#f3faf7',
+                    100: '#def7ec',
+                    200: '#bcf0da',
+                    300: '#84e1bc',
+                    400: '#31c48d',
+                    500: '#0e9f6e',
+                    600: '#057a55',
+                    700: '#046c4e',
+                    800: '#03543f',
+                    900: '#014737',
+                },
+                'Teal': {
+                    50:  '#edfafa',
+                    100: '#d5f5f6',
+                    200: '#afecef',
+                    300: '#7edce2',
+                    400: '#16bdca',
+                    500: '#0694a2',
+                    600: '#047481',
+                    700: '#036672',
+                    800: '#05505c',
+                    900: '#014451',
+                },
+                'Indigo': {
+                    50:  '#f0f5ff',
+                    100: '#e5edff',
+                    200: '#cddbfe',
+                    300: '#b4c6fc',
+                    400: '#8da2fb',
+                    500: '#6875f5',
+                    600: '#5850ec',
+                    700: '#5145cd',
+                    800: '#42389d',
+                    900: '#362f78',
+                },
+                'Purple': {
+                    50:  '#f6f5ff',
+                    100: '#edebfe',
+                    200: '#dcd7fe',
+                    300: '#cabffd',
+                    400: '#ac94fa',
+                    500: '#9061f9',
+                    600: '#7e3af2',
+                    700: '#6c2bd9',
+                    800: '#5521b5',
+                    900: '#4a1d96',
+                },
+                'Pink': {
+                    50:  '#fdf2f8',
+                    100: '#fce8f3',
+                    200: '#fad1e8',
+                    300: '#f8b4d9',
+                    400: '#f17eb8',
+                    500: '#e74694',
+                    600: '#d61f69',
+                    700: '#bf125d',
+                    800: '#99154b',
+                    900: '#751a3d',
+                },
+                // ...
+                },
+            },
+        }
+    </script>
+
+</head>
+<body class="flex flex-col items-center justify-center bg-Gray-200">
+
+    <section class="tally-modules flex flex-col items-center justify-center">
+        <div class="group relative w-48 p-8 flex flex-col bg-Gray-50 rounded-2xl hover:bg-Gray-100 my-10 lg:my-24">
+            <div class="w-5 absolute right-0 top-0 mr-8 mt-8 group-hover:opacity-100">
+                <img src="images/info_icon.png" class="w-full block group-hover:opacity-100">
+            </div>
+
+            <!--<img src="images/tally-module-img.png" class="w-1/2 block group-hover:opacity-50">-->
+
+            <div class="card">
+                <div class="donut-chart chart1">
+                    <div class="quad one"></div>
+                    <div class="quad two"></div>
+                    <div class="quad three"></div>
+                    <div class="quad four"></div>
+                    <div class="quad top"></div>
+                    <div class="chart-center"></div>
+                </div><!--/.donut-chart-->
+            </div>
+
+            <span class="text-base font-medium text-Gray-700 mt-10 group-hover:opacity-50">Mitochondria <br>Dysfunction</span>
+        </div>
+
+        <div class="group relative max-w-6xl p-5 flex flex-col bg-white rounded-2xl hover:bg-Gray-50 my-10 lg:my-24">
+            <div class="flex w-full justify-between items-center">
+                <h6 class="text-Gray-900 text-lg font-medium">Flowbite Funnel</h6>
+
+                <a href="#" class="flex text-center text-Primary-600 hover:text-Primary-900 focus:ring-0 text-sm font-normal focus:outline-none">VIEW RANGE
+                    <svg class="shrink-0 relative overflow-visible" width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"clip-rule="evenodd"d="M6.16782 12.2655C6.01785 12.1155 5.93359 11.9121 5.93359 11.6999C5.93359 11.4878 6.01785 11.2844 6.16782 11.1343L8.80222 8.49994L6.16782 5.86554C6.0221 5.71465 5.94146 5.51257 5.94328 5.30281C5.94511 5.09306 6.02924 4.89241 6.17757 4.74408C6.32589 4.59575 6.52654 4.51162 6.7363 4.5098C6.94606 4.50797 7.14814 4.58861 7.29902 4.73434L10.499 7.93434C10.649 8.08436 10.7333 8.2878 10.7333 8.49994C10.7333 8.71207 10.649 8.91551 10.499 9.06554L7.29902 12.2655C7.149 12.4155 6.94555 12.4998 6.73342 12.4998C6.52129 12.4998 6.31785 12.4155 6.16782 12.2655Z"fill="#48829F"fill-opacity="0.7"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="card md:mx-10 my-6">
+                <div class="donut-chart chart2">
+                    <div class="quad one"></div>
+                    <div class="quad two"></div>
+                    <div class="quad three"></div>
+                    <div class="quad four"></div>
+                    <div class="quad top"></div>
+                    <div class="chart-center"></div>
+                </div><!--/.donut-chart-->
+            </div>
+
+            <div class="flex w-full justify-center items-center text-sm font-normal text-Gray-400 pt-5 border-t border-gray-200">
+                <svg class="shrink-0 relative overflow-visible" style="" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M4.37145 5.89514C4.24022 5.76387 4.1665 5.58586 4.1665 5.40024C4.1665 5.21463 4.24022 5.03661 4.37145 4.90534L7.17145 2.10534C7.30272 1.97411 7.48074 1.90039 7.66635 1.90039C7.85197 1.90039 8.02998 1.97411 8.16125 2.10534L10.9613 4.90534C11.0888 5.03736 11.1593 5.21418 11.1577 5.39772C11.1561 5.58126 11.0825 5.75683 10.9527 5.88661C10.8229 6.0164 10.6474 6.09002 10.4638 6.09161C10.2803 6.09321 10.1035 6.02265 9.97145 5.89514L8.36635 4.29004V12.4002C8.36635 12.5859 8.2926 12.7639 8.16133 12.8952C8.03005 13.0265 7.85201 13.1002 7.66635 13.1002C7.4807 13.1002 7.30265 13.0265 7.17138 12.8952C7.0401 12.7639 6.96635 12.5859 6.96635 12.4002V4.29004L5.36125 5.89514C5.22998 6.02637 5.05197 6.10009 4.86635 6.10009C4.68074 6.10009 4.50272 6.02637 4.37145 5.89514V5.89514Z" fill="#0E9F6E" />
+                </svg>
+                <span class="text-green-500 mr-1">3.2%</span>
+                compared to last month
+            </div>
+        </div>
+
+
+
+        <div class="tally-red group relative w-48 p-8 flex flex-col bg-white rounded-2xl hover:bg-Gray-50 my-10 lg:my-24">
+            <div class="w-5 absolute right-0 top-0 mr-8 mt-8 group-hover:opacity-100">
+                <img src="images/info_icon.png" class="w-full block group-hover:opacity-100">
+            </div>
+
+            <div class="card">
+                <div class="donut-chart chart3">
+                    <div class="quad one"></div>
+                    <div class="quad two"></div>
+                    <div class="quad three"></div>
+                    <div class="quad four"></div>
+                    <div class="quad top"></div>
+                    <div class="chart-center"></div>
+                </div><!--/.donut-chart-->
+            </div>
+
+            <span class="text-base font-medium text-Gray-700 mt-10 group-hover:opacity-50">Mitochondria <br>Dysfunction</span>
+        </div>
+
+        <div class="tally-red group relative w-48 p-8 flex flex-col bg-white rounded-2xl hover:bg-Gray-50 my-10 lg:my-24">
+            <div class="w-5 absolute right-0 top-0 mr-8 mt-8 group-hover:opacity-100">
+                <img src="images/info_icon.png" class="w-full block group-hover:opacity-100">
+            </div>
+
+            <div class="card">
+                <div class="donut-chart chart4">
+                    <div class="quad one"></div>
+                    <div class="quad two"></div>
+                    <div class="quad three"></div>
+                    <div class="quad four"></div>
+                    <div class="quad top"></div>
+                    <div class="chart-center"></div>
+                </div><!--/.donut-chart-->
+            </div>
+
+            <span class="text-base font-medium text-Gray-700 mt-10 group-hover:opacity-50">Mitochondria <br>Dysfunction</span>
+        </div>
+
+        <div class="tally-red group relative w-48 p-8 flex flex-col bg-white rounded-2xl hover:bg-Gray-50 my-10 lg:my-24">
+            <div class="w-5 absolute right-0 top-0 mr-8 mt-8 group-hover:opacity-100">
+                <img src="images/info_icon.png" class="w-full block group-hover:opacity-100">
+            </div>
+
+            <div class="card">
+                <div class="donut-chart chart5">
+                    <div class="quad one"></div>
+                    <div class="quad two"></div>
+                    <div class="quad three"></div>
+                    <div class="quad four"></div>
+                    <div class="quad top"></div>
+                    <div class="chart-center"></div>
+                </div><!--/.donut-chart-->
+            </div>
+
+            <span class="text-base font-medium text-Gray-700 mt-10 group-hover:opacity-50">Mitochondria <br>Dysfunction</span>
+        </div>
+        
+    </section>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.js"></script>
+
+    <script>
+        module.exports = {
+            darkMode: 'class',
+            // ...
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"name": "aetas-wordpress",
+			"path": "../../../../aet-new/wp/aetas-wordpress"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "aetas-app"
+	}
+}

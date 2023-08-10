@@ -1,0 +1,1000 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="main.css" rel="stylesheet">
+    <script>
+        localStorage.theme = 'light'
+    </script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                colors: {
+                transparent: 'transparent',
+                current: 'currentColor',
+                'Primary': {
+                    50:  'rgba(72, 130, 159, 0.15)',
+                    100: 'rgba(72, 130, 159, 0.20)',
+                    200: 'rgba(72, 130, 159, 0.30)',
+                    300: 'rgba(72, 130, 159, 0.40)',
+                    400: 'rgba(72, 130, 159, 0.50)',
+                    500: 'rgba(72, 130, 159, 0.60)',
+                    600: 'rgba(72, 130, 159, 0.70)',
+                    700: 'rgba(72, 130, 159, 0.80)',
+                    800: 'rgba(72, 130, 159, 0.90)',
+                    900: '#48829F',
+                },
+                'Gray': {
+                    50:  '#F9FAFB',
+                    100: '#F3F4F6',
+                    200: '#E5E7EB',
+                    300: '#D1D5DB',
+                    400: '#9CA3AF',
+                    500: '#7E7E7E',
+                    600: '#4B5563',
+                    700: '#374151',
+                    800: '#1F2A37',
+                    900: '#111928',
+                },
+                'Blue': {
+                    50:  '#EBF5FF',
+                    100: '#E1EFFE',
+                    200: '#C3DDFD',
+                    300: '#A4CAFE',
+                    400: '#76A9FA',
+                    500: '#3F83F8',
+                    600: '#1C64F2',
+                    700: '#1A56DB',
+                    800: '#1E429F',
+                    900: '#1E429F',
+                },
+                'Red': {
+                    50:  '#FDF2F2',
+                    100: '#FDE8E8',
+                    200: '#FBD5D5',
+                    300: '#F8B4B4',
+                    400: '#F98080',
+                    500: '#F05252',
+                    600: '#E02424',
+                    700: '#C81E1E',
+                    800: '#9B1C1C',
+                    900: '#771D1D',
+                },
+                'Orange': {
+                    50: '#fff8f1',
+                    100: '#feecdc',
+                    200: '#fcd9bd',
+                    300: '#fdba8c',
+                    400: '#ff8a4c',
+                    500: '#ff5a1f',
+                    600: '#d03801',
+                    700: '#b43403',
+                    800: '#8a2c0d',
+                    900: '#771d1d',
+                },
+                'Yellow': {
+                    50:  '#fdfdea',
+                    100: '#fdf6b2',
+                    200: '#fce96a',
+                    300: '#faca15',
+                    400: '#e3a008',
+                    500: '#c27803',
+                    600: '#9f580a',
+                    700: '#8e4b10',
+                    800: '#723b13',
+                    900: '#633112',
+                },
+                'Green': {
+                    50:  '#f3faf7',
+                    100: '#def7ec',
+                    200: '#bcf0da',
+                    300: '#84e1bc',
+                    400: '#31c48d',
+                    500: '#0e9f6e',
+                    600: '#057a55',
+                    700: '#046c4e',
+                    800: '#03543f',
+                    900: '#014737',
+                },
+                'Teal': {
+                    50:  '#edfafa',
+                    100: '#d5f5f6',
+                    200: '#afecef',
+                    300: '#7edce2',
+                    400: '#16bdca',
+                    500: '#0694a2',
+                    600: '#047481',
+                    700: '#036672',
+                    800: '#05505c',
+                    900: '#014451',
+                },
+                'Indigo': {
+                    50:  '#f0f5ff',
+                    100: '#e5edff',
+                    200: '#cddbfe',
+                    300: '#b4c6fc',
+                    400: '#8da2fb',
+                    500: '#6875f5',
+                    600: '#5850ec',
+                    700: '#5145cd',
+                    800: '#42389d',
+                    900: '#362f78',
+                },
+                'Purple': {
+                    50:  '#f6f5ff',
+                    100: '#edebfe',
+                    200: '#dcd7fe',
+                    300: '#cabffd',
+                    400: '#ac94fa',
+                    500: '#9061f9',
+                    600: '#7e3af2',
+                    700: '#6c2bd9',
+                    800: '#5521b5',
+                    900: '#4a1d96',
+                },
+                'Pink': {
+                    50:  '#fdf2f8',
+                    100: '#fce8f3',
+                    200: '#fad1e8',
+                    300: '#f8b4d9',
+                    400: '#f17eb8',
+                    500: '#e74694',
+                    600: '#d61f69',
+                    700: '#bf125d',
+                    800: '#99154b',
+                    900: '#751a3d',
+                },
+                // ...
+                },
+            },
+        }
+    </script>
+
+</head>
+<body class="flex flex-col items-center">
+
+    <section class="w-11/12 bg-Gray-50 dark:bg-Gray-900 py-3 sm:py-5">
+        <div class="mx-auto w-full">
+            <div class="bg-white relative shadow-md sm:rounded-lg overflow-hidden">
+                <div class="border-b border-Gray-200 dark:border-Gray-700 mx-4">
+                    <div class="flex items-center justify-between space-x-4 pt-4">
+                        <div class="flex-1 flex items-center space-x-3">
+                            <h5 class="text-Gray-900 dark:text-white font-medium">All Tasks</h5>
+                        </div>
+                    </div>
+                    <div class="flex flex-col-reverse md:flex-row items-center justify-between md:space-x-4 py-4">
+                        <div class="w-full lg:w-2/3 flex flex-col space-y-3 md:space-y-0 md:flex-row md:items-center">
+                            <div class="flex items-center space-x-4">
+                                <div>
+                                    <button id="filterDropdownButton" data-dropdown-toggle="filterDropdown" type="button" class="w-full md:w-auto flex items-center justify-center py-2 px-3 text-sm font-medium text-Primary-900 focus:outline-none bg-white rounded-full border border-Primary-900 hover:bg-Gray-100 hover:text-Primary-700 focus:z-10 dark:text-Gray-400 dark:border-Gray-600 dark:hover:text-white dark:hover:bg-Gray-700">
+                                        <svg class="filter mr-2" width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M13.0125 5.5116L13.0124 5.51166L9.24684 9.27726L9.10039 9.4237V9.63081V12.4995C9.10039 12.4995 9.10039 12.4996 9.10039 12.4996C9.10035 12.5791 9.06873 12.6554 9.01249 12.7116L9.01244 12.7117L7.41249 14.3116C7.41247 14.3116 7.41246 14.3116 7.41244 14.3117C7.37049 14.3536 7.31706 14.3821 7.2589 14.3937C7.20072 14.4052 7.14041 14.3993 7.0856 14.3766C7.03078 14.3539 6.98394 14.3155 6.95097 14.2661C6.91802 14.2168 6.90042 14.1589 6.90039 14.0996C6.90039 14.0996 6.90039 14.0995 6.90039 14.0995V9.63081V9.4237L6.75394 9.27726L2.98834 5.51166L2.98829 5.5116C2.93205 5.45538 2.90044 5.37913 2.90039 5.29961C2.90039 5.29957 2.90039 5.29954 2.90039 5.2995V2.89961C2.90039 2.82004 2.932 2.74374 2.98826 2.68748C3.04452 2.63122 3.12083 2.59961 3.20039 2.59961H12.8004C12.88 2.59961 12.9563 2.63122 13.0125 2.68748C13.0688 2.74374 13.1004 2.82004 13.1004 2.89961V5.2995C13.1004 5.29954 13.1004 5.29957 13.1004 5.29961C13.1003 5.37913 13.0687 5.45538 13.0125 5.5116Z" fill="#1F2A37" stroke="#111928" />
+                                        </svg>
+                                        Filter
+                                    </button>
+                                    <div id="filterDropdown" class="z-10 hidden p-3 bg-white rounded-lg shadow w-56 dark:bg-Gray-700">
+                                        <h6 class="mb-2 text-sm font-medium text-Gray-900 dark:text-white">By status</h6>
+                                        <ul class="space-y-2 text-sm" aria-labelledby="filterDropdownButton">
+                                            <li>
+                                                <label class="flex items-center text-sm font-medium text-Gray-900 dark:text-Gray-300 hover:bg-Gray-100 dark:hover:bg-Gray-600 rounded-md px-1.5 py-1 w-full">
+                                                    <input type="checkbox" value="" class="w-4 h-4 mr-2 bg-Gray-100 border-Gray-300 rounded text-Primary-600 dark:bg-Gray-600 dark:border-Gray-500 focus:ring-0">
+                                                    In progress
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label class="flex items-center text-sm font-medium text-Gray-900 dark:text-Gray-300 hover:bg-Gray-100 dark:hover:bg-Gray-600 rounded-md px-1.5 py-1 w-full">
+                                                    <input type="checkbox" value="" checked="" class="w-4 h-4 mr-2 bg-Gray-100 border-Gray-300 rounded text-Primary-600 dark:bg-Gray-600 dark:border-Gray-500 focus:ring-0">
+                                                    In review
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label class="flex items-center text-sm font-medium text-Gray-900 dark:text-Gray-300 hover:bg-Gray-100 dark:hover:bg-Gray-600 rounded-md px-1.5 py-1 w-full">
+                                                    <input type="checkbox" value="" class="w-4 h-4 mr-2 bg-Gray-100 border-Gray-300 rounded text-Primary-600 dark:bg-Gray-600 dark:border-Gray-500 focus:ring-0">
+                                                    Completed
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label class="flex items-center text-sm font-medium text-Gray-900 dark:text-Gray-300 hover:bg-Gray-100 dark:hover:bg-Gray-600 rounded-md px-1.5 py-1 w-full">
+                                                    <input type="checkbox" value="" class="w-4 h-4 mr-2 bg-Gray-100 border-Gray-300 rounded text-Primary-600 dark:bg-Gray-600 dark:border-Gray-500 focus:ring-0">
+                                                    Canceled
+                                                </label>
+                                            </li>
+                                        </ul>
+                                        <h6 class="mt-4 mb-2 text-sm font-medium text-Gray-900 dark:text-white">By number of users</h6>
+                                        <ul class="space-y-2 text-sm" aria-labelledby="dropdownDefault">
+                                            <li>
+                                                <label class="flex items-center text-sm font-medium text-Gray-900 dark:text-Gray-300 hover:bg-Gray-100 dark:hover:bg-Gray-600 rounded-md px-1.5 py-1 w-full">
+                                                    <input type="checkbox" value="" checked="" class="w-4 h-4 mr-2 bg-Gray-100 border-Gray-300 rounded text-Primary-600 dark:bg-Gray-600 dark:border-Gray-500 focus:ring-0">
+                                                    5-10 peoples
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label class="flex items-center text-sm font-medium text-Gray-900 dark:text-Gray-300 hover:bg-Gray-100 dark:hover:bg-Gray-600 rounded-md px-1.5 py-1 w-full">
+                                                    <input type="checkbox" value="" class="w-4 h-4 mr-2 bg-Gray-100 border-Gray-300 rounded text-Primary-600 dark:bg-Gray-600 dark:border-Gray-500 focus:ring-0">
+                                                    10+ peoples
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label class="flex items-center text-sm font-medium text-Gray-900 dark:text-Gray-300 hover:bg-Gray-100 dark:hover:bg-Gray-600 rounded-md px-1.5 py-1 w-full">
+                                                    <input type="checkbox" value="" class="w-4 h-4 mr-2 bg-Gray-100 border-Gray-300 rounded text-Primary-600 dark:bg-Gray-600 dark:border-Gray-500 focus:ring-0">
+                                                    More than 10 peoples
+                                                </label>
+                                            </li>
+                                        </ul>
+                                        <a href="#" class="flex items-center text-sm font-medium text-Primary-600 dark:text-Primary-500 hover:underline mt-4 ml-1.5">Apply to all projects</a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button id="configurationDropdownButton" data-dropdown-toggle="configurationDropdown" type="button" class="w-full md:w-auto flex items-center justify-center py-2 px-3 text-sm font-medium text-Primary-900 focus:outline-none bg-white rounded-full border border-Primary-900 hover:bg-Gray-100 hover:text-Primary-700 focus:z-10  dark:text-Gray-400 dark:border-Gray-600 dark:hover:text-white dark:hover:bg-Gray-700">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="currentColor" class="h-4 w-4 mr-2 text-Gray-900" aria-hidden="true">
+                                            <path fill-rule="evenodd" d="M11.828 2.25c-.916 0-1.699.663-1.85 1.567l-.091.549a.798.798 0 01-.517.608 7.45 7.45 0 00-.478.198.798.798 0 01-.796-.064l-.453-.324a1.875 1.875 0 00-2.416.2l-.243.243a1.875 1.875 0 00-.2 2.416l.324.453a.798.798 0 01.064.796 7.448 7.448 0 00-.198.478.798.798 0 01-.608.517l-.55.092a1.875 1.875 0 00-1.566 1.849v.344c0 .916.663 1.699 1.567 1.85l.549.091c.281.047.508.25.608.517.06.162.127.321.198.478a.798.798 0 01-.064.796l-.324.453a1.875 1.875 0 00.2 2.416l.243.243c.648.648 1.67.733 2.416.2l.453-.324a.798.798 0 01.796-.064c.157.071.316.137.478.198.267.1.47.327.517.608l.092.55c.15.903.932 1.566 1.849 1.566h.344c.916 0 1.699-.663 1.85-1.567l.091-.549a.798.798 0 01.517-.608 7.52 7.52 0 00.478-.198.798.798 0 01.796.064l.453.324a1.875 1.875 0 002.416-.2l.243-.243c.648-.648.733-1.67.2-2.416l-.324-.453a.798.798 0 01-.064-.796c.071-.157.137-.316.198-.478.1-.267.327-.47.608-.517l.55-.091a1.875 1.875 0 001.566-1.85v-.344c0-.916-.663-1.699-1.567-1.85l-.549-.091a.798.798 0 01-.608-.517 7.507 7.507 0 00-.198-.478.798.798 0 01.064-.796l.324-.453a1.875 1.875 0 00-.2-2.416l-.243-.243a1.875 1.875 0 00-2.416-.2l-.453.324a.798.798 0 01-.796.064 7.462 7.462 0 00-.478-.198.798.798 0 01-.517-.608l-.091-.55a1.875 1.875 0 00-1.85-1.566h-.344zM12 15.75a3.75 3.75 0 100-7.5 3.75 3.75 0 000 7.5z" clip-rule="evenodd" />
+                                        </svg>
+                                        Configurations
+                                    </button>
+                                    <div id="configurationDropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-Gray-100 shadow dark:bg-Gray-700 dark:divide-Gray-600">
+                                        <ul class="py-1 text-sm text-Gray-700 dark:text-Gray-200" aria-labelledby="configurationDropdownButton">
+                                            <li>
+                                                <a href="#" class="block py-2 px-4 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:hover:text-white">By Category</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="block py-2 px-4 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:hover:text-white">By Brand</a>
+                                            </li>
+                                        </ul>
+                                        <div class="py-1">
+                                            <a href="#" class="block py-2 px-4 text-sm text-Gray-700 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:text-Gray-200 dark:hover:text-white">Reset</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-auto flex flex-col md:flex-row mb-3 md:mb-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
+                            <button type="button" class="flex items-center justify-center text-white bg-Primary-700 hover:bg-Primary-800 font-medium rounded-full text-sm px-3 py-2 dark:bg-Primary-600 dark:hover:bg-Primary-700 focus:outline-none">
+                                <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <path clip-rule="evenodd" fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
+                                </svg>
+                                Add new product
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mx-4 pb-4 flex justify-end flex-wrap">
+                    <div class="hidden md:flex items-center text-sm font-medium text-Gray-900 dark:text-white mr-4 mt-4">Filter By:</div>
+                    <div class="flex flex-wrap">
+                        <div class="flex items-center mt-3 mr-4">
+                            <input id="all-tasks" type="radio" value="" name="show-only" class="w-4 h-4 text-Primary-600 bg-Gray-100 border-Gray-300 dark:bg-Gray-700 dark:border-Gray-600 focus:ring-0">
+                            <label for="all-tasks" class="ml-2 text-sm font-medium text-Gray-900 dark:text-Gray-300">All</label>
+                        </div>
+                        <div class="flex items-center mr-4 mt-3">
+                            <input id="completed" type="radio" value="" name="show-only" class="w-4 h-4 text-Primary-600 bg-Gray-100 border-Gray-300 dark:bg-Gray-700 dark:border-Gray-600 focus:ring-0">
+                            <label for="completed" class="ml-2 text-sm font-medium text-Gray-900 dark:text-Gray-300">Active products</label>
+                        </div>
+                        <div class="flex items-center mr-4 mt-3">
+                            <input id="in-progress" type="radio" value="" name="show-only" class="w-4 h-4 text-Primary-600 bg-Gray-100 border-Gray-300 dark:bg-Gray-700 dark:border-Gray-600 focus:ring-0">
+                            <label for="in-progress" class="ml-2 text-sm font-medium text-Gray-900 dark:text-Gray-300">Pending products</label>
+                        </div>
+                        <div class="flex items-center mr-4 mt-3">
+                            <input id="in-review" type="radio" value="" name="show-only" class="w-4 h-4 text-Primary-600 bg-Gray-100 border-Gray-300 dark:bg-Gray-700 dark:border-Gray-600 focus:ring-0">
+                            <label for="in-review" class="ml-2 text-sm font-medium text-Gray-900 dark:text-Gray-300">Inactive products</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left text-Gray-500 dark:text-Gray-400">
+                        <thead class="text-xs font-medium text-Gray-500 uppercase bg-Gray-50 border-b border-Gray-200 dark:border-Gray-700 dark:bg-Gray-700 dark:text-Gray-400">
+                            <tr>
+                                <th scope="col" class="p-4">
+                                    <div class="flex items-center">
+                                        <input id="checkbox-all" type="checkbox" class="w-4 h-4 text-Primary-600 bg-Gray-100 rounded border-Gray-300 dark:bg-Gray-700 dark:border-Gray-600 focus:ring-0">
+                                        <label for="checkbox-all" class="sr-only">checkbox</label>
+                                    </div>
+                                </th>
+                                <th scope="col" class="px-4 py-3">Task</th>
+                                <th scope="col" class="px-4 py-3">Status</th>
+                                <th scope="col" class="px-4 py-3 min-w-[14rem]">Progress</th>
+                                <th scope="col" class="px-4 py-3">Preview</th>
+                                <th scope="col" class="px-4 py-3">Time Tracking</th>
+                                <th scope="col" class="px-4 py-3">Due Date</th>
+                                <th scope="col" class="px-4 py-3">
+                                    <span class="sr-only">Actions</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-Gray-200 dark:border-Gray-600 hover:bg-Gray-100 dark:hover:bg-Gray-700">
+                                <td class="px-4 py-2 w-4">
+                                    <div class="flex items-center">
+                                        <input id="checkbox-table-search-1" type="checkbox" onclick="event.stopPropagation()" class="w-4 h-4 text-Primary-600 bg-Gray-100 rounded border-Gray-300 dark:bg-Gray-700 dark:border-Gray-600 focus:ring-0">
+                                        <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                                    </div>
+                                </td>
+                                <th scope="row" class="px-4 py-2 font-medium text-Gray-900 whitespace-nowrap dark:text-white">Upload feed and Reels in Instagram</th>
+                                <td class="px-4 py-2 whitespace-nowrap">
+                                    <span class="bg-Blue-100 text-Blue-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-Blue-900 dark:text-Blue-300">In progress</span>
+                                </td>
+                                <td class="px-4 py-2 font-medium whitespace-nowrap">
+                                    <div class="flex justify-end mb-1">
+                                        <span class="text-xs font-medium text-Gray-500 dark:text-Gray-400">75%</span>
+                                    </div>
+                                    <div class="w-full bg-Gray-200 rounded-full h-1.5 dark:bg-Gray-700">
+                                        <div class="bg-Primary-600 h-1.5 rounded-full" style="width: 75%"></div>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-2 font-medium text-Gray-900 whitespace-nowrap dark:text-white">
+                                    <a href="#" class="font-medium text-Primary-600 dark:text-Primary-500 hover:underline inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewbox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+                                            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+                                        </svg>
+                                        Website
+                                    </a>
+                                </td>
+                                <td class="px-4 py-2 text-Gray-900 whitespace-nowrap dark:text-white">
+                                    <div class="px-2 py-1 border border-Gray-200 dark:border-Gray-600 bg-white dark:bg-Gray-700 rounded-lg text-xs font-medium inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true" class="h-4 w-4 mr-1 text-Gray-400" viewbox="0 0 20 20">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" />
+                                        </svg>
+                                        <span class="text-Green-500">6:47</span>
+                                        /8:00
+                                        <button class="bg-Orange-500 hover:bg-Orange-700 text-white p-1 rounded-md ml-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="currentColor" class="w-4 h-4" aria-hidden="true">
+                                                <path fill-rule="evenodd" d="M6.75 5.25a.75.75 0 01.75-.75H9a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H7.5a.75.75 0 01-.75-.75V5.25zm7.5 0A.75.75 0 0115 4.5h1.5a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H15a.75.75 0 01-.75-.75V5.25z" clip-rule="evenodd" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-2 whitespace-nowrap font-medium text-Gray-900 dark:text-white text-xs">23 Nov 2022</td>
+                                <td class="px-4 py-2">
+                                    <button id="-dropdown-button" type="button" data-dropdown-toggle="-dropdown" class="inline-flex items-center p-1 text-sm font-medium text-center text-Gray-500 hover:text-Gray-800 hover:bg-Gray-200 dark:hover:bg-Gray-700 rounded-lg focus:outline-none dark:text-Gray-400 dark:hover:text-Gray-100">
+                                        <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                        </svg>
+                                    </button>
+                                    <div id="-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-Gray-100 shadow dark:bg-Gray-700 dark:divide-Gray-600">
+                                        <ul class="py-1 text-sm text-Gray-700 dark:text-Gray-200" aria-labelledby="-dropdown-button">
+                                            <li>
+                                                <a href="#" class="block py-2 px-4 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:hover:text-white">Show</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="block py-2 px-4 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:hover:text-white">Edit</a>
+                                            </li>
+                                        </ul>
+                                        <div class="py-1">
+                                            <a href="#" class="block py-2 px-4 text-sm text-Gray-700 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:text-Gray-200 dark:hover:text-white">Delete</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-Gray-200 dark:border-Gray-600 hover:bg-Gray-100 dark:hover:bg-Gray-700">
+                                <td class="px-4 py-2 w-4">
+                                    <div class="flex items-center">
+                                        <input id="checkbox-table-search-1" type="checkbox" onclick="event.stopPropagation()" class="w-4 h-4 text-Primary-600 bg-Gray-100 rounded border-Gray-300 dark:bg-Gray-700 dark:border-Gray-600 focus:ring-0">
+                                        <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                                    </div>
+                                </td>
+                                <th scope="row" class="px-4 py-2 font-medium text-Gray-900 whitespace-nowrap dark:text-white">Crossplatform analysis</th>
+                                <td class="px-4 py-2 whitespace-nowrap">
+                                    <span class="bg-Green-100 text-Green-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-Green-900 dark:text-Green-300">Completed</span>
+                                </td>
+                                <td class="px-4 py-2 font-medium whitespace-nowrap">
+                                    <div class="flex justify-end mb-1">
+                                        <span class="text-xs font-medium text-Gray-500 dark:text-Gray-400">100%</span>
+                                    </div>
+                                    <div class="w-full bg-Gray-200 rounded-full h-1.5 dark:bg-Gray-700">
+                                        <div class="bg-Green-500 h-1.5 rounded-full" style="width: 100%"></div>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-2 font-medium text-Gray-900 whitespace-nowrap dark:text-white">
+                                    <a href="#" class="font-medium text-Primary-600 dark:text-Primary-500 hover:underline inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewbox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+                                            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+                                        </svg>
+                                        Website
+                                    </a>
+                                </td>
+                                <td class="px-4 py-2 text-Gray-900 whitespace-nowrap dark:text-white">
+                                    <div class="px-2 py-1 border border-Gray-200 dark:border-Gray-600 bg-white dark:bg-Gray-700 rounded-lg text-xs font-medium inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true" class="h-4 w-4 mr-1 text-Gray-400" viewbox="0 0 20 20">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" />
+                                        </svg>
+                                        7:00
+                                        <button class="bg-Green-500 hover:bg-Green-700 text-white p-1 rounded-md ml-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="currentColor" class="w-4 h-4" aria-hidden="true">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-2 whitespace-nowrap font-medium text-Gray-900 dark:text-white text-xs">03 Nov 2022</td>
+                                <td class="px-4 py-2">
+                                    <button id="-dropdown-button" type="button" data-dropdown-toggle="-dropdown" class="inline-flex items-center p-1 text-sm font-medium text-center text-Gray-500 hover:text-Gray-800 hover:bg-Gray-200 dark:hover:bg-Gray-700 rounded-lg focus:outline-none dark:text-Gray-400 dark:hover:text-Gray-100">
+                                        <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                        </svg>
+                                    </button>
+                                    <div id="-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-Gray-100 shadow dark:bg-Gray-700 dark:divide-Gray-600">
+                                        <ul class="py-1 text-sm text-Gray-700 dark:text-Gray-200" aria-labelledby="-dropdown-button">
+                                            <li>
+                                                <a href="#" class="block py-2 px-4 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:hover:text-white">Show</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="block py-2 px-4 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:hover:text-white">Edit</a>
+                                            </li>
+                                        </ul>
+                                        <div class="py-1">
+                                            <a href="#" class="block py-2 px-4 text-sm text-Gray-700 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:text-Gray-200 dark:hover:text-white">Delete</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-Gray-200 dark:border-Gray-600 hover:bg-Gray-100 dark:hover:bg-Gray-700">
+                                <td class="px-4 py-2 w-4">
+                                    <div class="flex items-center">
+                                        <input id="checkbox-table-search-1" type="checkbox" onclick="event.stopPropagation()" class="w-4 h-4 text-Primary-600 bg-Gray-100 rounded border-Gray-300 dark:bg-Gray-700 dark:border-Gray-600 focus:ring-0">
+                                        <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                                    </div>
+                                </td>
+                                <th scope="row" class="px-4 py-2 font-medium text-Gray-900 whitespace-nowrap dark:text-white">Product features analysis</th>
+                                <td class="px-4 py-2 whitespace-nowrap">
+                                    <span class="bg-Blue-100 text-Blue-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-Blue-900 dark:text-Blue-300">In progress</span>
+                                </td>
+                                <td class="px-4 py-2 font-medium whitespace-nowrap">
+                                    <div class="flex justify-end mb-1">
+                                        <span class="text-xs font-medium text-Gray-500 dark:text-Gray-400">50%</span>
+                                    </div>
+                                    <div class="w-full bg-Gray-200 rounded-full h-1.5 dark:bg-Gray-700">
+                                        <div class="bg-Primary-600 h-1.5 rounded-full" style="width: 50%"></div>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-2 font-medium text-Gray-900 whitespace-nowrap dark:text-white">
+                                    <a href="#" class="font-medium text-Primary-600 dark:text-Primary-500 hover:underline inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewbox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+                                            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+                                        </svg>
+                                        Website
+                                    </a>
+                                </td>
+                                <td class="px-4 py-2 text-Gray-900 whitespace-nowrap dark:text-white">
+                                    <div class="px-2 py-1 border border-Gray-200 dark:border-Gray-600 bg-white dark:bg-Gray-700 rounded-lg text-xs font-medium inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true" class="h-4 w-4 mr-1 text-Gray-400" viewbox="0 0 20 20">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" />
+                                        </svg>
+                                        <span class="text-Green-500">3:25</span>
+                                        /8:00
+                                        <button class="bg-Orange-500 hover:bg-Orange-700 text-white p-1 rounded-md ml-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="currentColor" class="w-4 h-4" aria-hidden="true">
+                                                <path fill-rule="evenodd" d="M6.75 5.25a.75.75 0 01.75-.75H9a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H7.5a.75.75 0 01-.75-.75V5.25zm7.5 0A.75.75 0 0115 4.5h1.5a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H15a.75.75 0 01-.75-.75V5.25z" clip-rule="evenodd" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-2 whitespace-nowrap font-medium text-Gray-900 dark:text-white text-xs">Yesterday</td>
+                                <td class="px-4 py-2">
+                                    <button id="-dropdown-button" type="button" data-dropdown-toggle="-dropdown" class="inline-flex items-center p-1 text-sm font-medium text-center text-Gray-500 hover:text-Gray-800 hover:bg-Gray-200 dark:hover:bg-Gray-700 rounded-lg focus:outline-none dark:text-Gray-400 dark:hover:text-Gray-100">
+                                        <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                        </svg>
+                                    </button>
+                                    <div id="-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-Gray-100 shadow dark:bg-Gray-700 dark:divide-Gray-600">
+                                        <ul class="py-1 text-sm text-Gray-700 dark:text-Gray-200" aria-labelledby="-dropdown-button">
+                                            <li>
+                                                <a href="#" class="block py-2 px-4 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:hover:text-white">Show</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="block py-2 px-4 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:hover:text-white">Edit</a>
+                                            </li>
+                                        </ul>
+                                        <div class="py-1">
+                                            <a href="#" class="block py-2 px-4 text-sm text-Gray-700 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:text-Gray-200 dark:hover:text-white">Delete</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-Gray-200 dark:border-Gray-600 hover:bg-Gray-100 dark:hover:bg-Gray-700">
+                                <td class="px-4 py-2 w-4">
+                                    <div class="flex items-center">
+                                        <input id="checkbox-table-search-1" type="checkbox" onclick="event.stopPropagation()" class="w-4 h-4 text-Primary-600 bg-Gray-100 rounded border-Gray-300 dark:bg-Gray-700 dark:border-Gray-600 focus:ring-0">
+                                        <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                                    </div>
+                                </td>
+                                <th scope="row" class="px-4 py-2 font-medium text-Gray-900 whitespace-nowrap dark:text-white">Create user story</th>
+                                <td class="px-4 py-2 whitespace-nowrap">
+                                    <span class="bg-Green-100 text-Green-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-Green-900 dark:text-Green-300">Completed</span>
+                                </td>
+                                <td class="px-4 py-2 font-medium whitespace-nowrap">
+                                    <div class="flex justify-end mb-1">
+                                        <span class="text-xs font-medium text-Gray-500 dark:text-Gray-400">100%</span>
+                                    </div>
+                                    <div class="w-full bg-Gray-200 rounded-full h-1.5 dark:bg-Gray-700">
+                                        <div class="bg-Green-500 h-1.5 rounded-full" style="width: 100%"></div>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-2 font-medium text-Gray-900 whitespace-nowrap dark:text-white">
+                                    <a href="#" class="font-medium text-Primary-600 dark:text-Primary-500 hover:underline inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewbox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+                                            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+                                        </svg>
+                                        Website
+                                    </a>
+                                </td>
+                                <td class="px-4 py-2 text-Gray-900 whitespace-nowrap dark:text-white">
+                                    <div class="px-2 py-1 border border-Gray-200 dark:border-Gray-600 bg-white dark:bg-Gray-700 rounded-lg text-xs font-medium inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true" class="h-4 w-4 mr-1 text-Gray-400" viewbox="0 0 20 20">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" />
+                                        </svg>
+                                        8:00
+                                        <button class="bg-Green-500 hover:bg-Green-700 text-white p-1 rounded-md ml-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="currentColor" class="w-4 h-4" aria-hidden="true">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-2 whitespace-nowrap font-medium text-Gray-900 dark:text-white text-xs">23 Nov 2022</td>
+                                <td class="px-4 py-2">
+                                    <button id="-dropdown-button" type="button" data-dropdown-toggle="-dropdown" class="inline-flex items-center p-1 text-sm font-medium text-center text-Gray-500 hover:text-Gray-800 hover:bg-Gray-200 dark:hover:bg-Gray-700 rounded-lg focus:outline-none dark:text-Gray-400 dark:hover:text-Gray-100">
+                                        <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                        </svg>
+                                    </button>
+                                    <div id="-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-Gray-100 shadow dark:bg-Gray-700 dark:divide-Gray-600">
+                                        <ul class="py-1 text-sm text-Gray-700 dark:text-Gray-200" aria-labelledby="-dropdown-button">
+                                            <li>
+                                                <a href="#" class="block py-2 px-4 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:hover:text-white">Show</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="block py-2 px-4 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:hover:text-white">Edit</a>
+                                            </li>
+                                        </ul>
+                                        <div class="py-1">
+                                            <a href="#" class="block py-2 px-4 text-sm text-Gray-700 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:text-Gray-200 dark:hover:text-white">Delete</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-Gray-200 dark:border-Gray-600 hover:bg-Gray-100 dark:hover:bg-Gray-700">
+                                <td class="px-4 py-2 w-4">
+                                    <div class="flex items-center">
+                                        <input id="checkbox-table-search-1" type="checkbox" onclick="event.stopPropagation()" class="w-4 h-4 text-Primary-600 bg-Gray-100 rounded border-Gray-300 dark:bg-Gray-700 dark:border-Gray-600 focus:ring-0">
+                                        <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                                    </div>
+                                </td>
+                                <th scope="row" class="px-4 py-2 font-medium text-Gray-900 whitespace-nowrap dark:text-white">Users profile update</th>
+                                <td class="px-4 py-2 whitespace-nowrap">
+                                    <span class="bg-Blue-100 text-Blue-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-Blue-900 dark:text-Blue-300">In progress</span>
+                                </td>
+                                <td class="px-4 py-2 font-medium whitespace-nowrap">
+                                    <div class="flex justify-end mb-1">
+                                        <span class="text-xs font-medium text-Gray-500 dark:text-Gray-400">20%</span>
+                                    </div>
+                                    <div class="w-full bg-Gray-200 rounded-full h-1.5 dark:bg-Gray-700">
+                                        <div class="bg-Primary-600 h-1.5 rounded-full" style="width: 20%"></div>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-2 font-medium text-Gray-900 whitespace-nowrap dark:text-white">
+                                    <a href="#" class="font-medium text-Primary-600 dark:text-Primary-500 hover:underline inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewbox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+                                            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+                                        </svg>
+                                        Website
+                                    </a>
+                                </td>
+                                <td class="px-4 py-2 text-Gray-900 whitespace-nowrap dark:text-white">
+                                    <div class="px-2 py-1 border border-Gray-200 dark:border-Gray-600 bg-white dark:bg-Gray-700 rounded-lg text-xs font-medium inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true" class="h-4 w-4 mr-1 text-Gray-400" viewbox="0 0 20 20">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" />
+                                        </svg>
+                                        <span class="text-Green-500">4:21</span>
+                                        /8:00
+                                        <button class="bg-Orange-500 hover:bg-Orange-700 text-white p-1 rounded-md ml-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="currentColor" class="w-4 h-4" aria-hidden="true">
+                                                <path fill-rule="evenodd" d="M6.75 5.25a.75.75 0 01.75-.75H9a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H7.5a.75.75 0 01-.75-.75V5.25zm7.5 0A.75.75 0 0115 4.5h1.5a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H15a.75.75 0 01-.75-.75V5.25z" clip-rule="evenodd" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-2 whitespace-nowrap font-medium text-Gray-900 dark:text-white text-xs">Yesterday</td>
+                                <td class="px-4 py-2">
+                                    <button id="-dropdown-button" type="button" data-dropdown-toggle="-dropdown" class="inline-flex items-center p-1 text-sm font-medium text-center text-Gray-500 hover:text-Gray-800 hover:bg-Gray-200 dark:hover:bg-Gray-700 rounded-lg focus:outline-none dark:text-Gray-400 dark:hover:text-Gray-100">
+                                        <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                        </svg>
+                                    </button>
+                                    <div id="-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-Gray-100 shadow dark:bg-Gray-700 dark:divide-Gray-600">
+                                        <ul class="py-1 text-sm text-Gray-700 dark:text-Gray-200" aria-labelledby="-dropdown-button">
+                                            <li>
+                                                <a href="#" class="block py-2 px-4 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:hover:text-white">Show</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="block py-2 px-4 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:hover:text-white">Edit</a>
+                                            </li>
+                                        </ul>
+                                        <div class="py-1">
+                                            <a href="#" class="block py-2 px-4 text-sm text-Gray-700 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:text-Gray-200 dark:hover:text-white">Delete</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-Gray-200 dark:border-Gray-600 hover:bg-Gray-100 dark:hover:bg-Gray-700">
+                                <td class="px-4 py-2 w-4">
+                                    <div class="flex items-center">
+                                        <input id="checkbox-table-search-1" type="checkbox" onclick="event.stopPropagation()" class="w-4 h-4 text-Primary-600 bg-Gray-100 rounded border-Gray-300 dark:bg-Gray-700 dark:border-Gray-600 focus:ring-0">
+                                        <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                                    </div>
+                                </td>
+                                <th scope="row" class="px-4 py-2 font-medium text-Gray-900 whitespace-nowrap dark:text-white">User flow update</th>
+                                <td class="px-4 py-2 whitespace-nowrap">
+                                    <span class="bg-Green-100 text-Green-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-Green-900 dark:text-Green-300">Completed</span>
+                                </td>
+                                <td class="px-4 py-2 font-medium whitespace-nowrap">
+                                    <div class="flex justify-end mb-1">
+                                        <span class="text-xs font-medium text-Gray-500 dark:text-Gray-400">100%</span>
+                                    </div>
+                                    <div class="w-full bg-Gray-200 rounded-full h-1.5 dark:bg-Gray-700">
+                                        <div class="bg-Green-500 h-1.5 rounded-full" style="width: 100%"></div>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-2 font-medium text-Gray-900 whitespace-nowrap dark:text-white">
+                                    <a href="#" class="font-medium text-Primary-600 dark:text-Primary-500 hover:underline inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewbox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+                                            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+                                        </svg>
+                                        Website
+                                    </a>
+                                </td>
+                                <td class="px-4 py-2 text-Gray-900 whitespace-nowrap dark:text-white">
+                                    <div class="px-2 py-1 border border-Gray-200 dark:border-Gray-600 bg-white dark:bg-Gray-700 rounded-lg text-xs font-medium inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true" class="h-4 w-4 mr-1 text-Gray-400" viewbox="0 0 20 20">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" />
+                                        </svg>
+                                        7:00
+                                        <button class="bg-Green-500 hover:bg-Green-700 text-white p-1 rounded-md ml-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="currentColor" class="w-4 h-4" aria-hidden="true">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-2 whitespace-nowrap font-medium text-Gray-900 dark:text-white text-xs">23 Oct 2022</td>
+                                <td class="px-4 py-2">
+                                    <button id="-dropdown-button" type="button" data-dropdown-toggle="-dropdown" class="inline-flex items-center p-1 text-sm font-medium text-center text-Gray-500 hover:text-Gray-800 hover:bg-Gray-200 dark:hover:bg-Gray-700 rounded-lg focus:outline-none dark:text-Gray-400 dark:hover:text-Gray-100">
+                                        <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                        </svg>
+                                    </button>
+                                    <div id="-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-Gray-100 shadow dark:bg-Gray-700 dark:divide-Gray-600">
+                                        <ul class="py-1 text-sm text-Gray-700 dark:text-Gray-200" aria-labelledby="-dropdown-button">
+                                            <li>
+                                                <a href="#" class="block py-2 px-4 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:hover:text-white">Show</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="block py-2 px-4 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:hover:text-white">Edit</a>
+                                            </li>
+                                        </ul>
+                                        <div class="py-1">
+                                            <a href="#" class="block py-2 px-4 text-sm text-Gray-700 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:text-Gray-200 dark:hover:text-white">Delete</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-Gray-200 dark:border-Gray-600 hover:bg-Gray-100 dark:hover:bg-Gray-700">
+                                <td class="px-4 py-2 w-4">
+                                    <div class="flex items-center">
+                                        <input id="checkbox-table-search-1" type="checkbox" onclick="event.stopPropagation()" class="w-4 h-4 text-Primary-600 bg-Gray-100 rounded border-Gray-300 dark:bg-Gray-700 dark:border-Gray-600 focus:ring-0">
+                                        <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                                    </div>
+                                </td>
+                                <th scope="row" class="px-4 py-2 font-medium text-Gray-900 whitespace-nowrap dark:text-white">Update design system</th>
+                                <td class="px-4 py-2 whitespace-nowrap">
+                                    <span class="bg-Yellow-100 text-Yellow-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-Yellow-900 dark:text-Yellow-300">In review</span>
+                                </td>
+                                <td class="px-4 py-2 font-medium whitespace-nowrap">
+                                    <div class="flex justify-end mb-1">
+                                        <span class="text-xs font-medium text-Gray-500 dark:text-Gray-400">100%</span>
+                                    </div>
+                                    <div class="w-full bg-Gray-200 rounded-full h-1.5 dark:bg-Gray-700">
+                                        <div class="bg-Yellow-300 h-1.5 rounded-full" style="width: 100%"></div>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-2 font-medium text-Gray-900 whitespace-nowrap dark:text-white">
+                                    <a href="#" class="font-medium text-Primary-600 dark:text-Primary-500 hover:underline inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewbox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+                                            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+                                        </svg>
+                                        Website
+                                    </a>
+                                </td>
+                                <td class="px-4 py-2 text-Gray-900 whitespace-nowrap dark:text-white">
+                                    <div class="px-2 py-1 border border-Gray-200 dark:border-Gray-600 bg-white dark:bg-Gray-700 rounded-lg text-xs font-medium inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true" class="h-4 w-4 mr-1 text-Gray-400" viewbox="0 0 20 20">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" />
+                                        </svg>
+                                        7:00
+                                        <button class="bg-Green-500 hover:bg-Green-700 text-white p-1 rounded-md ml-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="currentColor" class="w-4 h-4" aria-hidden="true">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-2 whitespace-nowrap font-medium text-Gray-900 dark:text-white text-xs">02 Now 2022</td>
+                                <td class="px-4 py-2">
+                                    <button id="-dropdown-button" type="button" data-dropdown-toggle="-dropdown" class="inline-flex items-center p-1 text-sm font-medium text-center text-Gray-500 hover:text-Gray-800 hover:bg-Gray-200 dark:hover:bg-Gray-700 rounded-lg focus:outline-none dark:text-Gray-400 dark:hover:text-Gray-100">
+                                        <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                        </svg>
+                                    </button>
+                                    <div id="-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-Gray-100 shadow dark:bg-Gray-700 dark:divide-Gray-600">
+                                        <ul class="py-1 text-sm text-Gray-700 dark:text-Gray-200" aria-labelledby="-dropdown-button">
+                                            <li>
+                                                <a href="#" class="block py-2 px-4 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:hover:text-white">Show</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="block py-2 px-4 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:hover:text-white">Edit</a>
+                                            </li>
+                                        </ul>
+                                        <div class="py-1">
+                                            <a href="#" class="block py-2 px-4 text-sm text-Gray-700 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:text-Gray-200 dark:hover:text-white">Delete</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-Gray-200 dark:border-Gray-600 hover:bg-Gray-100 dark:hover:bg-Gray-700">
+                                <td class="px-4 py-2 w-4">
+                                    <div class="flex items-center">
+                                        <input id="checkbox-table-search-1" type="checkbox" onclick="event.stopPropagation()" class="w-4 h-4 text-Primary-600 bg-Gray-100 rounded border-Gray-300 dark:bg-Gray-700 dark:border-Gray-600 focus:ring-0">
+                                        <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                                    </div>
+                                </td>
+                                <th scope="row" class="px-4 py-2 font-medium text-Gray-900 whitespace-nowrap dark:text-white">Create a new logo</th>
+                                <td class="px-4 py-2 whitespace-nowrap">
+                                    <span class="bg-Green-100 text-Green-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-Green-900 dark:text-Green-300">Completed</span>
+                                </td>
+                                <td class="px-4 py-2 font-medium whitespace-nowrap">
+                                    <div class="flex justify-end mb-1">
+                                        <span class="text-xs font-medium text-Gray-500 dark:text-Gray-400">100%</span>
+                                    </div>
+                                    <div class="w-full bg-Gray-200 rounded-full h-1.5 dark:bg-Gray-700">
+                                        <div class="bg-Green-500 h-1.5 rounded-full" style="width: 100%"></div>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-2 font-medium text-Gray-900 whitespace-nowrap dark:text-white">
+                                    <a href="#" class="font-medium text-Primary-600 dark:text-Primary-500 hover:underline inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewbox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+                                            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+                                        </svg>
+                                        Website
+                                    </a>
+                                </td>
+                                <td class="px-4 py-2 text-Gray-900 whitespace-nowrap dark:text-white">
+                                    <div class="px-2 py-1 border border-Gray-200 dark:border-Gray-600 bg-white dark:bg-Gray-700 rounded-lg text-xs font-medium inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true" class="h-4 w-4 mr-1 text-Gray-400" viewbox="0 0 20 20">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" />
+                                        </svg>
+                                        5:00
+                                        <button class="bg-Green-500 hover:bg-Green-700 text-white p-1 rounded-md ml-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="currentColor" class="w-4 h-4" aria-hidden="true">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-2 whitespace-nowrap font-medium text-Gray-900 dark:text-white text-xs">30 Oct 2022</td>
+                                <td class="px-4 py-2">
+                                    <button id="-dropdown-button" type="button" data-dropdown-toggle="-dropdown" class="inline-flex items-center p-1 text-sm font-medium text-center text-Gray-500 hover:text-Gray-800 hover:bg-Gray-200 dark:hover:bg-Gray-700 rounded-lg focus:outline-none dark:text-Gray-400 dark:hover:text-Gray-100">
+                                        <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                        </svg>
+                                    </button>
+                                    <div id="-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-Gray-100 shadow dark:bg-Gray-700 dark:divide-Gray-600">
+                                        <ul class="py-1 text-sm text-Gray-700 dark:text-Gray-200" aria-labelledby="-dropdown-button">
+                                            <li>
+                                                <a href="#" class="block py-2 px-4 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:hover:text-white">Show</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="block py-2 px-4 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:hover:text-white">Edit</a>
+                                            </li>
+                                        </ul>
+                                        <div class="py-1">
+                                            <a href="#" class="block py-2 px-4 text-sm text-Gray-700 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:text-Gray-200 dark:hover:text-white">Delete</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-Gray-200 dark:border-Gray-600 hover:bg-Gray-100 dark:hover:bg-Gray-700">
+                                <td class="px-4 py-2 w-4">
+                                    <div class="flex items-center">
+                                        <input id="checkbox-table-search-1" type="checkbox" onclick="event.stopPropagation()" class="w-4 h-4 text-Primary-600 bg-Gray-100 rounded border-Gray-300 dark:bg-Gray-700 dark:border-Gray-600 focus:ring-0">
+                                        <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                                    </div>
+                                </td>
+                                <th scope="row" class="px-4 py-2 font-medium text-Gray-900 whitespace-nowrap dark:text-white">Screen structure</th>
+                                <td class="px-4 py-2 whitespace-nowrap">
+                                    <span class="bg-Yellow-100 text-Yellow-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-Yellow-900 dark:text-Yellow-300">In review</span>
+                                </td>
+                                <td class="px-4 py-2 font-medium whitespace-nowrap">
+                                    <div class="flex justify-end mb-1">
+                                        <span class="text-xs font-medium text-Gray-500 dark:text-Gray-400">100%</span>
+                                    </div>
+                                    <div class="w-full bg-Gray-200 rounded-full h-1.5 dark:bg-Gray-700">
+                                        <div class="bg-Yellow-300 h-1.5 rounded-full" style="width: 100%"></div>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-2 font-medium text-Gray-900 whitespace-nowrap dark:text-white">
+                                    <a href="#" class="font-medium text-Primary-600 dark:text-Primary-500 hover:underline inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewbox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+                                            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+                                        </svg>
+                                        Website
+                                    </a>
+                                </td>
+                                <td class="px-4 py-2 text-Gray-900 whitespace-nowrap dark:text-white">
+                                    <div class="px-2 py-1 border border-Gray-200 dark:border-Gray-600 bg-white dark:bg-Gray-700 rounded-lg text-xs font-medium inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true" class="h-4 w-4 mr-1 text-Gray-400" viewbox="0 0 20 20">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" />
+                                        </svg>
+                                        2:00
+                                        <button class="bg-Green-500 hover:bg-Green-700 text-white p-1 rounded-md ml-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="currentColor" class="w-4 h-4" aria-hidden="true">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-2 whitespace-nowrap font-medium text-Gray-900 dark:text-white text-xs">23 Nov 2022</td>
+                                <td class="px-4 py-2">
+                                    <button id="-dropdown-button" type="button" data-dropdown-toggle="-dropdown" class="inline-flex items-center p-1 text-sm font-medium text-center text-Gray-500 hover:text-Gray-800 hover:bg-Gray-200 dark:hover:bg-Gray-700 rounded-lg focus:outline-none dark:text-Gray-400 dark:hover:text-Gray-100">
+                                        <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                        </svg>
+                                    </button>
+                                    <div id="-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-Gray-100 shadow dark:bg-Gray-700 dark:divide-Gray-600">
+                                        <ul class="py-1 text-sm text-Gray-700 dark:text-Gray-200" aria-labelledby="-dropdown-button">
+                                            <li>
+                                                <a href="#" class="block py-2 px-4 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:hover:text-white">Show</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="block py-2 px-4 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:hover:text-white">Edit</a>
+                                            </li>
+                                        </ul>
+                                        <div class="py-1">
+                                            <a href="#" class="block py-2 px-4 text-sm text-Gray-700 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:text-Gray-200 dark:hover:text-white">Delete</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-Gray-200 dark:border-Gray-600 hover:bg-Gray-100 dark:hover:bg-Gray-700">
+                                <td class="px-4 py-2 w-4">
+                                    <div class="flex items-center">
+                                        <input id="checkbox-table-search-1" type="checkbox" onclick="event.stopPropagation()" class="w-4 h-4 text-Primary-600 bg-Gray-100 rounded border-Gray-300 dark:bg-Gray-700 dark:border-Gray-600 focus:ring-0">
+                                        <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                                    </div>
+                                </td>
+                                <th scope="row" class="px-4 py-2 font-medium text-Gray-900 whitespace-nowrap dark:text-white">Implement GPT 3</th>
+                                <td class="px-4 py-2 whitespace-nowrap">
+                                    <span class="bg-Blue-100 text-Blue-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-Blue-900 dark:text-Blue-300">In progress</span>
+                                </td>
+                                <td class="px-4 py-2 font-medium whitespace-nowrap">
+                                    <div class="flex justify-end mb-1">
+                                        <span class="text-xs font-medium text-Gray-500 dark:text-Gray-400">25%</span>
+                                    </div>
+                                    <div class="w-full bg-Gray-200 rounded-full h-1.5 dark:bg-Gray-700">
+                                        <div class="bg-Primary-600 h-1.5 rounded-full" style="width: 25%"></div>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-2 font-medium text-Gray-900 whitespace-nowrap dark:text-white">
+                                    <a href="#" class="font-medium text-Primary-600 dark:text-Primary-500 hover:underline inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewbox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+                                            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+                                        </svg>
+                                        Website
+                                    </a>
+                                </td>
+                                <td class="px-4 py-2 text-Gray-900 whitespace-nowrap dark:text-white">
+                                    <div class="px-2 py-1 border border-Gray-200 dark:border-Gray-600 bg-white dark:bg-Gray-700 rounded-lg text-xs font-medium inline-flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true" class="h-4 w-4 mr-1 text-Gray-400" viewbox="0 0 20 20">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" />
+                                        </svg>
+                                        <span class="text-Green-500">3:11</span>
+                                        /8:00
+                                        <button class="bg-Orange-500 hover:bg-Orange-700 text-white p-1 rounded-md ml-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="currentColor" class="w-4 h-4" aria-hidden="true">
+                                                <path fill-rule="evenodd" d="M6.75 5.25a.75.75 0 01.75-.75H9a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H7.5a.75.75 0 01-.75-.75V5.25zm7.5 0A.75.75 0 0115 4.5h1.5a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H15a.75.75 0 01-.75-.75V5.25z" clip-rule="evenodd" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-2 whitespace-nowrap font-medium text-Gray-900 dark:text-white text-xs">Today</td>
+                                <td class="px-4 py-2">
+                                    <button id="-dropdown-button" type="button" data-dropdown-toggle="-dropdown" class="inline-flex items-center p-1 text-sm font-medium text-center text-Gray-500 hover:text-Gray-800 hover:bg-Gray-200 dark:hover:bg-Gray-700 rounded-lg focus:outline-none dark:text-Gray-400 dark:hover:text-Gray-100">
+                                        <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                        </svg>
+                                    </button>
+                                    <div id="-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-Gray-100 shadow dark:bg-Gray-700 dark:divide-Gray-600">
+                                        <ul class="py-1 text-sm text-Gray-700 dark:text-Gray-200" aria-labelledby="-dropdown-button">
+                                            <li>
+                                                <a href="#" class="block py-2 px-4 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:hover:text-white">Show</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="block py-2 px-4 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:hover:text-white">Edit</a>
+                                            </li>
+                                        </ul>
+                                        <div class="py-1">
+                                            <a href="#" class="block py-2 px-4 text-sm text-Gray-700 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:text-Gray-200 dark:hover:text-white">Delete</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4" aria-label="Table navigation">
+                    <span class="text-sm font-normal text-Gray-500 dark:text-Gray-400">
+                        Showing
+                        <span class="font-medium text-Gray-900 dark:text-white">1-10</span>
+                        of
+                        <span class="font-medium text-Gray-900 dark:text-white">1000</span>
+                    </span>
+                    <ul class="inline-flex items-stretch -space-x-px">
+                        <li>
+                            <a href="#" class="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-Gray-500 bg-white rounded-l-lg border border-Gray-300 hover:bg-Gray-100 hover:text-Gray-700 dark:border-Gray-700 dark:text-Gray-400 dark:hover:bg-Gray-700 dark:hover:text-white">
+                                <span class="sr-only">Previous</span>
+                                <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-Gray-500 bg-white border border-Gray-300 hover:bg-Gray-100 hover:text-Gray-700 dark:border-Gray-700 dark:text-Gray-400 dark:hover:bg-Gray-700 dark:hover:text-white">1</a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-Gray-500 bg-white border border-Gray-300 hover:bg-Gray-100 hover:text-Gray-700 dark:border-Gray-700 dark:text-Gray-400 dark:hover:bg-Gray-700 dark:hover:text-white">2</a>
+                        </li>
+                        <li>
+                            <a href="#" aria-current="page" class="flex items-center justify-center text-sm z-10 py-2 px-3 leading-tight text-Primary-600 bg-Primary-50 border border-Primary-300 hover:bg-Primary-100 hover:text-Primary-700 dark:border-Gray-700 dark:bg-Gray-700 dark:text-white">3</a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-Gray-500 bg-white border border-Gray-300 hover:bg-Gray-100 hover:text-Gray-700 dark:border-Gray-700 dark:text-Gray-400 dark:hover:bg-Gray-700 dark:hover:text-white">...</a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-Gray-500 bg-white border border-Gray-300 hover:bg-Gray-100 hover:text-Gray-700 dark:border-Gray-700 dark:text-Gray-400 dark:hover:bg-Gray-700 dark:hover:text-white">100</a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-Gray-500 bg-white rounded-r-lg border border-Gray-300 hover:bg-Gray-100 hover:text-Gray-700 dark:border-Gray-700 dark:text-Gray-400 dark:hover:bg-Gray-700 dark:hover:text-white">
+                                <span class="sr-only">Next</span>
+                                <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.js"></script>
+
+    <script>
+        module.exports = {
+            darkMode: 'class',
+            // ...
+        }
+    </script>
+
+</body>
+</html>

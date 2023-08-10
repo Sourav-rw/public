@@ -1,0 +1,411 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="./main.css" rel="stylesheet">
+    <script>
+        localStorage.theme = 'light'
+    </script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                colors: {
+                transparent: 'transparent',
+                current: 'currentColor',
+                'Primary': {
+                    50:  'rgba(72, 130, 159, 0.15)',
+                    100: 'rgba(72, 130, 159, 0.20)',
+                    200: 'rgba(72, 130, 159, 0.30)',
+                    300: 'rgba(72, 130, 159, 0.40)',
+                    400: 'rgba(72, 130, 159, 0.50)',
+                    500: 'rgba(72, 130, 159, 0.60)',
+                    600: 'rgba(72, 130, 159, 0.70)',
+                    700: 'rgba(72, 130, 159, 0.80)',
+                    800: 'rgba(72, 130, 159, 0.90)',
+                    900: '#48829F',
+                },
+                'Gray': {
+                    50:  '#F9FAFB',
+                    100: '#F3F4F6',
+                    200: '#E5E7EB',
+                    300: '#D1D5DB',
+                    400: '#9CA3AF',
+                    500: '#7E7E7E',
+                    600: '#4B5563',
+                    700: '#374151',
+                    800: '#1F2A37',
+                    900: '#111928',
+                },
+                'Blue': {
+                    50:  '#EBF5FF',
+                    100: '#E1EFFE',
+                    200: '#C3DDFD',
+                    300: '#A4CAFE',
+                    400: '#76A9FA',
+                    500: '#3F83F8',
+                    600: '#1C64F2',
+                    700: '#1A56DB',
+                    800: '#1E429F',
+                    900: '#1E429F',
+                },
+                'Red': {
+                    50:  '#FDF2F2',
+                    100: '#FDE8E8',
+                    200: '#FBD5D5',
+                    300: '#F8B4B4',
+                    400: '#F98080',
+                    500: '#F05252',
+                    600: '#E02424',
+                    700: '#C81E1E',
+                    800: '#9B1C1C',
+                    900: '#771D1D',
+                },
+                'Orange': {
+                    50: '#fff8f1',
+                    100: '#feecdc',
+                    200: '#fcd9bd',
+                    300: '#fdba8c',
+                    400: '#ff8a4c',
+                    500: '#ff5a1f',
+                    600: '#d03801',
+                    700: '#b43403',
+                    800: '#8a2c0d',
+                    900: '#771d1d',
+                },
+                'Yellow': {
+                    50:  '#fdfdea',
+                    100: '#fdf6b2',
+                    200: '#fce96a',
+                    300: '#faca15',
+                    400: '#e3a008',
+                    500: '#c27803',
+                    600: '#9f580a',
+                    700: '#8e4b10',
+                    800: '#723b13',
+                    900: '#633112',
+                },
+                'Green': {
+                    50:  '#f3faf7',
+                    100: '#def7ec',
+                    200: '#bcf0da',
+                    300: '#84e1bc',
+                    400: '#31c48d',
+                    500: '#0e9f6e',
+                    600: '#057a55',
+                    700: '#046c4e',
+                    800: '#03543f',
+                    900: '#014737',
+                },
+                'Teal': {
+                    50:  '#edfafa',
+                    100: '#d5f5f6',
+                    200: '#afecef',
+                    300: '#7edce2',
+                    400: '#16bdca',
+                    500: '#0694a2',
+                    600: '#047481',
+                    700: '#036672',
+                    800: '#05505c',
+                    900: '#014451',
+                },
+                'Indigo': {
+                    50:  '#f0f5ff',
+                    100: '#e5edff',
+                    200: '#cddbfe',
+                    300: '#b4c6fc',
+                    400: '#8da2fb',
+                    500: '#6875f5',
+                    600: '#5850ec',
+                    700: '#5145cd',
+                    800: '#42389d',
+                    900: '#362f78',
+                },
+                'Purple': {
+                    50:  '#f6f5ff',
+                    100: '#edebfe',
+                    200: '#dcd7fe',
+                    300: '#cabffd',
+                    400: '#ac94fa',
+                    500: '#9061f9',
+                    600: '#7e3af2',
+                    700: '#6c2bd9',
+                    800: '#5521b5',
+                    900: '#4a1d96',
+                },
+                'Pink': {
+                    50:  '#fdf2f8',
+                    100: '#fce8f3',
+                    200: '#fad1e8',
+                    300: '#f8b4d9',
+                    400: '#f17eb8',
+                    500: '#e74694',
+                    600: '#d61f69',
+                    700: '#bf125d',
+                    800: '#99154b',
+                    900: '#751a3d',
+                },
+                // ...
+                },
+            },
+        }
+    </script>
+
+</head>
+<body class="flex flex-col items-center justify-center w-full h-full fixed">
+
+    <section class="sign-in w-full h-full flex items-center justify-center">
+
+
+    <!--login on popup - button set HIDDEN for now, remove HIDDEN to use-->
+
+    <!-- Modal toggle -->
+    <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="hidden block text-white bg-Primary-700 hover:bg-Primary-800 focus:ring-0 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center " type="button">
+        Toggle modal
+    </button>
+    
+    <!-- Main modal -->
+    <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative w-full max-w-md max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow">
+                <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center" data-modal-hide="authentication-modal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+                <div class="px-6 py-6 lg:px-8">
+                    <h3 class="mb-4 text-xl font-medium text-gray-900">Sign in to our platform</h3>
+                    <form class="space-y-6" action="#">
+                        <div>
+                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your email</label>
+                            <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-Primary-500 block w-full p-2.5" placeholder="name@company.com" required>
+                        </div>
+                        <div>
+                            <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Your password</label>
+                            <input type="password" name="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-Primary-500 block w-full p-2.5" required>
+                        </div>
+                        <div class="flex justify-between">
+                            <div class="flex items-start">
+                                <div class="flex items-center h-5">
+                                    <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-0" required>
+                                </div>
+                                <label for="remember" class="ml-2 mt-0.5 text-sm font-medium text-gray-900">Remember me</label>
+                            </div>
+                            <a href="#" class="text-sm text-Primary-700 hover:underline">Lost Password?</a>
+                        </div>
+                        <button type="submit" class="w-full text-white bg-Primary-700 hover:bg-Primary-800 focus:ring-0 focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center ">Create account</button>
+                        <div class="text-sm font-medium text-gray-500">
+                            Not registered? <a href="#" class="text-Primary-700 hover:underline">Create account</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+    <!--login on popup - button set HIDDEN for now, remove HIDDEN to use-->
+
+
+    <!--login on normal screen in the container-->
+
+    <div class="relative w-[400px] max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow">
+            <!--<button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center" data-modal-hide="authentication-modal">
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                </svg>
+                <span class="sr-only">Close modal</span>
+            </button>-->
+            <div class="px-6 py-6 lg:px-8">
+                <h3 class="mb-4 text-xl font-medium text-gray-900 text-center">Sign in to Aetas</h3>
+                <form id="signinForm" class="space-y-6" action="#">
+                    <div>
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your email</label>
+                        <div class="form-field relative w-full h-full">
+                            <input type="email" name="email" id="username" class="bg-gray-50 border border-gray-300 text-Primary-900 text-sm rounded-lg focus:ring-0 focus:border-Primary-500 focus:bg-Green-50 block w-full p-2.5" placeholder="name@company.com" required>
+                            <div class="entry-right absolute top-[12px] right-[16px]">
+                                <svg class="shrink-0 relative overflow-visible" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.40033 10.7757L6.04677 10.4222L3.41619 7.7916C3.35987 7.73839 3.28511 7.709 3.20755 7.70967C3.12889 7.71035 3.05365 7.74191 2.99802 7.79753C2.9424 7.85315 2.91085 7.92839 2.91017 8.00705C2.90949 8.08461 2.93888 8.15937 2.99209 8.21569L6.18823 11.4118C6.18824 11.4118 6.18826 11.4119 6.18828 11.4119C6.24453 11.4681 6.3208 11.4997 6.40033 11.4997C6.47985 11.4997 6.55612 11.4681 6.61237 11.4119L6.61243 11.4118M6.40033 10.7757L6.96593 11.7654L6.61243 11.4118M6.40033 10.7757L6.75388 10.4222L12.5882 4.58784L12.2348 4.23429L12.5883 4.58778C12.6445 4.53157 12.7208 4.5 12.8003 4.5C12.8798 4.5 12.9561 4.53155 13.0123 4.58773M6.40033 10.7757L13.0124 5.01188C13.0686 4.95562 13.1002 4.87935 13.1002 4.79983C13.1002 4.72033 13.0686 4.64408 13.0124 4.58784M6.61243 11.4118L13.0123 5.01193L6.61243 11.4118ZM13.0124 4.58784L13.3659 4.23425L13.0123 4.58773M13.0124 4.58784C13.0124 4.58782 13.0124 4.5878 13.0124 4.58778M13.0124 4.58784C13.0124 4.58782 13.0124 4.5878 13.0124 4.58778M13.0123 4.58773C13.0123 4.58775 13.0124 4.58776 13.0124 4.58778M13.0123 4.58773L13.0124 4.58778" fill="#111928" stroke="#29813D" />
+                                </svg>
+                            </div>
+                            <div class="entry-error text-Red-500 text-sm text-sm mt-1">
+                                Please enter a valid Username
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Your password</label>
+                        <div class="form-field relative w-full h-full">
+                            <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-Primary-900 text-sm rounded-lg focus:ring-0 focus:border-Primary-500 focus:bg-Green-50 block w-full p-2.5" required>
+                            <div class="entry-right absolute top-[12px] right-[16px]">
+                                <svg class="shrink-0 relative overflow-visible" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.40033 10.7757L6.04677 10.4222L3.41619 7.7916C3.35987 7.73839 3.28511 7.709 3.20755 7.70967C3.12889 7.71035 3.05365 7.74191 2.99802 7.79753C2.9424 7.85315 2.91085 7.92839 2.91017 8.00705C2.90949 8.08461 2.93888 8.15937 2.99209 8.21569L6.18823 11.4118C6.18824 11.4118 6.18826 11.4119 6.18828 11.4119C6.24453 11.4681 6.3208 11.4997 6.40033 11.4997C6.47985 11.4997 6.55612 11.4681 6.61237 11.4119L6.61243 11.4118M6.40033 10.7757L6.96593 11.7654L6.61243 11.4118M6.40033 10.7757L6.75388 10.4222L12.5882 4.58784L12.2348 4.23429L12.5883 4.58778C12.6445 4.53157 12.7208 4.5 12.8003 4.5C12.8798 4.5 12.9561 4.53155 13.0123 4.58773M6.40033 10.7757L13.0124 5.01188C13.0686 4.95562 13.1002 4.87935 13.1002 4.79983C13.1002 4.72033 13.0686 4.64408 13.0124 4.58784M6.61243 11.4118L13.0123 5.01193L6.61243 11.4118ZM13.0124 4.58784L13.3659 4.23425L13.0123 4.58773M13.0124 4.58784C13.0124 4.58782 13.0124 4.5878 13.0124 4.58778M13.0124 4.58784C13.0124 4.58782 13.0124 4.5878 13.0124 4.58778M13.0123 4.58773C13.0123 4.58775 13.0124 4.58776 13.0124 4.58778M13.0123 4.58773L13.0124 4.58778" fill="#111928" stroke="#29813D" />
+                                </svg>
+                            </div>
+                            <div class="entry-error text-Red-500 text-sm mt-1">
+                                Please enter a valid Password ( At least 8 characters long, Contains at least one uppercase letter, Contains at least one lowercase letter, Contains at least one digit. )
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between">
+                        <div class="flex items-start">
+                            <div class="flex items-center h-5">
+                                <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-0 focus:bg-Primary-900" required>
+                            </div>
+                            <label for="remember" class="ml-2 mt-0.5 text-sm font-medium text-gray-900">Remember me</label>
+                        </div>
+                        <a href="#" class="text-sm text-Primary-700 hover:underline">Lost Password?</a>
+                    </div>
+
+                    <button id="submitBtn" type="submit" formaction="health-intelligence-subset-folder.html" class="flex justify-center items-center w-full focus:ring-0 focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center">Sign In Now
+                        <svg class="submit-ico shrink-0 relative overflow-visible ml-[8px] mt-[-1px]" width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.5 10.4998H2.5Z" fill="white" />
+                            <path d="M11.6667 4.6665L17.5 10.4998M17.5 10.4998L11.6667 16.3332M17.5 10.4998H2.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+
+                    <!--<button id="submitBtn" type="submit" formaction="health-intelligence-subset-folder.html" class="btn-before-entry cursor-not-allowed w-full text-Gray-400 border-2 border-Gray-200 bg-Gray-200 hover:bg-Gray-200 hover:border-Gray-200 focus:border-Gray-200 focus:ring-0 focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center">Sign In Now</button>
+
+                    <button type="submit" formaction="health-intelligence-subset-folder.html" class="btn-after-correct-entry flex justify-center items-center w-full text-white border-2 border-Primary-50 bg-Primary-700 hover:bg-Primary-800 hover:border-Primary-100 focus:border-Primary-50 focus:ring-0 focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center">Sign In Now
+                        <svg class="shrink-0 relative overflow-visible ml-[8px] mt-[-1px]" width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.5 10.4998H2.5Z" fill="white" />
+                            <path d="M11.6667 4.6665L17.5 10.4998M17.5 10.4998L11.6667 16.3332M17.5 10.4998H2.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>-->
+                    
+                    <div class="text-sm font-medium text-gray-500 text-center mt-4">
+                        Not registered? <a href="#" class="text-Primary-600 hover:underline">Create account</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--login on normal screen in the container-->
+  
+    </section>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.js"></script>
+
+    <script src="jquery-3.6.0.min.js"></script>
+
+
+
+    <!--sign in-->
+    <script>
+        $(document).ready(function() {
+
+            // Function to validate email
+            function validateEmail(email) {
+                // Simple email validation using regular expression
+                var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailPattern.test(email);
+            }
+
+            
+            
+
+            // Email input blur event (when it loses focus)
+            $("#username").keydown(function() {
+                var emailValue = $(this).val();
+                if (!validateEmail(emailValue)) {
+                    $(this).parent().removeClass('show-success');
+                    $(this).parent().addClass('show-error-msg');
+                }
+
+                else{
+                    $(this).parent().addClass('show-success');
+                    $(this).parent().removeClass('show-error-msg');
+                }
+
+                updateSubmitButton();
+
+            });
+
+
+            // Function to validate password
+            function validatePassword(password) {
+                var passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+                return passwordPattern.test(password);
+            }
+
+            $("#password").keyup(function() {
+                console.log('test')
+                
+                var passwordValue = $(this).val();
+                if (!validatePassword(passwordValue)) {
+                    $(this).parent().removeClass('show-success');
+                    $(this).parent().addClass('show-error-msg');
+                } else {
+                    $(this).parent().addClass('show-success');
+                    $(this).parent().removeClass('show-error-msg');
+                }
+
+                updateSubmitButton();
+            });
+
+
+            // Function to update the submit button based on the validity of email and password
+            function updateSubmitButton() {
+                var emailIsValid = validateEmail($("#username").val());
+                var passwordIsValid = validatePassword($("#password").val());
+
+                if (passwordIsValid) {
+                    $("#submitBtn").addClass('success');
+                    console.log('submit 1')
+                } else {
+                    $("#submitBtn").removeClass('success');
+                    console.log('submit 2')
+                }
+            }
+
+
+
+
+
+          $("#signinForm").submit(function(event) {
+            event.preventDefault(); // Prevent form submission for now
+        
+            // Get form data
+            var formData = {
+              username: $("#username").val(),
+              password: $("#password").val()
+            };
+        
+            // Reset classes and error messages
+            $("#errorMessages").text("");
+            $("input").removeClass("error success");
+        
+            // Form validation
+            if (formData.username.trim() === "") {
+            $("#username").addClass("error");
+            $(this).parent(".form-field").addClass('show-error-msg');
+            }
+        
+            if (formData.password.trim() === "") {
+            $("#password").addClass("error");
+            $(this).parent(".form-field").addClass('show-error-msg');
+            }
+        
+            if (formData.username.trim() !== "" && formData.password.trim() !== "") {
+            // Form is valid, you can process the sign-in here
+            // For demonstration purposes, we will add a success message and classes
+            $("input").removeClass("error").addClass("success");
+            $(this).parent(".form-field").addClass('show-success');
+            $("#submitBtn").addClass("success");
+            }
+          });
+        });
+        </script>
+    <!--sign in-->
+
+</body>
+</html>

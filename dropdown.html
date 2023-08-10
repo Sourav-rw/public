@@ -1,0 +1,382 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="main.css" rel="stylesheet">
+    <script>
+        localStorage.theme = 'light'
+    </script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                colors: {
+                transparent: 'transparent',
+                current: 'currentColor',
+                'Primary': {
+                    50:  'rgba(72, 130, 159, 0.15)',
+                    100: 'rgba(72, 130, 159, 0.20)',
+                    200: 'rgba(72, 130, 159, 0.30)',
+                    300: 'rgba(72, 130, 159, 0.40)',
+                    400: 'rgba(72, 130, 159, 0.50)',
+                    500: 'rgba(72, 130, 159, 0.60)',
+                    600: 'rgba(72, 130, 159, 0.70)',
+                    700: 'rgba(72, 130, 159, 0.80)',
+                    800: 'rgba(72, 130, 159, 0.90)',
+                    900: '#48829F',
+                },
+                'Gray': {
+                    50:  '#F9FAFB',
+                    100: '#F3F4F6',
+                    200: '#E5E7EB',
+                    300: '#D1D5DB',
+                    400: '#9CA3AF',
+                    500: '#7E7E7E',
+                    600: '#4B5563',
+                    700: '#374151',
+                    800: '#1F2A37',
+                    900: '#111928',
+                },
+                'Blue': {
+                    50:  '#EBF5FF',
+                    100: '#E1EFFE',
+                    200: '#C3DDFD',
+                    300: '#A4CAFE',
+                    400: '#76A9FA',
+                    500: '#3F83F8',
+                    600: '#1C64F2',
+                    700: '#1A56DB',
+                    800: '#1E429F',
+                    900: '#1E429F',
+                },
+                'Red': {
+                    50:  '#FDF2F2',
+                    100: '#FDE8E8',
+                    200: '#FBD5D5',
+                    300: '#F8B4B4',
+                    400: '#F98080',
+                    500: '#F05252',
+                    600: '#E02424',
+                    700: '#C81E1E',
+                    800: '#9B1C1C',
+                    900: '#771D1D',
+                },
+                'Orange': {
+                    50: '#fff8f1',
+                    100: '#feecdc',
+                    200: '#fcd9bd',
+                    300: '#fdba8c',
+                    400: '#ff8a4c',
+                    500: '#ff5a1f',
+                    600: '#d03801',
+                    700: '#b43403',
+                    800: '#8a2c0d',
+                    900: '#771d1d',
+                },
+                'Yellow': {
+                    50:  '#fdfdea',
+                    100: '#fdf6b2',
+                    200: '#fce96a',
+                    300: '#faca15',
+                    400: '#e3a008',
+                    500: '#c27803',
+                    600: '#9f580a',
+                    700: '#8e4b10',
+                    800: '#723b13',
+                    900: '#633112',
+                },
+                'Green': {
+                    50:  '#f3faf7',
+                    100: '#def7ec',
+                    200: '#bcf0da',
+                    300: '#84e1bc',
+                    400: '#31c48d',
+                    500: '#0e9f6e',
+                    600: '#057a55',
+                    700: '#046c4e',
+                    800: '#03543f',
+                    900: '#014737',
+                },
+                'Teal': {
+                    50:  '#edfafa',
+                    100: '#d5f5f6',
+                    200: '#afecef',
+                    300: '#7edce2',
+                    400: '#16bdca',
+                    500: '#0694a2',
+                    600: '#047481',
+                    700: '#036672',
+                    800: '#05505c',
+                    900: '#014451',
+                },
+                'Indigo': {
+                    50:  '#f0f5ff',
+                    100: '#e5edff',
+                    200: '#cddbfe',
+                    300: '#b4c6fc',
+                    400: '#8da2fb',
+                    500: '#6875f5',
+                    600: '#5850ec',
+                    700: '#5145cd',
+                    800: '#42389d',
+                    900: '#362f78',
+                },
+                'Purple': {
+                    50:  '#f6f5ff',
+                    100: '#edebfe',
+                    200: '#dcd7fe',
+                    300: '#cabffd',
+                    400: '#ac94fa',
+                    500: '#9061f9',
+                    600: '#7e3af2',
+                    700: '#6c2bd9',
+                    800: '#5521b5',
+                    900: '#4a1d96',
+                },
+                'Pink': {
+                    50:  '#fdf2f8',
+                    100: '#fce8f3',
+                    200: '#fad1e8',
+                    300: '#f8b4d9',
+                    400: '#f17eb8',
+                    500: '#e74694',
+                    600: '#d61f69',
+                    700: '#bf125d',
+                    800: '#99154b',
+                    900: '#751a3d',
+                },
+                // ...
+                },
+            },
+        }
+    </script>
+
+</head>
+<body class="flex items-center justify-between">
+
+    <section class="flex justify-center dropdown-from-default-button w-6/12">
+        <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white bg-Primary-800 hover:bg-Primary-600 border-4 border-Blue-200 focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-Primary-600 dark:hover:bg-Primary-700" type="button">Menu 
+            <svg class="chevron-down ml-2.5" width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M5.29303 7.79296C5.48056 7.60549 5.73487 7.50017 6.00003 7.50017C6.26519 7.50017 6.5195 7.60549 6.70703 7.79296L10 11.086L13.293 7.79296C13.3853 7.69745 13.4956 7.62127 13.6176 7.56886C13.7396 7.51645 13.8709 7.48886 14.0036 7.48771C14.1364 7.48655 14.2681 7.51186 14.391 7.56214C14.5139 7.61242 14.6255 7.68667 14.7194 7.78056C14.8133 7.87446 14.8876 7.98611 14.9379 8.10901C14.9881 8.2319 15.0134 8.36358 15.0123 8.49636C15.0111 8.62914 14.9835 8.76036 14.9311 8.88236C14.8787 9.00437 14.8025 9.11471 14.707 9.20696L10.707 13.207C10.5195 13.3944 10.2652 13.4997 10 13.4997C9.73487 13.4997 9.48056 13.3944 9.29303 13.207L5.29303 9.20696C5.10556 9.01943 5.00024 8.76512 5.00024 8.49996C5.00024 8.23479 5.10556 7.98049 5.29303 7.79296V7.79296Z" fill="white" />
+            </svg>
+        </button>
+        <!-- Dropdown menu -->
+        <div id="dropdown" class="w-48 z-10 hidden bg-white divide-y divide-Gray-100 rounded-lg shadow dark:bg-Gray-700">
+            <ul class="py-2 text-sm text--Gray-700 dark:text-Gray-200" aria-labelledby="dropdownDefaultButton">
+                <li>
+                    <a href="#" class="relative w-full flex px-5 py-2 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:hover:text-white">
+                        <svg class="user-add" width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.20005 8.59995C7.91613 8.59995 8.60289 8.31549 9.10924 7.80914C9.61559 7.30279 9.90005 6.61604 9.90005 5.89995C9.90005 5.18387 9.61559 4.49711 9.10924 3.99076C8.60289 3.48441 7.91613 3.19995 7.20005 3.19995C6.48396 3.19995 5.79721 3.48441 5.29086 3.99076C4.78451 4.49711 4.50005 5.18387 4.50005 5.89995C4.50005 6.61604 4.78451 7.30279 5.29086 7.80914C5.79721 8.31549 6.48396 8.59995 7.20005 8.59995ZM7.20005 10.4C8.63222 10.4 10.0057 10.9689 11.0184 11.9816C12.0311 12.9943 12.6 14.3678 12.6 15.8H1.80005C1.80005 14.3678 2.36898 12.9943 3.38167 11.9816C4.39437 10.9689 5.76788 10.4 7.20005 10.4ZM14.4 6.79995C14.4 6.56126 14.3052 6.33234 14.1364 6.16356C13.9677 5.99477 13.7387 5.89995 13.5 5.89995C13.2614 5.89995 13.0324 5.99477 12.8637 6.16356C12.6949 6.33234 12.6 6.56126 12.6 6.79995V7.69995H11.7C11.4614 7.69995 11.2324 7.79477 11.0637 7.96356C10.8949 8.13234 10.8 8.36126 10.8 8.59995C10.8 8.83865 10.8949 9.06756 11.0637 9.23635C11.2324 9.40513 11.4614 9.49995 11.7 9.49995H12.6V10.4C12.6 10.6386 12.6949 10.8676 12.8637 11.0363C13.0324 11.2051 13.2614 11.3 13.5 11.3C13.7387 11.3 13.9677 11.2051 14.1364 11.0363C14.3052 10.8676 14.4 10.6386 14.4 10.4V9.49995H15.3C15.5387 9.49995 15.7677 9.40513 15.9364 9.23635C16.1052 9.06756 16.2 8.83865 16.2 8.59995C16.2 8.36126 16.1052 8.13234 15.9364 7.96356C15.7677 7.79477 15.5387 7.69995 15.3 7.69995H14.4V6.79995Z" fill="#7E7E7E" />
+                        </svg> 
+                        <span class="pl-3">First Action</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="relative w-full flex block px-5 py-2 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:hover:text-white">
+                        <svg class="inbox-in" width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.83628 7.06375C7.66653 6.89981 7.43919 6.80909 7.20322 6.81114C6.96724 6.81319 6.74151 6.90784 6.57464 7.07471C6.40777 7.24158 6.31312 7.46731 6.31107 7.70329C6.30902 7.93927 6.39973 8.16661 6.56368 8.33635L8.36368 10.1363C8.53245 10.3051 8.76133 10.3999 8.99998 10.3999C9.23862 10.3999 9.4675 10.3051 9.63628 10.1363L11.4363 8.33635C11.6002 8.16661 11.6909 7.93927 11.6889 7.70329C11.6868 7.46731 11.5922 7.24158 11.4253 7.07471C11.2584 6.90784 11.0327 6.81319 10.7967 6.81114C10.5608 6.80909 10.3334 6.89981 10.1637 7.06375L9.89998 7.32745V3.20005C9.89998 2.96135 9.80515 2.73244 9.63637 2.56365C9.46759 2.39487 9.23867 2.30005 8.99998 2.30005C8.76128 2.30005 8.53236 2.39487 8.36358 2.56365C8.1948 2.73244 8.09998 2.96135 8.09998 3.20005V7.32745L7.83628 7.06375Z" fill="#7E7E7E" />
+                            <path d="M2.69995 4.99995C2.69995 4.52256 2.88959 4.06472 3.22716 3.72716C3.56472 3.38959 4.02256 3.19995 4.49995 3.19995H5.39995C5.63865 3.19995 5.86756 3.29477 6.03635 3.46356C6.20513 3.63234 6.29995 3.86126 6.29995 4.09995C6.29995 4.33865 6.20513 4.56756 6.03635 4.73635C5.86756 4.90513 5.63865 4.99995 5.39995 4.99995H4.49995V11.3H6.29995L7.19995 13.1H10.8L11.7 11.3H13.5V4.99995H12.6C12.3613 4.99995 12.1323 4.90513 11.9636 4.73635C11.7948 4.56756 11.7 4.33865 11.7 4.09995C11.7 3.86126 11.7948 3.63234 11.9636 3.46356C12.1323 3.29477 12.3613 3.19995 12.6 3.19995H13.5C13.9773 3.19995 14.4352 3.38959 14.7727 3.72716C15.1103 4.06472 15.3 4.52256 15.3 4.99995V14C15.3 14.4773 15.1103 14.9352 14.7727 15.2727C14.4352 15.6103 13.9773 15.8 13.5 15.8H4.49995C4.02256 15.8 3.56472 15.6103 3.22716 15.2727C2.88959 14.9352 2.69995 14.4773 2.69995 14V4.99995Z" fill="#7E7E7E" />
+                        </svg>
+                        <span class="pl-3">Second Action</span>
+                    </a>
+                </li>
+                <li
+                    <a href="#" class="relative w-full flex block px-5 py-2 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:hover:text-white">
+                        <svg class="information-circle" width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M16.2 9.50005C16.2 11.4096 15.4415 13.241 14.0912 14.5912C12.741 15.9415 10.9096 16.7 9.00005 16.7C7.09049 16.7 5.25914 15.9415 3.90888 14.5912C2.55862 13.241 1.80005 11.4096 1.80005 9.50005C1.80005 7.59049 2.55862 5.75914 3.90888 4.40888C5.25914 3.05862 7.09049 2.30005 9.00005 2.30005C10.9096 2.30005 12.741 3.05862 14.0912 4.40888C15.4415 5.75914 16.2 7.59049 16.2 9.50005ZM9.90005 5.90005C9.90005 6.13874 9.80523 6.36766 9.63645 6.53645C9.46766 6.70523 9.23874 6.80005 9.00005 6.80005C8.76135 6.80005 8.53244 6.70523 8.36365 6.53645C8.19487 6.36766 8.10005 6.13874 8.10005 5.90005C8.10005 5.66135 8.19487 5.43244 8.36365 5.26365C8.53244 5.09487 8.76135 5.00005 9.00005 5.00005C9.23874 5.00005 9.46766 5.09487 9.63645 5.26365C9.80523 5.43244 9.90005 5.66135 9.90005 5.90005ZM8.10005 8.60005C7.86135 8.60005 7.63244 8.69487 7.46365 8.86365C7.29487 9.03244 7.20005 9.26135 7.20005 9.50005C7.20005 9.73874 7.29487 9.96766 7.46365 10.1364C7.63244 10.3052 7.86135 10.4 8.10005 10.4V13.1C8.10005 13.3387 8.19487 13.5677 8.36365 13.7364C8.53244 13.9052 8.76135 14 9.00005 14H9.90005C10.1387 14 10.3677 13.9052 10.5364 13.7364C10.7052 13.5677 10.8 13.3387 10.8 13.1C10.8 12.8614 10.7052 12.6324 10.5364 12.4637C10.3677 12.2949 10.1387 12.2 9.90005 12.2V9.50005C9.90005 9.26135 9.80523 9.03244 9.63645 8.86365C9.46766 8.69487 9.23874 8.60005 9.00005 8.60005H8.10005Z" fill="#7E7E7E" />
+                        </svg>
+                        <span class="pl-3">Third Action</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="relative w-full flex block px-5 py-2 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:hover:text-white">
+                        <svg class="pencil-alt" width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.6726 2.82743C15.3351 2.48998 14.8773 2.30042 14.4 2.30042C13.9228 2.30042 13.465 2.48998 13.1274 2.82743L6.30005 9.65483V12.2H8.84525L15.6726 5.37263C16.0101 5.03508 16.1997 4.57733 16.1997 4.10003C16.1997 3.62274 16.0101 3.16498 15.6726 2.82743Z" fill="#7E7E7E" />
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M1.80005 5.89998C1.80005 5.42259 1.98969 4.96475 2.32726 4.62718C2.66482 4.28962 3.12266 4.09998 3.60005 4.09998H7.20005C7.43874 4.09998 7.66766 4.1948 7.83644 4.36358C8.00523 4.53236 8.10005 4.76128 8.10005 4.99998C8.10005 5.23867 8.00523 5.46759 7.83644 5.63637C7.66766 5.80515 7.43874 5.89998 7.20005 5.89998H3.60005V14.9H12.6V11.3C12.6 11.0613 12.6949 10.8324 12.8637 10.6636C13.0324 10.4948 13.2614 10.4 13.5 10.4C13.7387 10.4 13.9677 10.4948 14.1364 10.6636C14.3052 10.8324 14.4 11.0613 14.4 11.3V14.9C14.4 15.3774 14.2104 15.8352 13.8728 16.1728C13.5353 16.5103 13.0774 16.7 12.6 16.7H3.60005C3.12266 16.7 2.66482 16.5103 2.32726 16.1728C1.98969 15.8352 1.80005 15.3774 1.80005 14.9V5.89998Z" fill="#7E7E7E" />
+                        </svg>
+                        <span class="pl-3">Fourth Action</span>
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="relative py-2">
+                <a href="#" class="relative w-full flex block px-5 py-2 text-sm text-Red-500 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:text-Red-200 dark:hover:text-white">
+                    <svg class="logout" width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.75 12.5L15.75 9.5M15.75 9.5L12.75 6.5M15.75 9.5H5.25M9.75 12.5V13.25C9.75 13.8467 9.51295 14.419 9.09099 14.841C8.66903 15.2629 8.09674 15.5 7.5 15.5H4.5C3.90326 15.5 3.33097 15.2629 2.90901 14.841C2.48705 14.419 2.25 13.8467 2.25 13.25V5.75C2.25 5.15326 2.48705 4.58097 2.90901 4.15901C3.33097 3.73705 3.90326 3.5 4.5 3.5H7.5C8.09674 3.5 8.66903 3.73705 9.09099 4.15901C9.51295 4.58097 9.75 5.15326 9.75 5.75V6.5" stroke="#F05252" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <span class="pl-3">Sign Out</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="flex justify-center dropdown-from-vertical-icon-btuuon w-6/12">
+        <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots" class="inline-flex items-center p-3 text-white bg-Primary-800 hover:bg-Primary-600 border-4 border-Blue-200 focus:outline-none font-medium rounded-full text-sm text-center inline-flex items-center dark:bg-Primary-600 dark:hover:bg-Primary-700" type="button"> 
+            <svg class="dots-vertical" width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.91083 5.36619C10.0671 5.52247 10.2791 5.61027 10.5001 5.61027C10.7211 5.61027 10.9331 5.52247 11.0893 5.36619C11.2456 5.20991 11.3334 4.99795 11.3334 4.77694C11.3334 4.55592 11.2456 4.34396 11.0893 4.18768C10.9331 4.0314 10.7211 3.9436 10.5001 3.9436C10.2791 3.9436 10.0671 4.0314 9.91083 4.18768C9.75455 4.34396 9.66675 4.55592 9.66675 4.77694C9.66675 4.99795 9.75455 5.20991 9.91083 5.36619Z" fill="white" />
+                <path d="M9.91083 11.1995C10.0671 11.3558 10.2791 11.4436 10.5001 11.4436C10.7211 11.4436 10.9331 11.3558 11.0893 11.1995C11.2456 11.0432 11.3334 10.8313 11.3334 10.6103C11.3334 10.3893 11.2456 10.1773 11.0893 10.021C10.9331 9.86473 10.7211 9.77694 10.5001 9.77694C10.2791 9.77694 10.0671 9.86473 9.91083 10.021C9.75455 10.1773 9.66675 10.3893 9.66675 10.6103C9.66675 10.8313 9.75455 11.0432 9.91083 11.1995Z" fill="white" />
+                <path d="M9.91083 17.0329C10.0671 17.1891 10.2791 17.2769 10.5001 17.2769C10.7211 17.2769 10.9331 17.1891 11.0893 17.0329C11.2456 16.8766 11.3334 16.6646 11.3334 16.4436C11.3334 16.2226 11.2456 16.0106 11.0893 15.8543C10.9331 15.6981 10.7211 15.6103 10.5001 15.6103C10.2791 15.6103 10.0671 15.6981 9.91083 15.8543C9.75455 16.0106 9.66675 16.2226 9.66675 16.4436C9.66675 16.6646 9.75455 16.8766 9.91083 17.0329Z" fill="white" />
+                <path d="M10.5001 4.77694V4.78527M10.5001 10.6103V10.6186M10.5001 16.4436V16.4519M10.5001 5.61027C10.2791 5.61027 10.0671 5.52247 9.91083 5.36619C9.75455 5.20991 9.66675 4.99795 9.66675 4.77694C9.66675 4.55592 9.75455 4.34396 9.91083 4.18768C10.0671 4.0314 10.2791 3.9436 10.5001 3.9436C10.7211 3.9436 10.9331 4.0314 11.0893 4.18768C11.2456 4.34396 11.3334 4.55592 11.3334 4.77694C11.3334 4.99795 11.2456 5.20991 11.0893 5.36619C10.9331 5.52247 10.7211 5.61027 10.5001 5.61027ZM10.5001 11.4436C10.2791 11.4436 10.0671 11.3558 9.91083 11.1995C9.75455 11.0432 9.66675 10.8313 9.66675 10.6103C9.66675 10.3893 9.75455 10.1773 9.91083 10.021C10.0671 9.86473 10.2791 9.77694 10.5001 9.77694C10.7211 9.77694 10.9331 9.86473 11.0893 10.021C11.2456 10.1773 11.3334 10.3893 11.3334 10.6103C11.3334 10.8313 11.2456 11.0432 11.0893 11.1995C10.9331 11.3558 10.7211 11.4436 10.5001 11.4436ZM10.5001 17.2769C10.2791 17.2769 10.0671 17.1891 9.91083 17.0329C9.75455 16.8766 9.66675 16.6646 9.66675 16.4436C9.66675 16.2226 9.75455 16.0106 9.91083 15.8543C10.0671 15.6981 10.2791 15.6103 10.5001 15.6103C10.7211 15.6103 10.9331 15.6981 11.0893 15.8543C11.2456 16.0106 11.3334 16.2226 11.3334 16.4436C11.3334 16.6646 11.2456 16.8766 11.0893 17.0329C10.9331 17.1891 10.7211 17.2769 10.5001 17.2769Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </button>
+          
+        <!-- Dropdown menu -->
+        <div id="dropdownDots" class="w-48 z-10 hidden bg-white divide-y divide-Gray-100 rounded-lg shadow dark:bg-Gray-700 dark:divide-Gray-600">
+            <ul class="py-2 text-sm text-Primary-900 dark:text-Primary-200" aria-labelledby="dropdownDefaultButton">
+                <li>
+                    <a href="#" class="relative w-full flex px-5 py-2 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:hover:text-white">
+                        <svg class="user-add" width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.20005 8.59995C7.91613 8.59995 8.60289 8.31549 9.10924 7.80914C9.61559 7.30279 9.90005 6.61604 9.90005 5.89995C9.90005 5.18387 9.61559 4.49711 9.10924 3.99076C8.60289 3.48441 7.91613 3.19995 7.20005 3.19995C6.48396 3.19995 5.79721 3.48441 5.29086 3.99076C4.78451 4.49711 4.50005 5.18387 4.50005 5.89995C4.50005 6.61604 4.78451 7.30279 5.29086 7.80914C5.79721 8.31549 6.48396 8.59995 7.20005 8.59995ZM7.20005 10.4C8.63222 10.4 10.0057 10.9689 11.0184 11.9816C12.0311 12.9943 12.6 14.3678 12.6 15.8H1.80005C1.80005 14.3678 2.36898 12.9943 3.38167 11.9816C4.39437 10.9689 5.76788 10.4 7.20005 10.4ZM14.4 6.79995C14.4 6.56126 14.3052 6.33234 14.1364 6.16356C13.9677 5.99477 13.7387 5.89995 13.5 5.89995C13.2614 5.89995 13.0324 5.99477 12.8637 6.16356C12.6949 6.33234 12.6 6.56126 12.6 6.79995V7.69995H11.7C11.4614 7.69995 11.2324 7.79477 11.0637 7.96356C10.8949 8.13234 10.8 8.36126 10.8 8.59995C10.8 8.83865 10.8949 9.06756 11.0637 9.23635C11.2324 9.40513 11.4614 9.49995 11.7 9.49995H12.6V10.4C12.6 10.6386 12.6949 10.8676 12.8637 11.0363C13.0324 11.2051 13.2614 11.3 13.5 11.3C13.7387 11.3 13.9677 11.2051 14.1364 11.0363C14.3052 10.8676 14.4 10.6386 14.4 10.4V9.49995H15.3C15.5387 9.49995 15.7677 9.40513 15.9364 9.23635C16.1052 9.06756 16.2 8.83865 16.2 8.59995C16.2 8.36126 16.1052 8.13234 15.9364 7.96356C15.7677 7.79477 15.5387 7.69995 15.3 7.69995H14.4V6.79995Z" fill="#7E7E7E" />
+                        </svg> 
+                        <span class="pl-3">First Action</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="relative w-full flex block px-5 py-2 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:hover:text-white">
+                        <svg class="inbox-in" width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.83628 7.06375C7.66653 6.89981 7.43919 6.80909 7.20322 6.81114C6.96724 6.81319 6.74151 6.90784 6.57464 7.07471C6.40777 7.24158 6.31312 7.46731 6.31107 7.70329C6.30902 7.93927 6.39973 8.16661 6.56368 8.33635L8.36368 10.1363C8.53245 10.3051 8.76133 10.3999 8.99998 10.3999C9.23862 10.3999 9.4675 10.3051 9.63628 10.1363L11.4363 8.33635C11.6002 8.16661 11.6909 7.93927 11.6889 7.70329C11.6868 7.46731 11.5922 7.24158 11.4253 7.07471C11.2584 6.90784 11.0327 6.81319 10.7967 6.81114C10.5608 6.80909 10.3334 6.89981 10.1637 7.06375L9.89998 7.32745V3.20005C9.89998 2.96135 9.80515 2.73244 9.63637 2.56365C9.46759 2.39487 9.23867 2.30005 8.99998 2.30005C8.76128 2.30005 8.53236 2.39487 8.36358 2.56365C8.1948 2.73244 8.09998 2.96135 8.09998 3.20005V7.32745L7.83628 7.06375Z" fill="#7E7E7E" />
+                            <path d="M2.69995 4.99995C2.69995 4.52256 2.88959 4.06472 3.22716 3.72716C3.56472 3.38959 4.02256 3.19995 4.49995 3.19995H5.39995C5.63865 3.19995 5.86756 3.29477 6.03635 3.46356C6.20513 3.63234 6.29995 3.86126 6.29995 4.09995C6.29995 4.33865 6.20513 4.56756 6.03635 4.73635C5.86756 4.90513 5.63865 4.99995 5.39995 4.99995H4.49995V11.3H6.29995L7.19995 13.1H10.8L11.7 11.3H13.5V4.99995H12.6C12.3613 4.99995 12.1323 4.90513 11.9636 4.73635C11.7948 4.56756 11.7 4.33865 11.7 4.09995C11.7 3.86126 11.7948 3.63234 11.9636 3.46356C12.1323 3.29477 12.3613 3.19995 12.6 3.19995H13.5C13.9773 3.19995 14.4352 3.38959 14.7727 3.72716C15.1103 4.06472 15.3 4.52256 15.3 4.99995V14C15.3 14.4773 15.1103 14.9352 14.7727 15.2727C14.4352 15.6103 13.9773 15.8 13.5 15.8H4.49995C4.02256 15.8 3.56472 15.6103 3.22716 15.2727C2.88959 14.9352 2.69995 14.4773 2.69995 14V4.99995Z" fill="#7E7E7E" />
+                        </svg>
+                        <span class="pl-3">Second Action</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="relative w-full flex block px-5 py-2 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:hover:text-white">
+                        <svg class="information-circle" width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M16.2 9.50005C16.2 11.4096 15.4415 13.241 14.0912 14.5912C12.741 15.9415 10.9096 16.7 9.00005 16.7C7.09049 16.7 5.25914 15.9415 3.90888 14.5912C2.55862 13.241 1.80005 11.4096 1.80005 9.50005C1.80005 7.59049 2.55862 5.75914 3.90888 4.40888C5.25914 3.05862 7.09049 2.30005 9.00005 2.30005C10.9096 2.30005 12.741 3.05862 14.0912 4.40888C15.4415 5.75914 16.2 7.59049 16.2 9.50005ZM9.90005 5.90005C9.90005 6.13874 9.80523 6.36766 9.63645 6.53645C9.46766 6.70523 9.23874 6.80005 9.00005 6.80005C8.76135 6.80005 8.53244 6.70523 8.36365 6.53645C8.19487 6.36766 8.10005 6.13874 8.10005 5.90005C8.10005 5.66135 8.19487 5.43244 8.36365 5.26365C8.53244 5.09487 8.76135 5.00005 9.00005 5.00005C9.23874 5.00005 9.46766 5.09487 9.63645 5.26365C9.80523 5.43244 9.90005 5.66135 9.90005 5.90005ZM8.10005 8.60005C7.86135 8.60005 7.63244 8.69487 7.46365 8.86365C7.29487 9.03244 7.20005 9.26135 7.20005 9.50005C7.20005 9.73874 7.29487 9.96766 7.46365 10.1364C7.63244 10.3052 7.86135 10.4 8.10005 10.4V13.1C8.10005 13.3387 8.19487 13.5677 8.36365 13.7364C8.53244 13.9052 8.76135 14 9.00005 14H9.90005C10.1387 14 10.3677 13.9052 10.5364 13.7364C10.7052 13.5677 10.8 13.3387 10.8 13.1C10.8 12.8614 10.7052 12.6324 10.5364 12.4637C10.3677 12.2949 10.1387 12.2 9.90005 12.2V9.50005C9.90005 9.26135 9.80523 9.03244 9.63645 8.86365C9.46766 8.69487 9.23874 8.60005 9.00005 8.60005H8.10005Z" fill="#7E7E7E" />
+                        </svg>
+                        <span class="pl-3">Third Action</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="relative w-full flex block px-5 py-2 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:hover:text-white">
+                        <svg class="pencil-alt" width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.6726 2.82743C15.3351 2.48998 14.8773 2.30042 14.4 2.30042C13.9228 2.30042 13.465 2.48998 13.1274 2.82743L6.30005 9.65483V12.2H8.84525L15.6726 5.37263C16.0101 5.03508 16.1997 4.57733 16.1997 4.10003C16.1997 3.62274 16.0101 3.16498 15.6726 2.82743Z" fill="#7E7E7E" />
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M1.80005 5.89998C1.80005 5.42259 1.98969 4.96475 2.32726 4.62718C2.66482 4.28962 3.12266 4.09998 3.60005 4.09998H7.20005C7.43874 4.09998 7.66766 4.1948 7.83644 4.36358C8.00523 4.53236 8.10005 4.76128 8.10005 4.99998C8.10005 5.23867 8.00523 5.46759 7.83644 5.63637C7.66766 5.80515 7.43874 5.89998 7.20005 5.89998H3.60005V14.9H12.6V11.3C12.6 11.0613 12.6949 10.8324 12.8637 10.6636C13.0324 10.4948 13.2614 10.4 13.5 10.4C13.7387 10.4 13.9677 10.4948 14.1364 10.6636C14.3052 10.8324 14.4 11.0613 14.4 11.3V14.9C14.4 15.3774 14.2104 15.8352 13.8728 16.1728C13.5353 16.5103 13.0774 16.7 12.6 16.7H3.60005C3.12266 16.7 2.66482 16.5103 2.32726 16.1728C1.98969 15.8352 1.80005 15.3774 1.80005 14.9V5.89998Z" fill="#7E7E7E" />
+                        </svg>
+                        <span class="pl-3">Fourth Action</span>
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="relative py-2">
+                <a href="#" class="relative w-full flex block px-5 py-2 text-sm text-Red-500 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:text-Red-200 dark:hover:text-white">
+                    <svg class="logout" width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.75 12.5L15.75 9.5M15.75 9.5L12.75 6.5M15.75 9.5H5.25M9.75 12.5V13.25C9.75 13.8467 9.51295 14.419 9.09099 14.841C8.66903 15.2629 8.09674 15.5 7.5 15.5H4.5C3.90326 15.5 3.33097 15.2629 2.90901 14.841C2.48705 14.419 2.25 13.8467 2.25 13.25V5.75C2.25 5.15326 2.48705 4.58097 2.90901 4.15901C3.33097 3.73705 3.90326 3.5 4.5 3.5H7.5C8.09674 3.5 8.66903 3.73705 9.09099 4.15901C9.51295 4.58097 9.75 5.15326 9.75 5.75V6.5" stroke="#F05252" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <span class="pl-3">Sign Out</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="flex justify-center dropdown-from-default-button w-6/12">
+        <button id="dropdownInformationButton" data-dropdown-toggle="dropdownInformation" class="text-white bg-Primary-800 hover:bg-Primary-600 border-4 border-Blue-200 focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-Primary-600 dark:hover:bg-Primary-700" type="button">User Details 
+            <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+            </svg>
+        </button>
+
+        <!-- Dropdown menu -->
+        <div id="dropdownInformation" class="w-48 z-10 hidden bg-white divide-y divide-Gray-100 rounded-lg shadow  dark:bg-Gray-700 dark:divide-Gray-600">
+            <div class="px-4 py-3 text-sm text-Gray-900 dark:text-white">
+                <div class="font-medium">Bonnie Green</div>
+                <div class="truncate">name@flowbite.com</div>
+            </div>
+            <ul class="py-2 text-sm text-Gray-700 dark:text-Gray-200" aria-labelledby="dropdownInformationButton">
+                <li>
+                    <a href="#" class="block px-4 py-2 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:hover:text-white">Your profile</a>
+                </li>
+                <li>
+                    <a href="#" class="block px-4 py-2 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:hover:text-white">Settings</a>
+                </li>
+                <li>
+                    <a href="#" class="block px-4 py-2 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:hover:text-white">Sign out</a>
+                </li>
+            </ul>
+            <div class="py-2">
+                <a href="#" class="block px-4 py-2 text-sm text-Gray-700 hover:bg-Gray-100 dark:hover:bg-Gray-600 dark:text-Gray-200 dark:hover:text-white">Delete</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="flex justify-center dropdown-from-default-button w-6/12">
+        <button id="dropdownCheckboxButton" data-dropdown-toggle="dropdownDefaultCheckbox" class="text-white bg-Primary-800 hover:bg-Primary-600 border-4 border-Blue-200 focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-Primary-600 dark:hover:bg-Primary-700" type="button">Dropdown checkbox 
+            <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+            </svg>
+        </button>
+
+        <!-- Dropdown menu -->
+        <div id="dropdownDefaultCheckbox" class="w-48 z-10 hidden bg-white divide-y divide-Gray-100 rounded-lg shadow dark:bg-Gray-700">
+            <ul class="p-3 space-y-3 text-sm text-Gray-700 dark:text-Gray-200" aria-labelledby="dropdownCheckboxButton">
+            <li>
+                <div class="flex items-center">
+                <input id="checkbox-item-1" type="checkbox" value="" class="w-4 h-4 text-Primary-600 bg-Gray-50 border-Gray-300 rounded focus:bg-Primary-600 dark:bg-Gray-600 dark:border-Gray-500">
+                <label for="checkbox-item-1" class="ml-2 text-sm font-medium text-Gray-900 dark:text-Gray-400">Unchecked with label</label>
+                </div>
+            </li>
+            <li>
+                <div class="flex items-center">
+                    <input checked id="checkbox-item-2" type="checkbox" value="" class="w-4 h-4 text-Primary-600 bg-Gray-50 border-Gray-300 rounded focus:bg-Primary-600 dark:bg-Gray-600 dark:border-Gray-500">
+                    <label for="checkbox-item-2" class="ml-2 text-sm font-medium text-Gray-900 dark:text-Gray-400">Checked with label</label>
+                </div>
+            </li>
+            <li>
+                <div class="flex items-center">
+                    <input id="checkbox-item-3" type="checkbox" value="" class="w-4 h-4 text-Primary-600 bg-Gray-50 border-Gray-300 rounded focus:bg-Primary-600 dark:bg-Gray-600 dark:border-Gray-500 pointer-events-auto">
+                    <label for="checkbox-item-3" class="ml-2 text-sm font-medium text-Gray-400 dark:text-Gray-200">Disabled with label</label>
+                </div>
+            </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="flex justify-center dropdown-from-default-button w-6/12">        
+        <button id="dropdownRadioBgHoverButton" data-dropdown-toggle="dropdownRadioBgHover" class="text-white bg-Primary-800 hover:bg-Primary-600 border-4 border-Blue-200 focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-Primary-600 dark:hover:bg-Primary-700" type="button">Dropdown radio 
+            <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+            </svg>
+        </button>
+
+        <!-- Dropdown menu -->
+        <div id="dropdownRadioBgHover" class="w-48 z-10 hidden bg-white divide-y divide-Gray-100 rounded-lg shadow dark:bg-Gray-700">
+            <ul class="p-3 space-y-1 text-sm text-Gray-700 dark:text-Gray-200" aria-labelledby="dropdownRadioBgHoverButton">
+            <li>
+                <div class="flex items-center p-2 rounded hover:bg-Gray-100 dark:hover:bg-Gray-600">
+                    <input id="default-radio-4" type="radio" value="" name="default-radio" class="w-4 h-4 text-Primary-600 bg-Gray-100 border-Gray-300 focus:bg-Primary-600 dark:bg-Gray-600 dark:border-Gray-500">
+                    <label for="checkbox-item-1" class="ml-2 text-sm font-medium text-Gray-900 dark:text-Gray-400">Default with label</label>
+                </div>
+            </li>
+            <li>
+                <div class="flex items-center p-2 rounded hover:bg-Gray-100 dark:hover:bg-Gray-600">
+                    <input checked id="default-radio-5" type="radio" value="" name="default-radio" class="w-4 h-4 text-Primary-600 bg-Gray-100 border-Gray-300 focus:bg-Primary-600 dark:bg-Gray-600 dark:border-Gray-500">
+                    <label for="checkbox-item-2" class="ml-2 text-sm font-medium text-Gray-900 dark:text-Gray-400">Active with label</label>
+                </div>
+            </li>
+            <li>
+                <div class="flex items-center p-2 rounded hover:bg-Gray-100 dark:hover:bg-Gray-600">
+                    <input id="default-radio-6" type="radio" value="" name="default-radio" class="w-4 h-4 text-Primary-600 bg-Gray-50 border-Gray-300 focus:bg-Primary-600  dark:bg-Gray-600 dark:border-Gray-500 pointer-events-auto">
+                    <label for="checkbox-item-3" class="ml-2 text-sm font-medium text-Gray-400 dark:text-Gray-200">Disabled with label</label>
+                </div>
+            </li>
+            </ul>
+        </div>
+    </section>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.js"></script>
+
+    <script>
+        module.exports = {
+            darkMode: 'class',
+            // ...
+        }
+    </script>
+
+</body>
+</html>

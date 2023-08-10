@@ -1,0 +1,1103 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="main.css" rel="stylesheet">
+    <script>
+        localStorage.theme = 'light'
+    </script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                colors: {
+                transparent: 'transparent',
+                current: 'currentColor',
+                'Primary': {
+                    50:  'rgba(72, 130, 159, 0.15)',
+                    100: 'rgba(72, 130, 159, 0.20)',
+                    200: 'rgba(72, 130, 159, 0.30)',
+                    300: 'rgba(72, 130, 159, 0.40)',
+                    400: 'rgba(72, 130, 159, 0.50)',
+                    500: 'rgba(72, 130, 159, 0.60)',
+                    600: 'rgba(72, 130, 159, 0.70)',
+                    700: 'rgba(72, 130, 159, 0.80)',
+                    800: 'rgba(72, 130, 159, 0.90)',
+                    900: '#48829F',
+                },
+                'Gray': {
+                    50:  '#F9FAFB',
+                    100: '#F3F4F6',
+                    200: '#E5E7EB',
+                    300: '#D1D5DB',
+                    400: '#9CA3AF',
+                    500: '#7E7E7E',
+                    600: '#4B5563',
+                    700: '#374151',
+                    800: '#1F2A37',
+                    900: '#111928',
+                },
+                'Blue': {
+                    50:  '#EBF5FF',
+                    100: '#E1EFFE',
+                    200: '#C3DDFD',
+                    300: '#A4CAFE',
+                    400: '#76A9FA',
+                    500: '#3F83F8',
+                    600: '#1C64F2',
+                    700: '#1A56DB',
+                    800: '#1E429F',
+                    900: '#1E429F',
+                },
+                'Red': {
+                    50:  '#FDF2F2',
+                    100: '#FDE8E8',
+                    200: '#FBD5D5',
+                    300: '#F8B4B4',
+                    400: '#F98080',
+                    500: '#F05252',
+                    600: '#E02424',
+                    700: '#C81E1E',
+                    800: '#9B1C1C',
+                    900: '#771D1D',
+                },
+                'Orange': {
+                    50: '#fff8f1',
+                    100: '#feecdc',
+                    200: '#fcd9bd',
+                    300: '#fdba8c',
+                    400: '#ff8a4c',
+                    500: '#ff5a1f',
+                    600: '#d03801',
+                    700: '#b43403',
+                    800: '#8a2c0d',
+                    900: '#771d1d',
+                },
+                'Yellow': {
+                    50:  '#fdfdea',
+                    100: '#fdf6b2',
+                    200: '#fce96a',
+                    300: '#faca15',
+                    400: '#e3a008',
+                    500: '#c27803',
+                    600: '#9f580a',
+                    700: '#8e4b10',
+                    800: '#723b13',
+                    900: '#633112',
+                },
+                'Green': {
+                    50:  '#f3faf7',
+                    100: '#def7ec',
+                    200: '#bcf0da',
+                    300: '#84e1bc',
+                    400: '#31c48d',
+                    500: '#0e9f6e',
+                    600: '#057a55',
+                    700: '#046c4e',
+                    800: '#03543f',
+                    900: '#014737',
+                },
+                'Teal': {
+                    50:  '#edfafa',
+                    100: '#d5f5f6',
+                    200: '#afecef',
+                    300: '#7edce2',
+                    400: '#16bdca',
+                    500: '#0694a2',
+                    600: '#047481',
+                    700: '#036672',
+                    800: '#05505c',
+                    900: '#014451',
+                },
+                'Indigo': {
+                    50:  '#f0f5ff',
+                    100: '#e5edff',
+                    200: '#cddbfe',
+                    300: '#b4c6fc',
+                    400: '#8da2fb',
+                    500: '#6875f5',
+                    600: '#5850ec',
+                    700: '#5145cd',
+                    800: '#42389d',
+                    900: '#362f78',
+                },
+                'Purple': {
+                    50:  '#f6f5ff',
+                    100: '#edebfe',
+                    200: '#dcd7fe',
+                    300: '#cabffd',
+                    400: '#ac94fa',
+                    500: '#9061f9',
+                    600: '#7e3af2',
+                    700: '#6c2bd9',
+                    800: '#5521b5',
+                    900: '#4a1d96',
+                },
+                'Pink': {
+                    50:  '#fdf2f8',
+                    100: '#fce8f3',
+                    200: '#fad1e8',
+                    300: '#f8b4d9',
+                    400: '#f17eb8',
+                    500: '#e74694',
+                    600: '#d61f69',
+                    700: '#bf125d',
+                    800: '#99154b',
+                    900: '#751a3d',
+                },
+                // ...
+                },
+            },
+        }
+    </script>
+
+</head>
+<body>
+
+    <nav class="md:bg-white border-Gray-200 absolute md:relative z-40 mt-2 md:mt-0 w-full">
+        <div class="w-auto md:max-w-screen-2xl flex flex-wrap items-center justify-between lg:mx-64 px-12 md:px-4 p-4 ml-0 md:ml-64 relative">
+            <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class="absolute left-4 p-2 w-10 h-10 justify-center text-sm text-Gray-50 rounded-lg md:hidden hover:text-Gray-100 focus:outline-none focus:ring-0" aria-controls="navbar-multi-level" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                </svg>
+            </button>
+
+             <!-- Breadcrumb -->      
+
+            <div class="flex justify-left z-30 absolute left-0 mx-6 md:ml-20 top-20 md:top-5">
+                <nav class="text-Gray-50 md:px-2 md:py-2 md:text-Gray-700" aria-label="Breadcrumb">
+                    <ol class="inline-flex items-center space-x-1 md:space-x-3 gap-1 md:gap-0">
+                    <li class="inline-flex items-center">
+                        <a href="javascript:void(0);" class="inline-flex items-center font-normal text-[8px] md:text-sm md:font-medium text-Gray-50 md:text-Gray-400 hover:text-Primary-600">
+                        Home
+                        </a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                        <svg class="w-2 h-2 md:w-3 md:h-3 md:mx-1 text-Gray-50 md:text-Gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                        </svg>
+                        <a href="javascript:void(0);" class="ml-1 font-normal text-[8px] md:text-sm text-Gray-50 md:text-Gray-400 hover:text-Primary-600 md:ml-2">Reports</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                        <svg class="w-2 h-2 md:w-3 md:h-3 md:mx-1 text-Gray-50 md:text-Gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                        </svg>
+                        <a href="javascript:void(0);" class="ml-1 font-normal text-[8px] md:text-sm text-Gray-50 md:text-Gray-400 hover:text-Primary-600 md:ml-2">Health  Intelligence</a>
+                        </div>
+                    </li>
+                    <li aria-current="page">
+                        <div class="flex items-center">
+                        <svg class="w-2 h-2 md:w-3 md:h-3 md:mx-1 text-Gray-50 md:text-Gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                        </svg>
+                        <span class="ml-1 font-normal text-[8px] md:text-sm md:text-Gray-700 md:ml-2">Nutrition Intelligence</span>
+                        </div>
+                    </li>
+                    </ol>
+                </nav>
+            </div>
+            
+            <!-- Breadcrumb -->
+
+            <div class="flex items-center order-3">
+                <div class="hidden md:block text-sm mr-3 text-right"> Bonnie Green</div>
+                
+                <div class="bg-Gray-100 mr-4 rounded-full flex flex-col gap-2.5 items-center justify-center w-12 h-12 relative overflow-hidden">                    
+                    <img src="./images/account-holder.jpeg" class="w-full h-full">
+                </div>
+                <div class="bg-Primary-900 rounded-full p-1 flex flex-row gap-0 items-start justify-start relative cursor-pointer"  id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+                    <svg class="shrink-0 relative overflow-visible" style="" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.8333 7.5L9.99999 13.3333L4.16666 7.5" stroke="#F9FAFB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+
+                <!-- Dropdown menu -->
+                <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-Gray-100 rounded-lg shadow" id="user-dropdown">
+                    <div class="px-4 py-3">
+                        <span class="block text-sm text-Gray-900">Bonnie Green</span>
+                        <span class="block text-sm  text-Gray-500 truncate">bonnie@aetas.dk</span>
+                    </div>
+                    <ul class="py-2" aria-labelledby="user-menu-button">
+                        <li>
+                        <a href="javascript:void(0);" class="block px-4 py-2 text-sm text-Gray-700 hover:bg-Gray-100">Dashboard</a>
+                        </li>
+                        <li>
+                        <a href="javascript:void(0);" class="block px-4 py-2 text-sm text-Gray-700 hover:bg-Gray-100">Settings</a>
+                        </li>
+                        <li>
+                        <a href="javascript:void(0);" class="block px-4 py-2 text-sm text-Gray-700 hover:bg-Gray-100">Earnings</a>
+                        </li>
+                        <li>
+                        <a href="javascript:void(0);" class="block px-4 py-2 text-sm text-Gray-700 hover:bg-Gray-100">Sign out</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Previous Next Button -->
+            <div class="flex items-center border border-Gray-200 rounded-lg overflow-hidden order-1 ml-4 md:ml-0">
+                <a href="javascript:void(0);" class="inline-flex items-center justify-center w-7 h-7 md:w-auto md:h-auto md:px-4 md:py-3 text-sm font-medium text-Gray-500 bg-white hover:bg-Gray-100 hover:text-Gray-700">
+                    <svg aria-hidden="true" class="w-2 h-3" fill="currentColor" viewBox="0 0" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M5.70703 0.293031C5.8945 0.480558 5.99982 0.734866 5.99982 1.00003C5.99982 1.26519 5.8945 1.5195 5.70703 1.70703L2.41403 5.00003L5.70703 8.29303C5.88919 8.48163 5.98998 8.73423 5.9877 8.99643C5.98543 9.25863 5.88026 9.50944 5.69485 9.69485C5.50944 9.88026 5.25863 9.98543 4.99643 9.9877C4.73423 9.98998 4.48163 9.88919 4.29303 9.70703L0.293031 5.70703C0.10556 5.5195 0.000244141 5.26519 0.000244141 5.00003C0.000244141 4.73487 0.10556 4.48056 0.293031 4.29303L4.29303 0.293031C4.48056 0.10556 4.73487 0.000244141 5.00003 0.000244141C5.26519 0.000244141 5.5195 0.10556 5.70703 0.293031Z" fill="#48829F"/>
+                    </svg>
+                </a>
+            <!-- Previous Next Button -->
+
+        </div>
+    </nav>
+
+    <aside id="default-sidebar" class="fixed top-0 bottom-0 left-0 z-40 w-60 h-auto transition-transform -translate-x-full sm:translate-x-0 bg-white" aria-label="Sidebar">
+        <div class="the-nav group h-full py-4 overflow-y-auto bg-white">
+            <a href="javascript:void(0);" class="logo-link flex items-center justify-start border-b border-Gray-300 mx-4 md:mx-8 pb-5 mb-7"">
+                <img src="./images/aetas-logo-gr-ico.png" class="h-[65px] w-auto block aetas-logo-ico" alt="Aetas Logo">
+                <img src="./images/aetas-logo-gr.png" class="h-[65px] w-auto block aetas-logo" alt="Aetas Logo">
+            </a>
+
+            <ul class="space-y-2 ml-4">
+                <li>
+                    <a href="health-intelligence-subset-folder.html" class="flex items-center p-3 text-sm text-Gray-400 hover:bg-Gray-100 focus:bg-Gray-100 rounded-l-lg group">
+                        <div class="menu-ico bg-Gray-100 w-[36px] h-[36px] rounded-md flex items-center justify-center">
+                            <svg class="relative overflow-visible" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2.40039 11.9999C2.40039 9.45382 3.41182 7.01203 5.21217 5.21168C7.01252 3.41133 9.45431 2.3999 12.0004 2.3999V11.9999H21.6004C21.6004 14.546 20.589 16.9878 18.7886 18.7881C16.9883 20.5885 14.5465 21.5999 12.0004 21.5999C9.45431 21.5999 7.01252 20.5885 5.21217 18.7881C3.41182 16.9878 2.40039 14.546 2.40039 11.9999Z" fill="#9CA3AF" />
+                                <path d="M14.4004 2.70264C16.0607 3.13279 17.5758 3.99917 18.7886 5.21198C20.0015 6.42479 20.8678 7.93989 21.298 9.60024H14.4004V2.70264Z" fill="#9CA3AF" />
+                            </svg>
+                        </div>
+                        <span class="nav-text ml-3.5">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <button type="button" class="flex items-center w-full p-3 text-sm text-Primary-900 transition duration-75 rounded-l-lg group hover:bg-Gray-100 focus:bg-Gray-100" aria-controls="dropdown-example-1" data-collapse-toggle="dropdown-example-1">                        
+                        <div class="menu-ico bg-Primary-100 w-[36px] h-[36px] rounded-md flex items-center justify-center">
+                            <svg class="relative overflow-visible" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 8V16M12 11V16M8 14V16M6 20H18C18.5304 20 19.0391 19.7893 19.4142 19.4142C19.7893 19.0391 20 18.5304 20 18V6C20 5.46957 19.7893 4.96086 19.4142 4.58579C19.0391 4.21071 18.5304 4 18 4H6C5.46957 4 4.96086 4.21071 4.58579 4.58579C4.21071 4.96086 4 5.46957 4 6V18C4 18.5304 4.21071 19.0391 4.58579 19.4142C4.96086 19.7893 5.46957 20 6 20Z" stroke="#48829F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <span class="nav-text flex-1 ml-3.5 text-left whitespace-nowrap">Health Intelligence</span>
+                        <svg class="subnav-open-arrow w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                    </button>
+
+                    <ul id="dropdown-example-1" class="hidden py-2 space-y-2">
+                        <li>
+                            <a href="health-intelligence-subset-folder.html" class="flex items-center w-full p-2 text-sm text-Gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-Gray-100">Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="vitals.html" class="flex items-center w-full p-2 text-sm text-Gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-Gray-100">Vitals</a>
+                        </li>
+                        <li>
+                            <a href="health-intelligence-cardio.html" class="flex items-center w-full p-2 text-sm text-Gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-Gray-100">Cardiovascular Diseases</a>
+                        </li>
+                        <li>
+                            <a href="health-intelligence-food.html" class="flex items-center w-full p-2 text-sm text-Gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-Gray-100">Health Baseline</a>
+                        </li>
+                        <li>
+                            <a href="nutrition-intelligence.html" class="flex items-center w-full p-2 text-sm text-Gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-Gray-100">Nutrition Intelligence</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <button type="button" class="flex items-center w-full p-3 text-sm text-Primary-900 transition duration-75 rounded-l-lg group hover:bg-Gray-100 focus:bg-Gray-100" aria-controls="dropdown-2" data-collapse-toggle="dropdown-2">                   
+                        <div class="menu-ico bg-Primary-100 w-[36px] h-[36px] rounded-md flex items-center justify-center">
+                            <svg class="relative overflow-visible" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.3564 8.19036C12.9815 7.56523 13.3327 6.71739 13.3327 5.83333C13.3327 4.94928 12.9815 4.10143 12.3564 3.47631C11.7313 2.85119 10.8834 2.5 9.99935 2.5C9.11529 2.5 8.26745 2.85119 7.64233 3.47631C7.0172 4.10143 6.66602 4.94928 6.66602 5.83333C6.66602 6.71739 7.0172 7.56523 7.64233 8.19036C8.26745 8.81548 9.11529 9.16667 9.99935 9.16667C10.8834 9.16667 11.7313 8.81548 12.3564 8.19036Z" stroke="#48829F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M5.87456 13.3752C6.96852 12.2812 8.45225 11.6667 9.99935 11.6667C11.5464 11.6667 13.0302 12.2812 14.1241 13.3752C15.2181 14.4692 15.8327 15.9529 15.8327 17.5H4.16602C4.16602 15.9529 4.7806 14.4692 5.87456 13.3752Z" stroke="#48829F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <span class="nav-text flex-1 ml-3.5 text-left whitespace-nowrap">Recomendations</span>
+                        <svg class="subnav-open-arrow w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                    </button>
+
+                    <ul id="dropdown-2" class="hidden py-2 space-y-2">
+                        <li>
+                            <a href="#" class="flex items-center w-full p-2 text-sm text-Gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-Gray-100">Interventions</a>
+                        </li>
+                        <li>
+                            <a href="health-intelligence-food.html" class="flex items-center w-full p-2 text-sm text-Gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-Gray-100">Food</a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center w-full p-2 text-sm text-Gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-Gray-100">Supplements</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </aside>
+
+
+    <section class="w-auto md:max-w-screen-2xl lg:mx-64 lg:mt-3 flex flex-col relative">
+
+        <div class="md:p-4 md:ml-64 lg:ml-auto">
+            <div class="w-full h-full relative md:rounded-xl overflow-hidden">
+                <img class="block md:h-full w-full h-96 object-cover" src="images/banner.png" alt="banner">
+                <div class="h-full absolute top-auto bottom-0 left-0 right-0 px-6 pb-9 md:px-16 md:pb-12 bg-left-bottom bg-cover bg-no-repeat bg-[url('images/banner-content-bg.png')] bg-blend-multiply flex flex-col justify-end">
+                    <h1 class="mb-2 text-md text-Gray-50 md:text-3xl lg:text-3xl">Health Intelligence Report</h1>
+                    <h5 class="text-sm font-normal text-Gray-300 capitalize">Sample Date: 20th June 2023</h5>
+                </div>
+            </div>
+        </div>        
+
+        <div class="w-full p-4 mb-10 md:mb-5 lg:mb-0 md:ml-64 lg:ml-0 xl:64 lg:ml-auto">
+            <div class="Overview w-full">
+                <h3 class="text-2xl text-Gray-800 mt-10 mb-9">Overview</h3>
+        
+                <div class="flex flex-col justify-start lg:flex-row lg:justify-between">
+                    <div class="profile-name flex justify-start">
+                        <img src="./images/account-holder.jpeg" class="w-[135px] h-[135px] rounded-full">
+                        <div class="flex flex-col justify-center text-base md:text-xl ml-5">
+                            <div class="text-Gray-900">Bonnie Green</div>
+                            <div class="text-Gray-500">Age: 35 / D.O.B - 24 June 1988</div>
+                        </div>
+                    </div>
+                    <div class="profile-activity flex flex-col mt-6 justify-start md:flex-row lg:justify-end lg:mt-0 lg:items-center">  
+                        <div class="flex flex-row gap-2 items-start justify-start relative"></div>  
+                        
+                        
+                        <div class="flex items-center justify-start bg-Gray-50 p-2 px-4 rounded-lg h-fit w-2/3 md:w-1/3 lg:w-fit">
+                            <div class="activity-ico bg-Primary-100 rounded-xl p-2">
+                                <svg class="relative overflow-visible" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M16 10.6667V16L20 20M28 16C28 17.5759 27.6896 19.1363 27.0866 20.5922C26.4835 22.0481 25.5996 23.371 24.4853 24.4853C23.371 25.5996 22.0481 26.4835 20.5922 27.0866C19.1363 27.6896 17.5759 28 16 28C14.4241 28 12.8637 27.6896 11.4078 27.0866C9.95189 26.4835 8.62902 25.5996 7.51472 24.4853C6.40042 23.371 5.5165 22.0481 4.91345 20.5922C4.31039 19.1363 4 17.5759 4 16C4 12.8174 5.26428 9.76516 7.51472 7.51472C9.76516 5.26428 12.8174 4 16 4C19.1826 4 22.2348 5.26428 24.4853 7.51472C26.7357 9.76516 28 12.8174 28 16Z" stroke="#48829F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div class="flex flex-col justify-center ml-3">
+                                <div class="text-Gray-800 text-sm md:text-base">19 Jul 2023</div>
+                                <div class="text-Gray-400 text-xs">Sample Date</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-start bg-Gray-50 p-2 px-4 rounded-lg h-fit w-2/3 md:w-1/3 md:ml-5 lg:w-fit lg:ml-10">
+                            <div class="activity-ico bg-Primary-100 rounded-xl p-2">
+                                <svg class="relative overflow-visible" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M16 10.6667V16L20 20M28 16C28 17.5759 27.6896 19.1363 27.0866 20.5922C26.4835 22.0481 25.5996 23.371 24.4853 24.4853C23.371 25.5996 22.0481 26.4835 20.5922 27.0866C19.1363 27.6896 17.5759 28 16 28C14.4241 28 12.8637 27.6896 11.4078 27.0866C9.95189 26.4835 8.62902 25.5996 7.51472 24.4853C6.40042 23.371 5.5165 22.0481 4.91345 20.5922C4.31039 19.1363 4 17.5759 4 16C4 12.8174 5.26428 9.76516 7.51472 7.51472C9.76516 5.26428 12.8174 4 16 4C19.1826 4 22.2348 5.26428 24.4853 7.51472C26.7357 9.76516 28 12.8174 28 16Z" stroke="#48829F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div class="flex flex-col justify-center ml-3">
+                                <div class="text-Gray-800 text-sm md:text-base">19 Jul 2023</div>
+                                <div class="text-Gray-400 text-xs">Report Published</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="flex flex-col justify-start md:justify-start">
+                    <div class="flex flex-col mt-6 justify-start md:flex-row md:justify-start lg:mt-14">                
+                        <div class="flex items-center justify-start bg-Gray-50 p-2 px-4 rounded-lg w-2/3 md:w-1/3 lg:w-48">
+                            <div class="ico bg-Primary-100 rounded-xl p-2">
+                                <svg class="relative overflow-visible" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M14.4 4.80001C14.4 4.37567 14.5686 3.9687 14.8687 3.66864C15.1687 3.36858 15.5757 3.20001 16 3.20001C16.4244 3.20001 16.8314 3.36858 17.1314 3.66864C17.4315 3.9687 17.6 4.37567 17.6 4.80001V13.6C17.6 13.8122 17.6843 14.0157 17.8344 14.1657C17.9844 14.3157 18.1879 14.4 18.4001 14.4C18.6122 14.4 18.8157 14.3157 18.9657 14.1657C19.1158 14.0157 19.2001 13.8122 19.2001 13.6V6.40001C19.2001 5.97567 19.3686 5.5687 19.6687 5.26864C19.9687 4.96858 20.3757 4.80001 20.8001 4.80001C21.2244 4.80001 21.6314 4.96858 21.9314 5.26864C22.2315 5.5687 22.4001 5.97567 22.4001 6.40001V13.6C22.4001 13.8122 22.4843 14.0157 22.6344 14.1657C22.7844 14.3157 22.9879 14.4 23.2001 14.4C23.4122 14.4 23.6157 14.3157 23.7657 14.1657C23.9158 14.0157 24 13.8122 24 13.6V9.60001C24 9.17567 24.1686 8.7687 24.4687 8.46864C24.7687 8.16858 25.1757 8.00001 25.6 8.00001C26.0244 8.00001 26.4314 8.16858 26.7314 8.46864C27.0315 8.7687 27.2001 9.17567 27.2001 9.60001V17.6C27.2001 19.0708 26.9104 20.5272 26.3475 21.8861C25.7846 23.2449 24.9597 24.4796 23.9196 25.5196C22.8796 26.5596 21.645 27.3846 20.2861 27.9475C18.9273 28.5103 17.4709 28.8 16 28.8C14.5292 28.8 13.0728 28.5103 11.714 27.9475C10.3551 27.3846 9.12047 26.5596 8.08045 25.5196C7.04044 24.4796 6.21545 23.2449 5.6526 21.8861C5.08975 20.5272 4.80005 19.0708 4.80005 17.6V14.4C4.80005 13.9757 4.96862 13.5687 5.26868 13.2686C5.56874 12.9686 5.9757 12.8 6.40005 12.8C6.8244 12.8 7.23136 12.9686 7.53142 13.2686C7.83148 13.5687 8.00005 13.9757 8.00005 14.4V18.4C8.00005 18.6122 8.08433 18.8157 8.23436 18.9657C8.38439 19.1157 8.58788 19.2 8.80005 19.2C9.01222 19.2 9.21571 19.1157 9.36573 18.9657C9.51576 18.8157 9.60005 18.6122 9.60005 18.4V6.40001C9.60005 5.97567 9.76862 5.5687 10.0687 5.26864C10.3687 4.96858 10.7757 4.80001 11.2 4.80001C11.6244 4.80001 12.0314 4.96858 12.3314 5.26864C12.6315 5.5687 12.8 5.97567 12.8 6.40001V13.6C12.8 13.8122 12.8843 14.0157 13.0344 14.1657C13.1844 14.3157 13.3879 14.4 13.6 14.4C13.8122 14.4 14.0157 14.3157 14.1657 14.1657C14.3158 14.0157 14.4 13.8122 14.4 13.6V4.80001Z" fill="#48829F" />
+                                </svg>
+                            </div>
+                            <div class="flex flex-col justify-center ml-3">
+                                <div class="text-Primary-900 text-sm md:text-base">198cm</div>
+                                <div class="text-Gray-400 text-xs">Height</div>
+                            </div>
+                        </div>              
+                        <div class="flex items-centerjustify-start bg-Gray-50 p-2 px-4 rounded-lg w-2/3 md:w-1/3 mt-4 lg:w-48 lg:mt-0 lg:ml-14">
+                            <div class="ico bg-Primary-100 rounded-xl p-2">
+                                <svg class="relative overflow-visible" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16 3.20001C12.4656 3.20001 9.59997 6.06561 9.59997 9.60001V11.2H7.99997C7.18397 11.2 6.49919 11.8128 6.40959 12.624L4.80959 27.024C4.75999 27.4752 4.90398 27.928 5.20798 28.2672C5.51198 28.6064 5.94557 28.8 6.39997 28.8H25.6C26.0544 28.8 26.488 28.6064 26.792 28.2672C27.096 27.928 27.24 27.4752 27.1904 27.024L25.5904 12.624C25.5008 11.8128 24.816 11.2 24 11.2H22.4V9.60001C22.4 6.06561 19.5344 3.20001 16 3.20001ZM19.2 11.2V9.60001C19.2 7.83201 17.768 6.40001 16 6.40001C14.232 6.40001 12.8 7.83201 12.8 9.60001V11.2H19.2ZM9.59997 16C9.59997 15.1168 10.3168 14.4 11.2 14.4C12.0832 14.4 12.8 15.1168 12.8 16C12.8 16.8832 12.0832 17.6 11.2 17.6C10.3168 17.6 9.59997 16.8832 9.59997 16ZM20.8 14.4C19.9168 14.4 19.2 15.1168 19.2 16C19.2 16.8832 19.9168 17.6 20.8 17.6C21.6832 17.6 22.4 16.8832 22.4 16C22.4 15.1168 21.6832 14.4 20.8 14.4Z" fill="#48829F" />
+                                </svg>
+                            </div>
+                            <div class="flex flex-col justify-center ml-3">
+                                <div class="text-Primary-900 text-sm md:text-base">96kg</div>
+                                <div class="text-Gray-400 text-xs">Weight</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col mt-4 justify-start md:flex-row md:justify-start lg:mt-0 lg:mt-14">                
+                        <div class="flex items-center justify-start bg-Gray-50 p-2 px-4 rounded-lg w-2/3 md:w-1/3 lg:w-48">
+                            <div class="ico bg-Primary-100 rounded-xl p-2">
+                                <svg class="relative overflow-visible" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M5.07525 8.27526C6.27543 7.07544 7.903 6.40142 9.60005 6.40142C11.2971 6.40142 12.9247 7.07544 14.1248 8.27526L16 10.1489L17.8752 8.27526C18.4656 7.66399 19.1718 7.17642 19.9527 6.84101C20.7335 6.50559 21.5733 6.32904 22.4231 6.32165C23.2729 6.31427 24.1156 6.4762 24.9022 6.798C25.6887 7.11979 26.4033 7.59501 27.0042 8.19593C27.6051 8.79684 28.0803 9.51141 28.4021 10.2979C28.7239 11.0845 28.8858 11.9272 28.8785 12.777C28.8711 13.6268 28.6945 14.4666 28.3591 15.2474C28.0237 16.0283 27.5361 16.7345 26.9248 17.3249L16 28.2513L5.07525 17.3249C3.87543 16.1247 3.20142 14.4971 3.20142 12.8001C3.20142 11.103 3.87543 9.47543 5.07525 8.27526Z" fill="#48829F" />
+                                </svg>
+                            </div>
+                            <div class="flex flex-col justify-center ml-3">
+                                <div class="text-Primary-900 text-sm md:text-base">98bpm</div>
+                                <div class="text-Gray-400 text-xs">Pulse</div>
+                            </div>
+                        </div>              
+                        <div class="flex items-centerjustify-start bg-Gray-50 p-2 px-4 rounded-lg w-2/3 md:w-1/3 mt-4 lg:w-64 lg:mt-0 lg:ml-14">
+                            <div class="ico bg-Primary-100 rounded-xl p-2">
+                                <svg class="relative overflow-visible" width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M18.2503 1.67363C18.5751 1.77577 18.8588 1.97888 19.0602 2.2534C19.2617 2.52791 19.3703 2.85953 19.3703 3.20003V11.2H25.7703C26.0629 11.1999 26.35 11.28 26.6003 11.4317C26.8506 11.5834 27.0545 11.8009 27.1898 12.0604C27.325 12.3199 27.3866 12.6116 27.3676 12.9037C27.3487 13.1957 27.25 13.477 27.0823 13.7168L15.8823 29.7168C15.6873 29.9961 15.4084 30.2059 15.086 30.3156C14.7636 30.4254 14.4146 30.4295 14.0898 30.3272C13.7649 30.2249 13.4812 30.0217 13.2798 29.747C13.0785 29.4723 12.97 29.1406 12.9703 28.8V20.8H6.57026C6.27759 20.8002 5.99049 20.72 5.7402 20.5683C5.48992 20.4166 5.28604 20.1992 5.15075 19.9396C5.01546 19.6801 4.95395 19.3885 4.9729 19.0964C4.99186 18.8043 5.09056 18.5231 5.25826 18.2832L16.4583 2.28323C16.6535 2.00449 16.9325 1.79525 17.2547 1.68591C17.577 1.57657 17.9257 1.57283 18.2503 1.67523V1.67363Z" fill="#48829F" />
+                                </svg>
+                            </div>
+                            <div class="flex flex-col justify-center ml-3">
+                                <div class="text-Primary-900 text-sm md:text-base">198mm/Hg</div>
+                                <div class="text-Gray-400 text-xs">Diastolic blood pressure</div>
+                            </div>
+                        </div>            
+                        <div class="flex items-centerjustify-start bg-Gray-50 p-2 px-4 rounded-lg w-2/3 md:w-1/3 mt-4 lg:w-64 lg:mt-0 lg:ml-14">
+                            <div class="ico bg-Primary-100 rounded-xl p-2">
+                                <svg class="relative overflow-visible" width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M18.2503 1.67363C18.5751 1.77577 18.8588 1.97888 19.0602 2.2534C19.2617 2.52791 19.3703 2.85953 19.3703 3.20003V11.2H25.7703C26.0629 11.1999 26.35 11.28 26.6003 11.4317C26.8506 11.5834 27.0545 11.8009 27.1898 12.0604C27.325 12.3199 27.3866 12.6116 27.3676 12.9037C27.3487 13.1957 27.25 13.477 27.0823 13.7168L15.8823 29.7168C15.6873 29.9961 15.4084 30.2059 15.086 30.3156C14.7636 30.4254 14.4146 30.4295 14.0898 30.3272C13.7649 30.2249 13.4812 30.0217 13.2798 29.747C13.0785 29.4723 12.97 29.1406 12.9703 28.8V20.8H6.57026C6.27759 20.8002 5.99049 20.72 5.7402 20.5683C5.48992 20.4166 5.28604 20.1992 5.15075 19.9396C5.01546 19.6801 4.95395 19.3885 4.9729 19.0964C4.99186 18.8043 5.09056 18.5231 5.25826 18.2832L16.4583 2.28323C16.6535 2.00449 16.9325 1.79525 17.2547 1.68591C17.577 1.57657 17.9257 1.57283 18.2503 1.67523V1.67363Z" fill="#48829F" />
+                                </svg>
+                            </div>
+                            <div class="flex flex-col justify-center ml-3">
+                                <div class="text-Primary-900 text-sm md:text-base">79mm/Hg</div>
+                                <div class="text-Gray-400 text-xs">Systolic blood pressure</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="flex justify-center mb-10 mt-10">
+            <div class="w-full md:w-[1268px] rounded-lg shadow bg-White-900 mx-4 md:mx-0">
+                <div class="flex items-start justify-between p-4 px-3  md:px-[35px] md:py-[28px] border-t-0 border-x-0  border-2 border-Gray-200">
+                    <div class="flex items-center self-auto w-80  lg:w-2/3 lg:mb-0">
+                        <div class="p-2 bg-Gray-100 rounded-full mr-3 group-hover:hidden">
+                            <img src="images/eye.svg" alt="" width="32px" height="32px" class="p-[3px]">
+                        </div>
+                        <div class="flex flex-col font-medium text-left text-gray-800 text-[24px] font-normal">
+                            Biomarker Watch List
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-wrap px-3 md:px-[35px]">
+                    <div class="w-full md:w-2/3">
+                        <div class="mt-7">
+                            <canvas id="lineChart"></canvas>
+                        </div>
+    
+                        <div class="graph-bottom-row flex flex-wrap justify-center gap-2 md:pb-10 flex-row-reverse mt-14" id="labels">
+                            <div class="flex items-center justify-center w-[32px] h-[32px] rounded-full bg-Gray-100 cursor-pointer float-right" style="display: none" onclick="removeMostRecentLine()">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <mask id="path-1-inside-1_1901_18220" fill="white">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M4.29279 4.29308C4.48031 4.10561 4.73462 4.00029 4.99979 4.00029C5.26495 4.00029 5.51926 4.10561 5.70679 4.29308L9.99979 8.58608L14.2928 4.29308C14.385 4.19757 14.4954 4.12139 14.6174 4.06898C14.7394 4.01657 14.8706 3.98898 15.0034 3.98783C15.1362 3.98668 15.2678 4.01198 15.3907 4.06226C15.5136 4.11254 15.6253 4.18679 15.7192 4.28069C15.8131 4.37458 15.8873 4.48623 15.9376 4.60913C15.9879 4.73202 16.0132 4.8637 16.012 4.99648C16.0109 5.12926 15.9833 5.26048 15.9309 5.38249C15.8785 5.50449 15.8023 5.61483 15.7068 5.70708L11.4138 10.0001L15.7068 14.2931C15.8889 14.4817 15.9897 14.7343 15.9875 14.9965C15.9852 15.2587 15.88 15.5095 15.6946 15.6949C15.5092 15.8803 15.2584 15.9855 14.9962 15.9878C14.734 15.99 14.4814 15.8892 14.2928 15.7071L9.99979 11.4141L5.70679 15.7071C5.51818 15.8892 5.26558 15.99 5.00339 15.9878C4.74119 15.9855 4.49038 15.8803 4.30497 15.6949C4.11956 15.5095 4.01439 15.2587 4.01211 14.9965C4.00983 14.7343 4.11063 14.4817 4.29279 14.2931L8.58579 10.0001L4.29279 5.70708C4.10532 5.51955 4 5.26525 4 5.00008C4 4.73492 4.10532 4.48061 4.29279 4.29308Z"/>
+                                    </mask>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M4.29279 4.29308C4.48031 4.10561 4.73462 4.00029 4.99979 4.00029C5.26495 4.00029 5.51926 4.10561 5.70679 4.29308L9.99979 8.58608L14.2928 4.29308C14.385 4.19757 14.4954 4.12139 14.6174 4.06898C14.7394 4.01657 14.8706 3.98898 15.0034 3.98783C15.1362 3.98668 15.2678 4.01198 15.3907 4.06226C15.5136 4.11254 15.6253 4.18679 15.7192 4.28069C15.8131 4.37458 15.8873 4.48623 15.9376 4.60913C15.9879 4.73202 16.0132 4.8637 16.012 4.99648C16.0109 5.12926 15.9833 5.26048 15.9309 5.38249C15.8785 5.50449 15.8023 5.61483 15.7068 5.70708L11.4138 10.0001L15.7068 14.2931C15.8889 14.4817 15.9897 14.7343 15.9875 14.9965C15.9852 15.2587 15.88 15.5095 15.6946 15.6949C15.5092 15.8803 15.2584 15.9855 14.9962 15.9878C14.734 15.99 14.4814 15.8892 14.2928 15.7071L9.99979 11.4141L5.70679 15.7071C5.51818 15.8892 5.26558 15.99 5.00339 15.9878C4.74119 15.9855 4.49038 15.8803 4.30497 15.6949C4.11956 15.5095 4.01439 15.2587 4.01211 14.9965C4.00983 14.7343 4.11063 14.4817 4.29279 14.2931L8.58579 10.0001L4.29279 5.70708C4.10532 5.51955 4 5.26525 4 5.00008C4 4.73492 4.10532 4.48061 4.29279 4.29308Z" fill="#F3F4F6"/>
+                                    <path d="M5.70679 4.29308L7.121 2.87887L7.12079 2.87865L5.70679 4.29308ZM9.99979 8.58608L8.58557 10.0003L9.99979 11.4145L11.414 10.0003L9.99979 8.58608ZM14.2928 4.29308L15.707 5.70729L15.7193 5.69501L15.7314 5.68251L14.2928 4.29308ZM15.7068 5.70708L14.3174 4.2685L14.3049 4.28058L14.2926 4.29287L15.7068 5.70708ZM11.4138 10.0001L9.99957 8.58587L8.58536 10.0001L9.99957 11.4143L11.4138 10.0001ZM15.7068 14.2931L17.1454 12.9037L17.1333 12.8912L17.121 12.8789L15.7068 14.2931ZM14.2928 15.7071L12.8786 17.1213L12.8909 17.1336L12.9034 17.1457L14.2928 15.7071ZM9.99979 11.4141L11.414 9.99987L9.99979 8.58565L8.58557 9.99987L9.99979 11.4141ZM5.70679 15.7071L7.09621 17.1457L7.10871 17.1336L7.121 17.1213L5.70679 15.7071ZM4.29279 14.2931L2.87857 12.8789L2.86628 12.8912L2.85421 12.9037L4.29279 14.2931ZM8.58579 10.0001L10 11.4143L11.4142 10.0001L10 8.58587L8.58579 10.0001ZM4.29279 5.70708L2.87836 7.12108L2.87857 7.12129L4.29279 5.70708ZM4.29279 4.29308L2.87879 2.87865L2.87836 2.87908L4.29279 4.29308ZM5.70679 5.70751C5.51926 5.89498 5.26495 6.00029 4.99979 6.00029V2.00029C4.20429 2.00029 3.44137 2.31624 2.87879 2.87865L5.70679 5.70751ZM4.99979 6.00029C4.73462 6.00029 4.48031 5.89498 4.29279 5.70751L7.12079 2.87865C6.5582 2.31624 5.79528 2.00029 4.99979 2.00029V6.00029ZM4.29257 5.70729L8.58557 10.0003L11.414 7.17187L7.121 2.87887L4.29257 5.70729ZM11.414 10.0003L15.707 5.70729L12.8786 2.87887L8.58557 7.17187L11.414 10.0003ZM15.7314 5.68251C15.6391 5.77801 15.5288 5.8542 15.4068 5.90661L13.828 2.23135C13.462 2.38858 13.1309 2.61713 12.8542 2.90366L15.7314 5.68251ZM15.4068 5.90661C15.2848 5.95902 15.1535 5.9866 15.0208 5.98776L14.986 1.98791C14.5877 1.99137 14.194 2.07413 13.828 2.23135L15.4068 5.90661ZM15.0208 5.98776C14.888 5.98891 14.7563 5.96361 14.6334 5.91333L16.1481 2.21119C15.7794 2.06035 15.3843 1.98444 14.986 1.98791L15.0208 5.98776ZM14.6334 5.91333C14.5105 5.86304 14.3989 5.78879 14.305 5.6949L17.1334 2.86647C16.8517 2.5848 16.5168 2.36204 16.1481 2.21119L14.6334 5.91333ZM14.305 5.6949C14.2111 5.60101 14.1368 5.48935 14.0865 5.36646L17.7887 3.8518C17.6378 3.48311 17.4151 3.14815 17.1334 2.86647L14.305 5.6949ZM14.0865 5.36646C14.0363 5.24357 14.011 5.11189 14.0121 4.9791L18.012 5.01386C18.0154 4.61552 17.9395 4.22048 17.7887 3.8518L14.0865 5.36646ZM14.0121 4.9791C14.0133 4.84632 14.0409 4.7151 14.0933 4.5931L17.7685 6.17187C17.9257 5.80586 18.0085 5.4122 18.012 5.01386L14.0121 4.9791ZM14.0933 4.5931C14.1457 4.47109 14.2219 4.36075 14.3174 4.2685L17.0962 7.14566C17.3827 6.86892 17.6113 6.53789 17.7685 6.17187L14.0933 4.5931ZM14.2926 4.29287L9.99957 8.58587L12.828 11.4143L17.121 7.12129L14.2926 4.29287ZM9.99957 11.4143L14.2926 15.7073L17.121 12.8789L12.828 8.58587L9.99957 11.4143ZM14.2682 15.6825C14.0861 15.4939 13.9853 15.2413 13.9875 14.9791L17.9874 15.0139C17.9942 14.2273 17.6918 13.4695 17.1454 12.9037L14.2682 15.6825ZM13.9875 14.9791C13.9898 14.7169 14.095 14.4661 14.2804 14.2807L17.1088 17.1091C17.665 16.5529 17.9805 15.8004 17.9874 15.0139L13.9875 14.9791ZM14.2804 14.2807C14.4658 14.0953 14.7166 13.9901 14.9788 13.9878L15.0136 17.9877C15.8002 17.9808 16.5526 17.6653 17.1088 17.1091L14.2804 14.2807ZM14.9788 13.9878C15.241 13.9856 15.4936 14.0863 15.6822 14.2685L12.9034 17.1457C13.4692 17.6921 14.227 17.9945 15.0136 17.9877L14.9788 13.9878ZM15.707 14.2929L11.414 9.99987L8.58557 12.8283L12.8786 17.1213L15.707 14.2929ZM8.58557 9.99987L4.29257 14.2929L7.121 17.1213L11.414 12.8283L8.58557 9.99987ZM4.31736 14.2685C4.50596 14.0863 4.75857 13.9856 5.02076 13.9878L4.98601 17.9877C5.7726 17.9945 6.5304 17.6921 7.09621 17.1457L4.31736 14.2685ZM5.02076 13.9878C5.28296 13.9901 5.53377 14.0953 5.71918 14.2807L2.89075 17.1091C3.44698 17.6653 4.19942 17.9808 4.98601 17.9877L5.02076 13.9878ZM5.71918 14.2807C5.90459 14.4661 6.00976 14.7169 6.01204 14.9791L2.01219 15.0139C2.01902 15.8005 2.33453 16.5529 2.89075 17.1091L5.71918 14.2807ZM6.01204 14.9791C6.01432 15.2413 5.91352 15.4939 5.73136 15.6825L2.85421 12.9037C2.30774 13.4695 2.00535 14.2273 2.01219 15.0139L6.01204 14.9791ZM5.707 15.7073L10 11.4143L7.17157 8.58587L2.87857 12.8789L5.707 15.7073ZM10 8.58587L5.707 4.29287L2.87857 7.12129L7.17157 11.4143L10 8.58587ZM5.70721 4.29308C5.89468 4.48061 6 4.73492 6 5.00008H2C2 5.79557 2.31595 6.5585 2.87836 7.12108L5.70721 4.29308ZM6 5.00008C6 5.26525 5.89468 5.51955 5.70721 5.70708L2.87836 2.87908C2.31595 3.44166 2 4.20459 2 5.00008H6Z" fill="#9CA3AF" mask="url(#path-1-inside-1_1901_18220)"/>
+                                    </svg>
+    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/3 md:pl-[22px] md:border-l-2 border-Gray-200 pb-4">
+                        <div class="w-full mt-9 mb-4">
+                            <div class="relative" data-dropdown-toggle="graphsearch" >
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M14.75 14.75L10.25 10.25M11.75 6.5C11.75 7.18944 11.6142 7.87213 11.3504 8.50909C11.0865 9.14605 10.6998 9.7248 10.2123 10.2123C9.7248 10.6998 9.14605 11.0865 8.50909 11.3504C7.87213 11.6142 7.18944 11.75 6.5 11.75C5.81056 11.75 5.12787 11.6142 4.49091 11.3504C3.85395 11.0865 3.2752 10.6998 2.78769 10.2123C2.30018 9.7248 1.91347 9.14605 1.64963 8.50909C1.3858 7.87213 1.25 7.18944 1.25 6.5C1.25 5.10761 1.80312 3.77226 2.78769 2.78769C3.77226 1.80312 5.10761 1.25 6.5 1.25C7.89239 1.25 9.22774 1.80312 10.2123 2.78769C11.1969 3.77226 11.75 5.10761 11.75 6.5Z" stroke="#D1D5DB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                </div>
+                                <div id="close" class="close absolute inset-y-0 right-0 flex items-center pr-5 cursor-pointer">
+                                    <svg class="x" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M2.57606 2.57575L2.92956 2.92936C2.94832 2.91061 2.97375 2.90008 3.00026 2.90008C3.02675 2.90008 3.05216 2.91059 3.07091 2.9293C3.07093 2.92932 3.07094 2.92934 3.07096 2.92936L5.64671 5.5051L6.00026 5.85866L6.35382 5.5051L8.92962 2.9293L8.92967 2.92936L8.93571 2.92311C8.94493 2.91356 8.95597 2.90594 8.96817 2.9007C8.98037 2.89546 8.99349 2.8927 9.00677 2.89258C9.02004 2.89247 9.03321 2.895 9.0455 2.90002C9.05779 2.90505 9.06896 2.91248 9.07835 2.92187C9.08773 2.93126 9.09516 2.94242 9.10019 2.95471C9.10522 2.967 9.10775 2.98017 9.10763 2.99345C9.10752 3.00672 9.10476 3.01985 9.09952 3.03205C9.09428 3.04425 9.08666 3.05528 9.07711 3.06451L9.07705 3.06445L9.07091 3.0706L6.49511 5.6464L6.14156 5.99995L6.49511 6.3535L9.06655 8.92494C9.08367 8.94359 9.09311 8.96807 9.09289 8.99345C9.09266 9.01967 9.08214 9.04475 9.0636 9.06329C9.04506 9.08183 9.01998 9.09235 8.99376 9.09257C8.96838 9.09279 8.9439 9.08336 8.92525 9.06624L6.35382 6.4948L6.00026 6.14124L5.64671 6.4948L3.07527 9.06624C3.05662 9.08336 3.03214 9.09279 3.00677 9.09257C2.98055 9.09235 2.95547 9.08183 2.93692 9.06329C2.91838 9.04475 2.90787 9.01967 2.90764 8.99345C2.90742 8.96807 2.91685 8.94359 2.93398 8.92494L5.50542 6.3535L5.85897 5.99995L5.50542 5.6464L2.92967 3.07065C2.92965 3.07063 2.92963 3.07062 2.92962 3.0706C2.9109 3.05185 2.90039 3.02644 2.90039 2.99995C2.90039 2.97343 2.91092 2.948 2.92967 2.92925L2.57606 2.57575ZM2.57606 2.57575C2.46358 2.68827 2.40039 2.84085 2.40039 2.99995C2.40039 3.15905 2.46358 3.31163 2.57606 3.42415L3.42446 2.57575C3.31195 2.46327 3.15936 2.40008 3.00026 2.40008C2.84116 2.40008 2.68858 2.46327 2.57606 2.57575Z" fill="#111928" stroke="#7E7E7E" />
+                                    </svg>
+                                </div>
+                                <input type="text" id="input-name" class="w-full bg-White-900 border border-Gray-300 text-Gray-500 text-sm rounded-lg text-normal  block w-full pl-10 px-4 pt-[20px] pb-[15px]" placeholder="Add New Biomarker">
+                                <!-- dropdown start  -->
+                                <div id="graphsearch" class="w-full z-10 hidden bg-white rounded-lg shadow py-3">
+    
+                                    <div class="flex items-center self-auto lg:mb-0 px-4 py-2 cursor-pointer">
+                                        <div class="p-2 mr-3  w-[42px] h-[42px] flex items-center justify-center">
+                                            <img src="images/graph-light.png" alt="" width="33px">
+                                        </div>
+                                        <div class="flex flex-col font-normal text-left text-gray-700 nue-rowitem-title md:text-sm">
+                                            B-Hemoglobin
+                                            <span class="font-normal text-gray-400">Hematology</span>
+                                        </div>
+                                    </div>
+    
+                                    <div class="flex items-center self-auto lg:mb-0 px-4 py-2 cursor-pointer">
+                                        <div class="p-2 mr-3  w-[42px] h-[42px] flex items-center justify-center">
+                                            <img src="images/graph-light.png" alt="" width="33px">
+                                        </div>
+                                        <div class="flex flex-col font-normal text-left text-gray-700 nue-rowitem-title md:text-sm">
+                                            P-Magnesium
+                                            <span class="font-normal text-gray-400">Fluid and electrolytes</span>
+                                        </div>
+                                    </div>
+    
+                                    <div class="flex items-center self-auto lg:mb-0 px-4 py-2 cursor-pointer">
+                                        <div class="p-2 mr-3  w-[42px] h-[42px] flex items-center justify-center">
+                                            <img src="images/graph-light.png" alt="" width="33px">
+                                        </div>
+                                        <div class="flex flex-col font-normal text-left text-gray-700 nue-rowitem-title md:text-sm">
+                                            P-Creatinine
+                                            <span class="font-normal text-gray-400">Kidney Markers</span>
+                                        </div>
+                                    </div>
+    
+                                    <div class="flex items-center self-auto lg:mb-0 px-4 py-2 cursor-pointer">
+                                        <div class="p-2 mr-3  w-[42px] h-[42px] flex items-center justify-center">
+                                            <img src="images/graph-light.png" alt="" width="33px">
+                                        </div>
+                                        <div class="flex flex-col font-normal text-left text-gray-700 nue-rowitem-title md:text-sm">
+                                            P-Magnesium
+                                            <span class="font-normal text-gray-400">Fluid and electrolytes</span>
+                                        </div>
+                                    </div>
+    
+                                </div>
+                                <!-- dropdown ends  -->
+                            </div>
+                        </div>
+                        <div class="graph-rt-items">
+                            <button type="button" class="group relative flex w-full p-4 items-center justify-between lg:px-7 text-gray-900" onclick="toggleDataset('P-Magnesium','#a189ae')">
+                                <div class="flex items-center self-auto lg:mb-0 group-hover:opacity-50">
+                                    <div class="p-2 bg-Gray-100 rounded-full mr-2  w-[48px] h-[48px]">
+                                        <p class="flex w-[30px] h-[30px] justify-center align-center"><img src="images/cardio-ic.png" alt="" width="30px"></p>
+                                    </div>
+                                    <div class="flex flex-col font-normal text-left text-gray-800 nue-rowitem-title md:text-md">
+                                        P-Magnesium
+                                        <span class="font-normal text-gray-500 md:text-sm">Fluid and electrolytes</span>
+                                    </div>
+                                </div>
+    
+                                <div class="w-auto md:w-auto flex items-end lg:items-center justify-end">
+                                    <div class="text-end group-hover:hidden">
+                                        <div class="text-base text-gray-800 ml-6 md:me-0 md:text-md">65%    </div>
+                                        <div class="md:text-sm mt-1" id="P-Magnesium">-0.3%</div>
+                                    </div>
+    
+                                    <img src="images/close.svg" alt="" class="shrink-0 absolute right-0 top-0 mt-5 mr-2 overflow-visible group-hover:block hidden lg:relative lg:mt-0 lg:mr-0">
+                                </div>
+                            </button>
+                            <button type="button" class="group relative flex w-full p-4 items-center justify-between lg:px-7 text-gray-900" onclick="toggleDataset('P-Iron','#f98080')">
+                                <div class="flex items-center self-auto lg:mb-0 group-hover:opacity-50">
+                                    <div class="p-2 bg-Gray-100 rounded-full mr-2  w-[48px] h-[48px]">
+                                        <p class="flex w-[30px] h-[30px] justify-center align-center"><img src="images/cardio-ic.png" alt="" width="30px"></p>
+                                    </div>
+                                    <div class="flex flex-col font-normal text-left text-gray-800 nue-rowitem-title md:text-md">
+                                        P-Iron
+                                        <span class="font-normal text-gray-500 md:text-sm">Fluid and electrolytes</span>
+                                    </div>
+                                </div>
+    
+                                <div class="w-auto md:w-auto flex items-end lg:items-center justify-end">
+                                    <div class="text-end group-hover:hidden">
+                                        <div class="text-base text-gray-800 ml-6 md:me-0 md:text-md">86%</div>
+                                        <div class=" md:text-sm mt-1" id="P-Iron">-0.3%</div>
+                                    </div>
+                                    <img src="images/close.svg" alt="" class="shrink-0 absolute right-0 top-0 mt-5 mr-2 overflow-visible group-hover:block hidden lg:relative lg:mt-0 lg:mr-0">
+                                </div>
+                            </button>
+                            <button type="button" class="group relative flex w-full p-4 items-center justify-between lg:px-7 text-gray-900" onclick="toggleDataset('P-Creatinine','#31c48d')">
+                                <div class="flex items-center self-auto lg:mb-0 group-hover:opacity-50">
+                                    <div class="p-2 bg-Gray-100 rounded-full mr-2  w-[48px] h-[48px]">
+                                        <p class="flex w-[30px] h-[30px] justify-center align-center"><img src="images/cardio-ic.png" alt="" width="30px"></p>
+                                    </div>
+                                    <div class="flex flex-col font-normal text-left text-gray-800 nue-rowitem-title md:text-md">
+                                        P-Creatinine
+                                        <span class="font-normal text-gray-500 md:text-sm">Kidney markers</span>
+                                    </div>
+                                </div>
+    
+                                <div class="w-auto md:w-auto flex items-end lg:items-center justify-end">
+                                    <div class="text-end group-hover:hidden">
+                                        <div class="text-base text-gray-800 ml-6 md:me-0 md:text-md">60%</div>
+                                        <div class="md:text-sm mt-1" id="P-Creatinine">+0.3%</div>
+                                    </div>
+                                    <img src="images/close.svg" alt="" class="shrink-0 absolute right-0 top-0 mt-5 mr-2 overflow-visible group-hover:block hidden lg:relative lg:mt-0 lg:mr-0">
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="py-5 px-4 md.:pb-24 flex flex-col">
+            <h3 class="text-[#17181A] text-xl lg:text-[2rem]">Your Results</h3>
+            <h4 class="text-[#7E7E7E] text-sm lg:text-xl pb-6">brief synopsis about what this covers</h4>
+            <div class="subsection-banner group bg-Gray-900 bg-opacity-0 hover:bg-opacity-100 transition duration-300 ease-linear w-full h-full relative mb-5 rounded-xl overflow-hidden">
+                <a href="vitals.html">
+                <img class="block md:h-full w-full h-96 object-cover group-hover:opacity-50 transition duration-300 ease-linear" src="./images/overview-vitals.png" alt="subsection banner">
+                <div class="h-full absolute top-auto bottom-0 left-0 right-0 pl-4 pb-4 md:pl-12 md:pb-10 flex flex-col justify-end">
+                    <h2 class="text-lg font-normal  text-Blue-50 md:text-2xl lg:text-2xl">Your Vitals</h2>
+                    <h5 class="text-base font-normal text-[#DADADA] capitalize">brief synopsis about what this covers</h5>
+                </div>
+                </a>
+            </div>
+            <div class="subsection-banner group bg-Gray-900 bg-opacity-0 hover:bg-opacity-100 duration-300 ease-linear w-full h-full relative mb-5 rounded-xl overflow-hidden">
+                <a href="health-intelligence-cardio.html">
+                <img class="block md:h-full w-full h-96 object-cover group-hover:opacity-50 duration-300 ease-linear" src="./images/overview-subsection.png" alt="subsection banner"> 
+                <div class="h-full absolute top-auto bottom-0 left-0 right-0 pl-4 pb-4 md:pl-12 md:pb-10 flex flex-col justify-end">
+                    <h2 class="text-lg font-normal  text-Blue-50 md:text-2xl lg:text-2xl">Cardiovascular Diseases</h2>
+                    <h5 class="text-base font-normal text-[#DADADA] capitalize">brief synopsis about what this covers</h5>
+                </div>
+                </a>
+            </div>
+            <div class="subsection-banner group bg-Gray-900 bg-opacity-0 hover:bg-opacity-100 duration-300 ease-linear w-full h-full relative mb-5 rounded-xl overflow-hidden">
+                <a href="health-baseline.html">
+                <img class="block md:h-full w-full h-96 object-cover group-hover:opacity-50 duration-300 ease-linear" src="./images/overview-health-baseline.png" alt="subsection banner">
+                <div class="h-full absolute top-auto bottom-0 left-0 right-0 pl-4 pb-4 md:pl-12 md:pb-10 flex flex-col justify-end">
+                    <h2 class="text-lg font-normal  text-Blue-50 md:text-2xl lg:text-2xl">Healthy Baseline</h2>
+                    <h5 class="text-base font-normal text-[#DADADA] capitalize">brief synopsis about what this covers</h5>
+                </div>
+                </a>
+            </div>
+            <div class="subsection-banner group bg-Gray-900 bg-opacity-0 hover:bg-opacity-100 duration-300 ease-linear w-full h-full relative mb-5 rounded-xl overflow-hidden">
+                <a href="nutrition-intelligence.html">
+                <img class="block md:h-full w-full h-96 object-cover group-hover:opacity-50 duration-300 ease-linear" src="./images/overview-nutrition-intelligence.png" alt="subsection banner">
+                <div class="h-full absolute top-auto bottom-0 left-0 right-0 pl-4 pb-4 md:pl-12 md:pb-10 flex flex-col justify-end">
+                    <h2 class="text-lg font-normal  text-Blue-50 md:text-2xl lg:text-2xl">Nutrition Intelligence</h2>
+                    <h5 class="text-base font-normal text-[#DADADA] capitalize">brief synopsis about what this covers</h5>
+                </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="py-5 px-4 md.:pb-24 flex flex-col">
+            <h3 class="text-[#232323] text-xl lg:text-[2rem]">Our Recommendations</h3>
+            <h4 class="text-[#7E7E7E] text-sm lg:text-xl pb-6">brief synopsis about what this covers</h4>
+            <div class="subsection-banner group bg-Gray-900 bg-opacity-0 hover:bg-opacity-100 duration-300 ease-linear w-full h-full relative mb-5 rounded-xl overflow-hidden">
+                <a href="health-intelligence-food.html">
+                <img class="block md:h-full w-full h-96 object-cover group-hover:opacity-50 duration-300 ease-linear" src="./images/overview-health-intellegence-food.png" alt="subsection banner">
+                <div class="h-full absolute top-auto bottom-0 left-0 right-0 pl-4 pb-4 md:pl-12 md:pb-10 flex flex-col justify-end">
+                    <h2 class="text-lg font-normal  text-Blue-50 md:text-2xl lg:text-2xl">Food</h2>
+                    <h5 class="text-base font-normal text-[#DADADA] capitalize">brief synopsis about what this covers</h5>
+                </div>
+                </a>
+            </div>
+            <div class="subsection-banner group bg-Gray-900 bg-opacity-0 hover:bg-opacity-100 duration-300 ease-linear w-full h-full relative mb-5 rounded-xl overflow-hidden">
+                <a href="nutrition-intelligence.html">
+                <img class="block md:h-full w-full h-96 object-cover group-hover:opacity-50 duration-300 ease-linear" src="./images/overview-supplemnt.png" alt="subsection banner">
+                <div class="h-full absolute top-auto bottom-0 left-0 right-0 pl-4 pb-4 md:pl-12 md:pb-10 flex flex-col justify-end">
+                    <h2 class="text-lg font-normal  text-Blue-50 md:text-2xl lg:text-2xl">Supplementation</h2>
+                    <h5 class="text-base font-normal text-[#DADADA] capitalize">brief synopsis about what this covers</h5>
+                </div>
+            </a>
+            </div>
+            <div class="subsection-banner group bg-Gray-900 bg-opacity-0 hover:bg-opacity-100 duration-300 ease-linear w-full h-full relative mb-5 rounded-xl overflow-hidden">
+                <a href="#s">
+                <img class="block md:h-full w-full h-96 object-cover group-hover:opacity-50 duration-300 ease-linear" src="./images/overview-genere.png" alt="subsection banner">
+                <div class="h-full absolute top-auto bottom-0 left-0 right-0 pl-4 pb-4 md:pl-12 md:pb-10 flex flex-col justify-end">
+                    <h2 class="text-lg font-normal  text-Blue-50 md:text-2xl lg:text-2xl">General Recommendation</h2>
+                    <h5 class="text-base font-normal text-[#DADADA] capitalize">brief synopsis about what this covers</h5>
+                </div>
+            </a>
+            </div>
+        </div>
+
+        <div class="py-5 px-4 md.:pb-24 flex flex-col">
+            <h3 class="text-[#17181A] text-xl lg:text-[2rem]">References & Authentication</h3>
+            <h4 class="text-[#7E7E7E] text-sm lg:text-xl pb-6">brief synopsis about what this covers</h4>
+
+            <div class="rounded-2xl relative lg:mt-24 mb-8">
+
+                <div class="group relative flex flex-col items-end justify-start w-full p-2 md:p-4 lg:items-center lg:flex-row lg:justify-between lg:p-5 border-b border-Primary-50 text-gray-900">
+                    <div class="flex items-center w-full mb-2 lg:w-2/3 lg:mb-0">
+                        <div class="flex flex-col font-medium text-left text-[#809FB8] uppercase">
+                            Physician
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="p-5 lg:p-10 lg:px-200">
+                    <div class="flex flex-col items-start justify-between lg:flex-row">
+                        <div class="flex flex-col items-start w-full lg:w-1/2 lg:pr-32">
+                            <img src="./images/initals.png" class="w-1/3 block mt-12 ml-12 mb-5">
+
+                            <h6 class="w-11/12 flex flex-col items-end text-Gray-700 text-base border-t border-Primary-300 pt-5 pr-10">Doctors Name, Doctors Credications</h6>
+                        </div>
+
+                        <div class="hidden md:block flex items-end w-full mt-10 lg:mt-0 lg:w-1/2 lg:pl-32">
+                            &nbsp
+                        </div>
+                    </div> 
+                </div>
+
+            </div>
+
+            <div class="rounded-2xl relative lg:mt-24 mb-8">
+
+                <div class="group relative flex flex-col items-end justify-start w-full p-2 md:p-4 lg:items-center lg:flex-row lg:justify-between lg:p-5 border-b border-Primary-50 text-gray-900">
+                    <div class="flex items-center w-full mb-2 lg:w-2/3 lg:mb-0">
+                        <div class="flex flex-col font-medium text-left text-[#809FB8] uppercase">
+                            References
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="p-5 lg:p-10 lg:px-200">
+                    <div class="flex flex-col items-start justify-between lg:flex-row">
+                        <p class="text-sm text-Gray-600 w-full lg:w-1/2 mb-2 lg:pr-32">Horvath S, Raj K. DNA methylation-based biomarkers and the epigenetic clock theory of ageing. Nat Rev Genet. 2018 Jun;19(6):371-384. doi: 10.1038/s41576-018-0004-3. PMID: 29643443.
+                            <br>
+                        Sytkowski PA, Kannel WB, D'Agostino RB. Changes in risk factors and the decline in mortality from cardiovascular disease. The Framingham Heart Study. N Engl J Med. 1990 Jun 7;322(23):1635-41. doi: 10.1056/NEJM199006073222304. PMID: 2288563.
+                            <br>
+                        Sundhedsministeriet. (n.d.). Lægehåndbogen. sundhed.dk. https://www.sundhed.dk/laegehaandbogen/
+                            <br>
+                        Genova Diagnostics. (n.d.). NutrEval Support guide.
+                            <br>
+                        Nordic Council of Ministers, Nordic Council of Ministers Secretariat. (2014). Nordic Nutrition Recommendations 2012: Integrating nutrition and physical activity (5th ed.). Nordisk Ministerråd.
+                            <br>
+                        All Health Supplements on Examine. (n.d.). https://examine.com/supplements/
+                            <br>
+                        U.S Food and Nutrition Board: https://www.nationalacademies.org/fnb/food-and-nutrition- board
+                            <br>
+                        The American Heart Association (AHA): https://www.heart.org/</p>
+
+                        <div class="hidden md:block flex items-end w-full mt-10 lg:mt-0 lg:w-1/2 lg:pl-32">
+                            &nbsp
+                        </div>
+                    </div> 
+                </div>
+
+            </div>
+
+            <div class="rounded-2xl relative lg:mt-24 mb-8">
+
+                <div class="group relative flex flex-col items-start justify-start w-full p-2 md:p-4 lg:items-center lg:flex-row lg:justify-between lg:p-5 border-b border-Primary-50 text-gray-900">
+                    <div class="flex items-center w-full mb-2 lg:w-2/3 lg:mb-0">
+                        <div class="flex flex-col font-medium text-left text-[#809FB8] uppercase">
+                            Accreditations
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="p-5 lg:p-10 lg:px-200">
+                    <div class="flex flex-col items-start justify-between lg:flex-row">
+                        <div class="flex items-end w-full mt-5 mb-10 lg:mt-0 lg:mb-0 lg:w-1/2 lg:pr-32">
+                            <img src="./images/accreditations-img.jpg" class="w-full block -mt-3">
+                        </div>
+
+                        <p class="text-sm text-Gray-600 w-full lg:w-1/2 mb-2 lg:pl-32">We always strive to achieve the highest quality and therefore it is also important that our collaborative laboratories have all the valid approvals, certificates and accreditations needed for us to ensure high quality and safety of the analysis results. The documents and certificates are proof that the laboratories have undergone the necessary quality controls and meet the relevant standards and requirements, and that they have committed to complying with all GDPR regulations. Read more on our website aetas.dk.
+                            <br><br>
+                        Disclaimer: The test results performed by aetas diagnostics are to be considered indicative and should not be used solely to make important health decisions. The results are only valid for the specific sample used for analysis, and are therefore individual and cannot be generalized to a larger population. It is recommended that you always seek medical advice to treat the underlying cause of abnormal results before making important health decisions.</p>
+                    </div> 
+                </div>
+
+            </div>
+        </div>
+    
+
+    </section>
+
+
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.js"></script>
+
+    <!-- <script>
+        module.exports = {
+            darkMode: 'class',
+            // ...
+        }
+    </script> -->
+
+    <script>
+        let lineChart; // Define the line chart variable
+        let originalData; // Variable to store the original data
+        const addedLines = {}; // Object to keep track of added lines
+        const lineColors = {}; // Object to keep track of line colors
+        const labelsMap = new Map(); // Map to associate labels with datasets
+
+        function intiRandomData() {
+            const newData = [];
+            for (let i = 0; i < 6; i++) {
+                newData.push((Math.random() * 201) - 100); // Generating random data between -20 and 20
+            }
+            return newData;
+        }
+        const datanew = intiRandomData();
+
+        // Sample data for the line chart
+        const data = {
+          labels: ['Jan 21', 'Jul 21', 'Jan 22', 'Jul 22', 'Jan 23', 'Jul 23'],
+          datasets: [{
+            label: 'Initial Data',
+            data: datanew,
+            borderColor: '#FEC663',
+            tension: 0.4, // Adjust the tension to control the curve of the lines
+            fill: false, // No background fill for the line
+          }]
+        };
+
+        // Configuration options for the chart
+        const options = {
+          interaction: {
+                intersect: false,
+                mode: 'index',
+          },
+          responsive: true,
+          maintainAspectRatio: true,
+          scales: {
+            x: {
+              beginAtZero: true,
+              grid: {
+                display: false, // Hide x-axis grid lines
+                },
+            },
+            y: {
+              beginAtZero: true,
+              grid: {
+                display: true, // Hide x-axis grid lines
+                color: function(context) {
+                if (context.tick.value === 0) {
+                  return 'rgb(171 169 169)'; // Darker color for y-axis line at 0
+                }
+                return 'rgba(0, 0, 0, 0.1)'; // Default color for other y-axis grid lines
+              },
+                },
+            }
+          },
+          plugins: {
+            legend: {
+              display: false,
+              position: 'top',
+            },
+            title: {
+              display: false,
+              text: 'Curved Line Chart Example'
+            },
+            tooltip: {
+                external: function(context) {
+                    // Tooltip Element
+                    let tooltipEl = document.getElementById('chartjs-tooltip');
+
+                    // Create element on first render
+                    if (!tooltipEl) {
+                        tooltipEl = document.createElement('div');
+                        tooltipEl.id = 'chartjs-tooltip';
+                        tooltipEl.innerHTML = '<table></table>';
+                        document.body.appendChild(tooltipEl);
+                    }
+
+                    // Hide if no tooltip
+                    const tooltipModel = context.tooltip;
+                    if (tooltipModel.opacity === 0) {
+                        tooltipEl.style.opacity = 0;
+                        return;
+                    }
+
+                    // Set caret Position
+                    tooltipEl.classList.remove('above', 'below', 'no-transform');
+                    if (tooltipModel.yAlign) {
+                        tooltipEl.classList.add(tooltipModel.yAlign);
+                    } else {
+                        tooltipEl.classList.add('no-transform');
+                    }
+
+                    function getBody(bodyItem) {
+                        return bodyItem.lines;
+                    }
+
+                    // Set Text
+                    if (tooltipModel.body) {
+                        const titleLines = tooltipModel.title || [];
+                        const bodyLines = tooltipModel.body.map(getBody);
+                        bodyLines.forEach(function(body, i) {
+                            if(i > 0){
+                                body = JSON.stringify(body);
+                                var parts = body.split(": ");
+                                var id = parts[0].replace(/[\[\]"]/g, '');
+                                var value = parts[1].replace(/[\[\]"]/g, '');
+                                var element = document.getElementById(id);
+                                
+                                if(value > 0){
+                                    element.classList.remove("text-Orange-400");
+                                    element.classList.add("text-Green-400");
+                                    element.innerHTML = "+"+value;
+                                }else{
+                                    element.classList.remove("text-Green-400");
+                                    element.classList.add("text-Orange-400");
+                                    element.innerHTML = value;
+                                }
+                            }
+                        });
+                    }
+                }
+            },
+          }
+        };
+
+        // Function to create the initial line chart
+        function createLineChart() {
+          const ctx = document.getElementById('lineChart').getContext('2d');
+          lineChart = new Chart(ctx, {
+            type: 'line',
+            data: data,
+            options: options
+          });
+
+          // Save a copy of the original data
+          originalData = JSON.parse(JSON.stringify(data));
+        }
+
+        // Function to toggle a dataset (line) in the chart
+        function toggleDataset(label,newColor) {
+          if (addedLines[label]) {
+            // If the line is already added, remove it
+            removeDataset(label);
+          } else {
+            // If the line is not added, add it
+            addDataset(label,newColor);
+          }
+
+          updateRemoveButtonVisibility(); // Update button visibility after adding/removing lines
+        }
+
+        // Function to add a new dataset (line) to the chart
+        function addDataset(label,newColor) {
+          const newData = generateRandomData(); // Replace this with your new data
+        //   const newColor = getRandomColor(); // Generate a random color for the new dataset
+
+        //   const colors = ["#A189AE", "#31C48D", "#F98080"];
+        //   const newColor = colors[Math.floor(Math.random() * colors.length)];
+
+          lineChart.data.datasets.push({
+            label: label,
+            data: newData,
+            borderColor: newColor,
+            tension: 0.4,
+            fill: false, // No background fill for the line
+          });
+
+          addedLines[label] = true;
+          lineColors[label] = newColor;
+          lineChart.update(); // Update the chart to reflect the changes
+
+          // Add the label to the labels map
+          addLabel(label, newColor);
+
+          updateRemoveButtonVisibility();
+        }
+
+        // Function to remove a dataset (line) from the chart and the corresponding label
+        function removeDataset(label) {
+          lineChart.data.datasets = lineChart.data.datasets.filter(dataset => dataset.label !== label);
+          addedLines[label] = false;
+          lineChart.update(); // Update the chart to reflect the changes
+
+          // Remove the corresponding label from the labels map
+          removeLabel(label);
+
+          updateRemoveButtonVisibility();
+        }
+
+        // Function to remove the most recently added dataset (line) from the chart
+        function removeMostRecentLine() {
+          const lastDataset = lineChart.data.datasets[lineChart.data.datasets.length - 1];
+          if (lastDataset) {
+            removeDataset(lastDataset.label);
+          }
+
+          updateRemoveButtonVisibility();
+        }
+
+        // Function to add a label dynamically
+        function addLabel(label, color) {
+          const labelsDiv = document.getElementById('labels');
+          const labelElement = document.createElement('div');
+          labelElement.classList.add('flex', 'items-center', 'px-4', 'pt-[12px]', 'pb-[10px]', 'rounded-xl', 'bg-Gray-100');
+          const dotElement = document.createElement('span');
+          dotElement.classList.add('w-[10px]', 'h-[10px]', 'rounded-full', 'bg-Yellow-300', 'mr-3');
+          dotElement.style.backgroundColor = color; // Set the background color of the dot
+          labelElement.appendChild(dotElement);
+          const textElement = document.createElement('div');
+          textElement.classList.add('text-sm', 'text-Gray-700', 'font-normal', 'leading-none');
+          textElement.textContent = label; // Set the label text here
+          labelElement.appendChild(textElement);
+          labelsDiv.appendChild(labelElement);
+
+          // Add the label to the labels map
+          labelsMap.set(label, labelElement);
+        }
+
+        // Function to remove a label dynamically
+        function removeLabel(label) {
+          const labelElement = labelsMap.get(label);
+          if (labelElement) {
+            labelElement.remove();
+            labelsMap.delete(label);
+          }
+        }
+
+        // Function to reset the chart to its original state
+        function resetChart() {
+          lineChart.data = JSON.parse(JSON.stringify(originalData));
+          for (const label in addedLines) {
+            addedLines[label] = false;
+          }
+          lineChart.update(); // Update the chart to reflect the changes
+
+          // Remove all labels
+          const labelsDiv = document.getElementById('labels');
+          labelsDiv.innerHTML = '';
+          labelsMap.clear();
+        }
+
+        // Helper function to generate random data (replace this with your own data generation logic)
+        function generateRandomData() {
+            const newData = [];
+            for (let i = 0; i < data.labels.length; i++) {
+                const randomDecimal = (Math.random() * 201) - 100;
+                newData.push(parseFloat(randomDecimal.toFixed(2))); // Generating random data with two decimal places between -20 and 20
+            }
+            return newData;
+        }
+
+        // Helper function to generate random color in RGB format
+        function getRandomColor() {
+          const r = Math.floor(Math.random() * 256);
+          const g = Math.floor(Math.random() * 256);
+          const b = Math.floor(Math.random() * 256);
+          return `rgba(${r}, ${g}, ${b}, 1)`;
+        }
+
+        // Function to update the visibility of the "Remove Most Recent Line" button
+    function updateRemoveButtonVisibility() {
+      const removeButton = document.querySelector('div[onclick="removeMostRecentLine()"]');
+      removeButton.style.display = Object.values(addedLines).some(Boolean) ? 'flex' : 'none';
+    }
+
+    function drawVerticalLine(x) {
+        const ctx = lineChart.ctx;
+            ctx.clearRect(0, 0, lineChart.width, lineChart.height); // Clear the canvas
+            lineChart.draw(); // Redraw the chart
+
+            ctx.save();
+            ctx.beginPath();
+            ctx.setLineDash([5, 5]);
+            ctx.moveTo(x, lineChart.chartArea.top);
+            ctx.lineTo(x, lineChart.chartArea.bottom);
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = 'rgba(128, 128, 128, 0.8)';
+            ctx.stroke();
+            ctx.restore();
+
+            // Request the next animation frame
+            animationFrameId = requestAnimationFrame(function () {
+                drawVerticalLine(x);
+            });
+        }
+
+        // Update the tooltip callback to draw the vertical line
+        options.plugins.tooltip.callbacks = {
+            beforeBody: function (context) {
+                    if (context[0]) {
+                        const x = context[0].element.x;
+                        drawVerticalLine(x);
+
+                        lineChart.data.datasets.forEach(dataset => {
+                            if (dataset.data[x]) {
+                                console.log(`${dataset.label}: ${dataset.data[x]}`);
+                            }
+                        });
+                    }
+                    return '';
+                },
+            // Rest of your tooltip callbacks...
+        };
+
+        // Create the initial line chart when the page loads
+        createLineChart();
+
+    </script>
+
+</body>
+</html>

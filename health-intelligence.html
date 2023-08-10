@@ -1,0 +1,1643 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="main.css" rel="stylesheet">
+    <script>
+        localStorage.theme = 'light'
+    </script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                colors: {
+                transparent: 'transparent',
+                current: 'currentColor',
+                'Primary': {
+                    50:  'rgba(72, 130, 159, 0.15)',
+                    100: 'rgba(72, 130, 159, 0.20)',
+                    200: 'rgba(72, 130, 159, 0.30)',
+                    300: 'rgba(72, 130, 159, 0.40)',
+                    400: 'rgba(72, 130, 159, 0.50)',
+                    500: 'rgba(72, 130, 159, 0.60)',
+                    600: 'rgba(72, 130, 159, 0.70)',
+                    700: 'rgba(72, 130, 159, 0.80)',
+                    800: 'rgba(72, 130, 159, 0.90)',
+                    900: '#48829F',
+                },
+                'Gray': {
+                    50:  '#F9FAFB',
+                    100: '#F3F4F6',
+                    200: '#E5E7EB',
+                    300: '#D1D5DB',
+                    400: '#9CA3AF',
+                    500: '#7E7E7E',
+                    600: '#4B5563',
+                    700: '#374151',
+                    800: '#1F2A37',
+                    900: '#111928',
+                },
+                'Blue': {
+                    50:  '#EBF5FF',
+                    100: '#E1EFFE',
+                    200: '#C3DDFD',
+                    300: '#A4CAFE',
+                    400: '#76A9FA',
+                    500: '#3F83F8',
+                    600: '#1C64F2',
+                    700: '#1A56DB',
+                    800: '#1E429F',
+                    900: '#1E429F',
+                },
+                'Red': {
+                    50:  '#FDF2F2',
+                    100: '#FDE8E8',
+                    200: '#FBD5D5',
+                    300: '#F8B4B4',
+                    400: '#F98080',
+                    500: '#F05252',
+                    600: '#E02424',
+                    700: '#C81E1E',
+                    800: '#9B1C1C',
+                    900: '#771D1D',
+                },
+                'Orange': {
+                    50: '#fff8f1',
+                    100: '#feecdc',
+                    200: '#fcd9bd',
+                    300: '#fdba8c',
+                    400: '#ff8a4c',
+                    500: '#ff5a1f',
+                    600: '#d03801',
+                    700: '#b43403',
+                    800: '#8a2c0d',
+                    900: '#771d1d',
+                },
+                'Yellow': {
+                    50:  '#fdfdea',
+                    100: '#fdf6b2',
+                    200: '#fce96a',
+                    300: '#faca15',
+                    400: '#e3a008',
+                    500: '#c27803',
+                    600: '#9f580a',
+                    700: '#8e4b10',
+                    800: '#723b13',
+                    900: '#633112',
+                },
+                'Green': {
+                    50:  '#f3faf7',
+                    100: '#def7ec',
+                    200: '#bcf0da',
+                    300: '#84e1bc',
+                    400: '#31c48d',
+                    500: '#0e9f6e',
+                    600: '#057a55',
+                    700: '#046c4e',
+                    800: '#03543f',
+                    900: '#014737',
+                },
+                'Teal': {
+                    50:  '#edfafa',
+                    100: '#d5f5f6',
+                    200: '#afecef',
+                    300: '#7edce2',
+                    400: '#16bdca',
+                    500: '#0694a2',
+                    600: '#047481',
+                    700: '#036672',
+                    800: '#05505c',
+                    900: '#014451',
+                },
+                'Indigo': {
+                    50:  '#f0f5ff',
+                    100: '#e5edff',
+                    200: '#cddbfe',
+                    300: '#b4c6fc',
+                    400: '#8da2fb',
+                    500: '#6875f5',
+                    600: '#5850ec',
+                    700: '#5145cd',
+                    800: '#42389d',
+                    900: '#362f78',
+                },
+                'Purple': {
+                    50:  '#f6f5ff',
+                    100: '#edebfe',
+                    200: '#dcd7fe',
+                    300: '#cabffd',
+                    400: '#ac94fa',
+                    500: '#9061f9',
+                    600: '#7e3af2',
+                    700: '#6c2bd9',
+                    800: '#5521b5',
+                    900: '#4a1d96',
+                },
+                'Pink': {
+                    50:  '#fdf2f8',
+                    100: '#fce8f3',
+                    200: '#fad1e8',
+                    300: '#f8b4d9',
+                    400: '#f17eb8',
+                    500: '#e74694',
+                    600: '#d61f69',
+                    700: '#bf125d',
+                    800: '#99154b',
+                    900: '#751a3d',
+                },
+                // ...
+                },
+            },
+        }
+    </script>
+
+</head>
+<body>
+
+    <nav class="md:bg-white border-Gray-200 absolute md:relative z-40 mt-2 md:mt-0 w-full">
+        <div class="w-auto md:max-w-screen-2xl flex flex-wrap items-center justify-between lg:mx-64 px-12 md:px-4 p-4 ml-0 md:ml-64 relative">
+            <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class="absolute left-4 p-2 w-10 h-10 justify-center text-sm text-Gray-50 rounded-lg md:hidden hover:text-Gray-100 focus:outline-none focus:ring-0" aria-controls="navbar-multi-level" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                </svg>
+            </button>
+
+             <!-- Breadcrumb -->      
+
+            <div class="flex justify-left z-30 absolute left-0 mx-6 md:ml-20 top-20 md:top-5">
+                <nav class="text-Gray-50 md:px-2 md:py-2 md:text-Gray-700" aria-label="Breadcrumb">
+                    <ol class="inline-flex items-center space-x-1 md:space-x-3 gap-1 md:gap-0">
+                    <li class="inline-flex items-center">
+                        <a href="javascript:void(0);" class="inline-flex items-center font-normal text-[8px] md:text-sm md:font-medium text-Gray-50 md:text-Gray-400 hover:text-Primary-600">
+                        Home
+                        </a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                        <svg class="w-2 h-2 md:w-3 md:h-3 md:mx-1 text-Gray-50 md:text-Gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                        </svg>
+                        <a href="javascript:void(0);" class="ml-1 font-normal text-[8px] md:text-sm text-Gray-50 md:text-Gray-400 hover:text-Primary-600 md:ml-2">Reports</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                        <svg class="w-2 h-2 md:w-3 md:h-3 md:mx-1 text-Gray-50 md:text-Gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                        </svg>
+                        <a href="javascript:void(0);" class="ml-1 font-normal text-[8px] md:text-sm text-Gray-50 md:text-Gray-400 hover:text-Primary-600 md:ml-2">Health  Intelligence</a>
+                        </div>
+                    </li>
+                    <li aria-current="page">
+                        <div class="flex items-center">
+                        <svg class="w-2 h-2 md:w-3 md:h-3 md:mx-1 text-Gray-50 md:text-Gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                        </svg>
+                        <span class="ml-1 font-normal text-[8px] md:text-sm md:text-Gray-700 md:ml-2">Nutrition Intelligence</span>
+                        </div>
+                    </li>
+                    </ol>
+                </nav>
+            </div>
+            
+            <!-- Breadcrumb -->
+
+            <div class="flex items-center order-3">
+                <div class="hidden md:block text-sm mr-3 text-right"> Bonnie Green</div>
+                
+                <div class="bg-Gray-100 mr-4 rounded-full flex flex-col gap-2.5 items-center justify-center w-12 h-12 relative overflow-hidden">                    
+                    <img src="./images/account-holder.jpeg" class="w-full h-full">
+                </div>
+                <div class="bg-Primary-900 rounded-full p-1 flex flex-row gap-0 items-start justify-start relative cursor-pointer"  id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+                    <svg class="shrink-0 relative overflow-visible" style="" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.8333 7.5L9.99999 13.3333L4.16666 7.5" stroke="#F9FAFB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+
+                <!-- Dropdown menu -->
+                <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-Gray-100 rounded-lg shadow" id="user-dropdown">
+                    <div class="px-4 py-3">
+                        <span class="block text-sm text-Gray-900">Bonnie Green</span>
+                        <span class="block text-sm  text-Gray-500 truncate">bonnie@aetas.dk</span>
+                    </div>
+                    <ul class="py-2" aria-labelledby="user-menu-button">
+                        <li>
+                        <a href="javascript:void(0);" class="block px-4 py-2 text-sm text-Gray-700 hover:bg-Gray-100">Dashboard</a>
+                        </li>
+                        <li>
+                        <a href="javascript:void(0);" class="block px-4 py-2 text-sm text-Gray-700 hover:bg-Gray-100">Settings</a>
+                        </li>
+                        <li>
+                        <a href="javascript:void(0);" class="block px-4 py-2 text-sm text-Gray-700 hover:bg-Gray-100">Earnings</a>
+                        </li>
+                        <li>
+                        <a href="javascript:void(0);" class="block px-4 py-2 text-sm text-Gray-700 hover:bg-Gray-100">Sign out</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Previous Next Button -->
+            <div class="flex items-center border border-Gray-200 rounded-lg overflow-hidden order-1 ml-4 md:ml-0">
+                <a href="javascript:void(0);" class="inline-flex items-center justify-center w-7 h-7 md:w-auto md:h-auto md:px-4 md:py-3 text-sm font-medium text-Gray-500 bg-white hover:bg-Gray-100 hover:text-Gray-700">
+                    <svg aria-hidden="true" class="w-2 h-3" fill="currentColor" viewBox="0 0" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M5.70703 0.293031C5.8945 0.480558 5.99982 0.734866 5.99982 1.00003C5.99982 1.26519 5.8945 1.5195 5.70703 1.70703L2.41403 5.00003L5.70703 8.29303C5.88919 8.48163 5.98998 8.73423 5.9877 8.99643C5.98543 9.25863 5.88026 9.50944 5.69485 9.69485C5.50944 9.88026 5.25863 9.98543 4.99643 9.9877C4.73423 9.98998 4.48163 9.88919 4.29303 9.70703L0.293031 5.70703C0.10556 5.5195 0.000244141 5.26519 0.000244141 5.00003C0.000244141 4.73487 0.10556 4.48056 0.293031 4.29303L4.29303 0.293031C4.48056 0.10556 4.73487 0.000244141 5.00003 0.000244141C5.26519 0.000244141 5.5195 0.10556 5.70703 0.293031Z" fill="#48829F"/>
+                    </svg>
+                </a>
+            <!-- Previous Next Button -->
+
+        </div>
+    </nav>
+
+    <aside id="default-sidebar" class="fixed top-0 bottom-0 left-0 z-40 w-60 h-auto transition-transform -translate-x-full sm:translate-x-0 bg-white" aria-label="Sidebar">
+        <div class="the-nav group h-full py-4 overflow-y-auto bg-white">
+            <a href="javascript:void(0);" class="logo-link flex items-center justify-start border-b border-Gray-300 mx-4 md:mx-8 pb-5 mb-7"">
+                <img src="./images/aetas-logo-gr-ico.png" class="h-[65px] w-auto block aetas-logo-ico" alt="Aetas Logo">
+                <img src="./images/aetas-logo-gr.png" class="h-[65px] w-auto block aetas-logo" alt="Aetas Logo">
+            </a>
+
+            <ul class="space-y-2 ml-4">
+                <li>
+                    <a href="health-intelligence-subset-folder.html" class="flex items-center p-3 text-sm text-Gray-400 hover:bg-Gray-100 focus:bg-Gray-100 rounded-l-lg group">
+                        <div class="menu-ico bg-Gray-100 w-[36px] h-[36px] rounded-md flex items-center justify-center">
+                            <svg class="relative overflow-visible" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2.40039 11.9999C2.40039 9.45382 3.41182 7.01203 5.21217 5.21168C7.01252 3.41133 9.45431 2.3999 12.0004 2.3999V11.9999H21.6004C21.6004 14.546 20.589 16.9878 18.7886 18.7881C16.9883 20.5885 14.5465 21.5999 12.0004 21.5999C9.45431 21.5999 7.01252 20.5885 5.21217 18.7881C3.41182 16.9878 2.40039 14.546 2.40039 11.9999Z" fill="#9CA3AF" />
+                                <path d="M14.4004 2.70264C16.0607 3.13279 17.5758 3.99917 18.7886 5.21198C20.0015 6.42479 20.8678 7.93989 21.298 9.60024H14.4004V2.70264Z" fill="#9CA3AF" />
+                            </svg>
+                        </div>
+                        <span class="nav-text ml-3.5">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <button type="button" class="flex items-center w-full p-3 text-sm text-Primary-900 transition duration-75 rounded-l-lg group hover:bg-Gray-100 focus:bg-Gray-100" aria-controls="dropdown-example-1" data-collapse-toggle="dropdown-example-1">                        
+                        <div class="menu-ico bg-Primary-100 w-[36px] h-[36px] rounded-md flex items-center justify-center">
+                            <svg class="relative overflow-visible" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 8V16M12 11V16M8 14V16M6 20H18C18.5304 20 19.0391 19.7893 19.4142 19.4142C19.7893 19.0391 20 18.5304 20 18V6C20 5.46957 19.7893 4.96086 19.4142 4.58579C19.0391 4.21071 18.5304 4 18 4H6C5.46957 4 4.96086 4.21071 4.58579 4.58579C4.21071 4.96086 4 5.46957 4 6V18C4 18.5304 4.21071 19.0391 4.58579 19.4142C4.96086 19.7893 5.46957 20 6 20Z" stroke="#48829F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <span class="nav-text flex-1 ml-3.5 text-left whitespace-nowrap">Health Intelligence</span>
+                        <svg class="subnav-open-arrow w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                    </button>
+
+                    <ul id="dropdown-example-1" class="hidden py-2 space-y-2">
+                        <li>
+                            <a href="health-intelligence-subset-folder.html" class="flex items-center w-full p-2 text-sm text-Gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-Gray-100">Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="vitals.html" class="flex items-center w-full p-2 text-sm text-Gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-Gray-100">Vitals</a>
+                        </li>
+                        <li>
+                            <a href="health-intelligence-cardio.html" class="flex items-center w-full p-2 text-sm text-Gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-Gray-100">Cardiovascular Diseases</a>
+                        </li>
+                        <li>
+                            <a href="health-intelligence-food.html" class="flex items-center w-full p-2 text-sm text-Gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-Gray-100">Health Baseline</a>
+                        </li>
+                        <li>
+                            <a href="nutrition-intelligence.html" class="flex items-center w-full p-2 text-sm text-Gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-Gray-100">Nutrition Intelligence</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <button type="button" class="flex items-center w-full p-3 text-sm text-Primary-900 transition duration-75 rounded-l-lg group hover:bg-Gray-100 focus:bg-Gray-100" aria-controls="dropdown-2" data-collapse-toggle="dropdown-2">                   
+                        <div class="menu-ico bg-Primary-100 w-[36px] h-[36px] rounded-md flex items-center justify-center">
+                            <svg class="relative overflow-visible" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.3564 8.19036C12.9815 7.56523 13.3327 6.71739 13.3327 5.83333C13.3327 4.94928 12.9815 4.10143 12.3564 3.47631C11.7313 2.85119 10.8834 2.5 9.99935 2.5C9.11529 2.5 8.26745 2.85119 7.64233 3.47631C7.0172 4.10143 6.66602 4.94928 6.66602 5.83333C6.66602 6.71739 7.0172 7.56523 7.64233 8.19036C8.26745 8.81548 9.11529 9.16667 9.99935 9.16667C10.8834 9.16667 11.7313 8.81548 12.3564 8.19036Z" stroke="#48829F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M5.87456 13.3752C6.96852 12.2812 8.45225 11.6667 9.99935 11.6667C11.5464 11.6667 13.0302 12.2812 14.1241 13.3752C15.2181 14.4692 15.8327 15.9529 15.8327 17.5H4.16602C4.16602 15.9529 4.7806 14.4692 5.87456 13.3752Z" stroke="#48829F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <span class="nav-text flex-1 ml-3.5 text-left whitespace-nowrap">Recomendations</span>
+                        <svg class="subnav-open-arrow w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                    </button>
+
+                    <ul id="dropdown-2" class="hidden py-2 space-y-2">
+                        <li>
+                            <a href="#" class="flex items-center w-full p-2 text-sm text-Gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-Gray-100">Interventions</a>
+                        </li>
+                        <li>
+                            <a href="health-intelligence-food.html" class="flex items-center w-full p-2 text-sm text-Gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-Gray-100">Food</a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center w-full p-2 text-sm text-Gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-Gray-100">Supplements</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </aside>
+
+    <section class="w-auto md:max-w-screen-2xl lg:mx-64 lg:mt-3 flex flex-col relative">
+        
+        <div class="md:p-4 md:ml-64 lg:ml-auto">
+            <div class="w-full h-full relative md:rounded-xl overflow-hidden">
+                <img class="block md:h-full w-full h-96 object-cover" src="images/banner.png" alt="banner">
+                <div class="h-full absolute top-auto bottom-0 left-0 right-0 px-6 pb-9 md:px-16 md:pb-12 bg-left-bottom bg-cover bg-no-repeat bg-[url('images/banner-content-bg.png')] bg-blend-multiply flex flex-col justify-end">
+                    <h1 class="mb-2 text-md text-Gray-50 md:text-3xl lg:text-3xl">Cardiovascular Diseases</h1>
+                    <h5 class="text-sm font-normal text-Gray-300 capitalize">brief synopsis about what this covers</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="py-8 px-6">
+            <div class="w-full h-full relative">
+
+                <div class="rounded-2xl border-solid border-[#d8d8d8] relative mb-8 mt-4 md:mt-0">
+                    <div class="group relative flex flex-col items-end justify-start w-full p-2 md:p-4 lg:items-center lg:flex-row lg:justify-between lg:p-5 border border-b-1 border-gray-200 rounded-t-xl text-gray-900">
+                        <div class="flex items-center w-full md:mb-2 lg:w-2/3 lg:mb-0">
+                            <div class="p-2 bg-Green-100 rounded-full mr-2 md:mr-5"0>
+                                <svg class="check relative overflow-visible md:w-[28px] md:h-[28px]" width="20" height="20" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M10.4929 18.3275L11.2 19.0346L11.9071 18.3275L22.1172 8.11736C22.1172 8.11732 22.1173 8.11729 22.1173 8.11725C22.1923 8.04233 22.294 8.00024 22.4 8.00024C22.5061 8.00024 22.6078 8.04237 22.6828 8.11736C22.7577 8.19235 22.7997 8.29398 22.7997 8.39995C22.7997 8.50596 22.7576 8.60764 22.6827 8.68264C22.6827 8.68267 22.6826 8.68271 22.6826 8.68275L11.4828 19.8825C11.4078 19.9575 11.3061 19.9996 11.2 19.9996C11.0939 19.9996 10.9922 19.9575 10.9172 19.8825L5.32532 14.2906C5.25509 14.2157 5.21633 14.1165 5.21722 14.0137C5.21814 13.9088 5.2602 13.8085 5.33437 13.7343C5.40853 13.6601 5.50885 13.6181 5.61373 13.6172C5.71659 13.6163 5.81576 13.655 5.8907 13.7253L10.4929 18.3275Z" fill="#DEF7EC" stroke="#057A55" stroke-width="2"></path>
+                                        </svg>
+                            </div>
+                            <div class="flex flex-col text-sm md:text-base text-left text-Gray-800">
+                                Apolipoprotein B
+                                <span class="text-xs md:text-base md:font-normal text-Gray-500">Hermalogy</span>
+                            </div>
+                        </div>
+
+                        <div class="w-full md:w-auto flex items-end lg:w-2/3 lg:items-center justify-end">
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <div class="accordion-first-screen p-5 lg:p-10 lg:px-20 border border-Gray-200">
+                            <div class="flex flex-col items-start justify-between lg:flex-row">
+                                <p class="w-full lg:w-2/3 mb-2 lg:pr-10 text-sm text-Gray-600">Lipoprotein(a) is formed in the liver and transports fats and other lipids such as cholesterol around the body. Lipoprotein(a) is a strong risk marker for cardiovascular disease. One in five has an increased risk of developing a cardiovascular disease and narrowed aortic valve due to a hereditary high content of lipoprotein(a) in the blood. Elevated lipoprotein(a) contributes to a markedly increased risk of cardiovascular disease. Lp(a) is difficult to lower as it is genetically determined.</p>
+                                <div class="flex flex-col items-end w-full mt-10 lg:mt-0 lg:w-1/2 lg:pl-10">                                   
+
+                                    <div class="w-full graph">
+                                        <div class="flex flex-col flex-wrap item-start items-start relative z-10">
+                                            <h3 class="text-base text-Gray-500">My Result</h3>
+                                            <div class="flex gap-[6px] justify-center items-center">
+                                                <h4 class="text-lg lg:text-3xl text-[#323232] font-medium inline-block mt-2 mb-1">0,99<span class="text-xs md:text-lg">g/L</span></h4>
+                                                <span class="flex w-auto px-2.5 py-0 bg-Green-100 rounded-md overflow-hidden block">+10%</span>
+                                            </div>
+                                        </div>                                    
+                            
+                                        <div class="w-full z-0 -mt-16 md:-mt-24">
+                                            <div class="line-chart">
+                                                <div class="aspect-ratio">
+                                                    <canvas id="chart"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            
+                            <div class="flex flex-col accordionBody-bottomSec">
+                                <div class="range-slider-scale with-gr w-full relative mb-20 mt-32">
+                                    <div id="tooltip-default" role="tooltip" class="min-w-[50px] absolute z-10 -top-12 left-[71%] inline-block px-3 py-2 text-sm md:text-base  text-white transition-opacity duration-300 bg-Gray-700 rounded-lg shadow-sm tooltip">
+                                        You: 71%
+                                        <div class="tooltip-arrow left-[45%]" data-popper-arrow></div>
+                                        <div class="tooltip-line bottom-[-45px] left-[49.5%] w-[1px] h-[45px] absolute bg-gradient-to-b from-Gray-700 to-Gray-0"></div>
+                                    </div>
+
+                                    <div class="the-scale w-full flex relative">
+                                        <div class="w-[18%] h-full bg-[#F05252] rounded-l-[4px] border-0 border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute left-[-10px] bottom-[-57px] text-Gray-600">0</div>
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">18</div>
+                                        </div>
+                                        <div class="w-[18%] h-full bg-[#F98080] border-l border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">36</div>
+                                        </div>
+                                        <div class="w-[11%] h-full bg-[#FDA151] border-l border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">47</div>
+                                        </div>
+                                        <div class="w-[17%] h-full bg-[#FEC663] border-l border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">64</div>
+                                        </div>
+                                        <div class="w-[14%] h-full bg-[#84E1BC] border-l border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">78</div>
+                                        </div>
+                                        <div class="w-[10%] h-full bg-[#23BF6B] border-l border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">88</div>
+                                        </div>
+                                        <div class="w-[12%] h-full bg-[#29813D] rounded-r-[4px] border-l border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">100</div>
+                                        </div>
+                                        <!--<div class="w-full h-full block absolute top-0 right-0 bottom-0 left-0 z-10 bg-center bg-[length:275%] md:bg-cover bg-repeat-x bg-[url('./images/nutrition-intelligence-scale-lines.png')]"></div>-->
+                                        <div class="w-full h-[16px] block absolute top-auto right-0 bottom-[-28px] left-0 z-10 bg-top bg-cover bg-no-repeat bg-[url('./images/range-slider-scale-lines.png')]"></div>
+                                    </div>
+                                    <ul class="lines">
+                                        <li class="line"><span class="line-num text-Gray-400">0</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">10</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">20</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">30</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">40</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">50</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">60</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">70</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">80</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">90</span></li>
+                                        <li class="line line-last"><span class="line-num text-Gray-400">100</span></li>
+                                    </ul>
+                                </div>
+                                <div class="flex flex-col items-end justify-center lg:items-center lg:flex-row">
+                                    <div class="flex items-center p-3 pl-6 pr-5 mb-4 text-sm font-normal text-Green-600 rounded-full bg-Green-50 compare-range-button-cover" role="alert">
+                                        <svg class="relative overflow-visible mr-3" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M22.0125 22.242C20.8989 23.3668 19.3888 23.9987 17.8143 23.9987C16.2397 23.9987 14.7296 23.3668 13.6161 22.242M13.3607 15H13.3756M22.2678 15H22.2827M31.1749 18C31.1749 19.7728 30.8293 21.5283 30.1579 23.1662C29.4865 24.8041 28.5023 26.2923 27.2617 27.5459C26.021 28.7995 24.5482 29.7939 22.9272 30.4724C21.3062 31.1508 19.5688 31.5 17.8143 31.5C16.0597 31.5 14.3224 31.1508 12.7014 30.4724C11.0804 29.7939 9.60751 28.7995 8.36686 27.5459C7.12621 26.2923 6.14207 24.8041 5.47063 23.1662C4.7992 21.5283 4.45361 19.7728 4.45361 18C4.45361 14.4196 5.86125 10.9858 8.36686 8.45406C10.8725 5.92232 14.2708 4.5 17.8143 4.5C21.3577 4.5 24.7561 5.92232 27.2617 8.45406C29.7673 10.9858 31.1749 14.4196 31.1749 18Z" stroke="#29813D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                        <div>
+                                            Your result is within the optimal range for your range. <a href="javascript:void(0);" class="font-medium underline text-sm hover:no-underline compare-range-button">Compare Range</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="the-range-buttons hidden flex flex-wrap gap-[7px] items-center justify-center lg:flex-row mb-6 my-2">
+
+                                    <div class="range-buttons flex items-center justify-center w-auto py-2.5 pl-4 pr-5 bg-[#F1F5F7] rounded-2xl">
+                                        <div class="color-circle w-[10px] h-[10px] bg-[#E2765A] rounded-full mr-2.5"></div>
+                                        <h5 class="text-sm mt-1 text-[#323232]">High Risk</h5>
+                                    </div>
+                                    <div class="range-buttons flex items-center justify-center w-auto py-2.5 pl-4 pr-5 bg-[#F1F5F7] rounded-2xl">
+                                        <div class="color-circle w-[10px] h-[10px] bg-[#FEC663] rounded-full mr-2.5"></div>
+                                        <h5 class="text-sm mt-1 text-[#323232]">Out of Range</h5>
+                                    </div>
+                                    <div class="range-buttons flex items-center justify-center w-auto py-2.5 pl-4 pr-5 bg-[#F1F5F7] rounded-2xl">
+                                        <div class="color-circle w-[10px] h-[10px] bg-[#84E1BC] rounded-full mr-2.5"></div>
+                                        <h5 class="text-sm mt-1 text-[#323232]">Normal</h5>
+                                    </div>
+                                    <div class="range-buttons flex items-center justify-center w-auto py-2.5 pl-4 pr-5 bg-[#F1F5F7] rounded-2xl">
+                                        <div class="color-circle w-[10px] h-[10px] bg-[#31C48D] rounded-full mr-2.5"></div>
+                                        <h5 class="text-sm mt-1 text-[#323232]">Optimal</h5>
+                                    </div>
+
+                                    <div class="range-buttons-close flex items-center justify-center w-auto p-1.5 bg-[#F1F5F7] rounded-full cursor-pointer">
+                                        <svg class="relative overflow-visible" style="" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <mask id="path-1-inside-1_1568_248651" fill="white">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.29303 4.29308C4.48056 4.10561 4.73487 4.00029 5.00003 4.00029C5.26519 4.00029 5.5195 4.10561 5.70703 4.29308L10 8.58608L14.293 4.29308C14.3853 4.19757 14.4956 4.12139 14.6176 4.06898C14.7396 4.01657 14.8709 3.98898 15.0036 3.98783C15.1364 3.98668 15.2681 4.01198 15.391 4.06226C15.5139 4.11254 15.6255 4.18679 15.7194 4.28069C15.8133 4.37458 15.8876 4.48623 15.9379 4.60913C15.9881 4.73202 16.0134 4.8637 16.0123 4.99648C16.0111 5.12926 15.9835 5.26048 15.9311 5.38249C15.8787 5.50449 15.8025 5.61483 15.707 5.70708L11.414 10.0001L15.707 14.2931C15.8892 14.4817 15.99 14.7343 15.9877 14.9965C15.9854 15.2587 15.8803 15.5095 15.6948 15.6949C15.5094 15.8803 15.2586 15.9855 14.9964 15.9878C14.7342 15.99 14.4816 15.8892 14.293 15.7071L10 11.4141L5.70703 15.7071C5.51843 15.8892 5.26583 15.99 5.00363 15.9878C4.74143 15.9855 4.49062 15.8803 4.30521 15.6949C4.1198 15.5095 4.01463 15.2587 4.01236 14.9965C4.01008 14.7343 4.11087 14.4817 4.29303 14.2931L8.58603 10.0001L4.29303 5.70708C4.10556 5.51955 4.00024 5.26525 4.00024 5.00008C4.00024 4.73492 4.10556 4.48061 4.29303 4.29308Z" />
+                                            </mask>
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M4.29303 4.29308C4.48056 4.10561 4.73487 4.00029 5.00003 4.00029C5.26519 4.00029 5.5195 4.10561 5.70703 4.29308L10 8.58608L14.293 4.29308C14.3853 4.19757 14.4956 4.12139 14.6176 4.06898C14.7396 4.01657 14.8709 3.98898 15.0036 3.98783C15.1364 3.98668 15.2681 4.01198 15.391 4.06226C15.5139 4.11254 15.6255 4.18679 15.7194 4.28069C15.8133 4.37458 15.8876 4.48623 15.9379 4.60913C15.9881 4.73202 16.0134 4.8637 16.0123 4.99648C16.0111 5.12926 15.9835 5.26048 15.9311 5.38249C15.8787 5.50449 15.8025 5.61483 15.707 5.70708L11.414 10.0001L15.707 14.2931C15.8892 14.4817 15.99 14.7343 15.9877 14.9965C15.9854 15.2587 15.8803 15.5095 15.6948 15.6949C15.5094 15.8803 15.2586 15.9855 14.9964 15.9878C14.7342 15.99 14.4816 15.8892 14.293 15.7071L10 11.4141L5.70703 15.7071C5.51843 15.8892 5.26583 15.99 5.00363 15.9878C4.74143 15.9855 4.49062 15.8803 4.30521 15.6949C4.1198 15.5095 4.01463 15.2587 4.01236 14.9965C4.01008 14.7343 4.11087 14.4817 4.29303 14.2931L8.58603 10.0001L4.29303 5.70708C4.10556 5.51955 4.00024 5.26525 4.00024 5.00008C4.00024 4.73492 4.10556 4.48061 4.29303 4.29308Z" fill="#F3F4F6" />
+                                            <path d="M5.70703 4.29308L7.12124 2.87887L7.12103 2.87865L5.70703 4.29308ZM10 8.58608L8.58582 10.0003L10 11.4145L11.4142 10.0003L10 8.58608ZM14.293 4.29308L15.7072 5.70729L15.7195 5.69501L15.7316 5.68251L14.293 4.29308ZM15.707 5.70708L14.3176 4.2685L14.3051 4.28058L14.2928 4.29287L15.707 5.70708ZM11.414 10.0001L9.99982 8.58587L8.5856 10.0001L9.99982 11.4143L11.414 10.0001ZM15.707 14.2931L17.1456 12.9037L17.1335 12.8912L17.1212 12.8789L15.707 14.2931ZM14.293 15.7071L12.8788 17.1213L12.8911 17.1336L12.9036 17.1457L14.293 15.7071ZM10 11.4141L11.4142 9.99987L10 8.58565L8.58582 9.99987L10 11.4141ZM5.70703 15.7071L7.09645 17.1457L7.10895 17.1336L7.12124 17.1213L5.70703 15.7071ZM4.29303 14.2931L2.87882 12.8789L2.86653 12.8912L2.85445 12.9037L4.29303 14.2931ZM8.58603 10.0001L10.0002 11.4143L11.4145 10.0001L10.0002 8.58587L8.58603 10.0001ZM4.29303 5.70708L2.8786 7.12108L2.87882 7.12129L4.29303 5.70708ZM4.29303 4.29308L2.87903 2.87865L2.8786 2.87908L4.29303 4.29308ZM5.70703 5.70751C5.5195 5.89498 5.2652 6.00029 5.00003 6.00029V2.00029C4.20454 2.00029 3.44161 2.31624 2.87903 2.87865L5.70703 5.70751ZM5.00003 6.00029C4.73487 6.00029 4.48056 5.89498 4.29303 5.70751L7.12103 2.87865C6.55845 2.31624 5.79552 2.00029 5.00003 2.00029V6.00029ZM4.29282 5.70729L8.58582 10.0003L11.4142 7.17187L7.12124 2.87887L4.29282 5.70729ZM11.4142 10.0003L15.7072 5.70729L12.8788 2.87887L8.58582 7.17187L11.4142 10.0003ZM15.7316 5.68251C15.6394 5.77801 15.529 5.8542 15.407 5.90661L13.8282 2.23135C13.4622 2.38858 13.1312 2.61713 12.8545 2.90366L15.7316 5.68251ZM15.407 5.90661C15.285 5.95902 15.1538 5.9866 15.021 5.98776L14.9863 1.98791C14.5879 1.99137 14.1943 2.07413 13.8282 2.23135L15.407 5.90661ZM15.021 5.98776C14.8882 5.98891 14.7566 5.96361 14.6337 5.91333L16.1483 2.21119C15.7796 2.06035 15.3846 1.98444 14.9863 1.98791L15.021 5.98776ZM14.6337 5.91333C14.5108 5.86304 14.3991 5.78879 14.3052 5.6949L17.1336 2.86647C16.852 2.5848 16.517 2.36204 16.1483 2.21119L14.6337 5.91333ZM14.3052 5.6949C14.2113 5.60101 14.1371 5.48935 14.0868 5.36646L17.7889 3.8518C17.6381 3.48311 17.4153 3.14815 17.1336 2.86647L14.3052 5.6949ZM14.0868 5.36646C14.0365 5.24357 14.0112 5.11189 14.0124 4.9791L18.0122 5.01386C18.0157 4.61552 17.9398 4.22048 17.7889 3.8518L14.0868 5.36646ZM14.0124 4.9791C14.0135 4.84632 14.0411 4.7151 14.0935 4.5931L17.7688 6.17187C17.926 5.80586 18.0087 5.4122 18.0122 5.01386L14.0124 4.9791ZM14.0935 4.5931C14.1459 4.47109 14.2221 4.36075 14.3176 4.2685L17.0965 7.14566C17.383 6.86892 17.6115 6.53789 17.7688 6.17187L14.0935 4.5931ZM14.2928 4.29287L9.99982 8.58587L12.8282 11.4143L17.1212 7.12129L14.2928 4.29287ZM9.99982 11.4143L14.2928 15.7073L17.1212 12.8789L12.8282 8.58587L9.99982 11.4143ZM14.2685 15.6825C14.0863 15.4939 13.9855 15.2413 13.9878 14.9791L17.9876 15.0139C17.9945 14.2273 17.6921 13.4695 17.1456 12.9037L14.2685 15.6825ZM13.9878 14.9791C13.9901 14.7169 14.0952 14.4661 14.2806 14.2807L17.1091 17.1091C17.6653 16.5529 17.9808 15.8004 17.9876 15.0139L13.9878 14.9791ZM14.2806 14.2807C14.466 14.0953 14.7169 13.9901 14.9791 13.9878L15.0138 17.9877C15.8004 17.9808 16.5528 17.6653 17.1091 17.1091L14.2806 14.2807ZM14.9791 13.9878C15.2413 13.9856 15.4939 14.0863 15.6825 14.2685L12.9036 17.1457C13.4694 17.6921 14.2272 17.9945 15.0138 17.9877L14.9791 13.9878ZM15.7072 14.2929L11.4142 9.99987L8.58582 12.8283L12.8788 17.1213L15.7072 14.2929ZM8.58582 9.99987L4.29282 14.2929L7.12124 17.1213L11.4142 12.8283L8.58582 9.99987ZM4.31761 14.2685C4.50621 14.0863 4.75881 13.9856 5.02101 13.9878L4.98625 17.9877C5.77284 17.9945 6.53065 17.6921 7.09645 17.1457L4.31761 14.2685ZM5.02101 13.9878C5.2832 13.9901 5.53402 14.0953 5.71943 14.2807L2.891 17.1091C3.44722 17.6653 4.19966 17.9808 4.98625 17.9877L5.02101 13.9878ZM5.71943 14.2807C5.90483 14.4661 6.01 14.7169 6.01228 14.9791L2.01243 15.0139C2.01927 15.8005 2.33477 16.5529 2.891 17.1091L5.71943 14.2807ZM6.01228 14.9791C6.01456 15.2413 5.91376 15.4939 5.73161 15.6825L2.85445 12.9037C2.30798 13.4695 2.0056 14.2273 2.01243 15.0139L6.01228 14.9791ZM5.70724 15.7073L10.0002 11.4143L7.17182 8.58587L2.87882 12.8789L5.70724 15.7073ZM10.0002 8.58587L5.70724 4.29287L2.87882 7.12129L7.17182 11.4143L10.0002 8.58587ZM5.70746 4.29308C5.89493 4.48061 6.00024 4.73492 6.00024 5.00008H2.00024C2.00024 5.79557 2.31619 6.5585 2.8786 7.12108L5.70746 4.29308ZM6.00024 5.00008C6.00024 5.26525 5.89493 5.51955 5.70746 5.70708L2.8786 2.87908C2.31619 3.44166 2.00024 4.20459 2.00024 5.00008H6.00024Z" fill="#374151" mask="url(#path-1-inside-1_1568_248651)" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <a href="javascript:void(0);" class="view-recommendations-button z-10 absolute right-10 -top-14 text-Primary-900 bg-white border border-Primary-900 hover:bg-Primary-800 focus:ring-0 font-normal rounded-full text-sm px-5 py-2 ml-3 lg:-mt-2 lg:mr-10 lg:ml-0 hover:bg-Primary-900 hover:text-Gray-50 focus:outline-none">View Recommendations</a>
+                               
+                        <a href="javascript:void(0);" class="close-view-recommendations-sec hidden z-10 absolute right-10 -top-14 text-Gray-800 bg-Gray-100 border border-Gray-100 hover:bg-Gray-300 focus:ring-0 font-normal rounded-full text-xs px-5 py-3 ml-3 lg:-mt-1 lg:mr-10 lg:ml-0 focus:outline-none flex">Close
+                            <svg class="shrink-0 relative overflow-visible ml-2" width="16" height="16" viewBox="0 0 16 16"  fill="none"  xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M3.43345 3.43442C3.58347 3.28444 3.78692 3.20019 3.99905 3.20019C4.21118 3.20019 4.41463 3.28444 4.56465 3.43442L7.99905 6.86882L11.4334 3.43442C11.5072 3.35801 11.5955 3.29706 11.6931 3.25514C11.7907 3.21321 11.8957 3.19114 12.0019 3.19022C12.1082 3.18929 12.2135 3.20953 12.3118 3.24976C12.4101 3.28998 12.4995 3.34939 12.5746 3.4245C12.6497 3.49961 12.7091 3.58894 12.7493 3.68725C12.7895 3.78557 12.8098 3.89091 12.8088 3.99714C12.8079 4.10336 12.7859 4.20834 12.7439 4.30594C12.702 4.40354 12.6411 4.49182 12.5646 4.56562L9.13025 8.00002L12.5646 11.4344C12.7104 11.5853 12.791 11.7874 12.7892 11.9971C12.7874 12.2069 12.7032 12.4075 12.5549 12.5559C12.4066 12.7042 12.2059 12.7883 11.9962 12.7902C11.7864 12.792 11.5843 12.7113 11.4334 12.5656L7.99905 9.13122L4.56465 12.5656C4.41377 12.7113 4.21168 12.792 4.00193 12.7902C3.79217 12.7883 3.59152 12.7042 3.44319 12.5559C3.29487 12.4075 3.21073 12.2069 3.20891 11.9971C3.20709 11.7874 3.28772 11.5853 3.43345 11.4344L6.86785 8.00002L3.43345 4.56562C3.28347 4.41559 3.19922 4.21215 3.19922 4.00002C3.19922 3.78788 3.28347 3.58444 3.43345 3.43442V3.43442Z" fill="#1F2A37" />
+                            </svg>
+                        </a>
+    
+                        <div class="the-recommendations-screen hidden p-5 lg:p-10 lg:px-20 border border-Gray-200">
+                            <div class="flex flex-col lg:flex-row w-full">
+                                <div class="w-full lg:w-1/2 lg:pr-10">
+                                    <h6 class="text-sm md:text-base font-medium text-left text-Gray-600 mb-5">
+                                        Recommendations
+                                    </h6>
+                                    <p class="text-xs md:text-sm text-Gray-600 mb-8">
+                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
+                                        <br><br>
+                                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. 
+                                        <br><br>
+                                        Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                                </div>
+    
+                                <div class="w-full lg:w-1/2 lg:pl-10">                        
+                                    <div class="relative overflow-x-auto sm:rounded-lg">
+                                        <table class="w-full text-sm text-left text-Gray-600">
+                                            <thead class="text-xs text-Gray-500 uppercase bg-Gray-50">
+                                                <tr>
+                                                    <th scope="col" class="px-6 py-3">
+                                                        PROTOCOLS
+                                                    </th>
+                                                    <th scope="col" class="px-6 py-3 text-right">
+                                                        FREQUENCY
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="bg-white border-b border-Gray-200 hover:bg-Gray-50">
+                                                    <th scope="row" class="px-6 py-4 font-normal text-Gray-500 whitespace-nowrap">
+                                                        Sauna 
+                                                    </th>
+                                                    <td class="px-6 py-4 font-normal text-Gray-900 whitespace-nowrap text-right">
+                                                        60min / week
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white border-b border-Gray-200 hover:bg-Gray-50">
+                                                    <th scope="row" class="px-6 py-4 font-normal text-Gray-500 whitespace-nowrap">
+                                                        Cold Therapy 
+                                                    </th>
+                                                    <td class="px-6 py-4 font-normal text-Gray-900 whitespace-nowrap text-right">
+                                                        11min / week
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white border-b border-Gray-200 hover:bg-Gray-50">
+                                                    <th scope="row" class="px-6 py-4 font-normal text-Gray-500 whitespace-nowrap">
+                                                        Mediation 
+                                                    </th>
+                                                    <td class="px-6 py-4 font-normal text-Gray-900 whitespace-nowrap text-right">
+                                                        Once a day (5min) 
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white border-b border-Gray-200 hover:bg-Gray-50">
+                                                    <th scope="row" class="px-6 py-4 font-normal text-Gray-500 whitespace-nowrap">
+                                                        Nature Walks 
+                                                    </th>
+                                                    <td class="px-6 py-4 font-normal text-Gray-900 whitespace-nowrap text-right">
+                                                        Once a week
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rounded-2xl border-solid border-[#d8d8d8] relative mb-8">
+                    <div class="group relative flex flex-col items-end justify-start w-full p-2 md:p-4 lg:items-center lg:flex-row lg:justify-between lg:p-5 border border-b-1 border-gray-200 rounded-t-xl text-gray-900">
+                        <div class="flex items-center w-full md:mb-2 lg:w-2/3 lg:mb-0">
+                            <div class="p-2 bg-Orange-100 rounded-full mr-2 md:mr-5">
+                                <svg class="relative overflow-visible md:w-[29px] md:h-[28px]" width="20" height="20" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M24.0191 18.0182C24.5468 16.7443 24.8184 15.3789 24.8184 14C24.8184 11.2152 23.7121 8.54451 21.743 6.57538C19.7738 4.60625 17.1031 3.5 14.3184 3.5C11.5336 3.5 8.86287 4.60625 6.89374 6.57538C4.92461 8.54451 3.81836 11.2152 3.81836 14C3.81836 15.3789 4.08995 16.7443 4.61762 18.0182C5.1453 19.2921 5.91872 20.4496 6.89374 21.4246C7.86875 22.3996 9.02626 23.1731 10.3002 23.7007C11.5741 24.2284 12.9395 24.5 14.3184 24.5C15.6972 24.5 17.0626 24.2284 18.3365 23.7007C19.6105 23.1731 20.768 22.3996 21.743 21.4246C22.718 20.4496 23.4914 19.2921 24.0191 18.0182Z" fill="#FEECDC"></path>
+                                    <path d="M14.3184 9.33333V14M14.3184 18.6667H14.33M24.8184 14C24.8184 15.3789 24.5468 16.7443 24.0191 18.0182C23.4914 19.2921 22.718 20.4496 21.743 21.4246C20.768 22.3996 19.6105 23.1731 18.3365 23.7007C17.0626 24.2284 15.6972 24.5 14.3184 24.5C12.9395 24.5 11.5741 24.2284 10.3002 23.7007C9.02626 23.1731 7.86875 22.3996 6.89374 21.4246C5.91872 20.4496 5.1453 19.2921 4.61762 18.0182C4.08995 16.7443 3.81836 15.3789 3.81836 14C3.81836 11.2152 4.92461 8.54451 6.89374 6.57538C8.86287 4.60625 11.5336 3.5 14.3184 3.5C17.1031 3.5 19.7738 4.60625 21.743 6.57538C23.7121 8.54451 24.8184 11.2152 24.8184 14Z" stroke="#FF5A1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </div>
+                            <div class="flex flex-col text-sm md:text-base md:font-medium text-left text-Gray-800">
+                                Triglyceride
+                                <span class="text-xs md:text-base md:font-normal text-Gray-500">Hermalogy</span>
+                            </div>
+                        </div>
+
+                        <div class="w-full md:w-auto flex items-end lg:w-2/3 lg:items-center justify-end">
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <div class="accordion-first-screen p-5 lg:p-10 lg:px-20 border border-Gray-200">
+                            <div class="flex flex-col items-start justify-between lg:flex-row">
+                                <p class="w-full lg:w-2/3 mb-2 lg:pr-10 text-sm text-Gray-600">Lipoprotein(a) is formed in the liver and transports fats and other lipids such as cholesterol around the body. Lipoprotein(a) is a strong risk marker for cardiovascular disease. One in five has an increased risk of developing a cardiovascular disease and narrowed aortic valve due to a hereditary high content of lipoprotein(a) in the blood. Elevated lipoprotein(a) contributes to a markedly increased risk of cardiovascular disease. Lp(a) is difficult to lower as it is genetically determined.</p>
+                                <div class="flex flex-col items-end w-full mt-10 lg:mt-0 lg:w-1/2 lg:pl-10">
+                                    
+                                    <div class="w-full graph">
+                                        <div class="flex flex-col flex-wrap item-start items-start relative z-10">
+                                            <h3 class="text-base text-Gray-500">My Result</h3>
+                                            <div class="flex gap-[6px] justify-center items-center">
+                                                <h4 class="text-lg lg:text-3xl text-[#323232] font-medium inline-block mt-2 mb-1">0,99<span class="text-xs md:text-lg">g/L</span></h4>
+                                                <span class="flex w-auto px-2.5 py-0 bg-Green-100 rounded-md overflow-hidden block">+10%</span>
+                                            </div>
+                                        </div>                                    
+                            
+                                        <div class="w-full z-0 -mt-16 md:-mt-24">
+                                            <div class="line-chart">
+                                                <div class="aspect-ratio">
+                                                    <canvas id="chart-2"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            
+                            <div class="flex flex-col accordionBody-bottomSec">
+                                <div class="range-slider-scale with-gr w-full relative mb-20 mt-32">
+                                    <div id="tooltip-default" role="tooltip" class="min-w-[50px] absolute z-10 -top-12 left-[71%] inline-block px-3 py-2 text-sm md:text-base  text-white transition-opacity duration-300 bg-Gray-700 rounded-lg shadow-sm tooltip">
+                                        You: 71%
+                                        <div class="tooltip-arrow left-[45%]" data-popper-arrow></div>
+                                        <div class="tooltip-line bottom-[-45px] left-[49.5%] w-[1px] h-[45px] absolute bg-gradient-to-b from-Gray-700 to-Gray-0"></div>
+                                    </div>
+
+                                    <div class="the-scale w-full flex relative">
+                                        <div class="w-[18%] h-full bg-[#F05252] rounded-l-[4px] border-0 border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute left-[-10px] bottom-[-57px] text-Gray-600">0</div>
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">18</div>
+                                        </div>
+                                        <div class="w-[18%] h-full bg-[#F98080] border-l border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">36</div>
+                                        </div>
+                                        <div class="w-[11%] h-full bg-[#FDA151] border-l border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">47</div>
+                                        </div>
+                                        <div class="w-[17%] h-full bg-[#FEC663] border-l border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">64</div>
+                                        </div>
+                                        <div class="w-[14%] h-full bg-[#84E1BC] border-l border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">78</div>
+                                        </div>
+                                        <div class="w-[10%] h-full bg-[#23BF6B] border-l border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">88</div>
+                                        </div>
+                                        <div class="w-[12%] h-full bg-[#29813D] rounded-r-[4px] border-l border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">100</div>
+                                        </div>
+                                        <!--<div class="w-full h-full block absolute top-0 right-0 bottom-0 left-0 z-10 bg-center bg-[length:275%] md:bg-cover bg-repeat-x bg-[url('./images/nutrition-intelligence-scale-lines.png')]"></div>-->
+                                        <div class="w-full h-[16px] block absolute top-auto right-0 bottom-[-28px] left-0 z-10 bg-top bg-cover bg-no-repeat bg-[url('./images/range-slider-scale-lines.png')]"></div>
+                                    </div>
+                                    <ul class="lines">
+                                        <li class="line"><span class="line-num text-Gray-400">0</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">10</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">20</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">30</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">40</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">50</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">60</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">70</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">80</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">90</span></li>
+                                        <li class="line line-last"><span class="line-num text-Gray-400">100</span></li>
+                                    </ul>
+                                </div>
+                                <div class="flex flex-col items-end justify-center lg:items-center lg:flex-row">
+                                    <div class="flex items-center p-3 pl-6 pr-5 mb-4 text-sm font-normal text-Green-600 rounded-full bg-Green-50 compare-range-button-cover" role="alert">
+                                        <svg class="relative overflow-visible mr-3" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M22.0125 22.242C20.8989 23.3668 19.3888 23.9987 17.8143 23.9987C16.2397 23.9987 14.7296 23.3668 13.6161 22.242M13.3607 15H13.3756M22.2678 15H22.2827M31.1749 18C31.1749 19.7728 30.8293 21.5283 30.1579 23.1662C29.4865 24.8041 28.5023 26.2923 27.2617 27.5459C26.021 28.7995 24.5482 29.7939 22.9272 30.4724C21.3062 31.1508 19.5688 31.5 17.8143 31.5C16.0597 31.5 14.3224 31.1508 12.7014 30.4724C11.0804 29.7939 9.60751 28.7995 8.36686 27.5459C7.12621 26.2923 6.14207 24.8041 5.47063 23.1662C4.7992 21.5283 4.45361 19.7728 4.45361 18C4.45361 14.4196 5.86125 10.9858 8.36686 8.45406C10.8725 5.92232 14.2708 4.5 17.8143 4.5C21.3577 4.5 24.7561 5.92232 27.2617 8.45406C29.7673 10.9858 31.1749 14.4196 31.1749 18Z" stroke="#29813D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                        <div>
+                                            Your result is within the optimal range for your range. <a href="javascript:void(0);" class="font-medium underline text-sm hover:no-underline compare-range-button">Compare Range</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="the-range-buttons hidden flex flex-wrap gap-[7px] items-center justify-center lg:flex-row mb-6 my-2">
+
+                                    <div class="range-buttons flex items-center justify-center w-auto py-2.5 pl-4 pr-5 bg-[#F1F5F7] rounded-2xl">
+                                        <div class="color-circle w-[10px] h-[10px] bg-[#E2765A] rounded-full mr-2.5"></div>
+                                        <h5 class="text-sm mt-1 text-[#323232]">High Risk</h5>
+                                    </div>
+                                    <div class="range-buttons flex items-center justify-center w-auto py-2.5 pl-4 pr-5 bg-[#F1F5F7] rounded-2xl">
+                                        <div class="color-circle w-[10px] h-[10px] bg-[#FEC663] rounded-full mr-2.5"></div>
+                                        <h5 class="text-sm mt-1 text-[#323232]">Out of Range</h5>
+                                    </div>
+                                    <div class="range-buttons flex items-center justify-center w-auto py-2.5 pl-4 pr-5 bg-[#F1F5F7] rounded-2xl">
+                                        <div class="color-circle w-[10px] h-[10px] bg-[#84E1BC] rounded-full mr-2.5"></div>
+                                        <h5 class="text-sm mt-1 text-[#323232]">Normal</h5>
+                                    </div>
+                                    <div class="range-buttons flex items-center justify-center w-auto py-2.5 pl-4 pr-5 bg-[#F1F5F7] rounded-2xl">
+                                        <div class="color-circle w-[10px] h-[10px] bg-[#31C48D] rounded-full mr-2.5"></div>
+                                        <h5 class="text-sm mt-1 text-[#323232]">Optimal</h5>
+                                    </div>
+
+                                    <div class="range-buttons-close flex items-center justify-center w-auto p-1.5 bg-[#F1F5F7] rounded-full cursor-pointer">
+                                        <svg class="relative overflow-visible" style="" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <mask id="path-1-inside-1_1568_248651" fill="white">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.29303 4.29308C4.48056 4.10561 4.73487 4.00029 5.00003 4.00029C5.26519 4.00029 5.5195 4.10561 5.70703 4.29308L10 8.58608L14.293 4.29308C14.3853 4.19757 14.4956 4.12139 14.6176 4.06898C14.7396 4.01657 14.8709 3.98898 15.0036 3.98783C15.1364 3.98668 15.2681 4.01198 15.391 4.06226C15.5139 4.11254 15.6255 4.18679 15.7194 4.28069C15.8133 4.37458 15.8876 4.48623 15.9379 4.60913C15.9881 4.73202 16.0134 4.8637 16.0123 4.99648C16.0111 5.12926 15.9835 5.26048 15.9311 5.38249C15.8787 5.50449 15.8025 5.61483 15.707 5.70708L11.414 10.0001L15.707 14.2931C15.8892 14.4817 15.99 14.7343 15.9877 14.9965C15.9854 15.2587 15.8803 15.5095 15.6948 15.6949C15.5094 15.8803 15.2586 15.9855 14.9964 15.9878C14.7342 15.99 14.4816 15.8892 14.293 15.7071L10 11.4141L5.70703 15.7071C5.51843 15.8892 5.26583 15.99 5.00363 15.9878C4.74143 15.9855 4.49062 15.8803 4.30521 15.6949C4.1198 15.5095 4.01463 15.2587 4.01236 14.9965C4.01008 14.7343 4.11087 14.4817 4.29303 14.2931L8.58603 10.0001L4.29303 5.70708C4.10556 5.51955 4.00024 5.26525 4.00024 5.00008C4.00024 4.73492 4.10556 4.48061 4.29303 4.29308Z" />
+                                            </mask>
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M4.29303 4.29308C4.48056 4.10561 4.73487 4.00029 5.00003 4.00029C5.26519 4.00029 5.5195 4.10561 5.70703 4.29308L10 8.58608L14.293 4.29308C14.3853 4.19757 14.4956 4.12139 14.6176 4.06898C14.7396 4.01657 14.8709 3.98898 15.0036 3.98783C15.1364 3.98668 15.2681 4.01198 15.391 4.06226C15.5139 4.11254 15.6255 4.18679 15.7194 4.28069C15.8133 4.37458 15.8876 4.48623 15.9379 4.60913C15.9881 4.73202 16.0134 4.8637 16.0123 4.99648C16.0111 5.12926 15.9835 5.26048 15.9311 5.38249C15.8787 5.50449 15.8025 5.61483 15.707 5.70708L11.414 10.0001L15.707 14.2931C15.8892 14.4817 15.99 14.7343 15.9877 14.9965C15.9854 15.2587 15.8803 15.5095 15.6948 15.6949C15.5094 15.8803 15.2586 15.9855 14.9964 15.9878C14.7342 15.99 14.4816 15.8892 14.293 15.7071L10 11.4141L5.70703 15.7071C5.51843 15.8892 5.26583 15.99 5.00363 15.9878C4.74143 15.9855 4.49062 15.8803 4.30521 15.6949C4.1198 15.5095 4.01463 15.2587 4.01236 14.9965C4.01008 14.7343 4.11087 14.4817 4.29303 14.2931L8.58603 10.0001L4.29303 5.70708C4.10556 5.51955 4.00024 5.26525 4.00024 5.00008C4.00024 4.73492 4.10556 4.48061 4.29303 4.29308Z" fill="#F3F4F6" />
+                                            <path d="M5.70703 4.29308L7.12124 2.87887L7.12103 2.87865L5.70703 4.29308ZM10 8.58608L8.58582 10.0003L10 11.4145L11.4142 10.0003L10 8.58608ZM14.293 4.29308L15.7072 5.70729L15.7195 5.69501L15.7316 5.68251L14.293 4.29308ZM15.707 5.70708L14.3176 4.2685L14.3051 4.28058L14.2928 4.29287L15.707 5.70708ZM11.414 10.0001L9.99982 8.58587L8.5856 10.0001L9.99982 11.4143L11.414 10.0001ZM15.707 14.2931L17.1456 12.9037L17.1335 12.8912L17.1212 12.8789L15.707 14.2931ZM14.293 15.7071L12.8788 17.1213L12.8911 17.1336L12.9036 17.1457L14.293 15.7071ZM10 11.4141L11.4142 9.99987L10 8.58565L8.58582 9.99987L10 11.4141ZM5.70703 15.7071L7.09645 17.1457L7.10895 17.1336L7.12124 17.1213L5.70703 15.7071ZM4.29303 14.2931L2.87882 12.8789L2.86653 12.8912L2.85445 12.9037L4.29303 14.2931ZM8.58603 10.0001L10.0002 11.4143L11.4145 10.0001L10.0002 8.58587L8.58603 10.0001ZM4.29303 5.70708L2.8786 7.12108L2.87882 7.12129L4.29303 5.70708ZM4.29303 4.29308L2.87903 2.87865L2.8786 2.87908L4.29303 4.29308ZM5.70703 5.70751C5.5195 5.89498 5.2652 6.00029 5.00003 6.00029V2.00029C4.20454 2.00029 3.44161 2.31624 2.87903 2.87865L5.70703 5.70751ZM5.00003 6.00029C4.73487 6.00029 4.48056 5.89498 4.29303 5.70751L7.12103 2.87865C6.55845 2.31624 5.79552 2.00029 5.00003 2.00029V6.00029ZM4.29282 5.70729L8.58582 10.0003L11.4142 7.17187L7.12124 2.87887L4.29282 5.70729ZM11.4142 10.0003L15.7072 5.70729L12.8788 2.87887L8.58582 7.17187L11.4142 10.0003ZM15.7316 5.68251C15.6394 5.77801 15.529 5.8542 15.407 5.90661L13.8282 2.23135C13.4622 2.38858 13.1312 2.61713 12.8545 2.90366L15.7316 5.68251ZM15.407 5.90661C15.285 5.95902 15.1538 5.9866 15.021 5.98776L14.9863 1.98791C14.5879 1.99137 14.1943 2.07413 13.8282 2.23135L15.407 5.90661ZM15.021 5.98776C14.8882 5.98891 14.7566 5.96361 14.6337 5.91333L16.1483 2.21119C15.7796 2.06035 15.3846 1.98444 14.9863 1.98791L15.021 5.98776ZM14.6337 5.91333C14.5108 5.86304 14.3991 5.78879 14.3052 5.6949L17.1336 2.86647C16.852 2.5848 16.517 2.36204 16.1483 2.21119L14.6337 5.91333ZM14.3052 5.6949C14.2113 5.60101 14.1371 5.48935 14.0868 5.36646L17.7889 3.8518C17.6381 3.48311 17.4153 3.14815 17.1336 2.86647L14.3052 5.6949ZM14.0868 5.36646C14.0365 5.24357 14.0112 5.11189 14.0124 4.9791L18.0122 5.01386C18.0157 4.61552 17.9398 4.22048 17.7889 3.8518L14.0868 5.36646ZM14.0124 4.9791C14.0135 4.84632 14.0411 4.7151 14.0935 4.5931L17.7688 6.17187C17.926 5.80586 18.0087 5.4122 18.0122 5.01386L14.0124 4.9791ZM14.0935 4.5931C14.1459 4.47109 14.2221 4.36075 14.3176 4.2685L17.0965 7.14566C17.383 6.86892 17.6115 6.53789 17.7688 6.17187L14.0935 4.5931ZM14.2928 4.29287L9.99982 8.58587L12.8282 11.4143L17.1212 7.12129L14.2928 4.29287ZM9.99982 11.4143L14.2928 15.7073L17.1212 12.8789L12.8282 8.58587L9.99982 11.4143ZM14.2685 15.6825C14.0863 15.4939 13.9855 15.2413 13.9878 14.9791L17.9876 15.0139C17.9945 14.2273 17.6921 13.4695 17.1456 12.9037L14.2685 15.6825ZM13.9878 14.9791C13.9901 14.7169 14.0952 14.4661 14.2806 14.2807L17.1091 17.1091C17.6653 16.5529 17.9808 15.8004 17.9876 15.0139L13.9878 14.9791ZM14.2806 14.2807C14.466 14.0953 14.7169 13.9901 14.9791 13.9878L15.0138 17.9877C15.8004 17.9808 16.5528 17.6653 17.1091 17.1091L14.2806 14.2807ZM14.9791 13.9878C15.2413 13.9856 15.4939 14.0863 15.6825 14.2685L12.9036 17.1457C13.4694 17.6921 14.2272 17.9945 15.0138 17.9877L14.9791 13.9878ZM15.7072 14.2929L11.4142 9.99987L8.58582 12.8283L12.8788 17.1213L15.7072 14.2929ZM8.58582 9.99987L4.29282 14.2929L7.12124 17.1213L11.4142 12.8283L8.58582 9.99987ZM4.31761 14.2685C4.50621 14.0863 4.75881 13.9856 5.02101 13.9878L4.98625 17.9877C5.77284 17.9945 6.53065 17.6921 7.09645 17.1457L4.31761 14.2685ZM5.02101 13.9878C5.2832 13.9901 5.53402 14.0953 5.71943 14.2807L2.891 17.1091C3.44722 17.6653 4.19966 17.9808 4.98625 17.9877L5.02101 13.9878ZM5.71943 14.2807C5.90483 14.4661 6.01 14.7169 6.01228 14.9791L2.01243 15.0139C2.01927 15.8005 2.33477 16.5529 2.891 17.1091L5.71943 14.2807ZM6.01228 14.9791C6.01456 15.2413 5.91376 15.4939 5.73161 15.6825L2.85445 12.9037C2.30798 13.4695 2.0056 14.2273 2.01243 15.0139L6.01228 14.9791ZM5.70724 15.7073L10.0002 11.4143L7.17182 8.58587L2.87882 12.8789L5.70724 15.7073ZM10.0002 8.58587L5.70724 4.29287L2.87882 7.12129L7.17182 11.4143L10.0002 8.58587ZM5.70746 4.29308C5.89493 4.48061 6.00024 4.73492 6.00024 5.00008H2.00024C2.00024 5.79557 2.31619 6.5585 2.8786 7.12108L5.70746 4.29308ZM6.00024 5.00008C6.00024 5.26525 5.89493 5.51955 5.70746 5.70708L2.8786 2.87908C2.31619 3.44166 2.00024 4.20459 2.00024 5.00008H6.00024Z" fill="#374151" mask="url(#path-1-inside-1_1568_248651)" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <a href="javascript:void(0);" class="view-recommendations-button z-10 absolute right-10 -top-14 text-Primary-900 bg-white border border-Primary-900 hover:bg-Primary-800 focus:ring-0 font-normal rounded-full text-sm px-5 py-2 ml-3 lg:-mt-2 lg:mr-10 lg:ml-0 hover:bg-Primary-900 hover:text-Gray-50 focus:outline-none">View Recommendations</a>
+                               
+                        <a href="javascript:void(0);" class="close-view-recommendations-sec hidden z-10 absolute right-10 -top-14 text-Gray-800 bg-Gray-100 border border-Gray-100 hover:bg-Gray-300 focus:ring-0 font-normal rounded-full text-xs px-5 py-3 ml-3 lg:-mt-1 lg:mr-10 lg:ml-0 focus:outline-none flex">Close
+                            <svg class="shrink-0 relative overflow-visible ml-2" width="16" height="16" viewBox="0 0 16 16"  fill="none"  xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M3.43345 3.43442C3.58347 3.28444 3.78692 3.20019 3.99905 3.20019C4.21118 3.20019 4.41463 3.28444 4.56465 3.43442L7.99905 6.86882L11.4334 3.43442C11.5072 3.35801 11.5955 3.29706 11.6931 3.25514C11.7907 3.21321 11.8957 3.19114 12.0019 3.19022C12.1082 3.18929 12.2135 3.20953 12.3118 3.24976C12.4101 3.28998 12.4995 3.34939 12.5746 3.4245C12.6497 3.49961 12.7091 3.58894 12.7493 3.68725C12.7895 3.78557 12.8098 3.89091 12.8088 3.99714C12.8079 4.10336 12.7859 4.20834 12.7439 4.30594C12.702 4.40354 12.6411 4.49182 12.5646 4.56562L9.13025 8.00002L12.5646 11.4344C12.7104 11.5853 12.791 11.7874 12.7892 11.9971C12.7874 12.2069 12.7032 12.4075 12.5549 12.5559C12.4066 12.7042 12.2059 12.7883 11.9962 12.7902C11.7864 12.792 11.5843 12.7113 11.4334 12.5656L7.99905 9.13122L4.56465 12.5656C4.41377 12.7113 4.21168 12.792 4.00193 12.7902C3.79217 12.7883 3.59152 12.7042 3.44319 12.5559C3.29487 12.4075 3.21073 12.2069 3.20891 11.9971C3.20709 11.7874 3.28772 11.5853 3.43345 11.4344L6.86785 8.00002L3.43345 4.56562C3.28347 4.41559 3.19922 4.21215 3.19922 4.00002C3.19922 3.78788 3.28347 3.58444 3.43345 3.43442V3.43442Z" fill="#1F2A37" />
+                            </svg>
+                        </a>
+    
+                        <div class="the-recommendations-screen hidden p-5 lg:p-10 lg:px-20 border border-Gray-200">
+                            <div class="flex flex-col lg:flex-row w-full">
+                                <div class="w-full lg:w-1/2 lg:pr-10">
+                                    <h6 class="text-sm md:text-base font-medium text-left text-Gray-600 mb-5">
+                                        Recommendations
+                                    </h6>
+                                    <p class="text-xs md:text-sm text-Gray-600 mb-8">
+                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
+                                        <br><br>
+                                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. 
+                                        <br><br>
+                                        Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                                </div>
+    
+                                <div class="w-full lg:w-1/2 lg:pl-10">                        
+                                    <div class="relative overflow-x-auto sm:rounded-lg">
+                                        <table class="w-full text-sm text-left text-Gray-600">
+                                            <thead class="text-xs text-Gray-500 uppercase bg-Gray-50">
+                                                <tr>
+                                                    <th scope="col" class="px-6 py-3">
+                                                        PROTOCOLS
+                                                    </th>
+                                                    <th scope="col" class="px-6 py-3 text-right">
+                                                        FREQUENCY
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="bg-white border-b border-Gray-200 hover:bg-Gray-50">
+                                                    <th scope="row" class="px-6 py-4 font-normal text-Gray-500 whitespace-nowrap">
+                                                        Sauna 
+                                                    </th>
+                                                    <td class="px-6 py-4 font-normal text-Gray-900 whitespace-nowrap text-right">
+                                                        60min / week
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white border-b border-Gray-200 hover:bg-Gray-50">
+                                                    <th scope="row" class="px-6 py-4 font-normal text-Gray-500 whitespace-nowrap">
+                                                        Cold Therapy 
+                                                    </th>
+                                                    <td class="px-6 py-4 font-normal text-Gray-900 whitespace-nowrap text-right">
+                                                        11min / week
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white border-b border-Gray-200 hover:bg-Gray-50">
+                                                    <th scope="row" class="px-6 py-4 font-normal text-Gray-500 whitespace-nowrap">
+                                                        Mediation 
+                                                    </th>
+                                                    <td class="px-6 py-4 font-normal text-Gray-900 whitespace-nowrap text-right">
+                                                        Once a day (5min) 
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white border-b border-Gray-200 hover:bg-Gray-50">
+                                                    <th scope="row" class="px-6 py-4 font-normal text-Gray-500 whitespace-nowrap">
+                                                        Nature Walks 
+                                                    </th>
+                                                    <td class="px-6 py-4 font-normal text-Gray-900 whitespace-nowrap text-right">
+                                                        Once a week
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rounded-2xl border-solid border-[#d8d8d8] relative mb-8">
+                    <div class="group relative flex flex-col items-end justify-start w-full p-2 md:p-4 lg:items-center lg:flex-row lg:justify-between lg:p-5 border border-b-1 border-gray-200 rounded-t-xl text-gray-900">
+                        <div class="flex items-center w-full md:mb-2 lg:w-2/3 lg:mb-0">
+                            <div class="p-2 bg-Orange-100 rounded-full mr-2 md:mr-5">
+                                <svg class="relative overflow-visible md:w-[29px] md:h-[28px]" width="20" height="20" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M24.0191 18.0182C24.5468 16.7443 24.8184 15.3789 24.8184 14C24.8184 11.2152 23.7121 8.54451 21.743 6.57538C19.7738 4.60625 17.1031 3.5 14.3184 3.5C11.5336 3.5 8.86287 4.60625 6.89374 6.57538C4.92461 8.54451 3.81836 11.2152 3.81836 14C3.81836 15.3789 4.08995 16.7443 4.61762 18.0182C5.1453 19.2921 5.91872 20.4496 6.89374 21.4246C7.86875 22.3996 9.02626 23.1731 10.3002 23.7007C11.5741 24.2284 12.9395 24.5 14.3184 24.5C15.6972 24.5 17.0626 24.2284 18.3365 23.7007C19.6105 23.1731 20.768 22.3996 21.743 21.4246C22.718 20.4496 23.4914 19.2921 24.0191 18.0182Z" fill="#FEECDC"></path>
+                                    <path d="M14.3184 9.33333V14M14.3184 18.6667H14.33M24.8184 14C24.8184 15.3789 24.5468 16.7443 24.0191 18.0182C23.4914 19.2921 22.718 20.4496 21.743 21.4246C20.768 22.3996 19.6105 23.1731 18.3365 23.7007C17.0626 24.2284 15.6972 24.5 14.3184 24.5C12.9395 24.5 11.5741 24.2284 10.3002 23.7007C9.02626 23.1731 7.86875 22.3996 6.89374 21.4246C5.91872 20.4496 5.1453 19.2921 4.61762 18.0182C4.08995 16.7443 3.81836 15.3789 3.81836 14C3.81836 11.2152 4.92461 8.54451 6.89374 6.57538C8.86287 4.60625 11.5336 3.5 14.3184 3.5C17.1031 3.5 19.7738 4.60625 21.743 6.57538C23.7121 8.54451 24.8184 11.2152 24.8184 14Z" stroke="#FF5A1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </div>
+                            <div class="flex flex-col text-sm md:text-base md:font-medium text-left text-Gray-800">
+                                Omega-3 Index
+                                <span class="text-xs md:text-base md:font-normal text-Gray-500">Hermalogy</span>
+                            </div>
+                        </div>
+
+                        <div class="w-full md:w-auto flex items-end lg:w-2/3 lg:items-center justify-end">
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <div class="accordion-first-screen p-5 lg:p-10 lg:px-20 border border-Gray-200">
+                            <div class="flex flex-col items-start justify-between lg:flex-row">
+                                <p class="w-full lg:w-2/3 mb-2 lg:pr-10 text-sm text-Gray-600">Lipoprotein(a) is formed in the liver and transports fats and other lipids such as cholesterol around the body. Lipoprotein(a) is a strong risk marker for cardiovascular disease. One in five has an increased risk of developing a cardiovascular disease and narrowed aortic valve due to a hereditary high content of lipoprotein(a) in the blood. Elevated lipoprotein(a) contributes to a markedly increased risk of cardiovascular disease. Lp(a) is difficult to lower as it is genetically determined.</p>
+                                <div class="flex flex-col items-end w-full mt-10 lg:mt-0 lg:w-1/2 lg:pl-10">
+                                    
+                                    <div class="w-full graph">
+                                        <div class="flex flex-col flex-wrap item-start items-start relative z-10">
+                                            <h3 class="text-base text-Gray-500">My Result</h3>
+                                            <div class="flex gap-[6px] justify-center items-center">
+                                                <h4 class="text-lg lg:text-3xl text-[#323232] font-medium inline-block mt-2 mb-1">0,99<span class="text-xs md:text-lg">g/L</span></h4>
+                                                <span class="flex w-auto px-2.5 py-0 bg-Green-100 rounded-md overflow-hidden block">+10%</span>
+                                            </div>
+                                        </div>                                    
+                            
+                                        <div class="w-full z-0 -mt-16 md:-mt-24">
+                                            <div class="line-chart">
+                                                <div class="aspect-ratio">
+                                                    <canvas id="chart-3"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            
+                            <div class="flex flex-col accordionBody-bottomSec">
+                                <div class="range-slider-scale with-gr w-full relative mb-20 mt-32">
+                                    <div id="tooltip-default" role="tooltip" class="min-w-[50px] absolute z-10 -top-12 left-[71%] inline-block px-3 py-2 text-sm md:text-base  text-white transition-opacity duration-300 bg-Gray-700 rounded-lg shadow-sm tooltip">
+                                        You: 71%
+                                        <div class="tooltip-arrow left-[45%]" data-popper-arrow></div>
+                                        <div class="tooltip-line bottom-[-45px] left-[49.5%] w-[1px] h-[45px] absolute bg-gradient-to-b from-Gray-700 to-Gray-0"></div>
+                                    </div>
+
+                                    <div class="the-scale w-full flex relative">
+                                        <div class="w-[18%] h-full bg-[#F05252] rounded-l-[4px] border-0 border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute left-[-10px] bottom-[-57px] text-Gray-600">0</div>
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">18</div>
+                                        </div>
+                                        <div class="w-[18%] h-full bg-[#F98080] border-l border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">36</div>
+                                        </div>
+                                        <div class="w-[11%] h-full bg-[#FDA151] border-l border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">47</div>
+                                        </div>
+                                        <div class="w-[17%] h-full bg-[#FEC663] border-l border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">64</div>
+                                        </div>
+                                        <div class="w-[14%] h-full bg-[#84E1BC] border-l border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">78</div>
+                                        </div>
+                                        <div class="w-[10%] h-full bg-[#23BF6B] border-l border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">88</div>
+                                        </div>
+                                        <div class="w-[12%] h-full bg-[#29813D] rounded-r-[4px] border-l border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">100</div>
+                                        </div>
+                                        <!--<div class="w-full h-full block absolute top-0 right-0 bottom-0 left-0 z-10 bg-center bg-[length:275%] md:bg-cover bg-repeat-x bg-[url('./images/nutrition-intelligence-scale-lines.png')]"></div>-->
+                                        <div class="w-full h-[16px] block absolute top-auto right-0 bottom-[-28px] left-0 z-10 bg-top bg-cover bg-no-repeat bg-[url('./images/range-slider-scale-lines.png')]"></div>
+                                    </div>
+                                    <ul class="lines">
+                                        <li class="line"><span class="line-num text-Gray-400">0</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">10</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">20</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">30</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">40</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">50</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">60</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">70</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">80</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">90</span></li>
+                                        <li class="line line-last"><span class="line-num text-Gray-400">100</span></li>
+                                    </ul>
+                                </div>
+                                <div class="flex flex-col items-end justify-center lg:items-center lg:flex-row">
+                                    <div class="flex items-center p-3 pl-6 pr-5 mb-4 text-sm font-normal text-Green-600 rounded-full bg-Green-50 compare-range-button-cover" role="alert">
+                                        <svg class="relative overflow-visible mr-3" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M22.0125 22.242C20.8989 23.3668 19.3888 23.9987 17.8143 23.9987C16.2397 23.9987 14.7296 23.3668 13.6161 22.242M13.3607 15H13.3756M22.2678 15H22.2827M31.1749 18C31.1749 19.7728 30.8293 21.5283 30.1579 23.1662C29.4865 24.8041 28.5023 26.2923 27.2617 27.5459C26.021 28.7995 24.5482 29.7939 22.9272 30.4724C21.3062 31.1508 19.5688 31.5 17.8143 31.5C16.0597 31.5 14.3224 31.1508 12.7014 30.4724C11.0804 29.7939 9.60751 28.7995 8.36686 27.5459C7.12621 26.2923 6.14207 24.8041 5.47063 23.1662C4.7992 21.5283 4.45361 19.7728 4.45361 18C4.45361 14.4196 5.86125 10.9858 8.36686 8.45406C10.8725 5.92232 14.2708 4.5 17.8143 4.5C21.3577 4.5 24.7561 5.92232 27.2617 8.45406C29.7673 10.9858 31.1749 14.4196 31.1749 18Z" stroke="#29813D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                        <div>
+                                            Your result is within the optimal range for your range. <a href="javascript:void(0);" class="font-medium underline text-sm hover:no-underline compare-range-button">Compare Range</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="the-range-buttons hidden flex flex-wrap gap-[7px] items-center justify-center lg:flex-row mb-6 my-2">
+
+                                    <div class="range-buttons flex items-center justify-center w-auto py-2.5 pl-4 pr-5 bg-[#F1F5F7] rounded-2xl">
+                                        <div class="color-circle w-[10px] h-[10px] bg-[#E2765A] rounded-full mr-2.5"></div>
+                                        <h5 class="text-sm mt-1 text-[#323232]">High Risk</h5>
+                                    </div>
+                                    <div class="range-buttons flex items-center justify-center w-auto py-2.5 pl-4 pr-5 bg-[#F1F5F7] rounded-2xl">
+                                        <div class="color-circle w-[10px] h-[10px] bg-[#FEC663] rounded-full mr-2.5"></div>
+                                        <h5 class="text-sm mt-1 text-[#323232]">Out of Range</h5>
+                                    </div>
+                                    <div class="range-buttons flex items-center justify-center w-auto py-2.5 pl-4 pr-5 bg-[#F1F5F7] rounded-2xl">
+                                        <div class="color-circle w-[10px] h-[10px] bg-[#84E1BC] rounded-full mr-2.5"></div>
+                                        <h5 class="text-sm mt-1 text-[#323232]">Normal</h5>
+                                    </div>
+                                    <div class="range-buttons flex items-center justify-center w-auto py-2.5 pl-4 pr-5 bg-[#F1F5F7] rounded-2xl">
+                                        <div class="color-circle w-[10px] h-[10px] bg-[#31C48D] rounded-full mr-2.5"></div>
+                                        <h5 class="text-sm mt-1 text-[#323232]">Optimal</h5>
+                                    </div>
+
+                                    <div class="range-buttons-close flex items-center justify-center w-auto p-1.5 bg-[#F1F5F7] rounded-full cursor-pointer">
+                                        <svg class="relative overflow-visible" style="" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <mask id="path-1-inside-1_1568_248651" fill="white">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.29303 4.29308C4.48056 4.10561 4.73487 4.00029 5.00003 4.00029C5.26519 4.00029 5.5195 4.10561 5.70703 4.29308L10 8.58608L14.293 4.29308C14.3853 4.19757 14.4956 4.12139 14.6176 4.06898C14.7396 4.01657 14.8709 3.98898 15.0036 3.98783C15.1364 3.98668 15.2681 4.01198 15.391 4.06226C15.5139 4.11254 15.6255 4.18679 15.7194 4.28069C15.8133 4.37458 15.8876 4.48623 15.9379 4.60913C15.9881 4.73202 16.0134 4.8637 16.0123 4.99648C16.0111 5.12926 15.9835 5.26048 15.9311 5.38249C15.8787 5.50449 15.8025 5.61483 15.707 5.70708L11.414 10.0001L15.707 14.2931C15.8892 14.4817 15.99 14.7343 15.9877 14.9965C15.9854 15.2587 15.8803 15.5095 15.6948 15.6949C15.5094 15.8803 15.2586 15.9855 14.9964 15.9878C14.7342 15.99 14.4816 15.8892 14.293 15.7071L10 11.4141L5.70703 15.7071C5.51843 15.8892 5.26583 15.99 5.00363 15.9878C4.74143 15.9855 4.49062 15.8803 4.30521 15.6949C4.1198 15.5095 4.01463 15.2587 4.01236 14.9965C4.01008 14.7343 4.11087 14.4817 4.29303 14.2931L8.58603 10.0001L4.29303 5.70708C4.10556 5.51955 4.00024 5.26525 4.00024 5.00008C4.00024 4.73492 4.10556 4.48061 4.29303 4.29308Z" />
+                                            </mask>
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M4.29303 4.29308C4.48056 4.10561 4.73487 4.00029 5.00003 4.00029C5.26519 4.00029 5.5195 4.10561 5.70703 4.29308L10 8.58608L14.293 4.29308C14.3853 4.19757 14.4956 4.12139 14.6176 4.06898C14.7396 4.01657 14.8709 3.98898 15.0036 3.98783C15.1364 3.98668 15.2681 4.01198 15.391 4.06226C15.5139 4.11254 15.6255 4.18679 15.7194 4.28069C15.8133 4.37458 15.8876 4.48623 15.9379 4.60913C15.9881 4.73202 16.0134 4.8637 16.0123 4.99648C16.0111 5.12926 15.9835 5.26048 15.9311 5.38249C15.8787 5.50449 15.8025 5.61483 15.707 5.70708L11.414 10.0001L15.707 14.2931C15.8892 14.4817 15.99 14.7343 15.9877 14.9965C15.9854 15.2587 15.8803 15.5095 15.6948 15.6949C15.5094 15.8803 15.2586 15.9855 14.9964 15.9878C14.7342 15.99 14.4816 15.8892 14.293 15.7071L10 11.4141L5.70703 15.7071C5.51843 15.8892 5.26583 15.99 5.00363 15.9878C4.74143 15.9855 4.49062 15.8803 4.30521 15.6949C4.1198 15.5095 4.01463 15.2587 4.01236 14.9965C4.01008 14.7343 4.11087 14.4817 4.29303 14.2931L8.58603 10.0001L4.29303 5.70708C4.10556 5.51955 4.00024 5.26525 4.00024 5.00008C4.00024 4.73492 4.10556 4.48061 4.29303 4.29308Z" fill="#F3F4F6" />
+                                            <path d="M5.70703 4.29308L7.12124 2.87887L7.12103 2.87865L5.70703 4.29308ZM10 8.58608L8.58582 10.0003L10 11.4145L11.4142 10.0003L10 8.58608ZM14.293 4.29308L15.7072 5.70729L15.7195 5.69501L15.7316 5.68251L14.293 4.29308ZM15.707 5.70708L14.3176 4.2685L14.3051 4.28058L14.2928 4.29287L15.707 5.70708ZM11.414 10.0001L9.99982 8.58587L8.5856 10.0001L9.99982 11.4143L11.414 10.0001ZM15.707 14.2931L17.1456 12.9037L17.1335 12.8912L17.1212 12.8789L15.707 14.2931ZM14.293 15.7071L12.8788 17.1213L12.8911 17.1336L12.9036 17.1457L14.293 15.7071ZM10 11.4141L11.4142 9.99987L10 8.58565L8.58582 9.99987L10 11.4141ZM5.70703 15.7071L7.09645 17.1457L7.10895 17.1336L7.12124 17.1213L5.70703 15.7071ZM4.29303 14.2931L2.87882 12.8789L2.86653 12.8912L2.85445 12.9037L4.29303 14.2931ZM8.58603 10.0001L10.0002 11.4143L11.4145 10.0001L10.0002 8.58587L8.58603 10.0001ZM4.29303 5.70708L2.8786 7.12108L2.87882 7.12129L4.29303 5.70708ZM4.29303 4.29308L2.87903 2.87865L2.8786 2.87908L4.29303 4.29308ZM5.70703 5.70751C5.5195 5.89498 5.2652 6.00029 5.00003 6.00029V2.00029C4.20454 2.00029 3.44161 2.31624 2.87903 2.87865L5.70703 5.70751ZM5.00003 6.00029C4.73487 6.00029 4.48056 5.89498 4.29303 5.70751L7.12103 2.87865C6.55845 2.31624 5.79552 2.00029 5.00003 2.00029V6.00029ZM4.29282 5.70729L8.58582 10.0003L11.4142 7.17187L7.12124 2.87887L4.29282 5.70729ZM11.4142 10.0003L15.7072 5.70729L12.8788 2.87887L8.58582 7.17187L11.4142 10.0003ZM15.7316 5.68251C15.6394 5.77801 15.529 5.8542 15.407 5.90661L13.8282 2.23135C13.4622 2.38858 13.1312 2.61713 12.8545 2.90366L15.7316 5.68251ZM15.407 5.90661C15.285 5.95902 15.1538 5.9866 15.021 5.98776L14.9863 1.98791C14.5879 1.99137 14.1943 2.07413 13.8282 2.23135L15.407 5.90661ZM15.021 5.98776C14.8882 5.98891 14.7566 5.96361 14.6337 5.91333L16.1483 2.21119C15.7796 2.06035 15.3846 1.98444 14.9863 1.98791L15.021 5.98776ZM14.6337 5.91333C14.5108 5.86304 14.3991 5.78879 14.3052 5.6949L17.1336 2.86647C16.852 2.5848 16.517 2.36204 16.1483 2.21119L14.6337 5.91333ZM14.3052 5.6949C14.2113 5.60101 14.1371 5.48935 14.0868 5.36646L17.7889 3.8518C17.6381 3.48311 17.4153 3.14815 17.1336 2.86647L14.3052 5.6949ZM14.0868 5.36646C14.0365 5.24357 14.0112 5.11189 14.0124 4.9791L18.0122 5.01386C18.0157 4.61552 17.9398 4.22048 17.7889 3.8518L14.0868 5.36646ZM14.0124 4.9791C14.0135 4.84632 14.0411 4.7151 14.0935 4.5931L17.7688 6.17187C17.926 5.80586 18.0087 5.4122 18.0122 5.01386L14.0124 4.9791ZM14.0935 4.5931C14.1459 4.47109 14.2221 4.36075 14.3176 4.2685L17.0965 7.14566C17.383 6.86892 17.6115 6.53789 17.7688 6.17187L14.0935 4.5931ZM14.2928 4.29287L9.99982 8.58587L12.8282 11.4143L17.1212 7.12129L14.2928 4.29287ZM9.99982 11.4143L14.2928 15.7073L17.1212 12.8789L12.8282 8.58587L9.99982 11.4143ZM14.2685 15.6825C14.0863 15.4939 13.9855 15.2413 13.9878 14.9791L17.9876 15.0139C17.9945 14.2273 17.6921 13.4695 17.1456 12.9037L14.2685 15.6825ZM13.9878 14.9791C13.9901 14.7169 14.0952 14.4661 14.2806 14.2807L17.1091 17.1091C17.6653 16.5529 17.9808 15.8004 17.9876 15.0139L13.9878 14.9791ZM14.2806 14.2807C14.466 14.0953 14.7169 13.9901 14.9791 13.9878L15.0138 17.9877C15.8004 17.9808 16.5528 17.6653 17.1091 17.1091L14.2806 14.2807ZM14.9791 13.9878C15.2413 13.9856 15.4939 14.0863 15.6825 14.2685L12.9036 17.1457C13.4694 17.6921 14.2272 17.9945 15.0138 17.9877L14.9791 13.9878ZM15.7072 14.2929L11.4142 9.99987L8.58582 12.8283L12.8788 17.1213L15.7072 14.2929ZM8.58582 9.99987L4.29282 14.2929L7.12124 17.1213L11.4142 12.8283L8.58582 9.99987ZM4.31761 14.2685C4.50621 14.0863 4.75881 13.9856 5.02101 13.9878L4.98625 17.9877C5.77284 17.9945 6.53065 17.6921 7.09645 17.1457L4.31761 14.2685ZM5.02101 13.9878C5.2832 13.9901 5.53402 14.0953 5.71943 14.2807L2.891 17.1091C3.44722 17.6653 4.19966 17.9808 4.98625 17.9877L5.02101 13.9878ZM5.71943 14.2807C5.90483 14.4661 6.01 14.7169 6.01228 14.9791L2.01243 15.0139C2.01927 15.8005 2.33477 16.5529 2.891 17.1091L5.71943 14.2807ZM6.01228 14.9791C6.01456 15.2413 5.91376 15.4939 5.73161 15.6825L2.85445 12.9037C2.30798 13.4695 2.0056 14.2273 2.01243 15.0139L6.01228 14.9791ZM5.70724 15.7073L10.0002 11.4143L7.17182 8.58587L2.87882 12.8789L5.70724 15.7073ZM10.0002 8.58587L5.70724 4.29287L2.87882 7.12129L7.17182 11.4143L10.0002 8.58587ZM5.70746 4.29308C5.89493 4.48061 6.00024 4.73492 6.00024 5.00008H2.00024C2.00024 5.79557 2.31619 6.5585 2.8786 7.12108L5.70746 4.29308ZM6.00024 5.00008C6.00024 5.26525 5.89493 5.51955 5.70746 5.70708L2.8786 2.87908C2.31619 3.44166 2.00024 4.20459 2.00024 5.00008H6.00024Z" fill="#374151" mask="url(#path-1-inside-1_1568_248651)" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <a href="javascript:void(0);" class="view-recommendations-button z-10 absolute right-10 -top-14 text-Primary-900 bg-white border border-Primary-900 hover:bg-Primary-800 focus:ring-0 font-normal rounded-full text-sm px-5 py-2 ml-3 lg:-mt-2 lg:mr-10 lg:ml-0 hover:bg-Primary-900 hover:text-Gray-50 focus:outline-none">View Recommendations</a>
+                               
+                        <a href="javascript:void(0);" class="close-view-recommendations-sec hidden z-10 absolute right-10 -top-14 text-Gray-800 bg-Gray-100 border border-Gray-100 hover:bg-Gray-300 focus:ring-0 font-normal rounded-full text-xs px-5 py-3 ml-3 lg:-mt-1 lg:mr-10 lg:ml-0 focus:outline-none flex">Close
+                            <svg class="shrink-0 relative overflow-visible ml-2" width="16" height="16" viewBox="0 0 16 16"  fill="none"  xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M3.43345 3.43442C3.58347 3.28444 3.78692 3.20019 3.99905 3.20019C4.21118 3.20019 4.41463 3.28444 4.56465 3.43442L7.99905 6.86882L11.4334 3.43442C11.5072 3.35801 11.5955 3.29706 11.6931 3.25514C11.7907 3.21321 11.8957 3.19114 12.0019 3.19022C12.1082 3.18929 12.2135 3.20953 12.3118 3.24976C12.4101 3.28998 12.4995 3.34939 12.5746 3.4245C12.6497 3.49961 12.7091 3.58894 12.7493 3.68725C12.7895 3.78557 12.8098 3.89091 12.8088 3.99714C12.8079 4.10336 12.7859 4.20834 12.7439 4.30594C12.702 4.40354 12.6411 4.49182 12.5646 4.56562L9.13025 8.00002L12.5646 11.4344C12.7104 11.5853 12.791 11.7874 12.7892 11.9971C12.7874 12.2069 12.7032 12.4075 12.5549 12.5559C12.4066 12.7042 12.2059 12.7883 11.9962 12.7902C11.7864 12.792 11.5843 12.7113 11.4334 12.5656L7.99905 9.13122L4.56465 12.5656C4.41377 12.7113 4.21168 12.792 4.00193 12.7902C3.79217 12.7883 3.59152 12.7042 3.44319 12.5559C3.29487 12.4075 3.21073 12.2069 3.20891 11.9971C3.20709 11.7874 3.28772 11.5853 3.43345 11.4344L6.86785 8.00002L3.43345 4.56562C3.28347 4.41559 3.19922 4.21215 3.19922 4.00002C3.19922 3.78788 3.28347 3.58444 3.43345 3.43442V3.43442Z" fill="#1F2A37" />
+                            </svg>
+                        </a>
+    
+                        <div class="the-recommendations-screen hidden p-5 lg:p-10 lg:px-20 border border-Gray-200">
+                            <div class="flex flex-col lg:flex-row w-full">
+                                <div class="w-full lg:w-1/2 lg:pr-10">
+                                    <h6 class="text-sm md:text-base font-medium text-left text-Gray-600 mb-5">
+                                        Recommendations
+                                    </h6>
+                                    <p class="text-xs md:text-sm text-Gray-600 mb-8">
+                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
+                                        <br><br>
+                                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. 
+                                        <br><br>
+                                        Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                                </div>
+    
+                                <div class="w-full lg:w-1/2 lg:pl-10">                        
+                                    <div class="relative overflow-x-auto sm:rounded-lg">
+                                        <table class="w-full text-sm text-left text-Gray-600">
+                                            <thead class="text-xs text-Gray-500 uppercase bg-Gray-50">
+                                                <tr>
+                                                    <th scope="col" class="px-6 py-3">
+                                                        PROTOCOLS
+                                                    </th>
+                                                    <th scope="col" class="px-6 py-3 text-right">
+                                                        FREQUENCY
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="bg-white border-b border-Gray-200 hover:bg-Gray-50">
+                                                    <th scope="row" class="px-6 py-4 font-normal text-Gray-500 whitespace-nowrap">
+                                                        Sauna 
+                                                    </th>
+                                                    <td class="px-6 py-4 font-normal text-Gray-900 whitespace-nowrap text-right">
+                                                        60min / week
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white border-b border-Gray-200 hover:bg-Gray-50">
+                                                    <th scope="row" class="px-6 py-4 font-normal text-Gray-500 whitespace-nowrap">
+                                                        Cold Therapy 
+                                                    </th>
+                                                    <td class="px-6 py-4 font-normal text-Gray-900 whitespace-nowrap text-right">
+                                                        11min / week
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white border-b border-Gray-200 hover:bg-Gray-50">
+                                                    <th scope="row" class="px-6 py-4 font-normal text-Gray-500 whitespace-nowrap">
+                                                        Mediation 
+                                                    </th>
+                                                    <td class="px-6 py-4 font-normal text-Gray-900 whitespace-nowrap text-right">
+                                                        Once a day (5min) 
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white border-b border-Gray-200 hover:bg-Gray-50">
+                                                    <th scope="row" class="px-6 py-4 font-normal text-Gray-500 whitespace-nowrap">
+                                                        Nature Walks 
+                                                    </th>
+                                                    <td class="px-6 py-4 font-normal text-Gray-900 whitespace-nowrap text-right">
+                                                        Once a week
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rounded-2xl border-solid border-[#d8d8d8] relative mb-8">
+                    <div class="group relative flex flex-col items-end justify-start w-full p-2 md:p-4 lg:items-center lg:flex-row lg:justify-between lg:p-5 border border-b-1 border-gray-200 rounded-t-xl text-gray-900">
+                        <div class="flex items-center w-full md:mb-2 lg:w-2/3 lg:mb-0">
+                            <div class="p-2 bg-Green-100 rounded-full mr-2 md:mr-5"0>
+                                <svg class="check relative overflow-visible md:w-[28px] md:h-[28px]" width="20" height="20" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10.4929 18.3275L11.2 19.0346L11.9071 18.3275L22.1172 8.11736C22.1172 8.11732 22.1173 8.11729 22.1173 8.11725C22.1923 8.04233 22.294 8.00024 22.4 8.00024C22.5061 8.00024 22.6078 8.04237 22.6828 8.11736C22.7577 8.19235 22.7997 8.29398 22.7997 8.39995C22.7997 8.50596 22.7576 8.60764 22.6827 8.68264C22.6827 8.68267 22.6826 8.68271 22.6826 8.68275L11.4828 19.8825C11.4078 19.9575 11.3061 19.9996 11.2 19.9996C11.0939 19.9996 10.9922 19.9575 10.9172 19.8825L5.32532 14.2906C5.25509 14.2157 5.21633 14.1165 5.21722 14.0137C5.21814 13.9088 5.2602 13.8085 5.33437 13.7343C5.40853 13.6601 5.50885 13.6181 5.61373 13.6172C5.71659 13.6163 5.81576 13.655 5.8907 13.7253L10.4929 18.3275Z" fill="#DEF7EC" stroke="#057A55" stroke-width="2"></path>
+                                </svg>
+                            </div>
+                            <div class="flex flex-col text-sm md:text-base md:font-medium text-left text-Gray-800">
+                                Apolipoprotein B
+                                <span class="text-xs md:text-base md:font-normal text-Gray-500">Hermalogy</span>
+                            </div>
+                        </div>
+
+                        <div class="w-full md:w-auto flex items-end lg:w-2/3 lg:items-center justify-end">
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <div class="accordion-first-screen p-5 lg:p-10 lg:px-20 border border-Gray-200">
+                            <div class="flex flex-col items-start justify-between lg:flex-row">
+                                <p class="w-full lg:w-2/3 mb-2 lg:pr-10 text-sm text-Gray-600">Lipoprotein(a) is formed in the liver and transports fats and other lipids such as cholesterol around the body. Lipoprotein(a) is a strong risk marker for cardiovascular disease. One in five has an increased risk of developing a cardiovascular disease and narrowed aortic valve due to a hereditary high content of lipoprotein(a) in the blood. Elevated lipoprotein(a) contributes to a markedly increased risk of cardiovascular disease. Lp(a) is difficult to lower as it is genetically determined.</p>
+                                <div class="flex flex-col items-end w-full mt-10 lg:mt-0 lg:w-1/2 lg:pl-10">
+                                    
+                                    <div class="w-full graph">
+                                        <div class="flex flex-col flex-wrap item-start items-start relative z-10">
+                                            <h3 class="text-base text-Gray-500">My Result</h3>
+                                            <div class="flex gap-[6px] justify-center items-center">
+                                                <h4 class="text-lg lg:text-3xl text-[#323232] font-medium inline-block mt-2 mb-1">0,99<span class="text-xs md:text-lg">g/L</span></h4>
+                                                <span class="flex w-auto px-2.5 py-0 bg-Green-100 rounded-md overflow-hidden block">+10%</span>
+                                            </div>
+                                        </div>                                    
+                            
+                                        <div class="w-full z-0 -mt-16 md:-mt-24">
+                                            <div class="line-chart">
+                                                <div class="aspect-ratio">
+                                                    <canvas id="chart-4"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="flex flex-col accordionBody-bottomSec">
+                                <div class="range-slider-scale with-gr w-full relative mb-20 mt-32">
+                                    <div id="tooltip-default" role="tooltip" class="min-w-[50px] absolute z-10 -top-12 left-[71%] inline-block px-3 py-2 text-sm md:text-base  text-white transition-opacity duration-300 bg-Gray-700 rounded-lg shadow-sm tooltip">
+                                        You: 71%
+                                        <div class="tooltip-arrow left-[45%]" data-popper-arrow></div>
+                                        <div class="tooltip-line bottom-[-45px] left-[49.5%] w-[1px] h-[45px] absolute bg-gradient-to-b from-Gray-700 to-Gray-0"></div>
+                                    </div>
+
+                                    <div class="the-scale w-full flex relative">
+                                        <div class="w-[18%] h-full bg-[#F05252] rounded-l-[4px] border-0 border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute left-[-10px] bottom-[-57px] text-Gray-600">0</div>
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">18</div>
+                                        </div>
+                                        <div class="w-[18%] h-full bg-[#F98080] border-l border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">36</div>
+                                        </div>
+                                        <div class="w-[11%] h-full bg-[#FDA151] border-l border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">47</div>
+                                        </div>
+                                        <div class="w-[17%] h-full bg-[#FEC663] border-l border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">64</div>
+                                        </div>
+                                        <div class="w-[14%] h-full bg-[#84E1BC] border-l border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">78</div>
+                                        </div>
+                                        <div class="w-[10%] h-full bg-[#23BF6B] border-l border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">88</div>
+                                        </div>
+                                        <div class="w-[12%] h-full bg-[#29813D] rounded-r-[4px] border-l border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">100</div>
+                                        </div>
+                                        <!--<div class="w-full h-full block absolute top-0 right-0 bottom-0 left-0 z-10 bg-center bg-[length:275%] md:bg-cover bg-repeat-x bg-[url('./images/nutrition-intelligence-scale-lines.png')]"></div>-->
+                                        <div class="w-full h-[16px] block absolute top-auto right-0 bottom-[-28px] left-0 z-10 bg-top bg-cover bg-no-repeat bg-[url('./images/range-slider-scale-lines.png')]"></div>
+                                    </div>
+                                    <ul class="lines">
+                                        <li class="line"><span class="line-num text-Gray-400">0</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">10</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">20</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">30</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">40</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">50</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">60</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">70</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">80</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">90</span></li>
+                                        <li class="line line-last"><span class="line-num text-Gray-400">100</span></li>
+                                    </ul>
+                                </div>
+                                <div class="flex flex-col items-end justify-center lg:items-center lg:flex-row">
+                                    <div class="flex items-center p-3 pl-6 pr-5 mb-4 text-sm font-normal text-Green-600 rounded-full bg-Green-50 compare-range-button-cover" role="alert">
+                                        <svg class="relative overflow-visible mr-3" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M22.0125 22.242C20.8989 23.3668 19.3888 23.9987 17.8143 23.9987C16.2397 23.9987 14.7296 23.3668 13.6161 22.242M13.3607 15H13.3756M22.2678 15H22.2827M31.1749 18C31.1749 19.7728 30.8293 21.5283 30.1579 23.1662C29.4865 24.8041 28.5023 26.2923 27.2617 27.5459C26.021 28.7995 24.5482 29.7939 22.9272 30.4724C21.3062 31.1508 19.5688 31.5 17.8143 31.5C16.0597 31.5 14.3224 31.1508 12.7014 30.4724C11.0804 29.7939 9.60751 28.7995 8.36686 27.5459C7.12621 26.2923 6.14207 24.8041 5.47063 23.1662C4.7992 21.5283 4.45361 19.7728 4.45361 18C4.45361 14.4196 5.86125 10.9858 8.36686 8.45406C10.8725 5.92232 14.2708 4.5 17.8143 4.5C21.3577 4.5 24.7561 5.92232 27.2617 8.45406C29.7673 10.9858 31.1749 14.4196 31.1749 18Z" stroke="#29813D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                        <div>
+                                            Your result is within the optimal range for your range. <a href="javascript:void(0);" class="font-medium underline text-sm hover:no-underline compare-range-button">Compare Range</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="the-range-buttons hidden flex flex-wrap gap-[7px] items-center justify-center lg:flex-row mb-6 my-2">
+
+                                    <div class="range-buttons flex items-center justify-center w-auto py-2.5 pl-4 pr-5 bg-[#F1F5F7] rounded-2xl">
+                                        <div class="color-circle w-[10px] h-[10px] bg-[#E2765A] rounded-full mr-2.5"></div>
+                                        <h5 class="text-sm mt-1 text-[#323232]">High Risk</h5>
+                                    </div>
+                                    <div class="range-buttons flex items-center justify-center w-auto py-2.5 pl-4 pr-5 bg-[#F1F5F7] rounded-2xl">
+                                        <div class="color-circle w-[10px] h-[10px] bg-[#FEC663] rounded-full mr-2.5"></div>
+                                        <h5 class="text-sm mt-1 text-[#323232]">Out of Range</h5>
+                                    </div>
+                                    <div class="range-buttons flex items-center justify-center w-auto py-2.5 pl-4 pr-5 bg-[#F1F5F7] rounded-2xl">
+                                        <div class="color-circle w-[10px] h-[10px] bg-[#84E1BC] rounded-full mr-2.5"></div>
+                                        <h5 class="text-sm mt-1 text-[#323232]">Normal</h5>
+                                    </div>
+                                    <div class="range-buttons flex items-center justify-center w-auto py-2.5 pl-4 pr-5 bg-[#F1F5F7] rounded-2xl">
+                                        <div class="color-circle w-[10px] h-[10px] bg-[#31C48D] rounded-full mr-2.5"></div>
+                                        <h5 class="text-sm mt-1 text-[#323232]">Optimal</h5>
+                                    </div>
+
+                                    <div class="range-buttons-close flex items-center justify-center w-auto p-1.5 bg-[#F1F5F7] rounded-full cursor-pointer">
+                                        <svg class="relative overflow-visible" style="" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <mask id="path-1-inside-1_1568_248651" fill="white">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.29303 4.29308C4.48056 4.10561 4.73487 4.00029 5.00003 4.00029C5.26519 4.00029 5.5195 4.10561 5.70703 4.29308L10 8.58608L14.293 4.29308C14.3853 4.19757 14.4956 4.12139 14.6176 4.06898C14.7396 4.01657 14.8709 3.98898 15.0036 3.98783C15.1364 3.98668 15.2681 4.01198 15.391 4.06226C15.5139 4.11254 15.6255 4.18679 15.7194 4.28069C15.8133 4.37458 15.8876 4.48623 15.9379 4.60913C15.9881 4.73202 16.0134 4.8637 16.0123 4.99648C16.0111 5.12926 15.9835 5.26048 15.9311 5.38249C15.8787 5.50449 15.8025 5.61483 15.707 5.70708L11.414 10.0001L15.707 14.2931C15.8892 14.4817 15.99 14.7343 15.9877 14.9965C15.9854 15.2587 15.8803 15.5095 15.6948 15.6949C15.5094 15.8803 15.2586 15.9855 14.9964 15.9878C14.7342 15.99 14.4816 15.8892 14.293 15.7071L10 11.4141L5.70703 15.7071C5.51843 15.8892 5.26583 15.99 5.00363 15.9878C4.74143 15.9855 4.49062 15.8803 4.30521 15.6949C4.1198 15.5095 4.01463 15.2587 4.01236 14.9965C4.01008 14.7343 4.11087 14.4817 4.29303 14.2931L8.58603 10.0001L4.29303 5.70708C4.10556 5.51955 4.00024 5.26525 4.00024 5.00008C4.00024 4.73492 4.10556 4.48061 4.29303 4.29308Z" />
+                                            </mask>
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M4.29303 4.29308C4.48056 4.10561 4.73487 4.00029 5.00003 4.00029C5.26519 4.00029 5.5195 4.10561 5.70703 4.29308L10 8.58608L14.293 4.29308C14.3853 4.19757 14.4956 4.12139 14.6176 4.06898C14.7396 4.01657 14.8709 3.98898 15.0036 3.98783C15.1364 3.98668 15.2681 4.01198 15.391 4.06226C15.5139 4.11254 15.6255 4.18679 15.7194 4.28069C15.8133 4.37458 15.8876 4.48623 15.9379 4.60913C15.9881 4.73202 16.0134 4.8637 16.0123 4.99648C16.0111 5.12926 15.9835 5.26048 15.9311 5.38249C15.8787 5.50449 15.8025 5.61483 15.707 5.70708L11.414 10.0001L15.707 14.2931C15.8892 14.4817 15.99 14.7343 15.9877 14.9965C15.9854 15.2587 15.8803 15.5095 15.6948 15.6949C15.5094 15.8803 15.2586 15.9855 14.9964 15.9878C14.7342 15.99 14.4816 15.8892 14.293 15.7071L10 11.4141L5.70703 15.7071C5.51843 15.8892 5.26583 15.99 5.00363 15.9878C4.74143 15.9855 4.49062 15.8803 4.30521 15.6949C4.1198 15.5095 4.01463 15.2587 4.01236 14.9965C4.01008 14.7343 4.11087 14.4817 4.29303 14.2931L8.58603 10.0001L4.29303 5.70708C4.10556 5.51955 4.00024 5.26525 4.00024 5.00008C4.00024 4.73492 4.10556 4.48061 4.29303 4.29308Z" fill="#F3F4F6" />
+                                            <path d="M5.70703 4.29308L7.12124 2.87887L7.12103 2.87865L5.70703 4.29308ZM10 8.58608L8.58582 10.0003L10 11.4145L11.4142 10.0003L10 8.58608ZM14.293 4.29308L15.7072 5.70729L15.7195 5.69501L15.7316 5.68251L14.293 4.29308ZM15.707 5.70708L14.3176 4.2685L14.3051 4.28058L14.2928 4.29287L15.707 5.70708ZM11.414 10.0001L9.99982 8.58587L8.5856 10.0001L9.99982 11.4143L11.414 10.0001ZM15.707 14.2931L17.1456 12.9037L17.1335 12.8912L17.1212 12.8789L15.707 14.2931ZM14.293 15.7071L12.8788 17.1213L12.8911 17.1336L12.9036 17.1457L14.293 15.7071ZM10 11.4141L11.4142 9.99987L10 8.58565L8.58582 9.99987L10 11.4141ZM5.70703 15.7071L7.09645 17.1457L7.10895 17.1336L7.12124 17.1213L5.70703 15.7071ZM4.29303 14.2931L2.87882 12.8789L2.86653 12.8912L2.85445 12.9037L4.29303 14.2931ZM8.58603 10.0001L10.0002 11.4143L11.4145 10.0001L10.0002 8.58587L8.58603 10.0001ZM4.29303 5.70708L2.8786 7.12108L2.87882 7.12129L4.29303 5.70708ZM4.29303 4.29308L2.87903 2.87865L2.8786 2.87908L4.29303 4.29308ZM5.70703 5.70751C5.5195 5.89498 5.2652 6.00029 5.00003 6.00029V2.00029C4.20454 2.00029 3.44161 2.31624 2.87903 2.87865L5.70703 5.70751ZM5.00003 6.00029C4.73487 6.00029 4.48056 5.89498 4.29303 5.70751L7.12103 2.87865C6.55845 2.31624 5.79552 2.00029 5.00003 2.00029V6.00029ZM4.29282 5.70729L8.58582 10.0003L11.4142 7.17187L7.12124 2.87887L4.29282 5.70729ZM11.4142 10.0003L15.7072 5.70729L12.8788 2.87887L8.58582 7.17187L11.4142 10.0003ZM15.7316 5.68251C15.6394 5.77801 15.529 5.8542 15.407 5.90661L13.8282 2.23135C13.4622 2.38858 13.1312 2.61713 12.8545 2.90366L15.7316 5.68251ZM15.407 5.90661C15.285 5.95902 15.1538 5.9866 15.021 5.98776L14.9863 1.98791C14.5879 1.99137 14.1943 2.07413 13.8282 2.23135L15.407 5.90661ZM15.021 5.98776C14.8882 5.98891 14.7566 5.96361 14.6337 5.91333L16.1483 2.21119C15.7796 2.06035 15.3846 1.98444 14.9863 1.98791L15.021 5.98776ZM14.6337 5.91333C14.5108 5.86304 14.3991 5.78879 14.3052 5.6949L17.1336 2.86647C16.852 2.5848 16.517 2.36204 16.1483 2.21119L14.6337 5.91333ZM14.3052 5.6949C14.2113 5.60101 14.1371 5.48935 14.0868 5.36646L17.7889 3.8518C17.6381 3.48311 17.4153 3.14815 17.1336 2.86647L14.3052 5.6949ZM14.0868 5.36646C14.0365 5.24357 14.0112 5.11189 14.0124 4.9791L18.0122 5.01386C18.0157 4.61552 17.9398 4.22048 17.7889 3.8518L14.0868 5.36646ZM14.0124 4.9791C14.0135 4.84632 14.0411 4.7151 14.0935 4.5931L17.7688 6.17187C17.926 5.80586 18.0087 5.4122 18.0122 5.01386L14.0124 4.9791ZM14.0935 4.5931C14.1459 4.47109 14.2221 4.36075 14.3176 4.2685L17.0965 7.14566C17.383 6.86892 17.6115 6.53789 17.7688 6.17187L14.0935 4.5931ZM14.2928 4.29287L9.99982 8.58587L12.8282 11.4143L17.1212 7.12129L14.2928 4.29287ZM9.99982 11.4143L14.2928 15.7073L17.1212 12.8789L12.8282 8.58587L9.99982 11.4143ZM14.2685 15.6825C14.0863 15.4939 13.9855 15.2413 13.9878 14.9791L17.9876 15.0139C17.9945 14.2273 17.6921 13.4695 17.1456 12.9037L14.2685 15.6825ZM13.9878 14.9791C13.9901 14.7169 14.0952 14.4661 14.2806 14.2807L17.1091 17.1091C17.6653 16.5529 17.9808 15.8004 17.9876 15.0139L13.9878 14.9791ZM14.2806 14.2807C14.466 14.0953 14.7169 13.9901 14.9791 13.9878L15.0138 17.9877C15.8004 17.9808 16.5528 17.6653 17.1091 17.1091L14.2806 14.2807ZM14.9791 13.9878C15.2413 13.9856 15.4939 14.0863 15.6825 14.2685L12.9036 17.1457C13.4694 17.6921 14.2272 17.9945 15.0138 17.9877L14.9791 13.9878ZM15.7072 14.2929L11.4142 9.99987L8.58582 12.8283L12.8788 17.1213L15.7072 14.2929ZM8.58582 9.99987L4.29282 14.2929L7.12124 17.1213L11.4142 12.8283L8.58582 9.99987ZM4.31761 14.2685C4.50621 14.0863 4.75881 13.9856 5.02101 13.9878L4.98625 17.9877C5.77284 17.9945 6.53065 17.6921 7.09645 17.1457L4.31761 14.2685ZM5.02101 13.9878C5.2832 13.9901 5.53402 14.0953 5.71943 14.2807L2.891 17.1091C3.44722 17.6653 4.19966 17.9808 4.98625 17.9877L5.02101 13.9878ZM5.71943 14.2807C5.90483 14.4661 6.01 14.7169 6.01228 14.9791L2.01243 15.0139C2.01927 15.8005 2.33477 16.5529 2.891 17.1091L5.71943 14.2807ZM6.01228 14.9791C6.01456 15.2413 5.91376 15.4939 5.73161 15.6825L2.85445 12.9037C2.30798 13.4695 2.0056 14.2273 2.01243 15.0139L6.01228 14.9791ZM5.70724 15.7073L10.0002 11.4143L7.17182 8.58587L2.87882 12.8789L5.70724 15.7073ZM10.0002 8.58587L5.70724 4.29287L2.87882 7.12129L7.17182 11.4143L10.0002 8.58587ZM5.70746 4.29308C5.89493 4.48061 6.00024 4.73492 6.00024 5.00008H2.00024C2.00024 5.79557 2.31619 6.5585 2.8786 7.12108L5.70746 4.29308ZM6.00024 5.00008C6.00024 5.26525 5.89493 5.51955 5.70746 5.70708L2.8786 2.87908C2.31619 3.44166 2.00024 4.20459 2.00024 5.00008H6.00024Z" fill="#374151" mask="url(#path-1-inside-1_1568_248651)" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="javascript:void(0);" class="view-recommendations-button z-10 absolute right-10 -top-14 text-Primary-900 bg-white border border-Primary-900 hover:bg-Primary-800 focus:ring-0 font-normal rounded-full text-sm px-5 py-2 ml-3 lg:-mt-2 lg:mr-10 lg:ml-0 hover:bg-Primary-900 hover:text-Gray-50 focus:outline-none">View Recommendations</a>
+                                   
+                        <a href="javascript:void(0);" class="close-view-recommendations-sec hidden z-10 absolute right-10 -top-14 text-Gray-800 bg-Gray-100 border border-Gray-100 hover:bg-Gray-300 focus:ring-0 font-normal rounded-full text-xs px-5 py-3 ml-3 lg:-mt-1 lg:mr-10 lg:ml-0 focus:outline-none flex">Close
+                            <svg class="shrink-0 relative overflow-visible ml-2" width="16" height="16" viewBox="0 0 16 16"  fill="none"  xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M3.43345 3.43442C3.58347 3.28444 3.78692 3.20019 3.99905 3.20019C4.21118 3.20019 4.41463 3.28444 4.56465 3.43442L7.99905 6.86882L11.4334 3.43442C11.5072 3.35801 11.5955 3.29706 11.6931 3.25514C11.7907 3.21321 11.8957 3.19114 12.0019 3.19022C12.1082 3.18929 12.2135 3.20953 12.3118 3.24976C12.4101 3.28998 12.4995 3.34939 12.5746 3.4245C12.6497 3.49961 12.7091 3.58894 12.7493 3.68725C12.7895 3.78557 12.8098 3.89091 12.8088 3.99714C12.8079 4.10336 12.7859 4.20834 12.7439 4.30594C12.702 4.40354 12.6411 4.49182 12.5646 4.56562L9.13025 8.00002L12.5646 11.4344C12.7104 11.5853 12.791 11.7874 12.7892 11.9971C12.7874 12.2069 12.7032 12.4075 12.5549 12.5559C12.4066 12.7042 12.2059 12.7883 11.9962 12.7902C11.7864 12.792 11.5843 12.7113 11.4334 12.5656L7.99905 9.13122L4.56465 12.5656C4.41377 12.7113 4.21168 12.792 4.00193 12.7902C3.79217 12.7883 3.59152 12.7042 3.44319 12.5559C3.29487 12.4075 3.21073 12.2069 3.20891 11.9971C3.20709 11.7874 3.28772 11.5853 3.43345 11.4344L6.86785 8.00002L3.43345 4.56562C3.28347 4.41559 3.19922 4.21215 3.19922 4.00002C3.19922 3.78788 3.28347 3.58444 3.43345 3.43442V3.43442Z" fill="#1F2A37" />
+                            </svg>
+                        </a>
+    
+                        <div class="the-recommendations-screen hidden p-5 lg:p-10 lg:px-20 border border-Gray-200">
+                            <div class="flex flex-col lg:flex-row w-full">
+                                <div class="w-full lg:w-1/2 lg:pr-10">
+                                    <h6 class="text-sm md:text-base font-medium text-left text-Gray-600 mb-5">
+                                        Recommendations
+                                    </h6>
+                                    <p class="text-xs md:text-sm text-Gray-600 mb-8">
+                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
+                                        <br><br>
+                                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. 
+                                        <br><br>
+                                        Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                                </div>
+    
+                                <div class="w-full lg:w-1/2 lg:pl-10">                        
+                                    <div class="relative overflow-x-auto sm:rounded-lg">
+                                        <table class="w-full text-sm text-left text-Gray-600">
+                                            <thead class="text-xs text-Gray-500 uppercase bg-Gray-50">
+                                                <tr>
+                                                    <th scope="col" class="px-6 py-3">
+                                                        PROTOCOLS
+                                                    </th>
+                                                    <th scope="col" class="px-6 py-3 text-right">
+                                                        FREQUENCY
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="bg-white border-b border-Gray-200 hover:bg-Gray-50">
+                                                    <th scope="row" class="px-6 py-4 font-normal text-Gray-500 whitespace-nowrap">
+                                                        Sauna 
+                                                    </th>
+                                                    <td class="px-6 py-4 font-normal text-Gray-900 whitespace-nowrap text-right">
+                                                        60min / week
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white border-b border-Gray-200 hover:bg-Gray-50">
+                                                    <th scope="row" class="px-6 py-4 font-normal text-Gray-500 whitespace-nowrap">
+                                                        Cold Therapy 
+                                                    </th>
+                                                    <td class="px-6 py-4 font-normal text-Gray-900 whitespace-nowrap text-right">
+                                                        11min / week
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white border-b border-Gray-200 hover:bg-Gray-50">
+                                                    <th scope="row" class="px-6 py-4 font-normal text-Gray-500 whitespace-nowrap">
+                                                        Mediation 
+                                                    </th>
+                                                    <td class="px-6 py-4 font-normal text-Gray-900 whitespace-nowrap text-right">
+                                                        Once a day (5min) 
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white border-b border-Gray-200 hover:bg-Gray-50">
+                                                    <th scope="row" class="px-6 py-4 font-normal text-Gray-500 whitespace-nowrap">
+                                                        Nature Walks 
+                                                    </th>
+                                                    <td class="px-6 py-4 font-normal text-Gray-900 whitespace-nowrap text-right">
+                                                        Once a week
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rounded-2xl border-solid border-[#d8d8d8] relative mb-8">
+                    <div class="group relative flex flex-col items-end justify-start w-full p-4  lg:items-center lg:flex-row lg:justify-between lg:p-5 border border-b-1 border-gray-200 rounded-t-xl text-gray-900">
+                        <div class="flex items-center w-full md:mb-2 lg:w-2/3 lg:mb-0">
+                            <div class="flex flex-col text-sm md:text-base md:font-medium text-left text-Gray-800">
+                                Blood pressure and Pulse
+                            </div>
+                        </div>
+
+                        <div class="w-full md:w-auto flex items-end lg:w-2/3 lg:items-center justify-end">
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <div class="accordion-first-screen p-5 lg:p-10 lg:px-20 border border-Gray-200 border-b-0">
+
+                            <div class="flex flex-col md:mt-4 mb-4 md:mb-14 justify-start md:flex-row md:justify-start lg:mt-0">
+                                <div class="flex items-center justify-start bg-Gray-50 p-2 px-4 rounded-lg w-full md:w-1/3 lg:w-48">
+                                    <div class="ico bg-Primary-100 rounded-xl p-2">
+                                        <svg class="relative overflow-visible" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M5.07525 8.27526C6.27543 7.07544 7.903 6.40142 9.60005 6.40142C11.2971 6.40142 12.9247 7.07544 14.1248 8.27526L16 10.1489L17.8752 8.27526C18.4656 7.66399 19.1718 7.17642 19.9527 6.84101C20.7335 6.50559 21.5733 6.32904 22.4231 6.32165C23.2729 6.31427 24.1156 6.4762 24.9022 6.798C25.6887 7.11979 26.4033 7.59501 27.0042 8.19593C27.6051 8.79684 28.0803 9.51141 28.4021 10.2979C28.7239 11.0845 28.8858 11.9272 28.8785 12.777C28.8711 13.6268 28.6945 14.4666 28.3591 15.2474C28.0237 16.0283 27.5361 16.7345 26.9248 17.3249L16 28.2513L5.07525 17.3249C3.87543 16.1247 3.20142 14.4971 3.20142 12.8001C3.20142 11.103 3.87543 9.47543 5.07525 8.27526Z" fill="#48829F" />
+                                        </svg>
+                                    </div>
+                                    <div class="flex flex-col justify-center ml-3">
+                                        <div class="text-Primary-900 text-sm md:text-base">98bpm</div>
+                                        <div class="text-Gray-400 text-xs">Pulse</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-centerjustify-start bg-Gray-50 p-2 px-4 rounded-lg w-full md:w-1/3 mt-4 lg:w-64 lg:mt-0 lg:ml-14">
+                                    <div class="ico bg-Primary-100 rounded-xl p-2">
+                                        <svg class="relative overflow-visible" width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M18.2503 1.67363C18.5751 1.77577 18.8588 1.97888 19.0602 2.2534C19.2617 2.52791 19.3703 2.85953 19.3703 3.20003V11.2H25.7703C26.0629 11.1999 26.35 11.28 26.6003 11.4317C26.8506 11.5834 27.0545 11.8009 27.1898 12.0604C27.325 12.3199 27.3866 12.6116 27.3676 12.9037C27.3487 13.1957 27.25 13.477 27.0823 13.7168L15.8823 29.7168C15.6873 29.9961 15.4084 30.2059 15.086 30.3156C14.7636 30.4254 14.4146 30.4295 14.0898 30.3272C13.7649 30.2249 13.4812 30.0217 13.2798 29.747C13.0785 29.4723 12.97 29.1406 12.9703 28.8V20.8H6.57026C6.27759 20.8002 5.99049 20.72 5.7402 20.5683C5.48992 20.4166 5.28604 20.1992 5.15075 19.9396C5.01546 19.6801 4.95395 19.3885 4.9729 19.0964C4.99186 18.8043 5.09056 18.5231 5.25826 18.2832L16.4583 2.28323C16.6535 2.00449 16.9325 1.79525 17.2547 1.68591C17.577 1.57657 17.9257 1.57283 18.2503 1.67523V1.67363Z" fill="#48829F" />
+                                        </svg>
+                                    </div>
+                                    <div class="flex flex-col justify-center ml-3">
+                                        <div class="text-Primary-900 text-sm md:text-base">198mm/Hg</div>
+                                        <div class="text-Gray-400 text-xs">Diastolic blood pressure</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-centerjustify-start bg-Gray-50 p-2 px-4 rounded-lg w-full md:w-1/3 mt-4 lg:w-64 lg:mt-0 lg:ml-14">
+                                    <div class="ico bg-Primary-100 rounded-xl p-2">
+                                        <svg class="relative overflow-visible" width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M18.2503 1.67363C18.5751 1.77577 18.8588 1.97888 19.0602 2.2534C19.2617 2.52791 19.3703 2.85953 19.3703 3.20003V11.2H25.7703C26.0629 11.1999 26.35 11.28 26.6003 11.4317C26.8506 11.5834 27.0545 11.8009 27.1898 12.0604C27.325 12.3199 27.3866 12.6116 27.3676 12.9037C27.3487 13.1957 27.25 13.477 27.0823 13.7168L15.8823 29.7168C15.6873 29.9961 15.4084 30.2059 15.086 30.3156C14.7636 30.4254 14.4146 30.4295 14.0898 30.3272C13.7649 30.2249 13.4812 30.0217 13.2798 29.747C13.0785 29.4723 12.97 29.1406 12.9703 28.8V20.8H6.57026C6.27759 20.8002 5.99049 20.72 5.7402 20.5683C5.48992 20.4166 5.28604 20.1992 5.15075 19.9396C5.01546 19.6801 4.95395 19.3885 4.9729 19.0964C4.99186 18.8043 5.09056 18.5231 5.25826 18.2832L16.4583 2.28323C16.6535 2.00449 16.9325 1.79525 17.2547 1.68591C17.577 1.57657 17.9257 1.57283 18.2503 1.67523V1.67363Z" fill="#48829F" />
+                                        </svg>
+                                    </div>
+                                    <div class="flex flex-col justify-center ml-3">
+                                        <div class="text-Primary-900 text-sm md:text-base">79mm/Hg</div>
+                                        <div class="text-Gray-400 text-xs">Systolic blood pressure</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center p-4 md:mb-4 text-sm text-Primary-900 border border-white rounded-lg bg-white" role="alert">
+                                <svg  class="information-circle mr-3" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13 16H12V12H11M12 8H12.01M21 12C21 13.1819 20.7672 14.3522 20.3149 15.4442C19.8626 16.5361 19.1997 17.5282 18.364 18.364C17.5282 19.1997 16.5361 19.8626 15.4442 20.3149C14.3522 20.7672 13.1819 21 12 21C10.8181 21 9.64778 20.7672 8.55585 20.3149C7.46392 19.8626 6.47177 19.1997 5.63604 18.364C4.80031 17.5282 4.13738 16.5361 3.68508 15.4442C3.23279 14.3522 3 13.1819 3 12C3 9.61305 3.94821 7.32387 5.63604 5.63604C7.32387 3.94821 9.61305 3 12 3C14.3869 3 16.6761 3.94821 18.364 5.63604C20.0518 7.32387 21 9.61305 21 12Z" stroke="#48829F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  />
+                                </svg>
+                                <span class="sr-only">Info</span>
+                                <div>
+                                    Optimal blood pressure: <span class=" font-medium">120/80</span>
+                                </div>
+                            </div>
+                        </div>                        
+    
+                        <a href="javascript:void(0);" class="view-recommendations-button z-10 absolute right-10 -top-12 text-Primary-900 bg-white border border-Primary-900 hover:bg-Primary-800 focus:ring-0 font-normal rounded-full text-sm px-5 py-2 ml-3 lg:-mt-1 lg:mr-10 lg:ml-0 hover:bg-Primary-900 hover:text-Gray-50 focus:outline-none">View Recommendations</a>
+                                   
+                        <a href="javascript:void(0);" class="close-view-recommendations-sec hidden z-10 absolute right-10 -top-14 text-Gray-800 bg-Gray-100 border border-Gray-100 hover:bg-Gray-300 focus:ring-0 font-normal rounded-full text-xs px-5 py-3 ml-3 lg:-mt-1 lg:mr-10 lg:ml-0 focus:outline-none flex">Close
+                            <svg class="shrink-0 relative overflow-visible ml-2" width="16" height="16" viewBox="0 0 16 16"  fill="none"  xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M3.43345 3.43442C3.58347 3.28444 3.78692 3.20019 3.99905 3.20019C4.21118 3.20019 4.41463 3.28444 4.56465 3.43442L7.99905 6.86882L11.4334 3.43442C11.5072 3.35801 11.5955 3.29706 11.6931 3.25514C11.7907 3.21321 11.8957 3.19114 12.0019 3.19022C12.1082 3.18929 12.2135 3.20953 12.3118 3.24976C12.4101 3.28998 12.4995 3.34939 12.5746 3.4245C12.6497 3.49961 12.7091 3.58894 12.7493 3.68725C12.7895 3.78557 12.8098 3.89091 12.8088 3.99714C12.8079 4.10336 12.7859 4.20834 12.7439 4.30594C12.702 4.40354 12.6411 4.49182 12.5646 4.56562L9.13025 8.00002L12.5646 11.4344C12.7104 11.5853 12.791 11.7874 12.7892 11.9971C12.7874 12.2069 12.7032 12.4075 12.5549 12.5559C12.4066 12.7042 12.2059 12.7883 11.9962 12.7902C11.7864 12.792 11.5843 12.7113 11.4334 12.5656L7.99905 9.13122L4.56465 12.5656C4.41377 12.7113 4.21168 12.792 4.00193 12.7902C3.79217 12.7883 3.59152 12.7042 3.44319 12.5559C3.29487 12.4075 3.21073 12.2069 3.20891 11.9971C3.20709 11.7874 3.28772 11.5853 3.43345 11.4344L6.86785 8.00002L3.43345 4.56562C3.28347 4.41559 3.19922 4.21215 3.19922 4.00002C3.19922 3.78788 3.28347 3.58444 3.43345 3.43442V3.43442Z" fill="#1F2A37" />
+                            </svg>
+                        </a>
+    
+                        <div class="the-recommendations-screen hidden p-5 lg:p-10 lg:px-20 border border-Gray-200">
+                            <div class="flex flex-col lg:flex-row w-full">
+                                <div class="w-full lg:w-1/2 lg:pr-10">
+                                    <h6 class="text-sm md:text-base font-medium text-left text-Gray-600 mb-5">
+                                        Recommendations
+                                    </h6>
+                                    <p class="text-xs md:text-sm text-Gray-600 mb-8">
+                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
+                                        <br><br>
+                                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. 
+                                        <br><br>
+                                        Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                                </div>
+    
+                                <div class="w-full lg:w-1/2 lg:pl-10">                        
+                                    <div class="relative overflow-x-auto sm:rounded-lg">
+                                        <table class="w-full text-sm text-left text-Gray-600">
+                                            <thead class="text-xs text-Gray-500 uppercase bg-Gray-50">
+                                                <tr>
+                                                    <th scope="col" class="px-6 py-3">
+                                                        PROTOCOLS
+                                                    </th>
+                                                    <th scope="col" class="px-6 py-3 text-right">
+                                                        FREQUENCY
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="bg-white border-b border-Gray-200 hover:bg-Gray-50">
+                                                    <th scope="row" class="px-6 py-4 font-normal text-Gray-500 whitespace-nowrap">
+                                                        Sauna 
+                                                    </th>
+                                                    <td class="px-6 py-4 font-normal text-Gray-900 whitespace-nowrap text-right">
+                                                        60min / week
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white border-b border-Gray-200 hover:bg-Gray-50">
+                                                    <th scope="row" class="px-6 py-4 font-normal text-Gray-500 whitespace-nowrap">
+                                                        Cold Therapy 
+                                                    </th>
+                                                    <td class="px-6 py-4 font-normal text-Gray-900 whitespace-nowrap text-right">
+                                                        11min / week
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white border-b border-Gray-200 hover:bg-Gray-50">
+                                                    <th scope="row" class="px-6 py-4 font-normal text-Gray-500 whitespace-nowrap">
+                                                        Mediation 
+                                                    </th>
+                                                    <td class="px-6 py-4 font-normal text-Gray-900 whitespace-nowrap text-right">
+                                                        Once a day (5min) 
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white border-b border-Gray-200 hover:bg-Gray-50">
+                                                    <th scope="row" class="px-6 py-4 font-normal text-Gray-500 whitespace-nowrap">
+                                                        Nature Walks 
+                                                    </th>
+                                                    <td class="px-6 py-4 font-normal text-Gray-900 whitespace-nowrap text-right">
+                                                        Once a week
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="group relative flex flex-col items-end justify-start w-full p-4 lg:items-center lg:flex-row lg:justify-between lg:p-5 border border-t-0 border-b-1 border-gray-200 text-gray-900">
+                        <div class="flex items-center w-full mb-2 lg:w-2/3 lg:mb-0">
+                            <div class="flex flex-col text-sm md:text-base md:font-medium text-left text-Gray-800">
+                                Statistical risk for Hard Coronary Heart Disease
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <div class="p-5 lg:p-10 lg:px-20 border border-Gray-200">
+                            <div class="flex flex-col items-start justify-between lg:flex-row">
+                                <p class="w-full lg:w-2/4 mb-2 lg:pr-10 text-sm text-Gray-600">The Framingham 10-year risk calculator can predict the statistical risk of heart attack within 10 years, based on recommended guidelines for blood 3,0% 8% pressure, cholesterol and HDL, as well as knowledge of lifestyle behavior in men and women aged 30-79.
+                                    <br><br>
+                                    This risk tells you nothing about your individual risk, it only tells you about your statistical risk of heart attack.</p>
+                                <div class="flex flex-col items-end w-full mt-10 lg:mt-0 lg:w-1/2 lg:pl-10">
+                                    <div class="flex flex-col items-end justify-between lg:items-center lg:flex-row">
+                                        <div class="flex md:items-center p-3 md:pl-6 md:pr-5 mb-4 text-sm font-normal text-Green-600 rounded-xl md:rounded-full bg-Green-50" role="alert">
+                                            <svg class="check-circle mr-2 min-w-[24px]" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M9 12L11 14L15 10M21 12C21 13.1819 20.7672 14.3522 20.3149 15.4442C19.8626 16.5361 19.1997 17.5282 18.364 18.364C17.5282 19.1997 16.5361 19.8626 15.4442 20.3149C14.3522 20.7672 13.1819 21 12 21C10.8181 21 9.64778 20.7672 8.55585 20.3149C7.46392 19.8626 6.47177 19.1997 5.63604 18.364C4.80031 17.5282 4.13738 16.5361 3.68508 15.4442C3.23279 14.3522 3 13.1819 3 12C3 9.61305 3.94821 7.32387 5.63604 5.63604C7.32387 3.94821 9.61305 3 12 3C14.3869 3 16.6761 3.94821 18.364 5.63604C20.0518 7.32387 21 9.61305 21 12Z" stroke="#057A55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </svg>
+                                            <div>
+                                                Your result is within the optimal range for your range. <a href="#"  data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="font-medium underline text-sm hover:no-underline">Compare Range</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex flex-col accordionBody-bottomSec">
+                                <div class="range-slider-scale with-gr w-full relative mb-20 mt-32">
+                                    <div id="tooltip-default" role="tooltip" class="min-w-[50px] absolute z-10 -top-12 left-[71%] inline-block px-3 py-2 text-sm md:text-base  text-white transition-opacity duration-300 bg-Gray-700 rounded-lg shadow-sm tooltip">
+                                        You: 71%
+                                        <div class="tooltip-arrow left-[45%]" data-popper-arrow></div>
+                                        <div class="tooltip-line bottom-[-45px] left-[49.5%] w-[1px] h-[45px] absolute bg-gradient-to-b from-Gray-700 to-Gray-0"></div>
+                                    </div>
+
+                                    <div class="the-scale w-full flex relative">
+                                        <div class="w-[18%] h-full bg-[#F05252] rounded-l-[4px] border-0 border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute left-[-10px] bottom-[-57px] text-Gray-600">0</div>
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">18</div>
+                                        </div>
+                                        <div class="w-[18%] h-full bg-[#F98080] border-l border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">36</div>
+                                        </div>
+                                        <div class="w-[11%] h-full bg-[#FDA151] border-l border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">47</div>
+                                        </div>
+                                        <div class="w-[17%] h-full bg-[#FEC663] border-l border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">64</div>
+                                        </div>
+                                        <div class="w-[14%] h-full bg-[#84E1BC] border-l border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">78</div>
+                                        </div>
+                                        <div class="w-[10%] h-full bg-[#23BF6B] border-l border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">88</div>
+                                        </div>
+                                        <div class="w-[12%] h-full bg-[#29813D] rounded-r-[4px] border-l border-white hover:scale-110 transition-transform relative">
+                                            <div class="the-scale-num-on-hover absolute right-[-10px] bottom-[-57px] text-Gray-600">100</div>
+                                        </div>
+                                        <!--<div class="w-full h-full block absolute top-0 right-0 bottom-0 left-0 z-10 bg-center bg-[length:275%] md:bg-cover bg-repeat-x bg-[url('./images/nutrition-intelligence-scale-lines.png')]"></div>-->
+                                        <div class="w-full h-[16px] block absolute top-auto right-0 bottom-[-28px] left-0 z-10 bg-top bg-cover bg-no-repeat bg-[url('./images/range-slider-scale-lines.png')]"></div>
+                                    </div>
+                                    <ul class="lines">
+                                        <li class="line"><span class="line-num text-Gray-400">0</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">10</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">20</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">30</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">40</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">50</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">60</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">70</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">80</span></li>
+                                        <li class="line"><span class="line-num text-Gray-400">90</span></li>
+                                        <li class="line line-last"><span class="line-num text-Gray-400">100</span></li>
+                                    </ul>
+                                </div>
+                                <div class="flex flex-col items-end justify-center lg:items-center lg:flex-row">
+                                    <div class="flex items-center p-3 pl-6 pr-5 mb-4 text-sm font-normal text-Green-600 rounded-full bg-Green-50 compare-range-button-cover" role="alert">
+                                        <svg class="relative overflow-visible mr-3" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M22.0125 22.242C20.8989 23.3668 19.3888 23.9987 17.8143 23.9987C16.2397 23.9987 14.7296 23.3668 13.6161 22.242M13.3607 15H13.3756M22.2678 15H22.2827M31.1749 18C31.1749 19.7728 30.8293 21.5283 30.1579 23.1662C29.4865 24.8041 28.5023 26.2923 27.2617 27.5459C26.021 28.7995 24.5482 29.7939 22.9272 30.4724C21.3062 31.1508 19.5688 31.5 17.8143 31.5C16.0597 31.5 14.3224 31.1508 12.7014 30.4724C11.0804 29.7939 9.60751 28.7995 8.36686 27.5459C7.12621 26.2923 6.14207 24.8041 5.47063 23.1662C4.7992 21.5283 4.45361 19.7728 4.45361 18C4.45361 14.4196 5.86125 10.9858 8.36686 8.45406C10.8725 5.92232 14.2708 4.5 17.8143 4.5C21.3577 4.5 24.7561 5.92232 27.2617 8.45406C29.7673 10.9858 31.1749 14.4196 31.1749 18Z" stroke="#29813D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                        <div>
+                                            Your result is within the optimal range for your range. <a href="javascript:void(0);" class="font-medium underline text-sm hover:no-underline compare-range-button">Compare Range</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="the-range-buttons hidden flex flex-wrap gap-[7px] items-center justify-center lg:flex-row mb-6 my-2">
+
+                                    <div class="range-buttons flex items-center justify-center w-auto py-2.5 pl-4 pr-5 bg-[#F1F5F7] rounded-2xl">
+                                        <div class="color-circle w-[10px] h-[10px] bg-[#E2765A] rounded-full mr-2.5"></div>
+                                        <h5 class="text-sm mt-1 text-[#323232]">High Risk</h5>
+                                    </div>
+                                    <div class="range-buttons flex items-center justify-center w-auto py-2.5 pl-4 pr-5 bg-[#F1F5F7] rounded-2xl">
+                                        <div class="color-circle w-[10px] h-[10px] bg-[#FEC663] rounded-full mr-2.5"></div>
+                                        <h5 class="text-sm mt-1 text-[#323232]">Out of Range</h5>
+                                    </div>
+                                    <div class="range-buttons flex items-center justify-center w-auto py-2.5 pl-4 pr-5 bg-[#F1F5F7] rounded-2xl">
+                                        <div class="color-circle w-[10px] h-[10px] bg-[#84E1BC] rounded-full mr-2.5"></div>
+                                        <h5 class="text-sm mt-1 text-[#323232]">Normal</h5>
+                                    </div>
+                                    <div class="range-buttons flex items-center justify-center w-auto py-2.5 pl-4 pr-5 bg-[#F1F5F7] rounded-2xl">
+                                        <div class="color-circle w-[10px] h-[10px] bg-[#31C48D] rounded-full mr-2.5"></div>
+                                        <h5 class="text-sm mt-1 text-[#323232]">Optimal</h5>
+                                    </div>
+
+                                    <div class="range-buttons-close flex items-center justify-center w-auto p-1.5 bg-[#F1F5F7] rounded-full cursor-pointer">
+                                        <svg class="relative overflow-visible" style="" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <mask id="path-1-inside-1_1568_248651" fill="white">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.29303 4.29308C4.48056 4.10561 4.73487 4.00029 5.00003 4.00029C5.26519 4.00029 5.5195 4.10561 5.70703 4.29308L10 8.58608L14.293 4.29308C14.3853 4.19757 14.4956 4.12139 14.6176 4.06898C14.7396 4.01657 14.8709 3.98898 15.0036 3.98783C15.1364 3.98668 15.2681 4.01198 15.391 4.06226C15.5139 4.11254 15.6255 4.18679 15.7194 4.28069C15.8133 4.37458 15.8876 4.48623 15.9379 4.60913C15.9881 4.73202 16.0134 4.8637 16.0123 4.99648C16.0111 5.12926 15.9835 5.26048 15.9311 5.38249C15.8787 5.50449 15.8025 5.61483 15.707 5.70708L11.414 10.0001L15.707 14.2931C15.8892 14.4817 15.99 14.7343 15.9877 14.9965C15.9854 15.2587 15.8803 15.5095 15.6948 15.6949C15.5094 15.8803 15.2586 15.9855 14.9964 15.9878C14.7342 15.99 14.4816 15.8892 14.293 15.7071L10 11.4141L5.70703 15.7071C5.51843 15.8892 5.26583 15.99 5.00363 15.9878C4.74143 15.9855 4.49062 15.8803 4.30521 15.6949C4.1198 15.5095 4.01463 15.2587 4.01236 14.9965C4.01008 14.7343 4.11087 14.4817 4.29303 14.2931L8.58603 10.0001L4.29303 5.70708C4.10556 5.51955 4.00024 5.26525 4.00024 5.00008C4.00024 4.73492 4.10556 4.48061 4.29303 4.29308Z" />
+                                            </mask>
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M4.29303 4.29308C4.48056 4.10561 4.73487 4.00029 5.00003 4.00029C5.26519 4.00029 5.5195 4.10561 5.70703 4.29308L10 8.58608L14.293 4.29308C14.3853 4.19757 14.4956 4.12139 14.6176 4.06898C14.7396 4.01657 14.8709 3.98898 15.0036 3.98783C15.1364 3.98668 15.2681 4.01198 15.391 4.06226C15.5139 4.11254 15.6255 4.18679 15.7194 4.28069C15.8133 4.37458 15.8876 4.48623 15.9379 4.60913C15.9881 4.73202 16.0134 4.8637 16.0123 4.99648C16.0111 5.12926 15.9835 5.26048 15.9311 5.38249C15.8787 5.50449 15.8025 5.61483 15.707 5.70708L11.414 10.0001L15.707 14.2931C15.8892 14.4817 15.99 14.7343 15.9877 14.9965C15.9854 15.2587 15.8803 15.5095 15.6948 15.6949C15.5094 15.8803 15.2586 15.9855 14.9964 15.9878C14.7342 15.99 14.4816 15.8892 14.293 15.7071L10 11.4141L5.70703 15.7071C5.51843 15.8892 5.26583 15.99 5.00363 15.9878C4.74143 15.9855 4.49062 15.8803 4.30521 15.6949C4.1198 15.5095 4.01463 15.2587 4.01236 14.9965C4.01008 14.7343 4.11087 14.4817 4.29303 14.2931L8.58603 10.0001L4.29303 5.70708C4.10556 5.51955 4.00024 5.26525 4.00024 5.00008C4.00024 4.73492 4.10556 4.48061 4.29303 4.29308Z" fill="#F3F4F6" />
+                                            <path d="M5.70703 4.29308L7.12124 2.87887L7.12103 2.87865L5.70703 4.29308ZM10 8.58608L8.58582 10.0003L10 11.4145L11.4142 10.0003L10 8.58608ZM14.293 4.29308L15.7072 5.70729L15.7195 5.69501L15.7316 5.68251L14.293 4.29308ZM15.707 5.70708L14.3176 4.2685L14.3051 4.28058L14.2928 4.29287L15.707 5.70708ZM11.414 10.0001L9.99982 8.58587L8.5856 10.0001L9.99982 11.4143L11.414 10.0001ZM15.707 14.2931L17.1456 12.9037L17.1335 12.8912L17.1212 12.8789L15.707 14.2931ZM14.293 15.7071L12.8788 17.1213L12.8911 17.1336L12.9036 17.1457L14.293 15.7071ZM10 11.4141L11.4142 9.99987L10 8.58565L8.58582 9.99987L10 11.4141ZM5.70703 15.7071L7.09645 17.1457L7.10895 17.1336L7.12124 17.1213L5.70703 15.7071ZM4.29303 14.2931L2.87882 12.8789L2.86653 12.8912L2.85445 12.9037L4.29303 14.2931ZM8.58603 10.0001L10.0002 11.4143L11.4145 10.0001L10.0002 8.58587L8.58603 10.0001ZM4.29303 5.70708L2.8786 7.12108L2.87882 7.12129L4.29303 5.70708ZM4.29303 4.29308L2.87903 2.87865L2.8786 2.87908L4.29303 4.29308ZM5.70703 5.70751C5.5195 5.89498 5.2652 6.00029 5.00003 6.00029V2.00029C4.20454 2.00029 3.44161 2.31624 2.87903 2.87865L5.70703 5.70751ZM5.00003 6.00029C4.73487 6.00029 4.48056 5.89498 4.29303 5.70751L7.12103 2.87865C6.55845 2.31624 5.79552 2.00029 5.00003 2.00029V6.00029ZM4.29282 5.70729L8.58582 10.0003L11.4142 7.17187L7.12124 2.87887L4.29282 5.70729ZM11.4142 10.0003L15.7072 5.70729L12.8788 2.87887L8.58582 7.17187L11.4142 10.0003ZM15.7316 5.68251C15.6394 5.77801 15.529 5.8542 15.407 5.90661L13.8282 2.23135C13.4622 2.38858 13.1312 2.61713 12.8545 2.90366L15.7316 5.68251ZM15.407 5.90661C15.285 5.95902 15.1538 5.9866 15.021 5.98776L14.9863 1.98791C14.5879 1.99137 14.1943 2.07413 13.8282 2.23135L15.407 5.90661ZM15.021 5.98776C14.8882 5.98891 14.7566 5.96361 14.6337 5.91333L16.1483 2.21119C15.7796 2.06035 15.3846 1.98444 14.9863 1.98791L15.021 5.98776ZM14.6337 5.91333C14.5108 5.86304 14.3991 5.78879 14.3052 5.6949L17.1336 2.86647C16.852 2.5848 16.517 2.36204 16.1483 2.21119L14.6337 5.91333ZM14.3052 5.6949C14.2113 5.60101 14.1371 5.48935 14.0868 5.36646L17.7889 3.8518C17.6381 3.48311 17.4153 3.14815 17.1336 2.86647L14.3052 5.6949ZM14.0868 5.36646C14.0365 5.24357 14.0112 5.11189 14.0124 4.9791L18.0122 5.01386C18.0157 4.61552 17.9398 4.22048 17.7889 3.8518L14.0868 5.36646ZM14.0124 4.9791C14.0135 4.84632 14.0411 4.7151 14.0935 4.5931L17.7688 6.17187C17.926 5.80586 18.0087 5.4122 18.0122 5.01386L14.0124 4.9791ZM14.0935 4.5931C14.1459 4.47109 14.2221 4.36075 14.3176 4.2685L17.0965 7.14566C17.383 6.86892 17.6115 6.53789 17.7688 6.17187L14.0935 4.5931ZM14.2928 4.29287L9.99982 8.58587L12.8282 11.4143L17.1212 7.12129L14.2928 4.29287ZM9.99982 11.4143L14.2928 15.7073L17.1212 12.8789L12.8282 8.58587L9.99982 11.4143ZM14.2685 15.6825C14.0863 15.4939 13.9855 15.2413 13.9878 14.9791L17.9876 15.0139C17.9945 14.2273 17.6921 13.4695 17.1456 12.9037L14.2685 15.6825ZM13.9878 14.9791C13.9901 14.7169 14.0952 14.4661 14.2806 14.2807L17.1091 17.1091C17.6653 16.5529 17.9808 15.8004 17.9876 15.0139L13.9878 14.9791ZM14.2806 14.2807C14.466 14.0953 14.7169 13.9901 14.9791 13.9878L15.0138 17.9877C15.8004 17.9808 16.5528 17.6653 17.1091 17.1091L14.2806 14.2807ZM14.9791 13.9878C15.2413 13.9856 15.4939 14.0863 15.6825 14.2685L12.9036 17.1457C13.4694 17.6921 14.2272 17.9945 15.0138 17.9877L14.9791 13.9878ZM15.7072 14.2929L11.4142 9.99987L8.58582 12.8283L12.8788 17.1213L15.7072 14.2929ZM8.58582 9.99987L4.29282 14.2929L7.12124 17.1213L11.4142 12.8283L8.58582 9.99987ZM4.31761 14.2685C4.50621 14.0863 4.75881 13.9856 5.02101 13.9878L4.98625 17.9877C5.77284 17.9945 6.53065 17.6921 7.09645 17.1457L4.31761 14.2685ZM5.02101 13.9878C5.2832 13.9901 5.53402 14.0953 5.71943 14.2807L2.891 17.1091C3.44722 17.6653 4.19966 17.9808 4.98625 17.9877L5.02101 13.9878ZM5.71943 14.2807C5.90483 14.4661 6.01 14.7169 6.01228 14.9791L2.01243 15.0139C2.01927 15.8005 2.33477 16.5529 2.891 17.1091L5.71943 14.2807ZM6.01228 14.9791C6.01456 15.2413 5.91376 15.4939 5.73161 15.6825L2.85445 12.9037C2.30798 13.4695 2.0056 14.2273 2.01243 15.0139L6.01228 14.9791ZM5.70724 15.7073L10.0002 11.4143L7.17182 8.58587L2.87882 12.8789L5.70724 15.7073ZM10.0002 8.58587L5.70724 4.29287L2.87882 7.12129L7.17182 11.4143L10.0002 8.58587ZM5.70746 4.29308C5.89493 4.48061 6.00024 4.73492 6.00024 5.00008H2.00024C2.00024 5.79557 2.31619 6.5585 2.8786 7.12108L5.70746 4.29308ZM6.00024 5.00008C6.00024 5.26525 5.89493 5.51955 5.70746 5.70708L2.8786 2.87908C2.31619 3.44166 2.00024 4.20459 2.00024 5.00008H6.00024Z" fill="#374151" mask="url(#path-1-inside-1_1568_248651)" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.js"></script>
+
+    <script>
+        module.exports = {
+            darkMode: 'class',
+            // ...
+        }
+    </script>
+
+<!--GRAPH-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+<!--customised codes moved to graph.js-->
+<script>
+
+    // Set global options for all charts
+    Chart.defaults.global.elements.point.radius = 0;
+    Chart.defaults.global.elements.point.hoverRadius = 3;
+    Chart.defaults.global.elements.point.hitRadius = 10;
+    Chart.defaults.global.elements.point.pointBackgroundColor = '#48829F';
+    Chart.defaults.global.elements.point.borderWidth = 2;
+    Chart.defaults.global.elements.point.borderColor = 'rgba(72, 130, 159, 0.9)';
+
+
+    // Shared options for all charts
+    var options = {
+        responsive: true,
+        maintainAspectRatio: false,
+        hover: {
+            mode: 'nearest',
+            intersect: true
+        },
+        animation: {
+            easing: 'easeInOutQuad',
+            duration: 520
+        },
+        scales: {
+            xAxes: [{
+                display: false
+            }],
+            yAxes: [{
+                display: false
+            }]
+        },
+        elements: {
+            line: {
+                tension: 0.4
+            },
+        },
+        legend: {
+            display: false
+        },
+        tooltips: {
+            enabled: false
+        }
+    };
+
+    // Function to create a new chart
+    function createChart(canvasId, data) {
+        var chart = document.getElementById(canvasId).getContext('2d');
+        var gradient = chart.createLinearGradient(0, 0, 0, 450);
+        gradient.addColorStop(0, 'rgba(72, 130, 159, 0.59)');
+        gradient.addColorStop(0.5, 'rgba(72, 130, 159, 0.05)');
+        gradient.addColorStop(1, 'rgba(255, 255, 255, 0.00)');
+        data.datasets[0].backgroundColor = gradient;
+        var chartInstance = new Chart(chart, {
+            type: 'line',
+            data: data,
+            options: options
+        });
+    }
+
+    // Data for the first chart
+    var data1 = {
+        labels: ['Aug 21', 'Aug 22', 'Aug 22 - 10:00 PM - 12:00 AM',
+                    'Aug 23 - 12:00 AM - 02:00 AM',
+                    'Aug 23 - 02:00 AM - 04:00 AM',
+                    'Aug 23 - 04:00 AM - 06:00 AM',
+                    'Aug 23 - 06:00 AM - 08:00 AM',
+                    'Aug 23 - 08:00 AM - 10:00 AM',
+                    'Aug 23 - 10:00 AM - 12:00 PM',
+                    'Aug 23 - 12:00 PM - 02:00 PM',
+                    'Aug 23 - 02:00 PM - 04:00 PM',
+                    'Aug 23 - 04:00 PM - 06:00 PM',
+                    'Aug 23 - 06:00 PM - 08:00 PM',
+                    'Aug 23 - 08:00 PM - 10:00 PM',
+                    'Aug 23 - 10:00 PM - 12:00 AM']
+,
+        datasets: [{
+            label: 'Custom Label Name',
+            data: [114.5, 116.4, 115.4, 114.7, 115.3, 113.9, 115.2, 118.0, 113.8, 115.1, 116.8, 117.2, 114.9, 115.6, 117.3, 116.5, 118.4, 115.9, 116.1, 117.8, 114.2, 113.5, 117.7, 115.7, 114.4, 116.9, 113.3, 115.8, 117.5, 118.6, 116.3, 114.3, 115.0, 113.4, 116.7, 115.5, 118.1, 117.9]
+        }]
+    };
+
+    // Data for the second chart
+     // Data for the first chart
+     var data2 = {
+        labels: ['Aug 21', 'Aug 22', 'Aug 22 - 10:00 PM - 12:00 AM',
+                    'Aug 23 - 12:00 AM - 02:00 AM',
+                    'Aug 23 - 02:00 AM - 04:00 AM',
+                    'Aug 23 - 04:00 AM - 06:00 AM',
+                    'Aug 23 - 06:00 AM - 08:00 AM',
+                    'Aug 23 - 08:00 AM - 10:00 AM',
+                    'Aug 23 - 10:00 AM - 12:00 PM',
+                    'Aug 23 - 12:00 PM - 02:00 PM',
+                    'Aug 23 - 02:00 PM - 04:00 PM',
+                    'Aug 23 - 04:00 PM - 06:00 PM',
+                    'Aug 23 - 06:00 PM - 08:00 PM',
+                    'Aug 23 - 08:00 PM - 10:00 PM',
+                    'Aug 23 - 10:00 PM - 12:00 AM']
+,
+        datasets: [{
+            label: 'Custom Label Name',
+            data: [115.3, 115.9, 114.3, 115.4, 115.5, 116.1, 116.8, 114.9, 115.7, 118.0, 116.7, 117.2, 114.7, 113.4, 117.3, 115.1, 117.9, 118.6, 116.3, 115.6, 117.7, 118.1, 114.4, 115.8, 113.5, 117.8, 113.8, 113.9, 116.9, 116.5, 113.3, 118.4, 114.2, 114.5, 116.4, 118.6, 115.0, 115.2, 117.5, 117.3]
+        }]
+    };
+
+    // Call the function to create the charts
+    createChart('chart', data1);
+    createChart('chart-2', data2);
+    createChart('chart-3', data1);
+    createChart('chart-4', data2);
+    createChart('chart-5', data1);
+    createChart('chart-6', data2);
+    createChart('chart-7', data1);
+    createChart('chart-8', data2);
+    createChart('chart-9', data1);
+    createChart('chart-10', data2);
+</script>
+<!--GRAPH-->
+
+
+    <!--Range Slider Compare Range Button Reveal-->
+
+    <script src="jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(".compare-range-button").click(function () {
+            $(this).addClass("hidden");
+            $(this).parent().parent(".compare-range-button-cover").addClass('hidden');
+            $(this).parent().parent().parent().parent(".accordionBody-bottomSec").addClass('accordion-bottom-animate');
+            $(this).parent().parent().parent().parent(".accordionBody-bottomSec").addClass('accordion-bottom-animate');
+            $(this).parent().parent().parent().siblings(".the-range-buttons").removeClass("hidden")
+            $(this).parent().parent().parent().siblings(".gr_active ").removeClass("gr_active ");
+            
+        });
+        $(".range-buttons-close").click(function () {            
+            $(".compare-range-button").removeClass("hidden");
+            $(".compare-range-button-cover").removeClass("hidden");
+            $(".accordion-bottom-animate").removeClass('accordion-bottom-animate');
+            $(".the-range-buttons").addClass("hidden");
+            $(".with-gr ").addClass("gr_active ");
+        });
+    </script>
+
+    <!--Range Slider Compare Range Button Reveal-->
+
+
+    <!--View Recomendations-->
+    <script>
+        $(".view-recommendations-button").click(function () {
+            $(this).addClass("hidden");
+            $(".accordion-first-screen").addClass("hidden");
+            $(".the-recommendations-screen").removeClass("hidden");
+            $(".close-view-recommendations-sec").removeClass("hidden");
+        });
+        $(".close-view-recommendations-sec").click(function () {
+            $(this).addClass("hidden");
+            $(".accordion-first-screen").removeClass("hidden");
+            $(".the-recommendations-screen").addClass("hidden");
+            $(".view-recommendations-button").removeClass("hidden");
+            $(".close-view-recommendations-sec").addClass("hidden");
+        });
+    </script>
+    <!--View Recomendations-->
+
+</body>
+</html>

@@ -1,0 +1,655 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="main.css" rel="stylesheet">
+    <script>
+        localStorage.theme = 'light'
+    </script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                colors: {
+                transparent: 'transparent',
+                current: 'currentColor',
+                'Primary': {
+                    50:  'rgba(72, 130, 159, 0.15)',
+                    100: 'rgba(72, 130, 159, 0.20)',
+                    200: 'rgba(72, 130, 159, 0.30)',
+                    300: 'rgba(72, 130, 159, 0.40)',
+                    400: 'rgba(72, 130, 159, 0.50)',
+                    500: 'rgba(72, 130, 159, 0.60)',
+                    600: 'rgba(72, 130, 159, 0.70)',
+                    700: 'rgba(72, 130, 159, 0.80)',
+                    800: 'rgba(72, 130, 159, 0.90)',
+                    900: '#48829F',
+                },
+                'Gray': {
+                    50:  '#F9FAFB',
+                    100: '#F3F4F6',
+                    200: '#E5E7EB',
+                    300: '#D1D5DB',
+                    400: '#9CA3AF',
+                    500: '#7E7E7E',
+                    600: '#4B5563',
+                    700: '#374151',
+                    800: '#1F2A37',
+                    900: '#111928',
+                },
+                'Blue': {
+                    50:  '#EBF5FF',
+                    100: '#E1EFFE',
+                    200: '#C3DDFD',
+                    300: '#A4CAFE',
+                    400: '#76A9FA',
+                    500: '#3F83F8',
+                    600: '#1C64F2',
+                    700: '#1A56DB',
+                    800: '#1E429F',
+                    900: '#1E429F',
+                },
+                'Red': {
+                    50:  '#FDF2F2',
+                    100: '#FDE8E8',
+                    200: '#FBD5D5',
+                    300: '#F8B4B4',
+                    400: '#F98080',
+                    500: '#F05252',
+                    600: '#E02424',
+                    700: '#C81E1E',
+                    800: '#9B1C1C',
+                    900: '#771D1D',
+                },
+                'Orange': {
+                    50: '#fff8f1',
+                    100: '#feecdc',
+                    200: '#fcd9bd',
+                    300: '#fdba8c',
+                    400: '#ff8a4c',
+                    500: '#ff5a1f',
+                    600: '#d03801',
+                    700: '#b43403',
+                    800: '#8a2c0d',
+                    900: '#771d1d',
+                },
+                'Yellow': {
+                    50:  '#fdfdea',
+                    100: '#fdf6b2',
+                    200: '#fce96a',
+                    300: '#faca15',
+                    400: '#e3a008',
+                    500: '#c27803',
+                    600: '#9f580a',
+                    700: '#8e4b10',
+                    800: '#723b13',
+                    900: '#633112',
+                },
+                'Green': {
+                    50:  '#f3faf7',
+                    100: '#def7ec',
+                    200: '#bcf0da',
+                    300: '#84e1bc',
+                    400: '#31c48d',
+                    500: '#0e9f6e',
+                    600: '#057a55',
+                    700: '#046c4e',
+                    800: '#03543f',
+                    900: '#014737',
+                },
+                'Teal': {
+                    50:  '#edfafa',
+                    100: '#d5f5f6',
+                    200: '#afecef',
+                    300: '#7edce2',
+                    400: '#16bdca',
+                    500: '#0694a2',
+                    600: '#047481',
+                    700: '#036672',
+                    800: '#05505c',
+                    900: '#014451',
+                },
+                'Indigo': {
+                    50:  '#f0f5ff',
+                    100: '#e5edff',
+                    200: '#cddbfe',
+                    300: '#b4c6fc',
+                    400: '#8da2fb',
+                    500: '#6875f5',
+                    600: '#5850ec',
+                    700: '#5145cd',
+                    800: '#42389d',
+                    900: '#362f78',
+                },
+                'Purple': {
+                    50:  '#f6f5ff',
+                    100: '#edebfe',
+                    200: '#dcd7fe',
+                    300: '#cabffd',
+                    400: '#ac94fa',
+                    500: '#9061f9',
+                    600: '#7e3af2',
+                    700: '#6c2bd9',
+                    800: '#5521b5',
+                    900: '#4a1d96',
+                },
+                'Pink': {
+                    50:  '#fdf2f8',
+                    100: '#fce8f3',
+                    200: '#fad1e8',
+                    300: '#f8b4d9',
+                    400: '#f17eb8',
+                    500: '#e74694',
+                    600: '#d61f69',
+                    700: '#bf125d',
+                    800: '#99154b',
+                    900: '#751a3d',
+                },
+                // ...
+                },
+            },
+        }
+    </script>
+
+</head>
+<body class="flex flex-col items-center">
+
+    <section class="table-with-checkbox w-8/12">        
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <table class="w-full text-sm text-left text-Gray-500 dark:text-Gray-400">
+                <thead class="text-sm font-medium text-Gray-600 uppercase bg-Gray-100 dark:bg-Gray-700 dark:text-Gray-400">
+                    <tr>
+                        <th scope="col" class="p-4">
+                            <div class="flex items-center">
+                                <input id="checkbox-all" type="checkbox" class="w-4 h-4 text-Primary-600 bg-Gray-100 border-Gray-300 rounded dark:bg-Gray-700 dark:border-Gray-600 focus:ring-0">
+                                <label for="checkbox-all" class="sr-only">checkbox</label>
+                            </div>
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            NAME
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            TECHNOLOGY
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            ID
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Price
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-right">
+                            &nbsp
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="bg-white border-b border-Gray-200 dark:border-Gray-700 hover:bg-Gray-100 dark:hover:bg-Gray-600">
+                        <td class="w-4 p-4">
+                            <div class="flex items-center">
+                                <input id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-Primary-600 bg-Gray-100 border-Gray-300 rounded dark:bg-Gray-700 dark:border-Gray-600 focus:ring-0">
+                                <label for="checkbox-table-1" class="sr-only">checkbox</label>
+                            </div>
+                        </td>
+                        <th scope="row" class="px-5 py-2 text-base font-medium text-Gray-900 whitespace-nowrap dark:text-white">
+                            &nbsp
+                            <span class="text-sm font-normal text-Gray-600 block">Html templates</span>
+                        </th>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            &nbsp
+                        </td>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            &nbsp
+                        </td>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            &nbsp
+                        </td>
+                        <td class="px-5 py-2 text-right">
+                            <button type="button" class="text-white bg-Primary-600 hover:bg-Primary-800 focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                <svg class="pencil-alt" width="16" height="17" viewBox="0 0 16 17" fill="none"  xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12.7996 2.60059C13.0912 2.60059 13.3709 2.71639 13.5772 2.92254C13.5772 2.92258 13.5773 2.92262 13.5773 2.92265C13.7835 3.12892 13.8993 3.40861 13.8993 3.70024C13.8993 3.9919 13.7834 4.27162 13.5773 4.47789C13.5772 4.47791 13.5772 4.47793 13.5772 4.47794L7.6549 10.4002H6.09961V8.84495L12.0219 2.92265C12.0219 2.92263 12.0219 2.92262 12.022 2.9226C12.2282 2.71641 12.508 2.60059 12.7996 2.60059Z" fill="white" stroke="white" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.59961 5.3002C1.59961 4.87585 1.76818 4.46888 2.06824 4.16882C2.3683 3.86877 2.77526 3.7002 3.19961 3.7002H6.39961C6.61178 3.7002 6.81527 3.78448 6.96529 3.93451C7.11532 4.08454 7.19961 4.28802 7.19961 4.5002C7.19961 4.71237 7.11532 4.91585 6.96529 5.06588C6.81527 5.21591 6.61178 5.3002 6.39961 5.3002H3.19961V13.3002H11.1996V10.1002C11.1996 9.88802 11.2839 9.68454 11.4339 9.53451C11.584 9.38448 11.7874 9.3002 11.9996 9.3002C12.2118 9.3002 12.4153 9.38448 12.5653 9.53451C12.7153 9.68454 12.7996 9.88802 12.7996 10.1002V13.3002C12.7996 13.7245 12.631 14.1315 12.331 14.4316C12.0309 14.7316 11.624 14.9002 11.1996 14.9002H3.19961C2.77526 14.9002 2.3683 14.7316 2.06824 14.4316C1.76818 14.1315 1.59961 13.7245 1.59961 13.3002V5.3002Z" fill="white" />
+                                </svg>
+                                Edit Item
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="bg-white border-b border-Gray-200 dark:border-Gray-700 hover:bg-Gray-100 dark:hover:bg-Gray-600">
+                        <td class="w-4 p-4">
+                            <div class="flex items-center">
+                                <input id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-Primary-600 bg-Gray-100 border-Gray-300 rounded dark:bg-Gray-700 dark:border-Gray-600 focus:ring-0">
+                                <label for="checkbox-table-1" class="sr-only">checkbox</label>
+                            </div>
+                        </td>
+                        <th scope="row" class="px-5 py-2 text-base font-medium text-Gray-900 whitespace-nowrap dark:text-white">
+                            React UI kit
+                            <span class="text-sm font-normal text-Gray-600 block">Html templates</span>
+                        </th>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            React JS
+                        </td>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            #623323
+                        </td>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            $129
+                        </td>
+                        <td class="px-5 py-2 text-right">
+                            <button type="button" class="text-white bg-Primary-600 hover:bg-Primary-800 focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                <svg class="pencil-alt" width="16" height="17" viewBox="0 0 16 17" fill="none"  xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12.7996 2.60059C13.0912 2.60059 13.3709 2.71639 13.5772 2.92254C13.5772 2.92258 13.5773 2.92262 13.5773 2.92265C13.7835 3.12892 13.8993 3.40861 13.8993 3.70024C13.8993 3.9919 13.7834 4.27162 13.5773 4.47789C13.5772 4.47791 13.5772 4.47793 13.5772 4.47794L7.6549 10.4002H6.09961V8.84495L12.0219 2.92265C12.0219 2.92263 12.0219 2.92262 12.022 2.9226C12.2282 2.71641 12.508 2.60059 12.7996 2.60059Z" fill="white" stroke="white" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.59961 5.3002C1.59961 4.87585 1.76818 4.46888 2.06824 4.16882C2.3683 3.86877 2.77526 3.7002 3.19961 3.7002H6.39961C6.61178 3.7002 6.81527 3.78448 6.96529 3.93451C7.11532 4.08454 7.19961 4.28802 7.19961 4.5002C7.19961 4.71237 7.11532 4.91585 6.96529 5.06588C6.81527 5.21591 6.61178 5.3002 6.39961 5.3002H3.19961V13.3002H11.1996V10.1002C11.1996 9.88802 11.2839 9.68454 11.4339 9.53451C11.584 9.38448 11.7874 9.3002 11.9996 9.3002C12.2118 9.3002 12.4153 9.38448 12.5653 9.53451C12.7153 9.68454 12.7996 9.88802 12.7996 10.1002V13.3002C12.7996 13.7245 12.631 14.1315 12.331 14.4316C12.0309 14.7316 11.624 14.9002 11.1996 14.9002H3.19961C2.77526 14.9002 2.3683 14.7316 2.06824 14.4316C1.76818 14.1315 1.59961 13.7245 1.59961 13.3002V5.3002Z" fill="white" />
+                                </svg>
+                                Edit Item
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="bg-white border-b border-Gray-200 dark:border-Gray-700 hover:bg-Gray-100 dark:hover:bg-Gray-600">
+                        <td class="w-4 p-4">
+                            <div class="flex items-center">
+                                <input id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-Primary-600 bg-Gray-100 border-Gray-300 rounded dark:bg-Gray-700 dark:border-Gray-600 focus:ring-0">
+                                <label for="checkbox-table-1" class="sr-only">checkbox</label>
+                            </div>
+                        </td>
+                        <th scope="row" class="px-5 py-2 text-base font-medium text-Gray-900 whitespace-nowrap dark:text-white">
+                            Coworking Template
+                            <span class="text-sm font-normal text-Gray-600 block">Html templates</span>
+                        </th>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            Tailwind CSS
+                        </td>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            #194856
+                        </td>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            $49
+                        </td>
+                        <td class="px-5 py-2 text-right">
+                            <button type="button" class="text-white bg-Primary-600 hover:bg-Primary-800 focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                <svg class="pencil-alt" width="16" height="17" viewBox="0 0 16 17" fill="none"  xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12.7996 2.60059C13.0912 2.60059 13.3709 2.71639 13.5772 2.92254C13.5772 2.92258 13.5773 2.92262 13.5773 2.92265C13.7835 3.12892 13.8993 3.40861 13.8993 3.70024C13.8993 3.9919 13.7834 4.27162 13.5773 4.47789C13.5772 4.47791 13.5772 4.47793 13.5772 4.47794L7.6549 10.4002H6.09961V8.84495L12.0219 2.92265C12.0219 2.92263 12.0219 2.92262 12.022 2.9226C12.2282 2.71641 12.508 2.60059 12.7996 2.60059Z" fill="white" stroke="white" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.59961 5.3002C1.59961 4.87585 1.76818 4.46888 2.06824 4.16882C2.3683 3.86877 2.77526 3.7002 3.19961 3.7002H6.39961C6.61178 3.7002 6.81527 3.78448 6.96529 3.93451C7.11532 4.08454 7.19961 4.28802 7.19961 4.5002C7.19961 4.71237 7.11532 4.91585 6.96529 5.06588C6.81527 5.21591 6.61178 5.3002 6.39961 5.3002H3.19961V13.3002H11.1996V10.1002C11.1996 9.88802 11.2839 9.68454 11.4339 9.53451C11.584 9.38448 11.7874 9.3002 11.9996 9.3002C12.2118 9.3002 12.4153 9.38448 12.5653 9.53451C12.7153 9.68454 12.7996 9.88802 12.7996 10.1002V13.3002C12.7996 13.7245 12.631 14.1315 12.331 14.4316C12.0309 14.7316 11.624 14.9002 11.1996 14.9002H3.19961C2.77526 14.9002 2.3683 14.7316 2.06824 14.4316C1.76818 14.1315 1.59961 13.7245 1.59961 13.3002V5.3002Z" fill="white" />
+                                </svg>
+                                Edit Item
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="bg-white border-b border-Gray-200 dark:border-Gray-700 hover:bg-Gray-100 dark:hover:bg-Gray-600">
+                        <td class="w-4 p-4">
+                            <div class="flex items-center">
+                                <input id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-Primary-600 bg-Gray-100 border-Gray-300 rounded dark:bg-Gray-700 dark:border-Gray-600 focus:ring-0">
+                                <label for="checkbox-table-1" class="sr-only">checkbox</label>
+                            </div>
+                        </td>
+                        <th scope="row" class="px-5 py-2 text-base font-medium text-Gray-900 whitespace-nowrap dark:text-white">
+                            Glassmorphism Dashboard
+                            <span class="text-sm font-normal text-Gray-600 block">Html templates</span>
+                        </th>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            Tailwind CSS
+                        </td>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            #65767
+                        </td>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            $79
+                        </td>
+                        <td class="px-5 py-2 text-right">
+                            <button type="button" class="text-white bg-Primary-600 hover:bg-Primary-800 focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                <svg class="pencil-alt" width="16" height="17" viewBox="0 0 16 17" fill="none"  xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12.7996 2.60059C13.0912 2.60059 13.3709 2.71639 13.5772 2.92254C13.5772 2.92258 13.5773 2.92262 13.5773 2.92265C13.7835 3.12892 13.8993 3.40861 13.8993 3.70024C13.8993 3.9919 13.7834 4.27162 13.5773 4.47789C13.5772 4.47791 13.5772 4.47793 13.5772 4.47794L7.6549 10.4002H6.09961V8.84495L12.0219 2.92265C12.0219 2.92263 12.0219 2.92262 12.022 2.9226C12.2282 2.71641 12.508 2.60059 12.7996 2.60059Z" fill="white" stroke="white" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.59961 5.3002C1.59961 4.87585 1.76818 4.46888 2.06824 4.16882C2.3683 3.86877 2.77526 3.7002 3.19961 3.7002H6.39961C6.61178 3.7002 6.81527 3.78448 6.96529 3.93451C7.11532 4.08454 7.19961 4.28802 7.19961 4.5002C7.19961 4.71237 7.11532 4.91585 6.96529 5.06588C6.81527 5.21591 6.61178 5.3002 6.39961 5.3002H3.19961V13.3002H11.1996V10.1002C11.1996 9.88802 11.2839 9.68454 11.4339 9.53451C11.584 9.38448 11.7874 9.3002 11.9996 9.3002C12.2118 9.3002 12.4153 9.38448 12.5653 9.53451C12.7153 9.68454 12.7996 9.88802 12.7996 10.1002V13.3002C12.7996 13.7245 12.631 14.1315 12.331 14.4316C12.0309 14.7316 11.624 14.9002 11.1996 14.9002H3.19961C2.77526 14.9002 2.3683 14.7316 2.06824 14.4316C1.76818 14.1315 1.59961 13.7245 1.59961 13.3002V5.3002Z" fill="white" />
+                                </svg>
+                                Edit Item
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="bg-white border-b border-Gray-200 dark:border-Gray-700 hover:bg-Gray-100 dark:hover:bg-Gray-600">
+                        <td class="w-4 p-4">
+                            <div class="flex items-center">
+                                <input id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-Primary-600 bg-Gray-100 border-Gray-300 rounded dark:bg-Gray-700 dark:border-Gray-600 focus:ring-0">
+                                <label for="checkbox-table-1" class="sr-only">checkbox</label>
+                            </div>
+                        </td>
+                        <th scope="row" class="px-5 py-2 text-base font-medium text-Gray-900 whitespace-nowrap dark:text-white">
+                            Education Dashboard
+                            <span class="text-sm font-normal text-Gray-600 block">Html templates</span>
+                        </th>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            Sketch
+                        </td>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            #194856
+                        </td>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            $39
+                        </td>
+                        <td class="px-5 py-2 text-right">
+                            <button type="button" class="text-white bg-Primary-600 hover:bg-Primary-800 focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                <svg class="pencil-alt" width="16" height="17" viewBox="0 0 16 17" fill="none"  xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12.7996 2.60059C13.0912 2.60059 13.3709 2.71639 13.5772 2.92254C13.5772 2.92258 13.5773 2.92262 13.5773 2.92265C13.7835 3.12892 13.8993 3.40861 13.8993 3.70024C13.8993 3.9919 13.7834 4.27162 13.5773 4.47789C13.5772 4.47791 13.5772 4.47793 13.5772 4.47794L7.6549 10.4002H6.09961V8.84495L12.0219 2.92265C12.0219 2.92263 12.0219 2.92262 12.022 2.9226C12.2282 2.71641 12.508 2.60059 12.7996 2.60059Z" fill="white" stroke="white" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.59961 5.3002C1.59961 4.87585 1.76818 4.46888 2.06824 4.16882C2.3683 3.86877 2.77526 3.7002 3.19961 3.7002H6.39961C6.61178 3.7002 6.81527 3.78448 6.96529 3.93451C7.11532 4.08454 7.19961 4.28802 7.19961 4.5002C7.19961 4.71237 7.11532 4.91585 6.96529 5.06588C6.81527 5.21591 6.61178 5.3002 6.39961 5.3002H3.19961V13.3002H11.1996V10.1002C11.1996 9.88802 11.2839 9.68454 11.4339 9.53451C11.584 9.38448 11.7874 9.3002 11.9996 9.3002C12.2118 9.3002 12.4153 9.38448 12.5653 9.53451C12.7153 9.68454 12.7996 9.88802 12.7996 10.1002V13.3002C12.7996 13.7245 12.631 14.1315 12.331 14.4316C12.0309 14.7316 11.624 14.9002 11.1996 14.9002H3.19961C2.77526 14.9002 2.3683 14.7316 2.06824 14.4316C1.76818 14.1315 1.59961 13.7245 1.59961 13.3002V5.3002Z" fill="white" />
+                                </svg>
+                                Edit Item
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="bg-white border-b border-Gray-200 dark:border-Gray-700 hover:bg-Gray-100 dark:hover:bg-Gray-600">
+                        <td class="w-4 p-4">
+                            <div class="flex items-center">
+                                <input id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-Primary-600 bg-Gray-100 border-Gray-300 rounded dark:bg-Gray-700 dark:border-Gray-600 focus:ring-0">
+                                <label for="checkbox-table-1" class="sr-only">checkbox</label>
+                            </div>
+                        </td>
+                        <th scope="row" class="px-5 py-2 text-base font-medium text-Gray-900 whitespace-nowrap dark:text-white">
+                            Business Dashboard
+                            <span class="text-sm font-normal text-Gray-600 block">Html templates</span>
+                        </th>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            Figma
+                        </td>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            #214345
+                        </td>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            $249
+                        </td>
+                        <td class="px-5 py-2 text-right">
+                            <button type="button" class="text-white bg-Primary-600 hover:bg-Primary-800 focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                <svg class="pencil-alt" width="16" height="17" viewBox="0 0 16 17" fill="none"  xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12.7996 2.60059C13.0912 2.60059 13.3709 2.71639 13.5772 2.92254C13.5772 2.92258 13.5773 2.92262 13.5773 2.92265C13.7835 3.12892 13.8993 3.40861 13.8993 3.70024C13.8993 3.9919 13.7834 4.27162 13.5773 4.47789C13.5772 4.47791 13.5772 4.47793 13.5772 4.47794L7.6549 10.4002H6.09961V8.84495L12.0219 2.92265C12.0219 2.92263 12.0219 2.92262 12.022 2.9226C12.2282 2.71641 12.508 2.60059 12.7996 2.60059Z" fill="white" stroke="white" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.59961 5.3002C1.59961 4.87585 1.76818 4.46888 2.06824 4.16882C2.3683 3.86877 2.77526 3.7002 3.19961 3.7002H6.39961C6.61178 3.7002 6.81527 3.78448 6.96529 3.93451C7.11532 4.08454 7.19961 4.28802 7.19961 4.5002C7.19961 4.71237 7.11532 4.91585 6.96529 5.06588C6.81527 5.21591 6.61178 5.3002 6.39961 5.3002H3.19961V13.3002H11.1996V10.1002C11.1996 9.88802 11.2839 9.68454 11.4339 9.53451C11.584 9.38448 11.7874 9.3002 11.9996 9.3002C12.2118 9.3002 12.4153 9.38448 12.5653 9.53451C12.7153 9.68454 12.7996 9.88802 12.7996 10.1002V13.3002C12.7996 13.7245 12.631 14.1315 12.331 14.4316C12.0309 14.7316 11.624 14.9002 11.1996 14.9002H3.19961C2.77526 14.9002 2.3683 14.7316 2.06824 14.4316C1.76818 14.1315 1.59961 13.7245 1.59961 13.3002V5.3002Z" fill="white" />
+                                </svg>
+                                Edit Item
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="bg-white border-b border-Gray-200 dark:border-Gray-700 hover:bg-Gray-100 dark:hover:bg-Gray-600">
+                        <td class="w-4 p-4">
+                            <div class="flex items-center">
+                                <input id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-Primary-600 bg-Gray-100 border-Gray-300 rounded dark:bg-Gray-700 dark:border-Gray-600 focus:ring-0">
+                                <label for="checkbox-table-1" class="sr-only">checkbox</label>
+                            </div>
+                        </td>
+                        <th scope="row" class="px-5 py-2 text-base font-medium text-Gray-900 whitespace-nowrap dark:text-white">
+                            Neumorphism UI
+                            <span class="text-sm font-normal text-Gray-600 block">Html templates</span>
+                        </th>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            Laravel
+                        </td>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            #194856
+                        </td>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            $149
+                        </td>
+                        <td class="px-5 py-2 text-right">
+                            <button type="button" class="text-white bg-Primary-600 hover:bg-Primary-800 focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                <svg class="pencil-alt" width="16" height="17" viewBox="0 0 16 17" fill="none"  xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12.7996 2.60059C13.0912 2.60059 13.3709 2.71639 13.5772 2.92254C13.5772 2.92258 13.5773 2.92262 13.5773 2.92265C13.7835 3.12892 13.8993 3.40861 13.8993 3.70024C13.8993 3.9919 13.7834 4.27162 13.5773 4.47789C13.5772 4.47791 13.5772 4.47793 13.5772 4.47794L7.6549 10.4002H6.09961V8.84495L12.0219 2.92265C12.0219 2.92263 12.0219 2.92262 12.022 2.9226C12.2282 2.71641 12.508 2.60059 12.7996 2.60059Z" fill="white" stroke="white" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.59961 5.3002C1.59961 4.87585 1.76818 4.46888 2.06824 4.16882C2.3683 3.86877 2.77526 3.7002 3.19961 3.7002H6.39961C6.61178 3.7002 6.81527 3.78448 6.96529 3.93451C7.11532 4.08454 7.19961 4.28802 7.19961 4.5002C7.19961 4.71237 7.11532 4.91585 6.96529 5.06588C6.81527 5.21591 6.61178 5.3002 6.39961 5.3002H3.19961V13.3002H11.1996V10.1002C11.1996 9.88802 11.2839 9.68454 11.4339 9.53451C11.584 9.38448 11.7874 9.3002 11.9996 9.3002C12.2118 9.3002 12.4153 9.38448 12.5653 9.53451C12.7153 9.68454 12.7996 9.88802 12.7996 10.1002V13.3002C12.7996 13.7245 12.631 14.1315 12.331 14.4316C12.0309 14.7316 11.624 14.9002 11.1996 14.9002H3.19961C2.77526 14.9002 2.3683 14.7316 2.06824 14.4316C1.76818 14.1315 1.59961 13.7245 1.59961 13.3002V5.3002Z" fill="white" />
+                                </svg>
+                                Edit Item
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="bg-white border-b border-Gray-200 dark:border-Gray-700 hover:bg-Gray-100 dark:hover:bg-Gray-600">
+                        <td class="w-4 p-4">
+                            <div class="flex items-center">
+                                <input id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-Primary-600 bg-Gray-100 border-Gray-300 rounded dark:bg-Gray-700 dark:border-Gray-600 focus:ring-0">
+                                <label for="checkbox-table-1" class="sr-only">checkbox</label>
+                            </div>
+                        </td>
+                        <th scope="row" class="px-5 py-2 text-base font-medium text-Gray-900 whitespace-nowrap dark:text-white">
+                            Education Dashboard
+                            <span class="text-sm font-normal text-Gray-600 block">Html templates</span>
+                        </th>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            Tailwind CSS
+                        </td>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            #194856
+                        </td>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            $149
+                        </td>
+                        <td class="px-5 py-2 text-right">
+                            <button type="button" class="text-white bg-Primary-600 hover:bg-Primary-800 focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                <svg class="pencil-alt" width="16" height="17" viewBox="0 0 16 17" fill="none"  xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12.7996 2.60059C13.0912 2.60059 13.3709 2.71639 13.5772 2.92254C13.5772 2.92258 13.5773 2.92262 13.5773 2.92265C13.7835 3.12892 13.8993 3.40861 13.8993 3.70024C13.8993 3.9919 13.7834 4.27162 13.5773 4.47789C13.5772 4.47791 13.5772 4.47793 13.5772 4.47794L7.6549 10.4002H6.09961V8.84495L12.0219 2.92265C12.0219 2.92263 12.0219 2.92262 12.022 2.9226C12.2282 2.71641 12.508 2.60059 12.7996 2.60059Z" fill="white" stroke="white" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.59961 5.3002C1.59961 4.87585 1.76818 4.46888 2.06824 4.16882C2.3683 3.86877 2.77526 3.7002 3.19961 3.7002H6.39961C6.61178 3.7002 6.81527 3.78448 6.96529 3.93451C7.11532 4.08454 7.19961 4.28802 7.19961 4.5002C7.19961 4.71237 7.11532 4.91585 6.96529 5.06588C6.81527 5.21591 6.61178 5.3002 6.39961 5.3002H3.19961V13.3002H11.1996V10.1002C11.1996 9.88802 11.2839 9.68454 11.4339 9.53451C11.584 9.38448 11.7874 9.3002 11.9996 9.3002C12.2118 9.3002 12.4153 9.38448 12.5653 9.53451C12.7153 9.68454 12.7996 9.88802 12.7996 10.1002V13.3002C12.7996 13.7245 12.631 14.1315 12.331 14.4316C12.0309 14.7316 11.624 14.9002 11.1996 14.9002H3.19961C2.77526 14.9002 2.3683 14.7316 2.06824 14.4316C1.76818 14.1315 1.59961 13.7245 1.59961 13.3002V5.3002Z" fill="white" />
+                                </svg>
+                                Edit Item
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="bg-white border-b border-Gray-200 dark:border-Gray-700 hover:bg-Gray-100 dark:hover:bg-Gray-600">
+                        <td class="w-4 p-4">
+                            <div class="flex items-center">
+                                <input id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-Primary-600 bg-Gray-100 border-Gray-300 rounded dark:bg-Gray-700 dark:border-Gray-600 focus:ring-0">
+                                <label for="checkbox-table-1" class="sr-only">checkbox</label>
+                            </div>
+                        </td>
+                        <th scope="row" class="px-5 py-2 text-base font-medium text-Gray-900 whitespace-nowrap dark:text-white">
+                            SaaS Landing
+                            <span class="text-sm font-normal text-Gray-600 block">Html templates</span>
+                        </th>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            Tailwind CSS
+                        </td>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            #234657
+                        </td>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            $79
+                        </td>
+                        <td class="px-5 py-2 text-right">
+                            <button type="button" class="text-white bg-Primary-600 hover:bg-Primary-800 focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                <svg class="pencil-alt" width="16" height="17" viewBox="0 0 16 17" fill="none"  xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12.7996 2.60059C13.0912 2.60059 13.3709 2.71639 13.5772 2.92254C13.5772 2.92258 13.5773 2.92262 13.5773 2.92265C13.7835 3.12892 13.8993 3.40861 13.8993 3.70024C13.8993 3.9919 13.7834 4.27162 13.5773 4.47789C13.5772 4.47791 13.5772 4.47793 13.5772 4.47794L7.6549 10.4002H6.09961V8.84495L12.0219 2.92265C12.0219 2.92263 12.0219 2.92262 12.022 2.9226C12.2282 2.71641 12.508 2.60059 12.7996 2.60059Z" fill="white" stroke="white" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.59961 5.3002C1.59961 4.87585 1.76818 4.46888 2.06824 4.16882C2.3683 3.86877 2.77526 3.7002 3.19961 3.7002H6.39961C6.61178 3.7002 6.81527 3.78448 6.96529 3.93451C7.11532 4.08454 7.19961 4.28802 7.19961 4.5002C7.19961 4.71237 7.11532 4.91585 6.96529 5.06588C6.81527 5.21591 6.61178 5.3002 6.39961 5.3002H3.19961V13.3002H11.1996V10.1002C11.1996 9.88802 11.2839 9.68454 11.4339 9.53451C11.584 9.38448 11.7874 9.3002 11.9996 9.3002C12.2118 9.3002 12.4153 9.38448 12.5653 9.53451C12.7153 9.68454 12.7996 9.88802 12.7996 10.1002V13.3002C12.7996 13.7245 12.631 14.1315 12.331 14.4316C12.0309 14.7316 11.624 14.9002 11.1996 14.9002H3.19961C2.77526 14.9002 2.3683 14.7316 2.06824 14.4316C1.76818 14.1315 1.59961 13.7245 1.59961 13.3002V5.3002Z" fill="white" />
+                                </svg>
+                                Edit Item
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="bg-white border-b border-Gray-200 dark:border-Gray-700 hover:bg-Gray-100 dark:hover:bg-Gray-600">
+                        <td class="w-4 p-4">
+                            <div class="flex items-center">
+                                <input id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-Primary-600 bg-Gray-100 border-Gray-300 rounded dark:bg-Gray-700 dark:border-Gray-600 focus:ring-0">
+                                <label for="checkbox-table-1" class="sr-only">checkbox</label>
+                            </div>
+                        </td>
+                        <th scope="row" class="px-5 py-2 text-base font-medium text-Gray-900 whitespace-nowrap dark:text-white">
+                            Medical Multipurpose
+                            <span class="text-sm font-normal text-Gray-600 block">Html templates</span>
+                        </th>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            Tailwind CSS
+                        </td>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            #194856
+                        </td>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            $79
+                        </td>
+                        <td class="px-5 py-2 text-right">
+                            <button type="button" class="text-white bg-Primary-600 hover:bg-Primary-800 focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                <svg class="pencil-alt" width="16" height="17" viewBox="0 0 16 17" fill="none"  xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12.7996 2.60059C13.0912 2.60059 13.3709 2.71639 13.5772 2.92254C13.5772 2.92258 13.5773 2.92262 13.5773 2.92265C13.7835 3.12892 13.8993 3.40861 13.8993 3.70024C13.8993 3.9919 13.7834 4.27162 13.5773 4.47789C13.5772 4.47791 13.5772 4.47793 13.5772 4.47794L7.6549 10.4002H6.09961V8.84495L12.0219 2.92265C12.0219 2.92263 12.0219 2.92262 12.022 2.9226C12.2282 2.71641 12.508 2.60059 12.7996 2.60059Z" fill="white" stroke="white" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.59961 5.3002C1.59961 4.87585 1.76818 4.46888 2.06824 4.16882C2.3683 3.86877 2.77526 3.7002 3.19961 3.7002H6.39961C6.61178 3.7002 6.81527 3.78448 6.96529 3.93451C7.11532 4.08454 7.19961 4.28802 7.19961 4.5002C7.19961 4.71237 7.11532 4.91585 6.96529 5.06588C6.81527 5.21591 6.61178 5.3002 6.39961 5.3002H3.19961V13.3002H11.1996V10.1002C11.1996 9.88802 11.2839 9.68454 11.4339 9.53451C11.584 9.38448 11.7874 9.3002 11.9996 9.3002C12.2118 9.3002 12.4153 9.38448 12.5653 9.53451C12.7153 9.68454 12.7996 9.88802 12.7996 10.1002V13.3002C12.7996 13.7245 12.631 14.1315 12.331 14.4316C12.0309 14.7316 11.624 14.9002 11.1996 14.9002H3.19961C2.77526 14.9002 2.3683 14.7316 2.06824 14.4316C1.76818 14.1315 1.59961 13.7245 1.59961 13.3002V5.3002Z" fill="white" />
+                                </svg>
+                                Edit Item
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="bg-white border-b border-Gray-200 dark:border-Gray-700 hover:bg-Gray-100 dark:hover:bg-Gray-600">
+                        <td class="w-4 p-4">
+                            <div class="flex items-center">
+                                <input id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-Primary-600 bg-Gray-100 border-Gray-300 rounded dark:bg-Gray-700 dark:border-Gray-600 focus:ring-0">
+                                <label for="checkbox-table-1" class="sr-only">checkbox</label>
+                            </div>
+                        </td>
+                        <th scope="row" class="px-5 py-2 text-base font-medium text-Gray-900 whitespace-nowrap dark:text-white">
+                            App Kit
+                            <span class="text-sm font-normal text-Gray-600 block">Html templates</span>
+                        </th>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            Bootstrap
+                        </td>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            #194856
+                        </td>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            $49
+                        </td>
+                        <td class="px-5 py-2 text-right">
+                            <button type="button" class="text-white bg-Primary-600 hover:bg-Primary-800 focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                <svg class="pencil-alt" width="16" height="17" viewBox="0 0 16 17" fill="none"  xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12.7996 2.60059C13.0912 2.60059 13.3709 2.71639 13.5772 2.92254C13.5772 2.92258 13.5773 2.92262 13.5773 2.92265C13.7835 3.12892 13.8993 3.40861 13.8993 3.70024C13.8993 3.9919 13.7834 4.27162 13.5773 4.47789C13.5772 4.47791 13.5772 4.47793 13.5772 4.47794L7.6549 10.4002H6.09961V8.84495L12.0219 2.92265C12.0219 2.92263 12.0219 2.92262 12.022 2.9226C12.2282 2.71641 12.508 2.60059 12.7996 2.60059Z" fill="white" stroke="white" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.59961 5.3002C1.59961 4.87585 1.76818 4.46888 2.06824 4.16882C2.3683 3.86877 2.77526 3.7002 3.19961 3.7002H6.39961C6.61178 3.7002 6.81527 3.78448 6.96529 3.93451C7.11532 4.08454 7.19961 4.28802 7.19961 4.5002C7.19961 4.71237 7.11532 4.91585 6.96529 5.06588C6.81527 5.21591 6.61178 5.3002 6.39961 5.3002H3.19961V13.3002H11.1996V10.1002C11.1996 9.88802 11.2839 9.68454 11.4339 9.53451C11.584 9.38448 11.7874 9.3002 11.9996 9.3002C12.2118 9.3002 12.4153 9.38448 12.5653 9.53451C12.7153 9.68454 12.7996 9.88802 12.7996 10.1002V13.3002C12.7996 13.7245 12.631 14.1315 12.331 14.4316C12.0309 14.7316 11.624 14.9002 11.1996 14.9002H3.19961C2.77526 14.9002 2.3683 14.7316 2.06824 14.4316C1.76818 14.1315 1.59961 13.7245 1.59961 13.3002V5.3002Z" fill="white" />
+                                </svg>
+                                Edit Item
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="bg-white border-b border-Gray-200 dark:border-Gray-700 hover:bg-Gray-100 dark:hover:bg-Gray-600">
+                        <td class="w-4 p-4">
+                            <div class="flex items-center">
+                                <input id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-Primary-600 bg-Gray-100 border-Gray-300 rounded dark:bg-Gray-700 dark:border-Gray-600 focus:ring-0">
+                                <label for="checkbox-table-1" class="sr-only">checkbox</label>
+                            </div>
+                        </td>
+                        <th scope="row" class="px-5 py-2 text-base font-medium text-Gray-900 whitespace-nowrap dark:text-white">
+                            Full Stack Bundle
+                            <span class="text-sm font-normal text-Gray-600 block">Html templates</span>
+                        </th>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            Bootstrap
+                        </td>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            #355678
+                        </td>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            $69
+                        </td>
+                        <td class="px-5 py-2 text-right">
+                            <button type="button" class="text-white bg-Primary-600 hover:bg-Primary-800 focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                <svg class="pencil-alt" width="16" height="17" viewBox="0 0 16 17" fill="none"  xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12.7996 2.60059C13.0912 2.60059 13.3709 2.71639 13.5772 2.92254C13.5772 2.92258 13.5773 2.92262 13.5773 2.92265C13.7835 3.12892 13.8993 3.40861 13.8993 3.70024C13.8993 3.9919 13.7834 4.27162 13.5773 4.47789C13.5772 4.47791 13.5772 4.47793 13.5772 4.47794L7.6549 10.4002H6.09961V8.84495L12.0219 2.92265C12.0219 2.92263 12.0219 2.92262 12.022 2.9226C12.2282 2.71641 12.508 2.60059 12.7996 2.60059Z" fill="white" stroke="white" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.59961 5.3002C1.59961 4.87585 1.76818 4.46888 2.06824 4.16882C2.3683 3.86877 2.77526 3.7002 3.19961 3.7002H6.39961C6.61178 3.7002 6.81527 3.78448 6.96529 3.93451C7.11532 4.08454 7.19961 4.28802 7.19961 4.5002C7.19961 4.71237 7.11532 4.91585 6.96529 5.06588C6.81527 5.21591 6.61178 5.3002 6.39961 5.3002H3.19961V13.3002H11.1996V10.1002C11.1996 9.88802 11.2839 9.68454 11.4339 9.53451C11.584 9.38448 11.7874 9.3002 11.9996 9.3002C12.2118 9.3002 12.4153 9.38448 12.5653 9.53451C12.7153 9.68454 12.7996 9.88802 12.7996 10.1002V13.3002C12.7996 13.7245 12.631 14.1315 12.331 14.4316C12.0309 14.7316 11.624 14.9002 11.1996 14.9002H3.19961C2.77526 14.9002 2.3683 14.7316 2.06824 14.4316C1.76818 14.1315 1.59961 13.7245 1.59961 13.3002V5.3002Z" fill="white" />
+                                </svg>
+                                Edit Item
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="bg-white border-b border-Gray-200 dark:border-Gray-700 hover:bg-Gray-100 dark:hover:bg-Gray-600">
+                        <td class="w-4 p-4">
+                            <div class="flex items-center">
+                                <input id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-Primary-600 bg-Gray-100 border-Gray-300 rounded dark:bg-Gray-700 dark:border-Gray-600 focus:ring-0">
+                                <label for="checkbox-table-1" class="sr-only">checkbox</label>
+                            </div>
+                        </td>
+                        <th scope="row" class="px-5 py-2 text-base font-medium text-Gray-900 whitespace-nowrap dark:text-white">
+                            Social Networking Template
+                            <span class="text-sm font-normal text-Gray-600 block">Html templates</span>
+                        </th>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            Adobe XD
+                        </td>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            #345678
+                        </td>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            $59
+                        </td>
+                        <td class="px-5 py-2 text-right">
+                            <button type="button" class="text-white bg-Primary-600 hover:bg-Primary-800 focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                <svg class="pencil-alt" width="16" height="17" viewBox="0 0 16 17" fill="none"  xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12.7996 2.60059C13.0912 2.60059 13.3709 2.71639 13.5772 2.92254C13.5772 2.92258 13.5773 2.92262 13.5773 2.92265C13.7835 3.12892 13.8993 3.40861 13.8993 3.70024C13.8993 3.9919 13.7834 4.27162 13.5773 4.47789C13.5772 4.47791 13.5772 4.47793 13.5772 4.47794L7.6549 10.4002H6.09961V8.84495L12.0219 2.92265C12.0219 2.92263 12.0219 2.92262 12.022 2.9226C12.2282 2.71641 12.508 2.60059 12.7996 2.60059Z" fill="white" stroke="white" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.59961 5.3002C1.59961 4.87585 1.76818 4.46888 2.06824 4.16882C2.3683 3.86877 2.77526 3.7002 3.19961 3.7002H6.39961C6.61178 3.7002 6.81527 3.78448 6.96529 3.93451C7.11532 4.08454 7.19961 4.28802 7.19961 4.5002C7.19961 4.71237 7.11532 4.91585 6.96529 5.06588C6.81527 5.21591 6.61178 5.3002 6.39961 5.3002H3.19961V13.3002H11.1996V10.1002C11.1996 9.88802 11.2839 9.68454 11.4339 9.53451C11.584 9.38448 11.7874 9.3002 11.9996 9.3002C12.2118 9.3002 12.4153 9.38448 12.5653 9.53451C12.7153 9.68454 12.7996 9.88802 12.7996 10.1002V13.3002C12.7996 13.7245 12.631 14.1315 12.331 14.4316C12.0309 14.7316 11.624 14.9002 11.1996 14.9002H3.19961C2.77526 14.9002 2.3683 14.7316 2.06824 14.4316C1.76818 14.1315 1.59961 13.7245 1.59961 13.3002V5.3002Z" fill="white" />
+                                </svg>
+                                Edit Item
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="bg-white border-b border-Gray-200 dark:border-Gray-700 hover:bg-Gray-100 dark:hover:bg-Gray-600">
+                        <td class="w-4 p-4">
+                            <div class="flex items-center">
+                                <input id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-Primary-600 bg-Gray-100 border-Gray-300 rounded dark:bg-Gray-700 dark:border-Gray-600 focus:ring-0">
+                                <label for="checkbox-table-1" class="sr-only">checkbox</label>
+                            </div>
+                        </td>
+                        <th scope="row" class="px-5 py-2 text-base font-medium text-Gray-900 whitespace-nowrap dark:text-white">
+                            Restaurant  Theme
+                            <span class="text-sm font-normal text-Gray-600 block">Html templates</span>
+                        </th>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            WordPress
+                        </td>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            #235676
+                        </td>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            $59
+                        </td>
+                        <td class="px-5 py-2 text-right">
+                            <button type="button" class="text-white bg-Primary-600 hover:bg-Primary-800 focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                <svg class="pencil-alt" width="16" height="17" viewBox="0 0 16 17" fill="none"  xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12.7996 2.60059C13.0912 2.60059 13.3709 2.71639 13.5772 2.92254C13.5772 2.92258 13.5773 2.92262 13.5773 2.92265C13.7835 3.12892 13.8993 3.40861 13.8993 3.70024C13.8993 3.9919 13.7834 4.27162 13.5773 4.47789C13.5772 4.47791 13.5772 4.47793 13.5772 4.47794L7.6549 10.4002H6.09961V8.84495L12.0219 2.92265C12.0219 2.92263 12.0219 2.92262 12.022 2.9226C12.2282 2.71641 12.508 2.60059 12.7996 2.60059Z" fill="white" stroke="white" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.59961 5.3002C1.59961 4.87585 1.76818 4.46888 2.06824 4.16882C2.3683 3.86877 2.77526 3.7002 3.19961 3.7002H6.39961C6.61178 3.7002 6.81527 3.78448 6.96529 3.93451C7.11532 4.08454 7.19961 4.28802 7.19961 4.5002C7.19961 4.71237 7.11532 4.91585 6.96529 5.06588C6.81527 5.21591 6.61178 5.3002 6.39961 5.3002H3.19961V13.3002H11.1996V10.1002C11.1996 9.88802 11.2839 9.68454 11.4339 9.53451C11.584 9.38448 11.7874 9.3002 11.9996 9.3002C12.2118 9.3002 12.4153 9.38448 12.5653 9.53451C12.7153 9.68454 12.7996 9.88802 12.7996 10.1002V13.3002C12.7996 13.7245 12.631 14.1315 12.331 14.4316C12.0309 14.7316 11.624 14.9002 11.1996 14.9002H3.19961C2.77526 14.9002 2.3683 14.7316 2.06824 14.4316C1.76818 14.1315 1.59961 13.7245 1.59961 13.3002V5.3002Z" fill="white" />
+                                </svg>
+                                Edit Item
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="bg-white dark:bg-Gray-800 hover:bg-Gray-100 dark:hover:bg-Gray-600">
+                        <td class="w-4 p-4">
+                            <div class="flex items-center">
+                                <input id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-Primary-600 bg-Gray-100 border-Gray-300 rounded dark:bg-Gray-700 dark:border-Gray-600 focus:ring-0">
+                                <label for="checkbox-table-1" class="sr-only">checkbox</label>
+                            </div>
+                        </td>
+                        <th scope="row" class="px-5 py-2 text-base font-medium text-Gray-900 whitespace-nowrap dark:text-white">
+                            Education Dashboard
+                            <span class="text-sm font-normal text-Gray-600 block">Html templates</span>
+                        </th>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            Tailwind CSS
+                        </td>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            #194856
+                        </td>
+                        <td class="px-5 py-2 text-base font-medium text-Gray-900">
+                            $149
+                        </td>
+                        <td class="px-5 py-2 text-right">
+                            <button type="button" class="text-white bg-Primary-600 hover:bg-Primary-800 focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                <svg class="pencil-alt" width="16" height="17" viewBox="0 0 16 17" fill="none"  xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12.7996 2.60059C13.0912 2.60059 13.3709 2.71639 13.5772 2.92254C13.5772 2.92258 13.5773 2.92262 13.5773 2.92265C13.7835 3.12892 13.8993 3.40861 13.8993 3.70024C13.8993 3.9919 13.7834 4.27162 13.5773 4.47789C13.5772 4.47791 13.5772 4.47793 13.5772 4.47794L7.6549 10.4002H6.09961V8.84495L12.0219 2.92265C12.0219 2.92263 12.0219 2.92262 12.022 2.9226C12.2282 2.71641 12.508 2.60059 12.7996 2.60059Z" fill="white" stroke="white" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.59961 5.3002C1.59961 4.87585 1.76818 4.46888 2.06824 4.16882C2.3683 3.86877 2.77526 3.7002 3.19961 3.7002H6.39961C6.61178 3.7002 6.81527 3.78448 6.96529 3.93451C7.11532 4.08454 7.19961 4.28802 7.19961 4.5002C7.19961 4.71237 7.11532 4.91585 6.96529 5.06588C6.81527 5.21591 6.61178 5.3002 6.39961 5.3002H3.19961V13.3002H11.1996V10.1002C11.1996 9.88802 11.2839 9.68454 11.4339 9.53451C11.584 9.38448 11.7874 9.3002 11.9996 9.3002C12.2118 9.3002 12.4153 9.38448 12.5653 9.53451C12.7153 9.68454 12.7996 9.88802 12.7996 10.1002V13.3002C12.7996 13.7245 12.631 14.1315 12.331 14.4316C12.0309 14.7316 11.624 14.9002 11.1996 14.9002H3.19961C2.77526 14.9002 2.3683 14.7316 2.06824 14.4316C1.76818 14.1315 1.59961 13.7245 1.59961 13.3002V5.3002Z" fill="white" />
+                                </svg>
+                                Edit Item
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.js"></script>
+
+    <script>
+        module.exports = {
+            darkMode: 'class',
+            // ...
+        }
+    </script>
+
+</body>
+</html>
